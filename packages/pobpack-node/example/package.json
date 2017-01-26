@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "build": "pobpack-node build",
+    "start": "pobpack-node"
+  },
+  "devDependencies": {
+    "webpack-module-hot-accept": "^1.0.4"
+  }
+}

@@ -1,0 +1,30 @@
+import path from 'path';
+import webpackConfig from './createWebpackConfig';
+
+module.exports = (options) => {
+  const appWebpackConfigPath = path.resolve('createWebpackConfig.js');
+  if (appWebpackConfigPath) {
+    console.log('Using app createWebpackConfig.js');
+    // eslint-disable-next-line import/no-dynamic-require, global-require
+    const appWebpackConfigCreator = require(appWebpackConfigPath);
+    if (typeof appWebpackConfigCreator !== 'function') {
+      console.error(
+        'app createWebpackConfig.js should export a function\n'
+        + 'module.exports = function (config, options) { ... }'
+      );
+    }
+
+    const config = appWebpackConfigCreator(webpackConfig, options);
+
+    if (typeof config !== 'object') {
+      console.error(
+        'app createWebpackConfig.js should return the config\n'
+        + 'function (config, options) { return config; }'
+      );
+    }
+
+    return config;
+  } else {
+    return webpackConfig(options);
+  }
+};
