@@ -1,20 +1,12 @@
-import { join } from 'path';
-import { node } from 'springbokjs-daemon/src';
-import { build, watch } from './index';
-import config from './config';
+import { build, watchAndRun } from './index';
 
-const BUILD = process.argv[2] === 'build';
+const cmd = process.argv[2];
 
-if (BUILD) {
+if (cmd === 'build') {
   build();
+} else if (cmd === 'start' || !cmd) {
+  watchAndRun();
 } else {
-  const daemon = node([join(config.server.paths.build)], { autorestart: true });
-  watch((err, stats) => {
-    if (!daemon.process) {
-      daemon.start();
-    } else {
-      // already started, send a signal to ask hot reload
-      daemon.process.kill('SIGUSR2');
-    }
-  });
+  console.log(`Invalid command: ${cmd}`);
+  process.exit(1);
 }

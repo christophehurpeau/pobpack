@@ -1,5 +1,9 @@
 'use strict';
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _path = require('path');
 
 var _path2 = _interopRequireDefault(_path);
@@ -10,7 +14,7 @@ var _createWebpackConfig2 = _interopRequireDefault(_createWebpackConfig);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-module.exports = options => {
+exports.default = function createAppWebpackConfig(options) {
   const appWebpackConfigPath = _path2.default.resolve('createWebpackConfig.js');
   if (appWebpackConfigPath) {
     console.log('Using app createWebpackConfig.js');

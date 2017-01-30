@@ -1,7 +1,7 @@
 import path from 'path';
 import webpackConfig from './createWebpackConfig';
 
-module.exports = (options) => {
+export default (options) => {
   const appWebpackConfigPath = path.resolve('createWebpackConfig.js');
   if (appWebpackConfigPath) {
     console.log('Using app createWebpackConfig.js');

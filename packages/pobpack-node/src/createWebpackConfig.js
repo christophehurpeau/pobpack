@@ -1,11 +1,12 @@
 // const fs = require('fs');
-const path = require('path');
-const webpack = require('webpack');
-const nodeExternals = require('webpack-node-externals');
-const config = require('./config');
+import path from 'path';
+import webpack from 'webpack';
+import nodeExternals from 'webpack-node-externals';
+import createOptions from './createOptions';
 
 export default (options) => {
-  const env = options.env || process.env.NODE_ENV;
+  options = createOptions(options);
+  const env = options.env;
   const hmr = options.hmr;
   const production = env === 'production';
 
@@ -54,14 +55,14 @@ export default (options) => {
     entry: {
       index: [
         hmr && 'pobpack-node/hot',
-        `${path.resolve(config.server.paths.src)}/index.js`,
+        `${path.resolve(options.paths.src)}/index.js`,
       ],
     },
     output: {
-      path: path.resolve(config.server.paths.build),
+      path: path.resolve(options.paths.build),
       filename: '[name].js',
       sourceMapFilename: '[name].map',
-      publicPath: config.server.publicPath,
+      publicPath: '/',
       libraryTarget: 'commonjs2',
     },
 
@@ -75,17 +76,19 @@ export default (options) => {
           test: /\.(js|jsx)$/,
           exclude: [
             /node_modules/,
-            config.server.paths.build,
+            options.paths.build,
           ],
           loaders: [
             { loader: 'babel-loader', options: mainBabelOptions },
-            ...options.jsLoaders,
+            ...(options.jsLoaders || []),
           ],
         },
+        ...(options.moduleRules || []),
       ],
     },
 
     plugins: [
+      ...(options.prependPlugins || []),
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(env),
         ...(production ? { 'module.hot': false } : {}),
@@ -100,6 +103,7 @@ export default (options) => {
 
       hmr && new webpack.HotModuleReplacementPlugin(),
       hmr && new webpack.NamedModulesPlugin(),
+      ...(options.plugins || []),
     ].filter(Boolean),
   };
 };

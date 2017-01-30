@@ -3,15 +3,17 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.watch = exports.build = exports.createCompiler = undefined;
+exports.watchAndRun = exports.watch = exports.build = exports.createCompiler = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _child_process = require('child_process');
 
 var _readline = require('readline');
 
 var _readline2 = _interopRequireDefault(_readline);
 
-var _child_process = require('child_process');
+var _path = require('path');
 
 var _promiseCallbackFactory = require('promise-callback-factory');
 
@@ -33,43 +35,45 @@ var _friendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 var _friendlyErrorsWebpackPlugin2 = _interopRequireDefault(_friendlyErrorsWebpackPlugin);
 
+var _springbokjsDaemon = require('springbokjs-daemon');
+
+var _springbokjsDaemon2 = _interopRequireDefault(_springbokjsDaemon);
+
 var _createAppWebpackConfig = require('./createAppWebpackConfig');
 
 var _createAppWebpackConfig2 = _interopRequireDefault(_createAppWebpackConfig);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const builtRejectOnError = stats => {
-  if (stats.hasErrors()) {
-    throw new Error(stats.toString({
-      hash: false,
-      timings: false,
-      chunks: false,
-      chunkModules: false,
-      modules: false,
-      children: true,
-      version: true,
-      cached: false,
-      cachedAssets: false,
-      reasons: false,
-      source: false,
-      errorDetails: false,
-      colors: true
-    }));
+const buildThrowOnError = stats => {
+  if (!stats.hasErrors()) {
+    return stats;
   }
 
-  return stats;
+  throw new Error(stats.toString({
+    hash: false,
+    timings: false,
+    chunks: false,
+    chunkModules: false,
+    modules: false,
+    children: true,
+    version: true,
+    cached: false,
+    cachedAssets: false,
+    reasons: false,
+    source: false,
+    errorDetails: false,
+    colors: process.stdout.isTTY
+  }));
 };
 
 const createCompiler = exports.createCompiler = options => {
-  const webpackConfig = (0, _createAppWebpackConfig2.default)(_extends({
-    env: process.env.NODE_ENV
-  }, options));
+  const webpackConfig = (0, _createAppWebpackConfig2.default)(options);
 
   const compiler = (0, _webpack2.default)(webpackConfig);
 
   if (process.stdout.isTTY) {
-    const bar = new _progress2.default('Building server bundle... :percent [:bar]', { incomplete: ' ', total: 60, width: 50, clear: true, stream: process.stdout });
+    const bar = new _progress2.default('Building node bundle... :percent [:bar]', { incomplete: ' ', total: 60, width: 50, clear: true, stream: process.stdout });
     compiler.apply(new _ProgressPlugin2.default((percentage, msg) => {
       if (percentage === 1) {
         _readline2.default.clearLine(process.stdout);
@@ -85,11 +89,12 @@ const createCompiler = exports.createCompiler = options => {
   }
 
   return {
+    webpackConfig,
     clean: () => webpackConfig.output.path && (0, _child_process.execSync)(`rm -Rf ${webpackConfig.output.path}`),
-    run: () => (0, _promiseCallbackFactory2.default)(done => compiler.run(done)).then(builtRejectOnError),
+    run: () => (0, _promiseCallbackFactory2.default)(done => compiler.run(done)).then(buildThrowOnError),
     watch: callback => compiler.watch({}, (err, stats) => {
       if (err) return;
-      builtRejectOnError(stats);
+      buildThrowOnError(stats);
       callback(stats);
     })
   };
@@ -109,5 +114,25 @@ const watch = exports.watch = (options, callback) => {
   const compiler = createCompiler(_extends({}, options, { hmr: true }));
   compiler.clean();
   compiler.watch(callback);
+  return compiler;
+};
+
+const watchAndRun = exports.watchAndRun = (options = {}) => {
+  let daemon;
+  const compiler = watch(options, () => {
+    if (!daemon) {
+      daemon = (0, _springbokjsDaemon2.default)({
+        key: options.key || 'pobpack-node',
+        displayName: options.displayName,
+        args: [(0, _path.join)(compiler.webpackConfig.output.path)],
+        autorestart: true
+      });
+      daemon.start();
+      process.on('exit', () => daemon.stop());
+    } else {
+      // already started, send a signal to ask hot reload
+      daemon.sendSIGUSR2();
+    }
+  });
 };
 //# sourceMappingURL=index.js.map

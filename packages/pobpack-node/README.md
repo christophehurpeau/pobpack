@@ -5,6 +5,14 @@ Build and run node projects with webpack.
 [![Dependency ci Status][dependencyci-image]][dependencyci-url]
 [![Dependency Status][daviddm-image]][daviddm-url]
 
+* [Features](#features)
+* [Install](#install)
+* [Usage](#usage)
+* [Hot Reload](#hot-reload)
+* [Configuration Options](#configuration-options)
+* [Configuration Examples](#configuration-examples)
+* [Alternatives](#alternatives)
+
 ## Screenshot
 
 ![hello-example](example/tty.gif?raw=true)
@@ -38,6 +46,26 @@ npm install --save pobpack-node
 ```bash
 npm run start
 ```
+
+## Configuration Options
+
+You can create a file named `createWebpackConfig.js` next to `package.json`:
+
+```js
+module.exports = function (config, options) {
+  return config({
+    ...options,
+    babel: {}, // babel config (see below)
+    jsLoaders: {}, // add more webpack loaders to js/jsx (see below)
+    moduleRules: [], // add more webpack rules
+    prependPlugins: [], // prepend plugins
+    plugins: [], // append plugins
+    paths: { src: 'src', build: 'build' },
+  });
+};
+```
+
+
 ## Hot Reload
 
 You should read [webpack documentation about HMR](https://webpack.github.io/docs/hot-module-replacement.html)
@@ -49,6 +77,7 @@ npm install --save-dev webpack-module-hot-accept
 ```
 
 > createWebpackConfig.js
+
 ```js
 module.exports = function (config, options) {
   return config(Object.assign({}, options, {
@@ -59,9 +88,7 @@ module.exports = function (config, options) {
 };
 ```
 
-## Configuration
-
-> createWebpackConfig.js
+## Configuration examples
 
 ```js
 module.exports = function (config, options) {
@@ -71,6 +98,16 @@ module.exports = function (config, options) {
 ```
 
 ### Add a webpack plugin
+
+```js
+module.exports = function (config, options) {
+  return config(Object.assign({}, options, {
+    plugins: [new WebPackPlugin()],
+  }));
+};
+```
+
+You can also do:
 
 ```js
 module.exports = function (config, options) {
