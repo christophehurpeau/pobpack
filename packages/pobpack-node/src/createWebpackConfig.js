@@ -2,9 +2,9 @@
 import path from 'path';
 import webpack from 'webpack';
 import nodeExternals from 'webpack-node-externals';
-import createOptions from './createOptions';
+import createOptions, { type OptionsType } from './createOptions';
 
-export default (options) => {
+export default (options: OptionsType) => {
   options = createOptions(options);
   const env = options.env;
   const hmr = options.hmr;

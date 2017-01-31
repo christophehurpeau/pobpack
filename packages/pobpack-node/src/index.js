@@ -61,6 +61,7 @@ export const createCompiler = (options) => {
     run: () => promiseCallback(done => compiler.run(done)).then(buildThrowOnError),
     watch: (callback) => compiler.watch({}, (err, stats) => {
       if (err) return;
+      if (stats.hasErrors()) return;
       buildThrowOnError(stats);
       callback(stats);
     }),
@@ -98,7 +99,11 @@ export const watchAndRun = (options = {}) => {
       process.on('exit', () => daemon.stop());
     } else {
       // already started, send a signal to ask hot reload
-      daemon.sendSIGUSR2();
+      try {
+        daemon.sendSIGUSR2();
+      } catch (err) {
+        daemon.restart();
+      }
     }
   });
 };

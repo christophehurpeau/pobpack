@@ -12,9 +12,14 @@ var _createWebpackConfig = require('./createWebpackConfig');
 
 var _createWebpackConfig2 = _interopRequireDefault(_createWebpackConfig);
 
+var _createOptions = require('./createOptions');
+
+var _createOptions2 = _interopRequireDefault(_createOptions);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function createAppWebpackConfig(options) {
+  options = (0, _createOptions2.default)(options);
   const appWebpackConfigPath = _path2.default.resolve('createWebpackConfig.js');
   if (appWebpackConfigPath) {
     console.log('Using app createWebpackConfig.js');

@@ -7,6 +7,10 @@ Object.defineProperty(exports, "__esModule", {
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; // const fs = require('fs');
 
 
+var _tcombForked = require('tcomb-forked');
+
+var _tcombForked2 = _interopRequireDefault(_tcombForked);
+
 var _path = require('path');
 
 var _path2 = _interopRequireDefault(_path);
@@ -26,6 +30,8 @@ var _createOptions2 = _interopRequireDefault(_createOptions);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function createWebpackConfig(options) {
+  _assert(options, _createOptions.OptionsType, 'options');
+
   options = (0, _createOptions2.default)(options);
   const env = options.env;
   const hmr = options.hmr;
@@ -93,4 +99,16 @@ exports.default = function createWebpackConfig(options) {
     }), new _webpack2.default.NoEmitOnErrorsPlugin(), hmr && new _webpack2.default.HotModuleReplacementPlugin(), hmr && new _webpack2.default.NamedModulesPlugin(), ...(options.plugins || [])].filter(Boolean)
   };
 };
+
+function _assert(x, type, name) {
+  if (_tcombForked2.default.isType(type) && type.meta.kind !== 'struct') {
+    if (!type.is(x)) {
+      type(x, [name + ': ' + _tcombForked2.default.getTypeName(type)]);
+    }
+  } else if (!(x instanceof type)) {
+    _tcombForked2.default.fail('Invalid value ' + _tcombForked2.default.stringify(x) + ' supplied to ' + name + ' (expected a ' + _tcombForked2.default.getTypeName(type) + ')');
+  }
+
+  return x;
+}
 //# sourceMappingURL=createWebpackConfig.js.map
