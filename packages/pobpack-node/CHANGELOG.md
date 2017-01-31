@@ -1,3 +1,12 @@
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/christophehurpeau/pobpack-node/compare/v0.1.0...v0.2.0) (2017-01-31)
+
+
+### Features
+
+* initialize options before calling appWebpackConfig ([8144563](https://github.com/christophehurpeau/pobpack-node/commit/8144563))
+
+
 <a name="0.1.0"></a>
 # [0.1.0](https://github.com/christophehurpeau/pobpack-node/compare/v0.0.2...v0.1.0) (2017-01-30)
 
