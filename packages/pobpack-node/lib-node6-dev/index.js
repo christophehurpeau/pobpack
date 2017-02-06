@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.watchAndRun = exports.watch = exports.build = exports.createCompiler = undefined;
+exports.watchAndRun = exports.watchAndRunCompiler = exports.watch = exports.build = exports.createAppCompiler = exports.createCompiler = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -67,9 +67,7 @@ const buildThrowOnError = stats => {
   }));
 };
 
-const createCompiler = exports.createCompiler = options => {
-  const webpackConfig = (0, _createAppWebpackConfig2.default)(options);
-
+const createCompiler = exports.createCompiler = webpackConfig => {
   const compiler = (0, _webpack2.default)(webpackConfig);
 
   if (process.stdout.isTTY) {
@@ -101,8 +99,10 @@ const createCompiler = exports.createCompiler = options => {
   };
 };
 
-const build = exports.build = options => {
-  const compiler = createCompiler(_extends({}, options, { hmr: false }));
+const createAppCompiler = exports.createAppCompiler = options => createCompiler((0, _createAppWebpackConfig2.default)(options));
+
+const build = exports.build = (options = {}) => {
+  const compiler = createAppCompiler(_extends({}, options, { hmr: false }));
   compiler.clean();
   return compiler.run();
 };
@@ -112,15 +112,15 @@ const watch = exports.watch = (options, callback) => {
     callback = options;
     options = undefined;
   }
-  const compiler = createCompiler(_extends({}, options, { hmr: true }));
+  const compiler = createAppCompiler(_extends({}, options, { hmr: true }));
   compiler.clean();
   compiler.watch(callback);
   return compiler;
 };
 
-const watchAndRun = exports.watchAndRun = (options = {}) => {
+const watchAndRunCompiler = exports.watchAndRunCompiler = (compiler, options = {}) => {
   let daemon;
-  const compiler = watch(options, () => {
+  compiler.watch(() => {
     if (!daemon) {
       daemon = (0, _springbokjsDaemon2.default)({
         key: options.key || 'pobpack-node',
@@ -139,5 +139,12 @@ const watchAndRun = exports.watchAndRun = (options = {}) => {
       }
     }
   });
+};
+
+const watchAndRun = exports.watchAndRun = options => {
+  const compiler = createAppCompiler(_extends({}, options, { hmr: true }));
+  compiler.clean();
+  watchAndRunCompiler(compiler);
+  return compiler;
 };
 //# sourceMappingURL=index.js.map

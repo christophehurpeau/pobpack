@@ -62,7 +62,7 @@ exports.default = options => {
       aliasFields: [!production && 'webpack:node-aliases-dev', 'webpack:node-aliases', 'webpack'].filter(Boolean)
     },
     entry: {
-      index: [hmr && 'pobpack-node/hot', `${_path2.default.resolve(options.paths.src)}/index.js`]
+      index: ['pobpack-node/source-map-support', hmr && 'pobpack-node/hot', `${_path2.default.resolve(options.paths.src)}/index.js`].filter(Boolean)
     },
     output: {
       path: _path2.default.resolve(options.paths.build),
@@ -87,10 +87,7 @@ exports.default = options => {
       'process.env.NODE_ENV': JSON.stringify(env)
     }, production ? {
       'module.hot': false
-    } : {})), new _webpack2.default.BannerPlugin({
-      raw: true,
-      banner: 'require("pobpack-node/source-map-support").install();'
-    }), new _webpack2.default.NoEmitOnErrorsPlugin(), hmr && new _webpack2.default.HotModuleReplacementPlugin(), hmr && new _webpack2.default.NamedModulesPlugin(), ...(options.plugins || [])].filter(Boolean)
+    } : {})), new _webpack2.default.NoEmitOnErrorsPlugin(), hmr && new _webpack2.default.HotModuleReplacementPlugin(), hmr && new _webpack2.default.NamedModulesPlugin(), ...(options.plugins || [])].filter(Boolean)
   };
 };
 //# sourceMappingURL=createWebpackConfig.js.map

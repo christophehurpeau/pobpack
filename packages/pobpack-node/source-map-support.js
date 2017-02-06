@@ -1,1 +1,1 @@
-module.exports = require('source-map-support');
+require('source-map-support').install();

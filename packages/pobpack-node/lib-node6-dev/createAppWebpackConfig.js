@@ -20,19 +20,19 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = function createAppWebpackConfig(options) {
   options = (0, _createOptions2.default)(options);
-  const appWebpackConfigPath = _path2.default.resolve('createWebpackConfig.js');
+  const appWebpackConfigPath = _path2.default.resolve('createAppWebpackConfig.js');
   if (appWebpackConfigPath) {
-    console.log('Using app createWebpackConfig.js');
+    console.log('Using app createAppWebpackConfig.js');
     // eslint-disable-next-line import/no-dynamic-require, global-require
     const appWebpackConfigCreator = require(appWebpackConfigPath);
     if (typeof appWebpackConfigCreator !== 'function') {
-      console.error('app createWebpackConfig.js should export a function\nmodule.exports = function (config, options) { ... }');
+      console.error('app createAppWebpackConfig.js should export a function\nmodule.exports = function (config, options) { ... }');
     }
 
     const config = appWebpackConfigCreator(_createWebpackConfig2.default, options);
 
     if (typeof config !== 'object') {
-      console.error('app createWebpackConfig.js should return the config\nfunction (config, options) { return config; }');
+      console.error('app createAppWebpackConfig.js should return the config\nfunction (config, options) { return config; }');
     }
 
     return config;

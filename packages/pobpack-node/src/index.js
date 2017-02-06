@@ -7,7 +7,7 @@ import webpack from 'webpack';
 import ProgressPlugin from 'webpack/lib/ProgressPlugin';
 import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin';
 import createDaemon from 'springbokjs-daemon/src';
-import createWebpackConfig from './createAppWebpackConfig';
+import createAppWebpackConfig from './createAppWebpackConfig';
 
 const buildThrowOnError = (stats) => {
   if (!stats.hasErrors()) {
@@ -31,9 +31,7 @@ const buildThrowOnError = (stats) => {
   }));
 };
 
-export const createCompiler = (options) => {
-  const webpackConfig = createWebpackConfig(options);
-
+export const createCompiler = (webpackConfig) => {
   const compiler = webpack(webpackConfig);
 
   if (process.stdout.isTTY) {
@@ -68,8 +66,12 @@ export const createCompiler = (options) => {
   };
 };
 
-export const build = (options) => {
-  const compiler = createCompiler({ ...options, hmr: false });
+export const createAppCompiler = options => (
+  createCompiler(createAppWebpackConfig(options))
+);
+
+export const build = (options = {}) => {
+  const compiler = createAppCompiler({ ...options, hmr: false });
   compiler.clean();
   return compiler.run();
 };
@@ -79,15 +81,15 @@ export const watch = (options, callback) => {
     callback = options;
     options = undefined;
   }
-  const compiler = createCompiler({ ...options, hmr: true });
+  const compiler = createAppCompiler({ ...options, hmr: true });
   compiler.clean();
   compiler.watch(callback);
   return compiler;
 };
 
-export const watchAndRun = (options = {}) => {
+export const watchAndRunCompiler = (compiler, options = {}) => {
   let daemon;
-  const compiler = watch(options, (stats) => {
+  compiler.watch((stats) => {
     if (!daemon) {
       daemon = createDaemon({
         key: options.key || 'pobpack-node',
@@ -106,4 +108,11 @@ export const watchAndRun = (options = {}) => {
       }
     }
   });
+};
+
+export const watchAndRun = (options) => {
+  const compiler = createAppCompiler({ ...options, hmr: true });
+  compiler.clean();
+  watchAndRunCompiler(compiler);
+  return compiler;
 };

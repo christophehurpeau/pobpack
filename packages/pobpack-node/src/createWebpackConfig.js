@@ -54,9 +54,10 @@ export default (options: OptionsType) => {
     },
     entry: {
       index: [
+        'pobpack-node/source-map-support',
         hmr && 'pobpack-node/hot',
         `${path.resolve(options.paths.src)}/index.js`,
-      ],
+      ].filter(Boolean),
     },
     output: {
       path: path.resolve(options.paths.build),
@@ -92,11 +93,6 @@ export default (options: OptionsType) => {
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(env),
         ...(production ? { 'module.hot': false } : {}),
-      }),
-
-      new webpack.BannerPlugin({
-        raw: true,
-        banner: 'require("pobpack-node/source-map-support").install();',
       }),
 
       new webpack.NoEmitOnErrorsPlugin(),

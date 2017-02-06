@@ -1,17 +1,18 @@
 import path from 'path';
+import { existsSync } from 'fs';
 import webpackConfig from './createWebpackConfig';
 import createOptions from './createOptions';
 
 export default (options) => {
   options = createOptions(options);
-  const appWebpackConfigPath = path.resolve('createWebpackConfig.js');
-  if (appWebpackConfigPath) {
-    console.log('Using app createWebpackConfig.js');
+  const appWebpackConfigPath = path.resolve('createAppWebpackConfig.js');
+  if (existsSync(appWebpackConfigPath)) {
+    console.log('Using app createAppWebpackConfig.js');
     // eslint-disable-next-line import/no-dynamic-require, global-require
     const appWebpackConfigCreator = require(appWebpackConfigPath);
     if (typeof appWebpackConfigCreator !== 'function') {
       console.error(
-        'app createWebpackConfig.js should export a function\n'
+        'app createAppWebpackConfig.js should export a function\n'
         + 'module.exports = function (config, options) { ... }'
       );
     }
@@ -20,7 +21,7 @@ export default (options) => {
 
     if (typeof config !== 'object') {
       console.error(
-        'app createWebpackConfig.js should return the config\n'
+        'app createAppWebpackConfig.js should return the config\n'
         + 'function (config, options) { return config; }'
       );
     }
