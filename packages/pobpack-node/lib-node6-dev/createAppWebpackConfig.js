@@ -8,6 +8,8 @@ var _path = require('path');
 
 var _path2 = _interopRequireDefault(_path);
 
+var _fs = require('fs');
+
 var _createWebpackConfig = require('./createWebpackConfig');
 
 var _createWebpackConfig2 = _interopRequireDefault(_createWebpackConfig);
@@ -21,7 +23,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = function createAppWebpackConfig(options) {
   options = (0, _createOptions2.default)(options);
   const appWebpackConfigPath = _path2.default.resolve('createAppWebpackConfig.js');
-  if (appWebpackConfigPath) {
+  if ((0, _fs.existsSync)(appWebpackConfigPath)) {
     console.log('Using app createAppWebpackConfig.js');
     // eslint-disable-next-line import/no-dynamic-require, global-require
     const appWebpackConfigCreator = require(appWebpackConfigPath);

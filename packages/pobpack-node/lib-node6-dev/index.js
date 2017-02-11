@@ -9,11 +9,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _child_process = require('child_process');
 
-var _readline = require('readline');
-
-var _readline2 = _interopRequireDefault(_readline);
-
 var _path = require('path');
+
+var _chalk = require('chalk');
+
+var _chalk2 = _interopRequireDefault(_chalk);
 
 var _promiseCallbackFactory = require('promise-callback-factory');
 
@@ -71,14 +71,9 @@ const createCompiler = exports.createCompiler = webpackConfig => {
   const compiler = (0, _webpack2.default)(webpackConfig);
 
   if (process.stdout.isTTY) {
-    const bar = new _progress2.default('Building node bundle... :percent [:bar]', { incomplete: ' ', total: 60, width: 50, clear: true, stream: process.stdout });
+    const bar = new _progress2.default(`${_chalk2.default.yellow.bold('Building node bundle...')} ${_chalk2.default.bold(':percent')} [:bar] → :msg`, { incomplete: ' ', complete: '▇', total: 50, clear: true, stream: process.stdout });
     compiler.apply(new _ProgressPlugin2.default((percentage, msg) => {
-      if (percentage === 1) {
-        _readline2.default.clearLine(process.stdout);
-        _readline2.default.cursorTo(process.stdout, 0);
-      } else {
-        bar.update(percentage, { msg });
-      }
+      bar.update(percentage, { msg: msg.length > 20 ? `${msg.substr(0, 20)}...` : msg });
     }));
     // human-readable error messages
     compiler.apply(new _friendlyErrorsWebpackPlugin2.default({

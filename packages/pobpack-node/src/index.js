@@ -1,6 +1,6 @@
 import { execSync } from 'child_process';
-import readline from 'readline';
 import { join } from 'path';
+import chalk from 'chalk';
 import promiseCallback from 'promise-callback-factory/src';
 import ProgressBar from 'progress';
 import webpack from 'webpack';
@@ -36,16 +36,11 @@ export const createCompiler = (webpackConfig) => {
 
   if (process.stdout.isTTY) {
     const bar = new ProgressBar(
-      'Building node bundle... :percent [:bar]',
-      { incomplete: ' ', total: 60, width: 50, clear: true, stream: process.stdout },
+      `${chalk.yellow.bold('Building node bundle...')} ${chalk.bold(':percent')} [:bar] → :msg`,
+      { incomplete: ' ', complete: '▇', total: 50, clear: true, stream: process.stdout },
     );
     compiler.apply(new ProgressPlugin((percentage, msg) => {
-      if (percentage === 1) {
-        readline.clearLine(process.stdout);
-        readline.cursorTo(process.stdout, 0);
-      } else {
-        bar.update(percentage, { msg });
-      }
+      bar.update(percentage, { msg: msg.length > 20 ? `${msg.substr(0, 20)}...` : msg });
     }));
     // human-readable error messages
     compiler.apply(new FriendlyErrorsWebpackPlugin({
