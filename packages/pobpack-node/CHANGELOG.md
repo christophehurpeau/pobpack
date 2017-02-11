@@ -1,3 +1,12 @@
+<a name="0.2.1"></a>
+## [0.2.1](https://github.com/christophehurpeau/pobpack-node/compare/v0.2.0...v0.2.1) (2017-02-11)
+
+
+### Features
+
+* add chalk and better progress bar ([3adaa5d](https://github.com/christophehurpeau/pobpack-node/commit/3adaa5d))
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/christophehurpeau/pobpack-node/compare/v0.1.0...v0.2.0) (2017-01-31)
 
