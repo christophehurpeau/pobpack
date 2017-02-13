@@ -40,8 +40,6 @@ exports.default = options => {
   return {
     // Target node
     target: 'node',
-    // get right stack traces
-    devtool: 'source-map',
     // don't bundle node_modules dependencies
     externals: (0, _webpackNodeExternals2.default)({
       whitelist: ['pobpack-node/hot']
@@ -62,7 +60,7 @@ exports.default = options => {
       aliasFields: [!production && 'webpack:node-aliases-dev', 'webpack:node-aliases', 'webpack'].filter(Boolean)
     },
     entry: {
-      index: ['pobpack-node/source-map-support', hmr && 'pobpack-node/hot', `${_path2.default.resolve(options.paths.src)}/index.js`].filter(Boolean)
+      index: [hmr && 'pobpack-node/hot', `${_path2.default.resolve(options.paths.src)}/index.js`].filter(Boolean)
     },
     output: {
       path: _path2.default.resolve(options.paths.build),
@@ -87,7 +85,18 @@ exports.default = options => {
       'process.env.NODE_ENV': JSON.stringify(env)
     }, production ? {
       'module.hot': false
-    } : {})), new _webpack2.default.NoEmitOnErrorsPlugin(), hmr && new _webpack2.default.HotModuleReplacementPlugin(), hmr && new _webpack2.default.NamedModulesPlugin(), ...(options.plugins || [])].filter(Boolean)
+    } : {})),
+
+    // get right stack traces
+    new _webpack2.default.SourceMapDevToolPlugin({
+      test: /\.jsx?$/,
+      filename: '[name].js.map'
+    }), new _webpack2.default.NoEmitOnErrorsPlugin(), hmr && new _webpack2.default.HotModuleReplacementPlugin(), hmr && new _webpack2.default.NamedModulesPlugin(), hmr && new _webpack2.default.BannerPlugin({
+      banner: 'require("pobpack-node/source-map-support").install({ environment: "node" });',
+      raw: true,
+      entryOnly: false,
+      include: /\.js$/
+    }), ...(options.plugins || [])].filter(Boolean)
   };
 };
 //# sourceMappingURL=createWebpackConfig.js.map

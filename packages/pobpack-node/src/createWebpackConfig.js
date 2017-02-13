@@ -22,8 +22,6 @@ export default (options: OptionsType) => {
   return {
     // Target node
     target: 'node',
-    // get right stack traces
-    devtool: 'source-map',
     // don't bundle node_modules dependencies
     externals: nodeExternals({
       whitelist: ['pobpack-node/hot'],
@@ -54,7 +52,6 @@ export default (options: OptionsType) => {
     },
     entry: {
       index: [
-        'pobpack-node/source-map-support',
         hmr && 'pobpack-node/hot',
         `${path.resolve(options.paths.src)}/index.js`,
       ].filter(Boolean),
@@ -95,10 +92,22 @@ export default (options: OptionsType) => {
         ...(production ? { 'module.hot': false } : {}),
       }),
 
+      // get right stack traces
+      new webpack.SourceMapDevToolPlugin({
+        test: /\.jsx?$/,
+        filename: '[name].js.map',
+      }),
+
       new webpack.NoEmitOnErrorsPlugin(),
 
       hmr && new webpack.HotModuleReplacementPlugin(),
       hmr && new webpack.NamedModulesPlugin(),
+      hmr && new webpack.BannerPlugin({
+        banner: 'require("pobpack-node/source-map-support").install({ environment: "node" });',
+        raw: true,
+        entryOnly: false,
+        include: /\.js$/,
+      }),
       ...(options.plugins || []),
     ].filter(Boolean),
   };
