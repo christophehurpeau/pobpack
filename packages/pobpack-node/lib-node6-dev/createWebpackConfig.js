@@ -50,28 +50,41 @@ exports.default = function createWebpackConfig(options) {
   return {
     // Target node
     target: 'node',
+
     // don't bundle node_modules dependencies
     externals: (0, _webpackNodeExternals2.default)({
       whitelist: [require.resolve('../hot')]
     }),
+
+    // __dirname and __filename
+    node: {
+      __filename: true,
+      __dirname: true
+    },
+
     // use cache
     cache: hmr,
+
     // bundle size is not relevant for node
     performance: {
       hints: false
     },
+
     resolveLoader: {
       modules: options.resolveLoaderModules || ['node_modules']
     },
+
     resolve: {
       modules: ['node_modules'],
       extensions: ['.js', '.jsx'],
       mainFields: [!production && 'webpack:node-dev', 'webpack:node', !production && 'webpack:main-dev', 'webpack:main', !production && 'main-dev', 'main'].filter(Boolean),
       aliasFields: [!production && 'webpack:node-aliases-dev', 'webpack:node-aliases', 'webpack'].filter(Boolean)
     },
+
     entry: {
       index: [hmr && require.resolve('../hot'), _path2.default.join(_path2.default.resolve(options.paths.src), options.paths.entry)].filter(Boolean)
     },
+
     output: {
       path: _path2.default.resolve(options.paths.build),
       filename: '[name].js',

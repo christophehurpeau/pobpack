@@ -23,19 +23,30 @@ export default (options: OptionsType) => {
   return {
     // Target node
     target: 'node',
+
     // don't bundle node_modules dependencies
     externals: nodeExternals({
       whitelist: [require.resolve('../hot')],
     }),
+
+    // __dirname and __filename
+    node: {
+      __filename: true,
+      __dirname: true,
+    },
+
     // use cache
     cache: hmr,
+
     // bundle size is not relevant for node
     performance: {
       hints: false,
     },
+
     resolveLoader: {
       modules: options.resolveLoaderModules || ['node_modules'],
     },
+
     resolve: {
       modules: ['node_modules'],
       extensions: ['.js', '.jsx'],
@@ -53,12 +64,14 @@ export default (options: OptionsType) => {
         'webpack',
       ].filter(Boolean),
     },
+
     entry: {
       index: [
         hmr && require.resolve('../hot'),
         path.join(path.resolve(options.paths.src), options.paths.entry),
       ].filter(Boolean),
     },
+
     output: {
       path: path.resolve(options.paths.build),
       filename: '[name].js',
