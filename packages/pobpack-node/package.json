@@ -25,11 +25,12 @@
     "watch": "pob-watch"
   },
   "dependencies": {
+    "babel-core": "^6.23.1",
     "babel-loader": "^6.3.2",
     "babel-preset-env": "^1.1.8",
     "case-sensitive-paths-webpack-plugin": "^1.1.4",
     "chalk": "^1.1.3",
-    "friendly-errors-webpack-plugin": "^1.3.1",
+    "friendly-errors-webpack-plugin": "^1.4.0",
     "json-loader": "^0.5.4",
     "progress": "^1.1.8",
     "promise-callback-factory": "^1.1.0",

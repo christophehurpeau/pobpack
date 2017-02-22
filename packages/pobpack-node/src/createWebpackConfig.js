@@ -34,7 +34,7 @@ export default (options: OptionsType) => {
       hints: false,
     },
     resolveLoader: {
-      modules: ['node_modules'],
+      modules: options.resolveLoaderModules || ['node_modules'],
     },
     resolve: {
       modules: ['node_modules'],
@@ -90,6 +90,8 @@ export default (options: OptionsType) => {
             ...(options.jsLoaders || []),
           ],
         },
+
+        // other rules
         ...(options.moduleRules || []),
       ],
     },
@@ -118,7 +120,7 @@ export default (options: OptionsType) => {
       hmr && new webpack.HotModuleReplacementPlugin(),
       hmr && new webpack.NamedModulesPlugin(),
       hmr && new webpack.BannerPlugin({
-        banner: 'require("pobpack-node/source-map-support").install({ environment: "node" });',
+        banner: `require("${require.resolve('source-map-support')}").install({ environment: "node" });`,
         raw: true,
         entryOnly: false,
         include: /\.js$/,

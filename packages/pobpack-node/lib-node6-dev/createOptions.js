@@ -26,6 +26,7 @@ const ConfigPathsType = _tcombForked2.default.interface({
 const OptionsType = exports.OptionsType = _tcombForked2.default.interface({
   env: _tcombForked2.default.maybe(_tcombForked2.default.String),
   hmr: _tcombForked2.default.Boolean,
+  resolveLoaderModules: _tcombForked2.default.maybe(_tcombForked2.default.list(_tcombForked2.default.String)),
   babel: _tcombForked2.default.maybe(_tcombForked2.default.Object),
   jsLoaders: _tcombForked2.default.maybe(_tcombForked2.default.list(_tcombForked2.default.Any)),
   moduleRules: _tcombForked2.default.maybe(_tcombForked2.default.list(_tcombForked2.default.Any)),
@@ -41,6 +42,7 @@ exports.default = function createOptions(options) {
     return {
       env: options.env || process.env.NODE_ENV,
       hmr: options.hmr,
+      resolveLoaderModules: options.resolveLoaderModules,
       babel: options.babel,
       jsLoaders: options.jsLoaders,
       moduleRules: options.moduleRules,

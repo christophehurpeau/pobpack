@@ -75,11 +75,12 @@ const createCompiler = exports.createCompiler = webpackConfig => {
     compiler.apply(new _ProgressPlugin2.default((percentage, msg) => {
       bar.update(percentage, { msg: msg.length > 20 ? `${msg.substr(0, 20)}...` : msg });
     }));
-    // human-readable error messages
-    compiler.apply(new _friendlyErrorsWebpackPlugin2.default({
-      clearConsole: false
-    }));
   }
+
+  // human-readable error messages
+  compiler.apply(new _friendlyErrorsWebpackPlugin2.default({
+    clearConsole: false
+  }));
 
   return {
     webpackConfig,
@@ -120,7 +121,7 @@ const watchAndRunCompiler = exports.watchAndRunCompiler = (compiler, options = {
       daemon = (0, _springbokjsDaemon2.default)({
         key: options.key || 'pobpack-node',
         displayName: options.displayName,
-        args: [(0, _path.join)(compiler.webpackConfig.output.path), ...options.args],
+        args: [(0, _path.join)(compiler.webpackConfig.output.path), ...(options.args || [])],
         autorestart: true
       });
       daemon.start();

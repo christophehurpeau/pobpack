@@ -7,6 +7,7 @@ type ConfigPathsType = {|
 export type OptionsType = {
   env: ?string,
   hmr: boolean,
+  resolveLoaderModules: ?Array<string>,
   babel: ?Object,
   jsLoaders: ?Array<any>,
   moduleRules: ?Array<any>,
@@ -18,6 +19,7 @@ export type OptionsType = {
 export default (options: Object): OptionsType => ({
   env: options.env || process.env.NODE_ENV,
   hmr: options.hmr,
+  resolveLoaderModules: options.resolveLoaderModules,
   babel: options.babel,
   jsLoaders: options.jsLoaders,
   moduleRules: options.moduleRules,

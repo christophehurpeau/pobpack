@@ -61,7 +61,7 @@ exports.default = function createWebpackConfig(options) {
       hints: false
     },
     resolveLoader: {
-      modules: ['node_modules']
+      modules: options.resolveLoaderModules || ['node_modules']
     },
     resolve: {
       modules: ['node_modules'],
@@ -96,7 +96,10 @@ exports.default = function createWebpackConfig(options) {
         test: /\.jsx?$/,
         exclude: [/node_modules/, options.paths.build],
         loaders: [{ loader: 'babel-loader', options: mainBabelOptions }, ...(options.jsLoaders || [])]
-      }, ...(options.moduleRules || [])]
+      },
+
+      // other rules
+      ...(options.moduleRules || [])]
     },
 
     plugins: [...(options.prependPlugins || []),
@@ -115,7 +118,7 @@ exports.default = function createWebpackConfig(options) {
       test: /\.jsx?$/,
       filename: '[name].js.map'
     }), new _webpack2.default.NoEmitOnErrorsPlugin(), hmr && new _webpack2.default.HotModuleReplacementPlugin(), hmr && new _webpack2.default.NamedModulesPlugin(), hmr && new _webpack2.default.BannerPlugin({
-      banner: 'require("pobpack-node/source-map-support").install({ environment: "node" });',
+      banner: `require("${require.resolve('source-map-support')}").install({ environment: "node" });`,
       raw: true,
       entryOnly: false,
       include: /\.js$/

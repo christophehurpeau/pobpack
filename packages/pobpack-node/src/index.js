@@ -42,11 +42,12 @@ export const createCompiler = (webpackConfig) => {
     compiler.apply(new ProgressPlugin((percentage, msg) => {
       bar.update(percentage, { msg: msg.length > 20 ? `${msg.substr(0, 20)}...` : msg });
     }));
-    // human-readable error messages
-    compiler.apply(new FriendlyErrorsWebpackPlugin({
-      clearConsole: false,
-    }));
   }
+
+  // human-readable error messages
+  compiler.apply(new FriendlyErrorsWebpackPlugin({
+    clearConsole: false,
+  }));
 
   return {
     webpackConfig,
@@ -91,7 +92,7 @@ export const watchAndRunCompiler = (compiler, options = {}) => {
         displayName: options.displayName,
         args: [
           join(compiler.webpackConfig.output.path),
-          ...options.args,
+          ...(options.args || []),
         ],
         autorestart: true,
       });
