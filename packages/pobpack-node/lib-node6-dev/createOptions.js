@@ -16,7 +16,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 const ConfigPathsType = _tcombForked2.default.interface({
   src: _tcombForked2.default.String,
-  build: _tcombForked2.default.String
+  build: _tcombForked2.default.String,
+  entry: _tcombForked2.default.String
 }, {
   name: 'ConfigPathsType',
   strict: true
@@ -45,7 +46,7 @@ exports.default = function createOptions(options) {
       moduleRules: options.moduleRules,
       plugins: options.plugins,
       prependPlugins: options.prependPlugins,
-      paths: _extends({ src: 'src', build: 'build' }, options.paths)
+      paths: _extends({ src: 'src', build: 'build', entry: 'index.js' }, options.paths)
     };
   }.apply(undefined, _arguments), OptionsType, 'return value');
 };

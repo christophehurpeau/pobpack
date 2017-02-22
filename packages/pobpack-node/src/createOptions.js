@@ -1,6 +1,7 @@
 type ConfigPathsType = {|
   src: string,
   build: string,
+  entry: string,
 |};
 
 export type OptionsType = {
@@ -22,5 +23,5 @@ export default (options: Object): OptionsType => ({
   moduleRules: options.moduleRules,
   plugins: options.plugins,
   prependPlugins: options.prependPlugins,
-  paths: { src: 'src', build: 'build', ...options.paths },
+  paths: { src: 'src', build: 'build', entry: 'index.js', ...options.paths },
 });

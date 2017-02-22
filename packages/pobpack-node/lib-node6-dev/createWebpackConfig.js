@@ -23,6 +23,10 @@ var _webpackNodeExternals = require('webpack-node-externals');
 
 var _webpackNodeExternals2 = _interopRequireDefault(_webpackNodeExternals);
 
+var _caseSensitivePathsWebpackPlugin = require('case-sensitive-paths-webpack-plugin');
+
+var _caseSensitivePathsWebpackPlugin2 = _interopRequireDefault(_caseSensitivePathsWebpackPlugin);
+
 var _createOptions = require('./createOptions');
 
 var _createOptions2 = _interopRequireDefault(_createOptions);
@@ -48,7 +52,7 @@ exports.default = function createWebpackConfig(options) {
     target: 'node',
     // don't bundle node_modules dependencies
     externals: (0, _webpackNodeExternals2.default)({
-      whitelist: ['pobpack-node/hot']
+      whitelist: [require.resolve('../hot')]
     }),
     // use cache
     cache: hmr,
@@ -62,11 +66,11 @@ exports.default = function createWebpackConfig(options) {
     resolve: {
       modules: ['node_modules'],
       extensions: ['.js', '.jsx'],
-      mainFields: [!production && 'webpack:main-dev', 'webpack:main', !production && 'main-dev', 'main'].filter(Boolean),
+      mainFields: [!production && 'webpack:node-dev', 'webpack:node', !production && 'webpack:main-dev', 'webpack:main', !production && 'main-dev', 'main'].filter(Boolean),
       aliasFields: [!production && 'webpack:node-aliases-dev', 'webpack:node-aliases', 'webpack'].filter(Boolean)
     },
     entry: {
-      index: [hmr && 'pobpack-node/hot', `${_path2.default.resolve(options.paths.src)}/index.js`].filter(Boolean)
+      index: [hmr && require.resolve('../hot'), _path2.default.join(_path2.default.resolve(options.paths.src), options.paths.entry)].filter(Boolean)
     },
     output: {
       path: _path2.default.resolve(options.paths.build),
@@ -77,17 +81,30 @@ exports.default = function createWebpackConfig(options) {
     },
 
     module: {
-      rules: [{
+      rules: [
+      // Disable require.ensure as it's not a standard language feature.
+      { parser: { requireEnsure: false } },
+
+      // json
+      {
         test: /\.json$/,
         loader: 'json-loader'
-      }, {
-        test: /\.(js|jsx)$/,
+      },
+
+      // jsx?
+      {
+        test: /\.jsx?$/,
         exclude: [/node_modules/, options.paths.build],
         loaders: [{ loader: 'babel-loader', options: mainBabelOptions }, ...(options.jsLoaders || [])]
       }, ...(options.moduleRules || [])]
     },
 
-    plugins: [...(options.prependPlugins || []), new _webpack2.default.DefinePlugin(_extends({
+    plugins: [...(options.prependPlugins || []),
+
+    // enforces the entire path of all required modules match the exact case
+    // of the actual path on disk. Using this plugin helps alleviate cases
+    // for developers working on case insensitive systems like OSX.
+    !production && new _caseSensitivePathsWebpackPlugin2.default(), new _webpack2.default.DefinePlugin(_extends({
       'process.env.NODE_ENV': JSON.stringify(env)
     }, production ? {
       'module.hot': false

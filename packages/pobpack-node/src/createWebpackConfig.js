@@ -2,6 +2,7 @@
 import path from 'path';
 import webpack from 'webpack';
 import nodeExternals from 'webpack-node-externals';
+import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
 import createOptions, { type OptionsType } from './createOptions';
 
 export default (options: OptionsType) => {
@@ -24,7 +25,7 @@ export default (options: OptionsType) => {
     target: 'node',
     // don't bundle node_modules dependencies
     externals: nodeExternals({
-      whitelist: ['pobpack-node/hot'],
+      whitelist: [require.resolve('../hot')],
     }),
     // use cache
     cache: hmr,
@@ -39,6 +40,8 @@ export default (options: OptionsType) => {
       modules: ['node_modules'],
       extensions: ['.js', '.jsx'],
       mainFields: [
+        !production && 'webpack:node-dev',
+        'webpack:node',
         !production && 'webpack:main-dev',
         'webpack:main',
         !production && 'main-dev',
@@ -52,8 +55,8 @@ export default (options: OptionsType) => {
     },
     entry: {
       index: [
-        hmr && 'pobpack-node/hot',
-        `${path.resolve(options.paths.src)}/index.js`,
+        hmr && require.resolve('../hot'),
+        path.join(path.resolve(options.paths.src), options.paths.entry),
       ].filter(Boolean),
     },
     output: {
@@ -66,12 +69,18 @@ export default (options: OptionsType) => {
 
     module: {
       rules: [
+        // Disable require.ensure as it's not a standard language feature.
+        { parser: { requireEnsure: false } },
+
+        // json
         {
           test: /\.json$/,
           loader: 'json-loader',
         },
+
+        // jsx?
         {
-          test: /\.(js|jsx)$/,
+          test: /\.jsx?$/,
           exclude: [
             /node_modules/,
             options.paths.build,
@@ -87,6 +96,12 @@ export default (options: OptionsType) => {
 
     plugins: [
       ...(options.prependPlugins || []),
+
+      // enforces the entire path of all required modules match the exact case
+      // of the actual path on disk. Using this plugin helps alleviate cases
+      // for developers working on case insensitive systems like OSX.
+      !production && new CaseSensitivePathsPlugin(),
+
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(env),
         ...(production ? { 'module.hot': false } : {}),

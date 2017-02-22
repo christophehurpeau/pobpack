@@ -89,7 +89,10 @@ export const watchAndRunCompiler = (compiler, options = {}) => {
       daemon = createDaemon({
         key: options.key || 'pobpack-node',
         displayName: options.displayName,
-        args: [join(compiler.webpackConfig.output.path)],
+        args: [
+          join(compiler.webpackConfig.output.path),
+          ...options.args,
+        ],
         autorestart: true,
       });
       daemon.start();

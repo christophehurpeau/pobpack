@@ -120,7 +120,7 @@ const watchAndRunCompiler = exports.watchAndRunCompiler = (compiler, options = {
       daemon = (0, _springbokjsDaemon2.default)({
         key: options.key || 'pobpack-node',
         displayName: options.displayName,
-        args: [(0, _path.join)(compiler.webpackConfig.output.path)],
+        args: [(0, _path.join)(compiler.webpackConfig.output.path), ...options.args],
         autorestart: true
       });
       daemon.start();

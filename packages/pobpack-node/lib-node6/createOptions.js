@@ -14,6 +14,6 @@ exports.default = options => ({
   moduleRules: options.moduleRules,
   plugins: options.plugins,
   prependPlugins: options.prependPlugins,
-  paths: _extends({ src: 'src', build: 'build' }, options.paths)
+  paths: _extends({ src: 'src', build: 'build', entry: 'index.js' }, options.paths)
 });
 //# sourceMappingURL=createOptions.js.map
