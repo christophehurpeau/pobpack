@@ -1,3 +1,12 @@
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/christophehurpeau/pobpack-node/compare/v0.2.2...v0.3.0) (2017-02-22)
+
+
+### Features
+
+* fixes, options.paths.entry, and case-sensitive-paths-webpack-plugin ([b3b7a3f](https://github.com/christophehurpeau/pobpack-node/commit/b3b7a3f))
+
+
 <a name="0.2.2"></a>
 ## [0.2.2](https://github.com/christophehurpeau/pobpack-node/compare/v0.2.1...v0.2.2) (2017-02-13)
 
