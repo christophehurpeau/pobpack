@@ -31,7 +31,18 @@ const buildThrowOnError = (stats) => {
   }));
 };
 
-export const createCompiler = (webpackConfig) => {
+type WebpackWatcherType = any;
+type WatchCallbackType = (stats: any) => void;
+
+type CompilerType = {|
+  compiler: any,
+  webpackConfig: Object,
+  clean: () => string,
+  run: () => Promise,
+  watch: (callback: WatchCallbackType) => WebpackWatcherType,
+|}
+
+export const createCompiler = (webpackConfig): CompilerType => {
   const compiler = webpack(webpackConfig);
 
   if (process.stdout.isTTY) {
@@ -50,6 +61,7 @@ export const createCompiler = (webpackConfig) => {
   }));
 
   return {
+    compiler,
     webpackConfig,
     clean: () => webpackConfig.output.path && execSync(`rm -Rf ${webpackConfig.output.path}`),
     run: () => promiseCallback(done => compiler.run(done)).then(buildThrowOnError),
@@ -62,7 +74,7 @@ export const createCompiler = (webpackConfig) => {
   };
 };
 
-export const createAppCompiler = options => (
+export const createAppCompiler = (options): CompilerType => (
   createCompiler(createAppWebpackConfig(options))
 );
 
@@ -72,7 +84,7 @@ export const build = (options = {}) => {
   return compiler.run();
 };
 
-export const watch = (options, callback) => {
+export const watch = (options, callback: WatchCallbackType) => {
   if (typeof options === 'function') {
     callback = options;
     options = undefined;
@@ -83,18 +95,27 @@ export const watch = (options, callback) => {
   return compiler;
 };
 
-export const watchAndRunCompiler = (compiler, options = {}) => {
+
+type RunOptions = {|
+  key: ?string,
+  displayName: ?string,
+  args: ?Array<string|number>,
+  cwd: ?string,
+|};
+
+export const watchAndRunCompiler = (compiler: CompilerType, options: RunOptions = {}) => {
   let daemon;
-  compiler.watch((stats) => {
+  return compiler.watch((stats) => {
     if (!daemon) {
       daemon = createDaemon({
         key: options.key || 'pobpack-node',
         displayName: options.displayName,
+        cwd: options.cwd,
         args: [
           join(compiler.webpackConfig.output.path),
           ...(options.args || []),
         ],
-        autorestart: true,
+        // autoRestart: true,
       });
       daemon.start();
       process.on('exit', () => daemon.stop());

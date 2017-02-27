@@ -1,6 +1,6 @@
 import path from 'path';
 import { existsSync } from 'fs';
-import webpackConfig from './createWebpackConfig';
+import createWebpackConfig from './createWebpackConfig';
 import createOptions from './createOptions';
 
 export default (options) => {
@@ -17,7 +17,7 @@ export default (options) => {
       );
     }
 
-    const config = appWebpackConfigCreator(webpackConfig, options);
+    const config = appWebpackConfigCreator(createWebpackConfig, options);
 
     if (typeof config !== 'object') {
       console.error(
@@ -28,6 +28,6 @@ export default (options) => {
 
     return config;
   } else {
-    return webpackConfig(options);
+    return createWebpackConfig(options);
   }
 };

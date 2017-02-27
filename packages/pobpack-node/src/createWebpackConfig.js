@@ -81,6 +81,9 @@ export default (options: OptionsType) => {
     },
 
     module: {
+      // force import to be present
+      // strictExportPresence: true,
+
       rules: [
         // Disable require.ensure as it's not a standard language feature.
         { parser: { requireEnsure: false } },

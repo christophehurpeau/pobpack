@@ -1,6 +1,6 @@
 # pobpack-node [![NPM version][npm-image]][npm-url]
 
-Build and run node projects with webpack.
+build and run node projects with webpack
 
 [![Dependency ci Status][dependencyci-image]][dependencyci-url]
 [![Dependency Status][daviddm-image]][daviddm-url]
