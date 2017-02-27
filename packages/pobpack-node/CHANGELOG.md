@@ -1,3 +1,17 @@
+<a name="0.3.1"></a>
+## [0.3.1](https://github.com/christophehurpeau/pobpack-node/compare/v0.3.0...v0.3.1) (2017-02-27)
+
+
+### Bug Fixes
+
+* __filename and __dirname ([a62fbcc](https://github.com/christophehurpeau/pobpack-node/commit/a62fbcc))
+
+### Features
+
+* add options ([17d5bdb](https://github.com/christophehurpeau/pobpack-node/commit/17d5bdb))
+* node7 and additional flowtype ([ce8245b](https://github.com/christophehurpeau/pobpack-node/commit/ce8245b))
+
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/christophehurpeau/pobpack-node/compare/v0.2.2...v0.3.0) (2017-02-22)
 
