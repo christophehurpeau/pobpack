@@ -6,5 +6,11 @@
   "react": false,
   "documentation": false,
   "doclets": false,
-  "testing": false
+  "testing": false,
+  "entries": [
+    "index",
+    "cli",
+    "babel"
+  ],
+  "flow": false
 }

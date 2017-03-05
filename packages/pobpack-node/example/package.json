@@ -4,6 +4,8 @@
     "start": "pobpack-node"
   },
   "devDependencies": {
+    "pobpack-node": "file:../",
+    "webpack": "^2.2.1",
     "webpack-module-hot-accept": "^1.0.4"
   }
 }

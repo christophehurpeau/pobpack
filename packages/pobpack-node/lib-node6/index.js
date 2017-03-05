@@ -3,101 +3,26 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.watchAndRun = exports.watchAndRunCompiler = exports.watch = exports.build = exports.createAppCompiler = exports.createCompiler = undefined;
-
-var _child_process = require('child_process');
+exports.watchAndRun = exports.watchAndRunCompiler = exports.watch = exports.build = exports.createAppNodeCompiler = undefined;
 
 var _path = require('path');
-
-var _chalk = require('chalk');
-
-var _chalk2 = _interopRequireDefault(_chalk);
-
-var _promiseCallbackFactory = require('promise-callback-factory');
-
-var _promiseCallbackFactory2 = _interopRequireDefault(_promiseCallbackFactory);
-
-var _progress = require('progress');
-
-var _progress2 = _interopRequireDefault(_progress);
-
-var _webpack = require('webpack');
-
-var _webpack2 = _interopRequireDefault(_webpack);
-
-var _ProgressPlugin = require('webpack/lib/ProgressPlugin');
-
-var _ProgressPlugin2 = _interopRequireDefault(_ProgressPlugin);
-
-var _friendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-
-var _friendlyErrorsWebpackPlugin2 = _interopRequireDefault(_friendlyErrorsWebpackPlugin);
 
 var _springbokjsDaemon = require('springbokjs-daemon');
 
 var _springbokjsDaemon2 = _interopRequireDefault(_springbokjsDaemon);
 
-var _createAppWebpackConfig = require('./createAppWebpackConfig');
+var _pobpackUtils = require('pobpack-utils');
 
-var _createAppWebpackConfig2 = _interopRequireDefault(_createAppWebpackConfig);
+var _createNodeWebpackConfig = require('./createNodeWebpackConfig');
+
+var _createNodeWebpackConfig2 = _interopRequireDefault(_createNodeWebpackConfig);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const buildThrowOnError = stats => {
-  if (!stats.hasErrors()) {
-    return stats;
-  }
-
-  throw new Error(stats.toString({
-    hash: false,
-    timings: false,
-    chunks: false,
-    chunkModules: false,
-    modules: false,
-    children: true,
-    version: true,
-    cached: false,
-    cachedAssets: false,
-    reasons: false,
-    source: false,
-    errorDetails: false,
-    colors: process.stdout.isTTY
-  }));
-};
-
-const createCompiler = exports.createCompiler = webpackConfig => {
-  const compiler = (0, _webpack2.default)(webpackConfig);
-
-  if (process.stdout.isTTY) {
-    const bar = new _progress2.default(`${_chalk2.default.yellow.bold('Building node bundle...')} ${_chalk2.default.bold(':percent')} [:bar] → :msg`, { incomplete: ' ', complete: '▇', total: 50, clear: true, stream: process.stdout });
-    compiler.apply(new _ProgressPlugin2.default((percentage, msg) => {
-      bar.update(percentage, { msg: msg.length > 20 ? `${msg.substr(0, 20)}...` : msg });
-    }));
-  }
-
-  // human-readable error messages
-  compiler.apply(new _friendlyErrorsWebpackPlugin2.default({
-    clearConsole: false
-  }));
-
-  return {
-    compiler,
-    webpackConfig,
-    clean: () => webpackConfig.output.path && (0, _child_process.execSync)(`rm -Rf ${webpackConfig.output.path}`),
-    run: () => (0, _promiseCallbackFactory2.default)(done => compiler.run(done)).then(buildThrowOnError),
-    watch: callback => compiler.watch({}, (err, stats) => {
-      if (err) return;
-      if (stats.hasErrors()) return;
-      buildThrowOnError(stats);
-      callback(stats);
-    })
-  };
-};
-
-const createAppCompiler = exports.createAppCompiler = options => createCompiler((0, _createAppWebpackConfig2.default)(options));
+const createAppNodeCompiler = exports.createAppNodeCompiler = options => (0, _pobpackUtils.createPobpackCompiler)('node', (0, _pobpackUtils.createAppWebpackConfig)(_createNodeWebpackConfig2.default)(options));
 
 const build = exports.build = (options = {}) => {
-  const compiler = createAppCompiler(Object.assign({}, options, { hmr: false }));
+  const compiler = createAppNodeCompiler(Object.assign({}, options, { hmr: false }));
   compiler.clean();
   return compiler.run();
 };
@@ -107,7 +32,7 @@ const watch = exports.watch = (options, callback) => {
     callback = options;
     options = undefined;
   }
-  const compiler = createAppCompiler(Object.assign({}, options, { hmr: true }));
+  const compiler = createAppNodeCompiler(Object.assign({}, options, { hmr: true }));
   compiler.clean();
   compiler.watch(callback);
   return compiler;
@@ -137,7 +62,7 @@ const watchAndRunCompiler = exports.watchAndRunCompiler = (compiler, options = {
 };
 
 const watchAndRun = exports.watchAndRun = options => {
-  const compiler = createAppCompiler(Object.assign({}, options, { hmr: true }));
+  const compiler = createAppNodeCompiler(Object.assign({}, options, { hmr: true }));
   compiler.clean();
   watchAndRunCompiler(compiler);
   return compiler;
