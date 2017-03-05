@@ -27,9 +27,9 @@ var _ProgressPlugin = require('webpack/lib/ProgressPlugin');
 
 var _ProgressPlugin2 = _interopRequireDefault(_ProgressPlugin);
 
-var _friendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+var _FriendlyErrorsWebpackPlugin = require('./FriendlyErrorsWebpackPlugin');
 
-var _friendlyErrorsWebpackPlugin2 = _interopRequireDefault(_friendlyErrorsWebpackPlugin);
+var _FriendlyErrorsWebpackPlugin2 = _interopRequireDefault(_FriendlyErrorsWebpackPlugin);
 
 var _flowRuntime = require('flow-runtime');
 
@@ -42,21 +42,7 @@ const buildThrowOnError = stats => {
     return stats;
   }
 
-  throw new Error(stats.toString({
-    hash: false,
-    timings: false,
-    chunks: false,
-    chunkModules: false,
-    modules: false,
-    children: true,
-    version: true,
-    cached: false,
-    cachedAssets: false,
-    reasons: false,
-    source: false,
-    errorDetails: false,
-    colors: process.stdout.isTTY
-  }));
+  throw new Error(stats.toString({}, true));
 };
 
 const WebpackWatcherType = _flowRuntime2.default.type('WebpackWatcherType', _flowRuntime2.default.any());
@@ -65,16 +51,22 @@ const WatchCallbackType = exports.WatchCallbackType = _flowRuntime2.default.type
 
 const PobpackCompilerType = exports.PobpackCompilerType = _flowRuntime2.default.type('PobpackCompilerType', _flowRuntime2.default.exactObject(_flowRuntime2.default.property('compiler', _flowRuntime2.default.any()), _flowRuntime2.default.property('webpackConfig', _flowRuntime2.default.object()), _flowRuntime2.default.property('clean', _flowRuntime2.default.function(_flowRuntime2.default.return(_flowRuntime2.default.string()))), _flowRuntime2.default.property('run', _flowRuntime2.default.function(_flowRuntime2.default.return(_flowRuntime2.default.ref('Promise')))), _flowRuntime2.default.property('watch', _flowRuntime2.default.function(_flowRuntime2.default.param('callback', WatchCallbackType), _flowRuntime2.default.return(WebpackWatcherType)))));
 
-exports.default = function createPobpackCompiler(bundleName, webpackConfig, compilationSuccessInfo) {
+const CreateComplierOptionsType = _flowRuntime2.default.type('CreateComplierOptionsType', _flowRuntime2.default.exactObject(_flowRuntime2.default.property('progressBar', _flowRuntime2.default.nullable(_flowRuntime2.default.boolean())), _flowRuntime2.default.property('successMessage', _flowRuntime2.default.nullable(_flowRuntime2.default.string()))));
+
+exports.default = function createPobpackCompiler(bundleName, webpackConfig, { progressBar = true, successMessage } = {}) {
   let _bundleNameType = _flowRuntime2.default.string();
 
   const _returnType = _flowRuntime2.default.return(PobpackCompilerType);
 
   _flowRuntime2.default.param('bundleName', _bundleNameType).assert(bundleName);
 
+  if (arguments[2] !== undefined) {
+    _flowRuntime2.default.param('arguments[2]', CreateComplierOptionsType).assert(arguments[2]);
+  }
+
   const compiler = (0, _webpack2.default)(Object.assign({}, webpackConfig));
 
-  if (process.stdout.isTTY) {
+  if (progressBar && process.stdout.isTTY) {
     let bar;
     compiler.apply(new _ProgressPlugin2.default((percentage, msg) => {
       let _percentageType = _flowRuntime2.default.number();
@@ -97,10 +89,7 @@ exports.default = function createPobpackCompiler(bundleName, webpackConfig, comp
   }
 
   // human-readable error messages
-  compiler.apply(new _friendlyErrorsWebpackPlugin2.default({
-    compilationSuccessInfo,
-    clearConsole: false
-  }));
+  compiler.apply(new _FriendlyErrorsWebpackPlugin2.default({ bundleName, successMessage }));
 
   return _returnType.assert({
     compiler,

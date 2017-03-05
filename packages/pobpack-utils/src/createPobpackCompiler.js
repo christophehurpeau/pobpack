@@ -4,28 +4,14 @@ import promiseCallback from 'promise-callback-factory/src';
 import ProgressBar from 'progress';
 import webpack from 'webpack';
 import ProgressPlugin from 'webpack/lib/ProgressPlugin';
-import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin';
+import FriendlyErrorsWebpackPlugin from './FriendlyErrorsWebpackPlugin';
 
 const buildThrowOnError = (stats) => {
   if (!stats.hasErrors()) {
     return stats;
   }
 
-  throw new Error(stats.toString({
-    hash: false,
-    timings: false,
-    chunks: false,
-    chunkModules: false,
-    modules: false,
-    children: true,
-    version: true,
-    cached: false,
-    cachedAssets: false,
-    reasons: false,
-    source: false,
-    errorDetails: false,
-    colors: process.stdout.isTTY,
-  }));
+  throw new Error(stats.toString({}, true));
 };
 
 type WebpackWatcherType = any;
@@ -39,12 +25,21 @@ export type PobpackCompilerType = {|
   watch: (callback: WatchCallbackType) => WebpackWatcherType,
 |};
 
-export default (bundleName: string, webpackConfig, compilationSuccessInfo): PobpackCompilerType => {
+type CreateComplierOptionsType = {|
+  progressBar: ?boolean,
+  successMessage: ?string,
+|};
+
+export default (
+  bundleName: string,
+  webpackConfig,
+  { progressBar = true, successMessage }: CreateComplierOptionsType = {}
+): PobpackCompilerType => {
   const compiler = webpack({
     ...webpackConfig,
   });
 
-  if (process.stdout.isTTY) {
+  if (progressBar && process.stdout.isTTY) {
     let bar;
     compiler.apply(new ProgressPlugin((percentage: number, msg: string) => {
       if (percentage === 0) {
@@ -62,10 +57,7 @@ export default (bundleName: string, webpackConfig, compilationSuccessInfo): Pobp
   }
 
   // human-readable error messages
-  compiler.apply(new FriendlyErrorsWebpackPlugin({
-    compilationSuccessInfo,
-    clearConsole: false,
-  }));
+  compiler.apply(new FriendlyErrorsWebpackPlugin({ bundleName, successMessage }));
 
   return {
     compiler,

@@ -26,9 +26,9 @@ var _ProgressPlugin = require('webpack/lib/ProgressPlugin');
 
 var _ProgressPlugin2 = _interopRequireDefault(_ProgressPlugin);
 
-var _friendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+var _FriendlyErrorsWebpackPlugin = require('./FriendlyErrorsWebpackPlugin');
 
-var _friendlyErrorsWebpackPlugin2 = _interopRequireDefault(_friendlyErrorsWebpackPlugin);
+var _FriendlyErrorsWebpackPlugin2 = _interopRequireDefault(_FriendlyErrorsWebpackPlugin);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -37,27 +37,13 @@ const buildThrowOnError = stats => {
     return stats;
   }
 
-  throw new Error(stats.toString({
-    hash: false,
-    timings: false,
-    chunks: false,
-    chunkModules: false,
-    modules: false,
-    children: true,
-    version: true,
-    cached: false,
-    cachedAssets: false,
-    reasons: false,
-    source: false,
-    errorDetails: false,
-    colors: process.stdout.isTTY
-  }));
+  throw new Error(stats.toString({}, true));
 };
 
-exports.default = (bundleName, webpackConfig, compilationSuccessInfo) => {
+exports.default = (bundleName, webpackConfig, { progressBar = true, successMessage } = {}) => {
   const compiler = (0, _webpack2.default)(Object.assign({}, webpackConfig));
 
-  if (process.stdout.isTTY) {
+  if (progressBar && process.stdout.isTTY) {
     let bar;
     compiler.apply(new _ProgressPlugin2.default((percentage, msg) => {
       if (percentage === 0) {
@@ -72,10 +58,7 @@ exports.default = (bundleName, webpackConfig, compilationSuccessInfo) => {
   }
 
   // human-readable error messages
-  compiler.apply(new _friendlyErrorsWebpackPlugin2.default({
-    compilationSuccessInfo,
-    clearConsole: false
-  }));
+  compiler.apply(new _FriendlyErrorsWebpackPlugin2.default({ bundleName, successMessage }));
 
   return {
     compiler,
