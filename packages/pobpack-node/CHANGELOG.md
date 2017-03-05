@@ -1,3 +1,12 @@
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/christophehurpeau/pobpack-node/compare/v0.3.1...v0.4.0) (2017-03-05)
+
+
+### Features
+
+* pobpack-utils ([ee8df71](https://github.com/christophehurpeau/pobpack-node/commit/ee8df71))
+
+
 <a name="0.3.1"></a>
 ## [0.3.1](https://github.com/christophehurpeau/pobpack-node/compare/v0.3.0...v0.3.1) (2017-02-27)
 
