@@ -173,7 +173,6 @@ module.exports = function (config, options) {
 
 ## Alternatives
 
-- [backpack](https://www.npmjs.com/package/backpack-core)
 - [vitaminjs](https://www.npmjs.com/package/vitaminjs)
 
 [npm-image]: https://img.shields.io/npm/v/pobpack-node.svg?style=flat-square
