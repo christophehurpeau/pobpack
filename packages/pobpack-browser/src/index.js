@@ -49,7 +49,7 @@ export const runDevServer = (compiler: PobpackCompilerType, options: RunOptions)
   const browserDevServer = new WebpackDevServer(compiler.compiler, {
     hot: true,
     // stats: 'errors-only',
-    quiet: false, // errors are displayed with friendly-errors plugin
+    quiet: true, // errors are displayed with friendly-errors plugin
     // without page refresh as fallback in case of build failures: hotOnly: true,
     https,
     overlay: true,
