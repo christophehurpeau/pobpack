@@ -25,5 +25,7 @@ export default (webpackPrefixPackageFields: Array<string>, options: OptionsType)
     options.env !== 'production' && 'webpack:aliases-dev',
     'webpack:aliases',
     'webpack',
+    webpackPrefixPackageFields.includes('browser') && options.env !== 'production' && 'browser-dev',
+    webpackPrefixPackageFields.includes('browser') && 'browser',
   ].filter(Boolean),
 });
