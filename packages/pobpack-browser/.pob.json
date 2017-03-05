@@ -1,0 +1,16 @@
+{
+  "envs": [
+    "node6",
+    "node7"
+  ],
+  "react": false,
+  "documentation": false,
+  "doclets": false,
+  "testing": false,
+  "entries": [
+    "index",
+    "cli",
+    "babel"
+  ],
+  "flow": false
+}

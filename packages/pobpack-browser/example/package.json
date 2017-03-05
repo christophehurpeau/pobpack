@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "build": "pobpack-browser build",
+    "start": "pobpack-browser"
+  },
+  "devDependencies": {
+    "pobpack-browser": "file:../",
+    "webpack": "^2.2.1"
+  }
+}
