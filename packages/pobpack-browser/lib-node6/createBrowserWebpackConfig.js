@@ -28,7 +28,7 @@ exports.default = target => options => ({
     modules: options.resolveLoaderModules || ['node_modules']
   },
 
-  resolve: (0, _pobpackUtils.createResolveConfig)(['browser'], Object.assign({}, options, {
+  resolve: (0, _pobpackUtils.createResolveConfig)([target === MODERN && 'modern-browsers', 'browser'].filter(Boolean), Object.assign({}, options, {
     babel: Object.assign({
       presets: [require.resolve('./babel')]
     }, options.babel)

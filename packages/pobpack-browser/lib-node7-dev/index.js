@@ -32,7 +32,7 @@ const WatchCallbackType = _flowRuntime2.default.tdz(() => _pobpackUtils.WatchCal
 exports.TARGETS = _createBrowserWebpackConfig.TARGETS;
 exports.ALL = _createBrowserWebpackConfig.ALL;
 exports.MODERN = _createBrowserWebpackConfig.MODERN;
-const createAppBrowserCompiler = exports.createAppBrowserCompiler = (target, options, compilationSuccessInfo) => {
+const createAppBrowserCompiler = exports.createAppBrowserCompiler = (target, options, compilerOptions) => {
   let _targetType = _flowRuntime2.default.string();
 
   let _optionsType = _flowRuntime2.default.ref(OptionsType);
@@ -45,7 +45,7 @@ const createAppBrowserCompiler = exports.createAppBrowserCompiler = (target, opt
 
   return _returnType.assert((0, _pobpackUtils.createPobpackCompiler)(target, (0, _pobpackUtils.createAppWebpackConfig)((0, _createBrowserWebpackConfig2.default)(target))(Object.assign({}, options, {
     paths: Object.assign({ build: 'public' }, options.paths)
-  })), compilationSuccessInfo));
+  })), compilerOptions));
 };
 
 const build = exports.build = (options = {}) => {
@@ -102,7 +102,7 @@ const watchAndRunDevServer = exports.watchAndRunDevServer = (options, runOptions
 
   const url = `http${runOptions.https ? 's' : ''}://localhost:${runOptions.port}`;
   const compiler = createAppBrowserCompiler(_createBrowserWebpackConfig.MODERN, Object.assign({}, options, { hmr: true }), {
-    messages: [`Your application is running here: ${url}`]
+    successMessage: `Your application is running here: ${url}`
   });
   compiler.clean();
   const webpackDevServer = runDevServer(compiler, runOptions);

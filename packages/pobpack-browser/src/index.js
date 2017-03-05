@@ -11,14 +11,14 @@ import createBrowserWebpackConfig, { TARGETS, ALL, MODERN } from './createBrowse
 export { TARGETS, ALL, MODERN };
 
 export const createAppBrowserCompiler =
-  (target: string, options: OptionsType, compilationSuccessInfo): PobpackCompilerType => (
+  (target: string, options: OptionsType, compilerOptions): PobpackCompilerType => (
     createPobpackCompiler(
       target,
       createAppWebpackConfig(createBrowserWebpackConfig(target))({
         ...options,
         paths: { build: 'public', ...options.paths },
       }),
-      compilationSuccessInfo,
+      compilerOptions,
     )
   );
 
@@ -65,7 +65,7 @@ export const watchAndRunDevServer = (options: OptionsType, runOptions: RunOption
     MODERN,
     { ...options, hmr: true },
     {
-      messages: [`Your application is running here: ${url}`],
+      successMessage: `Your application is running here: ${url}`,
     }
   );
   compiler.clean();

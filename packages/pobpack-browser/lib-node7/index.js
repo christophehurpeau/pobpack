@@ -22,9 +22,9 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
 exports.TARGETS = _createBrowserWebpackConfig.TARGETS;
 exports.ALL = _createBrowserWebpackConfig.ALL;
 exports.MODERN = _createBrowserWebpackConfig.MODERN;
-const createAppBrowserCompiler = exports.createAppBrowserCompiler = (target, options, compilationSuccessInfo) => (0, _pobpackUtils.createPobpackCompiler)(target, (0, _pobpackUtils.createAppWebpackConfig)((0, _createBrowserWebpackConfig2.default)(target))(Object.assign({}, options, {
+const createAppBrowserCompiler = exports.createAppBrowserCompiler = (target, options, compilerOptions) => (0, _pobpackUtils.createPobpackCompiler)(target, (0, _pobpackUtils.createAppWebpackConfig)((0, _createBrowserWebpackConfig2.default)(target))(Object.assign({}, options, {
   paths: Object.assign({ build: 'public' }, options.paths)
-})), compilationSuccessInfo);
+})), compilerOptions);
 
 const build = exports.build = (options = {}) => {
   const compilers = _createBrowserWebpackConfig.TARGETS.map(t => createAppBrowserCompiler(t, Object.assign({}, options, { hmr: false })));
@@ -62,7 +62,7 @@ exports.runDevServer = runDevServer;
 const watchAndRunDevServer = exports.watchAndRunDevServer = (options, runOptions) => {
   const url = `http${runOptions.https ? 's' : ''}://localhost:${runOptions.port}`;
   const compiler = createAppBrowserCompiler(_createBrowserWebpackConfig.MODERN, Object.assign({}, options, { hmr: true }), {
-    messages: [`Your application is running here: ${url}`]
+    successMessage: `Your application is running here: ${url}`
   });
   compiler.clean();
   const webpackDevServer = runDevServer(compiler, runOptions);

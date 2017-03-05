@@ -23,7 +23,7 @@ export default (target: BrowserTargetType) => (options: OptionsType) => ({
     modules: options.resolveLoaderModules || ['node_modules'],
   },
 
-  resolve: createResolveConfig(['browser'], {
+  resolve: createResolveConfig([target === MODERN && 'modern-browsers', 'browser'].filter(Boolean), {
     ...options,
     babel: {
       presets: [require.resolve('./babel')],
