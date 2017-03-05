@@ -1,3 +1,16 @@
+<a name="0.1.3"></a>
+## [0.1.3](https://github.com/christophehurpeau/pobpack-utils/compare/v0.1.2...v0.1.3) (2017-03-05)
+
+
+### Bug Fixes
+
+* missing package field browser ([9f02cf5](https://github.com/christophehurpeau/pobpack-utils/commit/9f02cf5))
+
+### Features
+
+* rewrite FriendlyErrorsWebpackPlugin using react-dev-utils ([baa94be](https://github.com/christophehurpeau/pobpack-utils/commit/baa94be))
+
+
 <a name="0.1.2"></a>
 ## [0.1.2](https://github.com/christophehurpeau/pobpack-utils/compare/v0.1.1...v0.1.2) (2017-03-05)
 
