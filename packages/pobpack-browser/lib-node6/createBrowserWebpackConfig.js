@@ -36,7 +36,7 @@ exports.default = target => options => ({
 
   entry: options.entries.reduce((entries, entry) => {
     if (typeof entry === 'string') entry = { key: entry, path: entry };
-    entries[`${target}/${entry.key}`] = [target !== MODERN && 'babel-regenerator-runtime',
+    entries[entry.key] = [target !== MODERN && 'babel-regenerator-runtime',
     // options.hmr && 'react-hot-loader/patch',
     _path2.default.join(_path2.default.resolve(options.paths.src), entry.path)].filter(Boolean);
     return entries;

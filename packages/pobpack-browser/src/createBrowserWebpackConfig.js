@@ -34,7 +34,7 @@ export default (target: BrowserTargetType) => (options: OptionsType) => ({
   entry: options.entries.reduce(
     (entries, entry) => {
       if (typeof entry === 'string') entry = { key: entry, path: entry };
-      entries[`${target}/${entry.key}`] = [
+      entries[entry.key] = [
         target !== MODERN && 'babel-regenerator-runtime',
         // options.hmr && 'react-hot-loader/patch',
         path.join(path.resolve(options.paths.src), entry.path),
