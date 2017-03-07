@@ -6,14 +6,22 @@ export default (webpackPrefixPackageFields: Array<string>, options: OptionsType)
 
   mainFields: [
     ...[].concat(...webpackPrefixPackageFields.map(prefix => ([
+      options.env !== 'production' && `module:${prefix}-dev`,
+      `module:${prefix}`,
+      // old `webpack:` syntax
       options.env !== 'production' && `webpack:${prefix}-dev`,
       `webpack:${prefix}`,
     ]))),
+
+    options.env !== 'production' && 'module-dev',
+    'module',
+    // old webpack: syntax
     options.env !== 'production' && 'webpack:main-dev',
     'webpack:main',
-    ...(!webpackPrefixPackageFields.includes('browser') ? [] : [
-      options.env !== 'production' && 'module-dev',
-      'module',
+
+    ...(!webpackPrefixPackageFields.includes('browser') ? [
+    ] : [
+      // Browser builds
       options.env !== 'production' && 'browser-dev',
       'browser',
     ]),
