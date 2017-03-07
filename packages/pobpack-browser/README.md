@@ -175,9 +175,9 @@ module.exports = function (config, options) {
 
 - [vitaminjs](https://www.npmjs.com/package/vitaminjs)
 
-[npm-image]: https://img.shields.io/npm/v/pobpack-node.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/pobpack-node
-[daviddm-image]: https://david-dm.org/christophehurpeau/pobpack-node.svg?style=flat-square
-[daviddm-url]: https://david-dm.org/christophehurpeau/pobpack-node
-[dependencyci-image]: https://dependencyci.com/github/christophehurpeau/pobpack-node/badge?style=flat-square
-[dependencyci-url]: https://dependencyci.com/github/christophehurpeau/pobpack-node
+[npm-image]: https://img.shields.io/npm/v/pobpack-browser.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/pobpack-browser
+[daviddm-image]: https://david-dm.org/christophehurpeau/pobpack-browser.svg?style=flat-square
+[daviddm-url]: https://david-dm.org/christophehurpeau/pobpack-browser
+[dependencyci-image]: https://dependencyci.com/github/christophehurpeau/pobpack-browser/badge?style=flat-square
+[dependencyci-url]: https://dependencyci.com/github/christophehurpeau/pobpack-browser
