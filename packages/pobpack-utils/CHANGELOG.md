@@ -1,3 +1,17 @@
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/christophehurpeau/pobpack-utils/compare/v0.1.5...v0.2.0) (2017-03-13)
+
+
+### Features
+
+* includeModules ([bf849d8](https://github.com/christophehurpeau/pobpack-utils/commit/bf849d8))
+
+
+### BREAKING CHANGES
+
+* replace externalModules by includeModules
+
+
 <a name="0.1.5"></a>
 ## [0.1.5](https://github.com/christophehurpeau/pobpack-utils/compare/v0.1.4...v0.1.5) (2017-03-07)
 
