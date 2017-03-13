@@ -1,3 +1,12 @@
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/christophehurpeau/pobpack-browser/compare/v0.1.4...v0.2.0) (2017-03-13)
+
+
+### Features
+
+* pobpack-utils@0.2 ([0f06cff](https://github.com/christophehurpeau/pobpack-browser/commit/0f06cff))
+
+
 <a name="0.1.4"></a>
 ## [0.1.4](https://github.com/christophehurpeau/pobpack-browser/compare/v0.1.3...v0.1.4) (2017-03-07)
 
