@@ -18,7 +18,13 @@ export default (options: OptionsType) => ({
     {
       test: /\.jsx?$/,
       exclude: [
-        /node_modules/,
+        new RegExp(
+          // eslint-disable-next-line prefer-template
+          'node_modules/'
+          + (!options.includeModules || options.includeModules.length === 0 ? ''
+            : `(?!(?:${options.includeModules.join('|')}))/`
+          )
+        ),
         options.paths.build,
       ],
       loaders: [

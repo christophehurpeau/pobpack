@@ -53,16 +53,14 @@ const PobpackCompilerType = exports.PobpackCompilerType = _flowRuntime2.default.
 
 const CreateComplierOptionsType = _flowRuntime2.default.type('CreateComplierOptionsType', _flowRuntime2.default.exactObject(_flowRuntime2.default.property('progressBar', _flowRuntime2.default.nullable(_flowRuntime2.default.boolean())), _flowRuntime2.default.property('successMessage', _flowRuntime2.default.nullable(_flowRuntime2.default.string()))));
 
-exports.default = function createPobpackCompiler(bundleName, webpackConfig, { progressBar = true, successMessage } = {}) {
+exports.default = function createPobpackCompiler(bundleName, webpackConfig, _arg = {}) {
   let _bundleNameType = _flowRuntime2.default.string();
 
   const _returnType = _flowRuntime2.default.return(PobpackCompilerType);
 
   _flowRuntime2.default.param('bundleName', _bundleNameType).assert(bundleName);
 
-  if (arguments[2] !== undefined) {
-    _flowRuntime2.default.param('arguments[2]', CreateComplierOptionsType).assert(arguments[2]);
-  }
+  let { progressBar = true, successMessage } = CreateComplierOptionsType.assert(_arg);
 
   const compiler = (0, _webpack2.default)(Object.assign({}, webpackConfig));
 

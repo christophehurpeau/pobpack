@@ -24,7 +24,7 @@ export type OptionsType = {|
   plugins: ?Array<any>,
   paths: ConfigPathsType,
   entries: ?Array<ConfigEntryType>,
-  externalWhitelist: ?Array<string | RegExp | Function>,
+  includeModules: ?Array<string>,
 |};
 
 export default (options: Object): OptionsType => ({
@@ -39,5 +39,5 @@ export default (options: Object): OptionsType => ({
   prependPlugins: options.prependPlugins || [],
   paths: { src: 'src', build: 'build', ...options.paths },
   entries: options.entries || ['index'],
-  externalWhitelist: options.externalWhitelist || [],
+  includeModules: options.includeModules || [],
 });

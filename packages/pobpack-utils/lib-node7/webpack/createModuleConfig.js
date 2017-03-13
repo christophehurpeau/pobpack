@@ -23,7 +23,9 @@ exports.default = options => ({
   // jsx?
   {
     test: /\.jsx?$/,
-    exclude: [/node_modules/, options.paths.build],
+    exclude: [new RegExp(
+    // eslint-disable-next-line prefer-template
+    'node_modules/' + (!options.includeModules || options.includeModules.length === 0 ? '' : `(?!(?:${options.includeModules.join('|')}))/`)), options.paths.build],
     loaders: [{
       loader: 'babel-loader',
       options: Object.assign({
