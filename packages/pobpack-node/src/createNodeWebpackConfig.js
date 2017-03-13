@@ -15,7 +15,10 @@ export default (options: OptionsType) => ({
 
   // don't bundle node_modules dependencies
   externals: nodeExternals({
-    whitelist: [require.resolve('../hot'), ...options.externalWhitelist],
+    whitelist: [
+      require.resolve('../hot'),
+      ...options.includeModules.map(module => new RegExp(`^${module}(/|$)`)),
+    ],
   }),
 
   // __dirname and __filename

@@ -34,7 +34,7 @@ exports.default = function createNodeWebpackConfig(options) {
 
     // don't bundle node_modules dependencies
     externals: (0, _webpackNodeExternals2.default)({
-      whitelist: [require.resolve('../hot'), ...options.externalWhitelist]
+      whitelist: [require.resolve('../hot'), ...options.includeModules.map(module => new RegExp(`^${module}(/|$)`))]
     }),
 
     // __dirname and __filename

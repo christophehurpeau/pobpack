@@ -11,8 +11,6 @@
     "node": ">=6.5.0"
   },
   "main": "./index.js",
-  "webpack:node": "./lib-node7/index.js",
-  "webpack:node-dev": "./lib-node7-dev/index.js",
   "bin": {
     "pobpack-node": "./pobpack-node"
   },
@@ -29,8 +27,8 @@
   },
   "dependencies": {
     "babel-preset-env": "^1.2.1",
-    "flow-runtime": "^0.7.0",
-    "pobpack-utils": "^0.1.0",
+    "flow-runtime": "^0.9.1",
+    "pobpack-utils": "^0.2.0",
     "springbokjs-daemon": "^2.1.0",
     "webpack-node-externals": "^1.5.4"
   },
@@ -44,7 +42,7 @@
     "eslint-plugin-import": "^2.2.0",
     "komet": "^0.1.4",
     "komet-karma": "^0.2.5",
-    "pob-babel": "^16.3.0",
+    "pob-babel": "^17.1.1",
     "pob-release": "^3.1.0"
   }
 }
