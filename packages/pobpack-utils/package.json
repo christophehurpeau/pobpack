@@ -1,7 +1,7 @@
 {
   "name": "pobpack-utils",
   "version": "0.2.0",
-  "description": "Utils for build projects with webpack.",
+  "description": "Utils for building projects with webpack.",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "ISC",
@@ -11,8 +11,6 @@
     "node": ">=6.5.0"
   },
   "main": "./index.js",
-  "webpack:node": "./lib-node7/index.js",
-  "webpack:node-dev": "./lib-node7-dev/index.js",
   "scripts": {
     "build": "pob-build",
     "clean": "rm -Rf docs dist test/node6 coverage",
