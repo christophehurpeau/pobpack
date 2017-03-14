@@ -1,6 +1,6 @@
 {
   "name": "pobpack-node",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Build and run node projects with webpack.",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",

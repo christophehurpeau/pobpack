@@ -1,3 +1,12 @@
+<a name="0.4.2"></a>
+## [0.4.2](https://github.com/christophehurpeau/pobpack-node/compare/v0.4.1...v0.4.2) (2017-03-14)
+
+
+### Bug Fixes
+
+* source-map-support ([ccc2f54](https://github.com/christophehurpeau/pobpack-node/commit/ccc2f54))
+
+
 <a name="0.4.1"></a>
 ## [0.4.1](https://github.com/christophehurpeau/pobpack-node/compare/v0.4.0...v0.4.1) (2017-03-13)
 
