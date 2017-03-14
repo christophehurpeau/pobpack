@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/source-map-support.js"],"names":["environment"],"mappings":";;AAAA;;AAEA,+BAAQ,EAAEA,aAAa,MAAf,EAAR","file":"source-map-support.js","sourcesContent":["import { install } from 'source-map-support';\n\ninstall({ environment: 'node' });\n"]}

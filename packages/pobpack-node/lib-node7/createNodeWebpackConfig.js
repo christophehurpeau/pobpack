@@ -64,7 +64,7 @@ exports.default = options => ({
 
   plugins: (0, _pobpackUtils.createPluginsConfig)(Object.assign({}, options, {
     plugins: [options.hmr && new _pobpackUtils.webpack.BannerPlugin({
-      banner: `require("${require.resolve('source-map-support')}").install({ environment: "node" });`,
+      banner: `require("${require.resolve('./source-map-support')}");`,
       raw: true,
       entryOnly: false,
       include: /\.js$/

@@ -10,7 +10,8 @@
   "entries": [
     "index",
     "cli",
-    "babel"
+    "babel",
+    "source-map-support"
   ],
   "flow": false
 }
