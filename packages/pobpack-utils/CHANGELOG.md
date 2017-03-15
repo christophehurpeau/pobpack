@@ -1,3 +1,23 @@
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/christophehurpeau/pobpack-utils/compare/v0.2.1...v0.3.0) (2017-03-15)
+
+
+### Bug Fixes
+
+* remove webpack.SourceMapDevToolPlugin ([f10e4c5](https://github.com/christophehurpeau/pobpack-utils/commit/f10e4c5))
+
+### Features
+
+* resolve add module aliases ([e5e6931](https://github.com/christophehurpeau/pobpack-utils/commit/e5e6931))
+
+
+### BREAKING CHANGES
+
+* removed webpack.SourceMapDevToolPlugin
+
+fix: remove webpack.SourceMapDevToolPlugin
+
+
 <a name="0.2.1"></a>
 ## [0.2.1](https://github.com/christophehurpeau/pobpack-utils/compare/v0.2.0...v0.2.1) (2017-03-14)
 
