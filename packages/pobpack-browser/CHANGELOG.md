@@ -1,3 +1,12 @@
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/christophehurpeau/pobpack-browser/compare/v0.2.0...v0.3.0) (2017-03-15)
+
+
+### Features
+
+* sourcemaps and hot reload with react-hot-loader ([b28c40b](https://github.com/christophehurpeau/pobpack-browser/commit/b28c40b))
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/christophehurpeau/pobpack-browser/compare/v0.1.4...v0.2.0) (2017-03-13)
 
