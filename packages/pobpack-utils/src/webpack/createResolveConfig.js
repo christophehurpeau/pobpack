@@ -1,11 +1,11 @@
 import { type OptionsType } from '../createOptions';
 
-export default (webpackPrefixPackageFields: Array<string>, options: OptionsType) => ({
+export default (modulePrefixPackageFields: Array<string>, options: OptionsType) => ({
   modules: ['node_modules'],
   extensions: ['.js', '.jsx'],
 
   mainFields: [
-    ...[].concat(...webpackPrefixPackageFields.map(prefix => ([
+    ...[].concat(...modulePrefixPackageFields.map(prefix => ([
       options.env !== 'production' && `module:${prefix}-dev`,
       `module:${prefix}`,
       // old `webpack:` syntax
@@ -19,7 +19,7 @@ export default (webpackPrefixPackageFields: Array<string>, options: OptionsType)
     options.env !== 'production' && 'webpack:main-dev',
     'webpack:main',
 
-    ...(!webpackPrefixPackageFields.includes('browser') ? [
+    ...(!modulePrefixPackageFields.includes('browser') ? [
     ] : [
       // Browser builds
       options.env !== 'production' && 'browser-dev',
@@ -30,14 +30,23 @@ export default (webpackPrefixPackageFields: Array<string>, options: OptionsType)
   ].filter(Boolean),
 
   aliasFields: [
-    ...[].concat(...webpackPrefixPackageFields.map(prefix => ([
+    ...[].concat(...modulePrefixPackageFields.map(prefix => ([
+      options.env !== 'production' && `module:aliases-${prefix}-dev`,
+      `module:aliases-${prefix}`,
+
+      // old webpack: syntax
       options.env !== 'production' && `webpack:aliases-${prefix}-dev`,
       `webpack:aliases-${prefix}`,
     ]))),
+
+    options.env !== 'production' && 'module:aliases-dev',
+    'module:aliases',
+
+    // old webpack: syntax
     options.env !== 'production' && 'webpack:aliases-dev',
     'webpack:aliases',
     'webpack',
-    webpackPrefixPackageFields.includes('browser') && options.env !== 'production' && 'browser-dev',
-    webpackPrefixPackageFields.includes('browser') && 'browser',
+    modulePrefixPackageFields.includes('browser') && options.env !== 'production' && 'browser-dev',
+    modulePrefixPackageFields.includes('browser') && 'browser',
   ].filter(Boolean),
 });
