@@ -69,7 +69,7 @@ const watch = exports.watch = (options, callback) => {
   return compiler;
 };
 
-const RunOptions = _flowRuntime2.default.type('RunOptions', _flowRuntime2.default.object(_flowRuntime2.default.property('port', _flowRuntime2.default.number())));
+const RunOptions = _flowRuntime2.default.type('RunOptions', _flowRuntime2.default.object(_flowRuntime2.default.property('port', _flowRuntime2.default.number()), _flowRuntime2.default.property('https', _flowRuntime2.default.nullable(_flowRuntime2.default.boolean()))));
 
 const runDevServer = (compiler, options) => {
   let _compilerType = _flowRuntime2.default.ref(PobpackCompilerType);

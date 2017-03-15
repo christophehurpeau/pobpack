@@ -1,9 +1,10 @@
 var production = process.env.NODE_ENV === 'production';
+var nodeVersion = parseFloat(process.versions.node);
 /* istanbul ignore next */
-if (process.version.startsWith && process.version.startsWith('v7.'))
+if (nodeVersion >= 7.6)
   return module.exports = require('./lib-node7' + (production ? '' : '-dev') + '/cli');
 /* istanbul ignore next */
-if (process.version.startsWith && process.version.startsWith('v6.'))
+if (nodeVersion >= 6.5)
   return module.exports = require('./lib-node6' + (production ? '' : '-dev') + '/cli');
 /* istanbul ignore next */
 throw new Error('Platform not supported: ' + process.version + '.');

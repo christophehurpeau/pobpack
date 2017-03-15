@@ -26,12 +26,15 @@
     "watch": "pob-watch"
   },
   "dependencies": {
-    "babel-preset-env": "^1.2.1",
+    "babel-preset-env": "^1.2.2",
     "babel-regenerator-runtime": "^6.5.0",
     "flow-runtime": "^0.9.1",
-    "pobpack-utils": "^0.2.0",
+    "pobpack-utils": "^0.3.0",
+    "react-dev-utils": "^0.5.2",
+    "react-error-html": "^0.1.0",
     "react-hot-loader": "^3.0.0-beta.6",
-    "webpack-dev-server": "^2.4.1"
+    "source-map-support": "^0.4.12",
+    "webpack-dev-server": "^2.4.2"
   },
   "devDependencies": {
     "babel-eslint": "^7.0.0",
@@ -44,6 +47,8 @@
     "komet": "^0.1.4",
     "komet-karma": "^0.2.5",
     "pob-babel": "^17.1.1",
-    "pob-release": "^3.1.0"
+    "pob-release": "^3.1.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
   }
 }

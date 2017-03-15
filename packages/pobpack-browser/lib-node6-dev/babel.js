@@ -12,7 +12,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = {
   presets: [[_babelPresetEnv2.default, {
-    // targets: { ie: 9 },
     modules: false,
     useBuiltIns: true
   }]],
