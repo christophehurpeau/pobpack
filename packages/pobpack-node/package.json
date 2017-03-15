@@ -26,9 +26,9 @@
     "watch": "pob-watch"
   },
   "dependencies": {
-    "babel-preset-env": "^1.2.1",
+    "babel-preset-env": "^1.2.2",
     "flow-runtime": "^0.9.1",
-    "pobpack-utils": "^0.2.1",
+    "pobpack-utils": "^0.3.0",
     "source-map-support": "^0.4.12",
     "springbokjs-daemon": "^2.1.0",
     "webpack-node-externals": "^1.5.4"

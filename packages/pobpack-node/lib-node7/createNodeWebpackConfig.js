@@ -20,6 +20,9 @@ exports.default = options => ({
   // Target node
   target: 'node',
 
+  // get right stack traces
+  devtool: 'source-map',
+
   // don't bundle node_modules dependencies
   externals: (0, _webpackNodeExternals2.default)({
     whitelist: [require.resolve('../hot'), ...options.includeModules.map(module => new RegExp(`^${module}(/|$)`))]

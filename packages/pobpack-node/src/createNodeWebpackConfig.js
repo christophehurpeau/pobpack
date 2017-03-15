@@ -13,6 +13,9 @@ export default (options: OptionsType) => ({
   // Target node
   target: 'node',
 
+  // get right stack traces
+  devtool: 'source-map',
+
   // don't bundle node_modules dependencies
   externals: nodeExternals({
     whitelist: [
