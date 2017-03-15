@@ -34,12 +34,6 @@ exports.default = function createPluginsConfig(options) {
   // for developers working on case insensitive systems like OSX.
   options.env !== 'production' && new _caseSensitivePathsWebpackPlugin2.default(), new _webpack2.default.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify(options.env)
-  }),
-
-  // get right stack traces
-  new _webpack2.default.SourceMapDevToolPlugin({
-    test: /\.jsx?$/,
-    filename: '[name].js.map'
   }), new _webpack2.default.NoEmitOnErrorsPlugin(), options.hmr && new _webpack2.default.HotModuleReplacementPlugin(), options.hmr && new _webpack2.default.NamedModulesPlugin(), ...options.plugins].filter(Boolean);
 };
 //# sourceMappingURL=createPluginsConfig.js.map

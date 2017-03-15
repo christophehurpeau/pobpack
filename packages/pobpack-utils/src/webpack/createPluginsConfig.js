@@ -14,12 +14,6 @@ export default (options: OptionsType) => [
     'process.env.NODE_ENV': JSON.stringify(options.env),
   }),
 
-  // get right stack traces
-  new webpack.SourceMapDevToolPlugin({
-    test: /\.jsx?$/,
-    filename: '[name].js.map',
-  }),
-
   new webpack.NoEmitOnErrorsPlugin(),
 
   options.hmr && new webpack.HotModuleReplacementPlugin(),
