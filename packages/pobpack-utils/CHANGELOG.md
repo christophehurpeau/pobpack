@@ -1,3 +1,12 @@
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/christophehurpeau/pobpack-utils/compare/v0.3.0...v0.4.0) (2017-03-21)
+
+
+### Features
+
+* update dependencies ([59d8f79](https://github.com/christophehurpeau/pobpack-utils/commit/59d8f79))
+
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/christophehurpeau/pobpack-utils/compare/v0.2.1...v0.3.0) (2017-03-15)
 
