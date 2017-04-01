@@ -4,9 +4,9 @@ var nodeVersionMajor = Number(nodeVersion[0]);
 var nodeVersionMinor = Number(nodeVersion[1]);
 /* istanbul ignore next */
 if (nodeVersionMajor > 7 || (nodeVersionMajor === 7 && nodeVersionMinor >= 6))
-  return module.exports = require('./lib-node7' + (production ? '' : '-dev') + '/babel');
+  return module.exports = require('./lib-node7' + (production ? '' : '-dev') + '/source-map-support');
 /* istanbul ignore next */
 if (nodeVersionMajor > 6 || (nodeVersionMajor === 6 && nodeVersionMinor >= 5))
-  return module.exports = require('./lib-node6' + (production ? '' : '-dev') + '/babel');
+  return module.exports = require('./lib-node6' + (production ? '' : '-dev') + '/source-map-support');
 /* istanbul ignore next */
 throw new Error('Node version not supported: ' + nodeVersion + ' (' + process.versions.node + ').');
