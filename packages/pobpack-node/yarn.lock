@@ -34,8 +34,8 @@ acorn@^4.0.3, acorn@^4.0.4:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-4.0.11.tgz#edcda3bd937e7556410d42ed5860f67399c794c0"
 
 acorn@^5.0.1:
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.0.2.tgz#dc1c8fb907f64db2ab573de2326b73527c24de36"
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.0.3.tgz#c460df08491463f028ccb82eab3730bf01087b3d"
 
 add-stream@^1.0.0:
   version "1.0.0"
@@ -80,9 +80,9 @@ ansi-styles@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-2.2.1.tgz#b432dd3358b634cf75e1e4664368240533c1ddbe"
 
-"ansi-styles@github:chalk/ansi-styles#47ccb63c5b9b296b39188717b0efc4123a036d47":
-  version "2.1.0"
-  resolved "https://codeload.github.com/chalk/ansi-styles/tar.gz/47ccb63c5b9b296b39188717b0efc4123a036d47"
+ansi-styles@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-3.0.0.tgz#5404e93a544c4fec7f048262977bebfe3155e0c1"
   dependencies:
     color-convert "^1.0.0"
 
@@ -181,8 +181,8 @@ async@^1.4.0:
   resolved "https://registry.yarnpkg.com/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
 
 async@^2.1.2:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/async/-/async-2.2.0.tgz#c324eba010a237e4fbd55a12dee86367d5c0ef32"
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/async/-/async-2.3.0.tgz#1013d1051047dd320fe24e494d5c66ecaf6147d9"
   dependencies:
     lodash "^4.14.0"
 
@@ -1098,8 +1098,8 @@ camelcase@^3.0.0:
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-3.0.0.tgz#32fc4b9fcdaf845fcdf7e73bb97cac2261f0ab0a"
 
 caniuse-db@^1.0.30000639:
-  version "1.0.30000646"
-  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000646.tgz#c724b90d61df24286e015fc528d062073c00def4"
+  version "1.0.30000649"
+  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000649.tgz#1ee1754a6df235450c8b7cd15e0ebf507221a86a"
 
 case-sensitive-paths-webpack-plugin@^1.1.4:
   version "1.1.4"
@@ -1658,7 +1658,7 @@ eslint-module-utils@^2.0.0:
     debug "2.2.0"
     pkg-dir "^1.0.0"
 
-eslint-plugin-babel@^4.1.0:
+eslint-plugin-babel@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-babel/-/eslint-plugin-babel-4.1.1.tgz#ef285c87039b67beb3bbd227f5b0eed4fb376b87"
 
@@ -2859,13 +2859,13 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
 
-nightingale-ansi-formatter@^1.7.1:
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/nightingale-ansi-formatter/-/nightingale-ansi-formatter-1.7.1.tgz#597bd3616ef94c4ca1b6a43d52a5588e8fc9c5b0"
+nightingale-ansi-formatter@^1.7.2:
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/nightingale-ansi-formatter/-/nightingale-ansi-formatter-1.7.2.tgz#74513cd4b181f53d79174e9b3ecd37e10eecb713"
   dependencies:
-    ansi-styles "github:chalk/ansi-styles#47ccb63c5b9b296b39188717b0efc4123a036d47"
+    ansi-styles "^3.0.0"
     flow-runtime "^0.10.0"
-    nightingale-formatter "^2.2.1"
+    nightingale-formatter "^2.2.2"
 
 nightingale-console-output@^1.4.0:
   version "1.4.0"
@@ -2875,11 +2875,11 @@ nightingale-console-output@^1.4.0:
     nightingale-levels "^1.0.0"
 
 nightingale-console@^2.2.0, nightingale-console@^2.5.0:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/nightingale-console/-/nightingale-console-2.5.0.tgz#55797bac4f4c376219be7693d0e662f4b36c409a"
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/nightingale-console/-/nightingale-console-2.5.1.tgz#eb89c19a26c0853b0fbdd815fea70a64eb530df4"
   dependencies:
     flow-runtime "^0.10.0"
-    nightingale-ansi-formatter "^1.7.1"
+    nightingale-ansi-formatter "^1.7.2"
     nightingale-console-output "^1.4.0"
     nightingale-debug "^2.3.1"
 
@@ -2890,7 +2890,7 @@ nightingale-debug@^2.3.1:
     flow-runtime "^0.10.0"
     nightingale-levels "^1.0.0"
 
-nightingale-formatter@^2.2.1:
+nightingale-formatter@^2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/nightingale-formatter/-/nightingale-formatter-2.2.2.tgz#7a68dcce2a280533fcaeeb2b6fd315a720b1bace"
   dependencies:
@@ -3969,8 +3969,8 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
 uglify-js@^2.6, uglify-js@^2.8.5:
-  version "2.8.20"
-  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.8.20.tgz#be87100fbc18de3876ed606e9d24b4568311cecf"
+  version "2.8.21"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.8.21.tgz#1733f669ae6f82fc90c7b25ec0f5c783ee375314"
   dependencies:
     source-map "~0.5.1"
     yargs "~3.10.0"
@@ -4069,8 +4069,8 @@ webpack-sources@^0.2.3:
     source-map "~0.5.3"
 
 webpack@^2.3.2:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-2.3.2.tgz#7d521e6f0777a3a58985c69425263fdfe977b458"
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-2.3.3.tgz#eecc083c18fb7bf958ea4f40b57a6640c5a0cc78"
   dependencies:
     acorn "^4.0.4"
     acorn-dynamic-import "^2.0.0"
