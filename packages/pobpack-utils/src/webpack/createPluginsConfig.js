@@ -12,6 +12,7 @@ export default (options: OptionsType) => [
 
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify(options.env),
+    ...options.defines,
   }),
 
   new webpack.NoEmitOnErrorsPlugin(),
