@@ -23,9 +23,11 @@ export default (target: BrowserTargetType) => (options: OptionsType) => ({
   // use cache
   cache: options.hmr,
 
-  // don't watch node_modules (improve cpu and memory usage)
-  watchOptions: {
-    ignored: /node_modules/,
+  devServer: {
+    // don't watch node_modules (improve cpu and memory usage)
+    watchOptions: {
+      ignored: /node_modules/,
+    },
   },
 
   // Some libraries import Node modules but don't use them in the browser.
