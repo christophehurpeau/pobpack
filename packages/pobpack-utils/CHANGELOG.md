@@ -1,3 +1,13 @@
+<a name="0.5.1"></a>
+## [0.5.1](https://github.com/christophehurpeau/pobpack-utils/compare/v0.5.0...v0.5.1) (2017-04-09)
+
+
+### Features
+
+* add env in success log ([f1752f7](https://github.com/christophehurpeau/pobpack-utils/commit/f1752f7))
+* options.defines ([01137b4](https://github.com/christophehurpeau/pobpack-utils/commit/01137b4))
+
+
 <a name="0.5.0"></a>
 # [0.5.0](https://github.com/christophehurpeau/pobpack-utils/compare/v0.4.0...v0.5.0) (2017-04-01)
 
