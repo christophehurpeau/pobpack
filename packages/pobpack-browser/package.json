@@ -1,6 +1,6 @@
 {
   "name": "pobpack-browser",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Build and run browser projects with webpack and webpack-dev-server.",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
