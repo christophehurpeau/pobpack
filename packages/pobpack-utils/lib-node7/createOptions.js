@@ -18,6 +18,7 @@ exports.default = options => ({
   prependPlugins: options.prependPlugins || [],
   paths: Object.assign({ src: 'src', build: 'build' }, options.paths),
   entries: options.entries || ['index'],
-  includeModules: options.includeModules || []
+  includeModules: options.includeModules || [],
+  defines: options.defines || {}
 });
 //# sourceMappingURL=createOptions.js.map

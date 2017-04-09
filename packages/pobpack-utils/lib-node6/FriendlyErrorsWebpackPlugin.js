@@ -45,7 +45,7 @@ let FriendlyErrorsWebpackPlugin = class {
       const messages = (0, _formatWebpackMessages2.default)(stats.toJson({}, true));
 
       if (isSuccessful(messages)) {
-        this.logger.success('Compiled successfully!');
+        this.logger.success('Compiled successfully!', { env: this.env });
         if (this.successMessage) {
           console.log(this.successMessage);
         }
