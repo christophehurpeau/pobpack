@@ -59,7 +59,6 @@ export default (target: BrowserTargetType) => (options: OptionsType) => ({
       if (typeof entry === 'string') entry = { key: entry, path: entry };
       entries[entry.key] = [
         target !== MODERN && require.resolve('babel-regenerator-runtime'),
-        // options.env !== 'production' && require.resolve('./source-map-support'),
         options.hmr && require.resolve('react-hot-loader/patch'),
         options.hmr && require.resolve('react-dev-utils/webpackHotDevClient'),
         path.join(path.resolve(options.paths.src), entry.path),
