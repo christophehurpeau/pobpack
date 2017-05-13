@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.1"></a>
+## 0.6.1 (2017-05-13)
+
+
+### Bug Fixes
+
+* devServer watchOptions ([485ce36](https://github.com/christophehurpeau/pobpack/commit/485ce36))
+* entry remove target ([a204dec](https://github.com/christophehurpeau/pobpack/commit/a204dec))
+* modern-browsers ([605224d](https://github.com/christophehurpeau/pobpack/commit/605224d))
+* quiet true ([7da503f](https://github.com/christophehurpeau/pobpack/commit/7da503f))
+
+
+### Features
+
+* first commit ([6aac4d2](https://github.com/christophehurpeau/pobpack/commit/6aac4d2))
+* pobpack-utils[@0](https://github.com/0).2 ([27a63e8](https://github.com/christophehurpeau/pobpack/commit/27a63e8))
+* sourcemaps and hot reload with react-hot-loader ([900e080](https://github.com/christophehurpeau/pobpack/commit/900e080))
+
+
+
+
 <a name="0.6.0"></a>
 # 0.6.0 (2017-05-13)
 

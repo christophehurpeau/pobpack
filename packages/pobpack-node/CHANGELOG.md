@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file.
 See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.1"></a>
+## 0.8.1 (2017-05-13)
+
+
+### Bug Fixes
+
+* __filename and __dirname ([80209f9](https://github.com/christophehurpeau/pobpack-node/commit/80209f9))
+* source-map-support ([7f56734](https://github.com/christophehurpeau/pobpack-node/commit/7f56734))
+* sourcemaps ([a822c06](https://github.com/christophehurpeau/pobpack-node/commit/a822c06))
+
+
+### Code Refactoring
+
+* options, springbokjs-daemon[@2](https://github.com/2) ([44a65cb](https://github.com/christophehurpeau/pobpack-node/commit/44a65cb))
+
+
+### Features
+
+* add chalk and better progress bar ([447703b](https://github.com/christophehurpeau/pobpack-node/commit/447703b))
+* add options ([6454aeb](https://github.com/christophehurpeau/pobpack-node/commit/6454aeb))
+* first commit ([47d51bf](https://github.com/christophehurpeau/pobpack-node/commit/47d51bf))
+* fixes, options.paths.entry, and case-sensitive-paths-webpack-plugin ([a26f8cb](https://github.com/christophehurpeau/pobpack-node/commit/a26f8cb))
+* initialize options before calling appWebpackConfig ([8631c80](https://github.com/christophehurpeau/pobpack-node/commit/8631c80))
+* node7 and additional flowtype ([47e16af](https://github.com/christophehurpeau/pobpack-node/commit/47e16af))
+* pobpack-utils ([6d5c8c9](https://github.com/christophehurpeau/pobpack-node/commit/6d5c8c9))
+* pobpack-utils[@0](https://github.com/0).2 ([d26781f](https://github.com/christophehurpeau/pobpack-node/commit/d26781f))
+* pobpack-utils[@0](https://github.com/0).3.0 ([5ea3344](https://github.com/christophehurpeau/pobpack-node/commit/5ea3344))
+* use babel-preset-latest-node ([30acd9b](https://github.com/christophehurpeau/pobpack-node/commit/30acd9b))
+
+
+### BREAKING CHANGES
+
+* options change, see README for more info
+
+
+
+
 <a name="0.8.0"></a>
 # 0.8.0 (2017-05-13)
 
