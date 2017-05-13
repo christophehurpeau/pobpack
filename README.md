@@ -1,5 +1,7 @@
 # pobpack
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/christophehurpeau/pobpack.svg)](https://greenkeeper.io/)
+
 Build projects with webpack.
 
 ## Modules
