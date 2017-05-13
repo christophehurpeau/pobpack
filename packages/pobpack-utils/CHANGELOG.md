@@ -6,38 +6,6 @@ See [standard-version](https://github.com/conventional-changelog/standard-versio
 <a name="0.6.1"></a>
 ## 0.6.1 (2017-05-13)
 
-
-### Bug Fixes
-
-* missing package field browser ([f7e6ebd](https://github.com/christophehurpeau/pobpack-utils/commit/f7e6ebd))
-* remove webpack.SourceMapDevToolPlugin ([e7da543](https://github.com/christophehurpeau/pobpack-utils/commit/e7da543))
-* resolve browser package field ([b0bb2e2](https://github.com/christophehurpeau/pobpack-utils/commit/b0bb2e2))
-
-
-### Features
-
-* add env in success log ([702844d](https://github.com/christophehurpeau/pobpack-utils/commit/702844d))
-* first commit ([5502b7d](https://github.com/christophehurpeau/pobpack-utils/commit/5502b7d))
-* includeModules ([0edef58](https://github.com/christophehurpeau/pobpack-utils/commit/0edef58))
-* options.defines ([5b32ad7](https://github.com/christophehurpeau/pobpack-utils/commit/5b32ad7))
-* resolve add module aliases ([4fa0351](https://github.com/christophehurpeau/pobpack-utils/commit/4fa0351))
-* rewrite FriendlyErrorsWebpackPlugin using react-dev-utils ([14cf7ab](https://github.com/christophehurpeau/pobpack-utils/commit/14cf7ab))
-* support module field in package.json ([2574a28](https://github.com/christophehurpeau/pobpack-utils/commit/2574a28))
-* update dependencies ([3626862](https://github.com/christophehurpeau/pobpack-utils/commit/3626862))
-* update dependencies ([a5fcc3d](https://github.com/christophehurpeau/pobpack-utils/commit/a5fcc3d))
-* use others module: aliases ([6f3dbee](https://github.com/christophehurpeau/pobpack-utils/commit/6f3dbee))
-
-
-### BREAKING CHANGES
-
-* removed webpack.SourceMapDevToolPlugin
-
-fix: remove webpack.SourceMapDevToolPlugin
-* replace externalModules by includeModules
-
-
-
-
 <a name="0.6.0"></a>
 # 0.6.0 (2017-05-13)
 
