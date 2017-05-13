@@ -7,8 +7,7 @@ Object.defineProperty(exports, "__esModule", {
 require('../createOptions');
 
 exports.default = options => ({
-  // force import to be present
-  // strictExportPresence: true,
+  strictExportPresence: true,
 
   rules: [
   // Disable require.ensure as it's not a standard language feature.
@@ -27,7 +26,7 @@ exports.default = options => ({
     // eslint-disable-next-line prefer-template
     'node_modules/' + (!options.includeModules || options.includeModules.length === 0 ? '' : `(?!(?:${options.includeModules.join('|')}))/`)), options.paths.build],
     loaders: [{
-      loader: 'babel-loader',
+      loader: require.resolve('babel-loader'),
       options: Object.assign({
         babelrc: false,
         cacheDirectory: true
