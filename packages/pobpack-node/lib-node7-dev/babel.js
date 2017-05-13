@@ -4,15 +4,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _babelPresetEnv = require('babel-preset-env');
+var _babelPresetLatestNode = require('babel-preset-latest-node');
 
-var _babelPresetEnv2 = _interopRequireDefault(_babelPresetEnv);
+var _babelPresetLatestNode2 = _interopRequireDefault(_babelPresetLatestNode);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-  presets: [[_babelPresetEnv2.default, {
-    targets: { node: 'current' },
+  presets: [[_babelPresetLatestNode2.default, {
+    target: 'current',
     modules: false,
     useBuiltIns: true
   }]],

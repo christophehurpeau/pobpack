@@ -1,9 +1,9 @@
-import babelPresetEnv from 'babel-preset-env';
+import babelPresetLatestNode from 'babel-preset-latest-node';
 
 export default {
   presets: [
-    [babelPresetEnv, {
-      targets: { node: 'current' },
+    [babelPresetLatestNode, {
+      target: 'current',
       modules: false,
       useBuiltIns: true,
     }],
