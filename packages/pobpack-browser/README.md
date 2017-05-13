@@ -2,7 +2,6 @@
 
 Build and run browser projects with webpack and webpack-dev-server.
 
-[![Dependency ci Status][dependencyci-image]][dependencyci-url]
 [![Dependency Status][daviddm-image]][daviddm-url]
 
 * [Features](#features)
@@ -177,7 +176,5 @@ module.exports = function (config, options) {
 
 [npm-image]: https://img.shields.io/npm/v/pobpack-browser.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/pobpack-browser
-[daviddm-image]: https://david-dm.org/christophehurpeau/pobpack-browser.svg?style=flat-square
-[daviddm-url]: https://david-dm.org/christophehurpeau/pobpack-browser
-[dependencyci-image]: https://dependencyci.com/github/christophehurpeau/pobpack-browser/badge?style=flat-square
-[dependencyci-url]: https://dependencyci.com/github/christophehurpeau/pobpack-browser
+[daviddm-image]: https://david-dm.org/christophehurpeau/pobpack-utils.svg?path=packages/pobpack-browser&style=flat-square
+[daviddm-url]: https://david-dm.org/christophehurpeau/pobpack?path=packages/pobpack-browser

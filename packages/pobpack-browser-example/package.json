@@ -1,15 +1,18 @@
 {
+  "private": true,
+  "name": "pobpack-browser-example",
   "scripts": {
+    "watch": "echo",
     "build": "pobpack-browser build",
     "start": "pobpack-browser"
   },
   "devDependencies": {
     "babel-preset-pob-react": "^0.2.2",
-    "pobpack-browser": "file:../",
-    "webpack": "^2.2.1"
+    "pobpack-browser": "^0.5.0",
+    "webpack": "^2.5.1"
   },
   "dependencies": {
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
   }
 }

@@ -42,4 +42,4 @@ fi
 git diff-index --check --cached $against -- || exit 1
 
 echo 'Lint check'
-npm run lint || exit 1
+yarn run lint || exit 1

@@ -1,10 +1,13 @@
 {
+  "private": true,
+  "name": "pobpack-node-example",
   "scripts": {
+    "watch": "echo",
     "build": "pobpack-node build",
     "start": "pobpack-node"
   },
   "devDependencies": {
-    "pobpack-node": "file:../",
+    "pobpack-node": "^0.5.0",
     "webpack": "^2.2.1",
     "webpack-module-hot-accept": "^1.0.4"
   }

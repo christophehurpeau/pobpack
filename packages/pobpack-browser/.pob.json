@@ -1,4 +1,5 @@
 {
+  "lerna": true,
   "envs": [
     "node6",
     "node7"

@@ -2,7 +2,6 @@
 
 Utils for building projects with webpack.
 
-[![Dependency ci Status][dependencyci-image]][dependencyci-url]
 [![Dependency Status][daviddm-image]][daviddm-url]
 
 ## See also
@@ -28,7 +27,5 @@ use: `import {} from 'pobpack-utils';`
 
 [npm-image]: https://img.shields.io/npm/v/pobpack-utils.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/pobpack-utils
-[daviddm-image]: https://david-dm.org/christophehurpeau/pobpack-utils.svg?style=flat-square
-[daviddm-url]: https://david-dm.org/christophehurpeau/pobpack-utils
-[dependencyci-image]: https://dependencyci.com/github/christophehurpeau/pobpack-utils/badge?style=flat-square
-[dependencyci-url]: https://dependencyci.com/github/christophehurpeau/pobpack-utils
+[daviddm-image]: https://david-dm.org/christophehurpeau/pobpack-utils.svg?path=packages/pobpack-utils&style=flat-square
+[daviddm-url]: https://david-dm.org/christophehurpeau/pobpack?path=packages/pobpack-utils
