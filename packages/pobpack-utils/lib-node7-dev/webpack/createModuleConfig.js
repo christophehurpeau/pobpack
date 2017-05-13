@@ -20,8 +20,7 @@ exports.default = function createModuleConfig(options) {
   _flowRuntime2.default.param('options', _optionsType).assert(options);
 
   return {
-    // force import to be present
-    // strictExportPresence: true,
+    strictExportPresence: true,
 
     rules: [
     // Disable require.ensure as it's not a standard language feature.
@@ -40,7 +39,7 @@ exports.default = function createModuleConfig(options) {
       // eslint-disable-next-line prefer-template
       'node_modules/' + (!options.includeModules || options.includeModules.length === 0 ? '' : `(?!(?:${options.includeModules.join('|')}))/`)), options.paths.build],
       loaders: [{
-        loader: 'babel-loader',
+        loader: require.resolve('babel-loader'),
         options: Object.assign({
           babelrc: false,
           cacheDirectory: true

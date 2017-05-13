@@ -1,8 +1,7 @@
 import { type OptionsType } from '../createOptions';
 
 export default (options: OptionsType) => ({
-  // force import to be present
-  // strictExportPresence: true,
+  strictExportPresence: true,
 
   rules: [
     // Disable require.ensure as it's not a standard language feature.
@@ -29,7 +28,7 @@ export default (options: OptionsType) => ({
       ],
       loaders: [
         {
-          loader: 'babel-loader',
+          loader: require.resolve('babel-loader'),
           options: {
             babelrc: false,
             cacheDirectory: true,
