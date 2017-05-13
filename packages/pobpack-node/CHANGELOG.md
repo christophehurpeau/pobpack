@@ -1,3 +1,21 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+<a name="0.8.0"></a>
+# 0.8.0 (2017-05-13)
+
+### Features
+
+* use babel-preset-latest-node ([30acd9b](https://github.com/christophehurpeau/pobpack-node/commit/30acd9b))
+
+
+### BREAKING CHANGES
+
+* options change, see README for more info
+
+
 <a name="0.7.0"></a>
 # [0.7.0](https://github.com/christophehurpeau/pobpack-node/compare/v0.6.0...v0.7.0) (2017-04-09)
 
