@@ -1,6 +1,6 @@
 {
   "name": "pobpack-browser",
-  "version": "0.6.1",
+  "version": "1.0.0",
   "description": "Build and run browser projects with webpack and webpack-dev-server.",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
@@ -23,7 +23,7 @@
     "babel-preset-env": "^1.6.0",
     "babel-regenerator-runtime": "^6.5.0",
     "flow-runtime": "^0.10.0",
-    "pobpack-utils": "^0.6.1",
+    "pobpack-utils": "^1.0.0",
     "react-dev-utils": "^3.0.2",
     "react-error-html": "^0.1.1",
     "react-hot-loader": "^3.0.0-beta.6",

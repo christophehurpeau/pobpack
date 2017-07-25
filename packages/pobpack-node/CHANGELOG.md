@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/christophehurpeau/pobpack-node/compare/pobpack-node@0.8.1...pobpack-node@1.0.0) (2017-07-25)
+
+
+### Features
+
+* webpack 3 ([0471d41](https://github.com/christophehurpeau/pobpack-node/commit/0471d41))
+
+
+### BREAKING CHANGES
+
+* webpack v3
+
+
+
+
 <a name="0.8.1"></a>
 ## 0.8.1 (2017-05-13)
 
