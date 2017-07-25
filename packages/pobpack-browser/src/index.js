@@ -10,16 +10,18 @@ import createBrowserWebpackConfig, { TARGETS, ALL, MODERN } from './createBrowse
 
 export { TARGETS, ALL, MODERN };
 
-export const createAppBrowserCompiler =
-  (target: string, options: OptionsType, compilerOptions): PobpackCompilerType => (
-    createPobpackCompiler(
-      target,
-      createAppWebpackConfig(createBrowserWebpackConfig(target))({
-        ...options,
-        paths: { build: 'public', ...options.paths },
-      }),
-      compilerOptions,
-    )
+export const createAppBrowserCompiler = (
+  target: string,
+  options: OptionsType,
+  compilerOptions,
+): PobpackCompilerType =>
+  createPobpackCompiler(
+    target,
+    createAppWebpackConfig(createBrowserWebpackConfig(target))({
+      ...options,
+      paths: { build: 'public', ...options.paths },
+    }),
+    compilerOptions,
   );
 
 export const build = (options = {}) => {
@@ -38,7 +40,6 @@ export const watch = (options, callback: WatchCallbackType) => {
   compiler.watch(callback);
   return compiler;
 };
-
 
 type RunOptions = {
   port: number,
@@ -67,7 +68,7 @@ export const watchAndRunDevServer = (options: OptionsType, runOptions: RunOption
     { ...options, hmr: true },
     {
       successMessage: `Your application is running here: ${url}`,
-    }
+    },
   );
   compiler.clean();
   const webpackDevServer = runDevServer(compiler, runOptions);

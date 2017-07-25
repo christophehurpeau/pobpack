@@ -2,10 +2,10 @@ import path from 'path';
 import { existsSync } from 'fs';
 import createOptions from './createOptions';
 
-export default (createWebpackConfig) => {
+export default createWebpackConfig => {
   const wrapCreateWebpackConfig = options => createWebpackConfig(createOptions(options));
 
-  return (options) => {
+  return options => {
     const appWebpackConfigPath = path.resolve('createAppWebpackConfig.js');
     if (existsSync(appWebpackConfigPath)) {
       console.log('Using app createAppWebpackConfig.js');
@@ -13,8 +13,8 @@ export default (createWebpackConfig) => {
       const appWebpackConfigCreator = require(appWebpackConfigPath);
       if (typeof appWebpackConfigCreator !== 'function') {
         console.error(
-          'app createAppWebpackConfig.js should export a function\n'
-          + 'module.exports = function (config, options) { ... }'
+          'app createAppWebpackConfig.js should export a function\n' +
+            'module.exports = function (config, options) { ... }',
         );
       }
 
@@ -23,8 +23,8 @@ export default (createWebpackConfig) => {
 
       if (typeof config !== 'object') {
         console.error(
-          'app createAppWebpackConfig.js should return the config\n'
-          + 'function (config, options) { return config; }'
+          'app createAppWebpackConfig.js should return the config\n' +
+            'function (config, options) { return config; }',
         );
       }
 

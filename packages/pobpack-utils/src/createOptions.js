@@ -5,10 +5,12 @@ type ConfigPathsType = {|
   build: string,
 |};
 
-type ConfigEntryType = string | {|
-  key: string,
-  path: string,
-|};
+type ConfigEntryType =
+  | string
+  | {|
+      key: string,
+      path: string,
+    |};
 
 type BabelConfigType = Object;
 

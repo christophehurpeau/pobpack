@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { type OptionsType } from '../createOptions';
 
 export default (modulePrefixPackageFields: Array<string>, options: OptionsType) => ({

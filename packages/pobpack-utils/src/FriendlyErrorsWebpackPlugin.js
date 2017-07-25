@@ -30,7 +30,7 @@ export default class FriendlyErrorsWebpackPlugin {
     });
 
     // compilation done
-    compiler.plugin('done', (stats) => {
+    compiler.plugin('done', stats => {
       const messages = formatWebpackMessages(stats.toJson({}, true));
 
       if (isSuccessful(messages)) {
@@ -44,7 +44,7 @@ export default class FriendlyErrorsWebpackPlugin {
       if (messages.errors.length) {
         this.logger.critical('Failed to compile.');
         console.log();
-        messages.errors.forEach((message) => {
+        messages.errors.forEach(message => {
           console.log(message);
           console.log();
         });
@@ -54,7 +54,7 @@ export default class FriendlyErrorsWebpackPlugin {
       if (messages.warnings.length) {
         this.logger.critical('Compiled with warnings.');
         console.log();
-        messages.warnings.forEach((message) => {
+        messages.warnings.forEach(message => {
           console.log(message);
           console.log();
         });

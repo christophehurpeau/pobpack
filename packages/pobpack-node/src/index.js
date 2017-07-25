@@ -8,9 +8,8 @@ import {
 } from 'pobpack-utils';
 import createNodeWebpackConfig from './createNodeWebpackConfig';
 
-export const createAppNodeCompiler = (options): PobpackCompilerType => (
-  createPobpackCompiler('node', createAppWebpackConfig(createNodeWebpackConfig)(options))
-);
+export const createAppNodeCompiler = (options): PobpackCompilerType =>
+  createPobpackCompiler('node', createAppWebpackConfig(createNodeWebpackConfig)(options));
 
 export const build = (options = {}) => {
   const compiler = createAppNodeCompiler({ ...options, hmr: false });
@@ -29,26 +28,22 @@ export const watch = (options, callback: WatchCallbackType) => {
   return compiler;
 };
 
-
 type RunOptions = {|
   key: ?string,
   displayName: ?string,
-  args: ?Array<string|number>,
+  args: ?Array<string | number>,
   cwd: ?string,
 |};
 
 export const watchAndRunCompiler = (compiler: PobpackCompilerType, options: RunOptions = {}) => {
   let daemon;
-  return compiler.watch((stats) => {
+  return compiler.watch(stats => {
     if (!daemon) {
       daemon = createDaemon({
         key: options.key || 'pobpack-node',
         displayName: options.displayName,
         cwd: options.cwd,
-        args: [
-          join(compiler.webpackConfig.output.path),
-          ...(options.args || []),
-        ],
+        args: [join(compiler.webpackConfig.output.path), ...(options.args || [])],
         // autoRestart: true,
       });
       daemon.start();
@@ -64,7 +59,7 @@ export const watchAndRunCompiler = (compiler: PobpackCompilerType, options: RunO
   });
 };
 
-export const watchAndRun = (options) => {
+export const watchAndRun = options => {
   const compiler = createAppNodeCompiler({ ...options, hmr: true });
   compiler.clean();
   watchAndRunCompiler(compiler);

@@ -50,17 +50,14 @@ export default (options: OptionsType) => ({
     },
   }),
 
-  entry: options.entries.reduce(
-    (entries, entry) => {
-      if (typeof entry === 'string') entry = { key: entry, path: entry };
-      entries[entry.key] = [
-        options.hmr && require.resolve('../hot'),
-        path.join(path.resolve(options.paths.src), entry.path),
-      ].filter(Boolean);
-      return entries;
-    },
-    {},
-  ),
+  entry: options.entries.reduce((entries, entry) => {
+    if (typeof entry === 'string') entry = { key: entry, path: entry };
+    entries[entry.key] = [
+      options.hmr && require.resolve('../hot'),
+      path.join(path.resolve(options.paths.src), entry.path),
+    ].filter(Boolean);
+    return entries;
+  }, {}),
 
   output: {
     path: path.resolve(options.paths.build),
@@ -72,12 +69,13 @@ export default (options: OptionsType) => ({
   plugins: createPluginsConfig({
     ...options,
     plugins: [
-      options.hmr && new webpack.BannerPlugin({
-        banner: `require("${require.resolve('./source-map-support')}");`,
-        raw: true,
-        entryOnly: false,
-        include: /\.js$/,
-      }),
+      options.hmr &&
+        new webpack.BannerPlugin({
+          banner: `require("${require.resolve('./source-map-support')}");`,
+          raw: true,
+          entryOnly: false,
+          include: /\.js$/,
+        }),
       ...options.plugins,
     ],
   }),

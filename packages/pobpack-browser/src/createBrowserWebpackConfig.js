@@ -42,31 +42,30 @@ export default (target: BrowserTargetType) => (options: OptionsType) => ({
     modules: options.resolveLoaderModules || ['node_modules'],
   },
 
-  resolve: createResolveConfig([target === MODERN && 'modern-browsers', 'browser'].filter(Boolean), {
-    ...options,
-    babel: {
-      presets: [require.resolve('./babel')],
-      ...options.babel,
-      plugins: [
-        options.hmr && hotLoaderBabelPlugin,
-        ...(options.babel.plugins || []),
-      ].filter(Boolean),
+  resolve: createResolveConfig(
+    [target === MODERN && 'modern-browsers', 'browser'].filter(Boolean),
+    {
+      ...options,
+      babel: {
+        presets: [require.resolve('./babel')],
+        ...options.babel,
+        plugins: [options.hmr && hotLoaderBabelPlugin, ...(options.babel.plugins || [])].filter(
+          Boolean,
+        ),
+      },
     },
-  }),
-
-  entry: options.entries.reduce(
-    (entries, entry) => {
-      if (typeof entry === 'string') entry = { key: entry, path: entry };
-      entries[entry.key] = [
-        target !== MODERN && require.resolve('babel-regenerator-runtime'),
-        options.hmr && require.resolve('react-hot-loader/patch'),
-        options.hmr && require.resolve('react-dev-utils/webpackHotDevClient'),
-        path.join(path.resolve(options.paths.src), entry.path),
-      ].filter(Boolean);
-      return entries;
-    },
-    {},
   ),
+
+  entry: options.entries.reduce((entries, entry) => {
+    if (typeof entry === 'string') entry = { key: entry, path: entry };
+    entries[entry.key] = [
+      target !== MODERN && require.resolve('babel-regenerator-runtime'),
+      options.hmr && require.resolve('react-hot-loader/patch'),
+      options.hmr && require.resolve('react-dev-utils/webpackHotDevClient'),
+      path.join(path.resolve(options.paths.src), entry.path),
+    ].filter(Boolean);
+    return entries;
+  }, {}),
 
   output: {
     path: path.resolve(options.paths.build),

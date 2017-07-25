@@ -1,0 +1,19 @@
+{
+  "pob": {
+    "pob": {
+      "lerna": true,
+      "envs": [
+        "node6",
+        "node8"
+      ],
+      "documentation": false,
+      "doclets": false,
+      "testing": false,
+      "entries": [
+        "index",
+        "cli",
+        "babel"
+      ]
+    }
+  }
+}

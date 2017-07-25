@@ -2,7 +2,7 @@
   "lerna": true,
   "envs": [
     "node6",
-    "node7"
+    "node8"
   ],
   "react": false,
   "documentation": false,

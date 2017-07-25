@@ -11,19 +11,22 @@
     "postmerge": "./git-hooks/post-merge",
     "precommit": "./git-hooks/pre-commit",
     "preparecommitmsg": "./git-hooks/prepare-commit-msg ${GIT_PARAMS}",
-    "postinstall": "pob-repository-check-clean && lerna bootstrap"
+    "postinstall": "pob-repository-check-clean && lerna bootstrap || echo"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
-    "eslint": "^3.19.0",
-    "eslint-config-airbnb-base": "^11.1.3",
-    "eslint-config-pob": "^11.1.0",
+    "eslint": "^4.3.0",
+    "eslint-config-airbnb-base": "^11.3.0",
+    "eslint-config-pob": "^14.1.1",
+    "eslint-config-prettier": "^2.3.0",
     "eslint-plugin-babel": "^4.1.1",
-    "eslint-plugin-import": "^2.2.0",
-    "husky": "^0.13.3",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-prettier": "^2.1.2",
+    "husky": "^0.14.3",
     "komet": "^0.1.4",
     "komet-karma": "^0.2.5",
-    "lerna": "^2.0.0-rc.4",
-    "pob-release": "^3.1.0"
+    "lerna": "^2.0.0",
+    "pob-release": "^3.1.0",
+    "prettier": "^1.5.3"
   }
 }
