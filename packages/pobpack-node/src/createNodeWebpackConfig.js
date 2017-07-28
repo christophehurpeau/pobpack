@@ -62,6 +62,7 @@ export default (options: OptionsType) => ({
   output: {
     path: path.resolve(options.paths.build),
     libraryTarget: 'commonjs2',
+    devtoolModuleFilenameTemplate: '[absolute-resource-path]',
   },
 
   module: createModuleConfig(options),

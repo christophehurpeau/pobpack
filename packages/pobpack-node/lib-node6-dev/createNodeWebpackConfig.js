@@ -72,7 +72,8 @@ exports.default = function createNodeWebpackConfig(options) {
 
     output: {
       path: _path2.default.resolve(options.paths.build),
-      libraryTarget: 'commonjs2'
+      libraryTarget: 'commonjs2',
+      devtoolModuleFilenameTemplate: '[absolute-resource-path]'
     },
 
     module: (0, _pobpackUtils.createModuleConfig)(options),
