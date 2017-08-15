@@ -176,5 +176,5 @@ module.exports = function (config, options) {
 
 [npm-image]: https://img.shields.io/npm/v/pobpack-browser.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/pobpack-browser
-[daviddm-image]: https://david-dm.org/christophehurpeau/pobpack-utils.svg?path=packages/pobpack-browser&style=flat-square
+[daviddm-image]: https://david-dm.org/christophehurpeau/pobpack?path=packages/pobpack-browser.svg?style=flat-square
 [daviddm-url]: https://david-dm.org/christophehurpeau/pobpack?path=packages/pobpack-browser

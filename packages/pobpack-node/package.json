@@ -5,7 +5,7 @@
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "ISC",
-  "repository": "git@github.com:christophehurpeau/pobpack-node.git",
+  "repository": "git@github.com:christophehurpeau/pobpack.git",
   "homepage": "https://github.com/christophehurpeau/pobpack/tree/master/packages/pobpack-node",
   "engines": {
     "node": ">=6.5.0"
@@ -20,15 +20,14 @@
     "watch": "pob-watch"
   },
   "dependencies": {
-    "babel-preset-latest-node": "^0.3.1",
-    "flow-runtime": "^0.10.0",
+    "babel-preset-latest-node": "^0.4.0",
+    "flow-runtime": "^0.14.0",
     "pobpack-utils": "^1.0.0",
     "source-map-support": "^0.4.15",
     "springbokjs-daemon": "^2.1.1",
     "webpack-node-externals": "^1.6.0"
   },
   "devDependencies": {
-    "babel-preset-latest-node": "^0.2.2",
-    "pob-babel": "^17.5.1"
+    "pob-babel": "^18.0.1"
   }
 }

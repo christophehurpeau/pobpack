@@ -27,5 +27,5 @@ use: `import {} from 'pobpack-utils';`
 
 [npm-image]: https://img.shields.io/npm/v/pobpack-utils.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/pobpack-utils
-[daviddm-image]: https://david-dm.org/christophehurpeau/pobpack-utils.svg?path=packages/pobpack-utils&style=flat-square
+[daviddm-image]: https://david-dm.org/christophehurpeau/pobpack?path=packages/pobpack-utils.svg?style=flat-square
 [daviddm-url]: https://david-dm.org/christophehurpeau/pobpack?path=packages/pobpack-utils

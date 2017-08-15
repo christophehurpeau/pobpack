@@ -27,10 +27,11 @@ exports.default = options => ({
     'node_modules/' + (!options.includeModules || options.includeModules.length === 0 ? '' : `(?!(?:${options.includeModules.join('|')}))/`)), options.paths.build],
     loaders: [{
       loader: require.resolve('babel-loader'),
-      options: Object.assign({
+      options: {
         babelrc: false,
-        cacheDirectory: true
-      }, options.babel)
+        cacheDirectory: true,
+        ...options.babel
+      }
     }, ...(options.jsLoaders || [])]
   },
 

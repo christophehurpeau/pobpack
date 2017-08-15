@@ -22,7 +22,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 const createAppNodeCompiler = exports.createAppNodeCompiler = options => (0, _pobpackUtils.createPobpackCompiler)('node', (0, _pobpackUtils.createAppWebpackConfig)(_createNodeWebpackConfig2.default)(options));
 
 const build = exports.build = (options = {}) => {
-  const compiler = createAppNodeCompiler(Object.assign({}, options, { hmr: false }));
+  const compiler = createAppNodeCompiler({ ...options, hmr: false });
   compiler.clean();
   return compiler.run();
 };
@@ -32,7 +32,7 @@ const watch = exports.watch = (options, callback) => {
     callback = options;
     options = undefined;
   }
-  const compiler = createAppNodeCompiler(Object.assign({}, options, { hmr: true }));
+  const compiler = createAppNodeCompiler({ ...options, hmr: true });
   compiler.clean();
   compiler.watch(callback);
   return compiler;
@@ -63,7 +63,7 @@ const watchAndRunCompiler = exports.watchAndRunCompiler = (compiler, options = {
 };
 
 const watchAndRun = exports.watchAndRun = options => {
-  const compiler = createAppNodeCompiler(Object.assign({}, options, { hmr: true }));
+  const compiler = createAppNodeCompiler({ ...options, hmr: true });
   compiler.clean();
   watchAndRunCompiler(compiler);
   return compiler;

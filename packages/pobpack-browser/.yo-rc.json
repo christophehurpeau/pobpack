@@ -1,6 +1,6 @@
 {
   "pob": {
-    "pob": {
+    "pob-config": {
       "lerna": true,
       "envs": [
         "node6",

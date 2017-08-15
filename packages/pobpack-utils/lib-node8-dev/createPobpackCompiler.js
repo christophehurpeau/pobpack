@@ -62,7 +62,9 @@ exports.default = function createPobpackCompiler(bundleName, webpackConfig, _arg
 
   let { progressBar = true, successMessage } = CreateComplierOptionsType.assert(_arg);
 
-  const compiler = (0, _webpack2.default)(Object.assign({}, webpackConfig));
+  const compiler = (0, _webpack2.default)({
+    ...webpackConfig
+  });
 
   if (progressBar && process.stdout.isTTY) {
     let bar;

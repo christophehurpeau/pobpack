@@ -5,7 +5,7 @@
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "ISC",
-  "repository": "git@github.com:christophehurpeau/pobpack-utils.git",
+  "repository": "git@github.com:christophehurpeau/pobpack.git",
   "homepage": "https://github.com/christophehurpeau/pobpack/tree/master/packages/pobpack-utils",
   "engines": {
     "node": ">=6.5.0"
@@ -21,7 +21,7 @@
     "babel-loader": "^7.1.1",
     "case-sensitive-paths-webpack-plugin": "^2.1.1",
     "chalk": "^2.0.1",
-    "flow-runtime": "^0.10.0",
+    "flow-runtime": "^0.14.0",
     "json-loader": "^0.5.7",
     "nightingale": "^6.2.1",
     "nightingale-console": "^2.5.1",
@@ -32,7 +32,7 @@
     "webpack": "^3.3.0"
   },
   "devDependencies": {
-    "babel-preset-latest-node": "^0.3.1",
-    "pob-babel": "^17.5.1"
+    "babel-preset-latest-node": "^0.4.0",
+    "pob-babel": "^18.0.1"
   }
 }

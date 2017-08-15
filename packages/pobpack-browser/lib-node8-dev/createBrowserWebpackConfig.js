@@ -66,13 +66,14 @@ exports.default = function createBrowserWebpackConfig(target) {
         modules: options.resolveLoaderModules || ['node_modules']
       },
 
-      resolve: (0, _pobpackUtils.createResolveConfig)([target === MODERN && 'modern-browsers', 'browser'].filter(Boolean), Object.assign({}, options, {
-        babel: Object.assign({
-          presets: [require.resolve('./babel')]
-        }, options.babel, {
+      resolve: (0, _pobpackUtils.createResolveConfig)([target === MODERN && 'modern-browsers', 'browser'].filter(Boolean), {
+        ...options,
+        babel: {
+          presets: [require.resolve('./babel')],
+          ...options.babel,
           plugins: [options.hmr && _babel2.default, ...(options.babel.plugins || [])].filter(Boolean)
-        })
-      })),
+        }
+      }),
 
       entry: options.entries.reduce((entries, entry) => {
         if (typeof entry === 'string') entry = { key: entry, path: entry };

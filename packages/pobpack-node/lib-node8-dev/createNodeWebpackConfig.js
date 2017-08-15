@@ -58,11 +58,13 @@ exports.default = function createNodeWebpackConfig(options) {
       modules: options.resolveLoaderModules || ['node_modules']
     },
 
-    resolve: (0, _pobpackUtils.createResolveConfig)(['node'], Object.assign({}, options, {
-      babel: Object.assign({
-        presets: [require.resolve('./babel')]
-      }, options.babel)
-    })),
+    resolve: (0, _pobpackUtils.createResolveConfig)(['node'], {
+      ...options,
+      babel: {
+        presets: [require.resolve('./babel')],
+        ...options.babel
+      }
+    }),
 
     entry: options.entries.reduce((entries, entry) => {
       if (typeof entry === 'string') entry = { key: entry, path: entry };
@@ -78,14 +80,15 @@ exports.default = function createNodeWebpackConfig(options) {
 
     module: (0, _pobpackUtils.createModuleConfig)(options),
 
-    plugins: (0, _pobpackUtils.createPluginsConfig)(Object.assign({}, options, {
+    plugins: (0, _pobpackUtils.createPluginsConfig)({
+      ...options,
       plugins: [options.hmr && new _pobpackUtils.webpack.BannerPlugin({
         banner: `require("${require.resolve('./source-map-support')}");`,
         raw: true,
         entryOnly: false,
         include: /\.js$/
       }), ...options.plugins]
-    }))
+    })
   };
 };
 //# sourceMappingURL=createNodeWebpackConfig.js.map

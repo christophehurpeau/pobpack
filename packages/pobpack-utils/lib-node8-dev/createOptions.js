@@ -38,7 +38,7 @@ exports.default = function createOptions(options) {
     moduleRules: options.moduleRules,
     plugins: options.plugins || [],
     prependPlugins: options.prependPlugins || [],
-    paths: Object.assign({ src: 'src', build: 'build' }, options.paths),
+    paths: { src: 'src', build: 'build', ...options.paths },
     entries: options.entries || ['index'],
     includeModules: options.includeModules || [],
     defines: options.defines || {}

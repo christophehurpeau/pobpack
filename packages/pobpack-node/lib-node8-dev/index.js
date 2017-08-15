@@ -34,7 +34,7 @@ const createAppNodeCompiler = exports.createAppNodeCompiler = options => {
 };
 
 const build = exports.build = (options = {}) => {
-  const compiler = createAppNodeCompiler(Object.assign({}, options, { hmr: false }));
+  const compiler = createAppNodeCompiler({ ...options, hmr: false });
   compiler.clean();
   return compiler.run();
 };
@@ -48,7 +48,7 @@ const watch = exports.watch = (options, callback) => {
     callback = _callbackType.assert(options);
     options = undefined;
   }
-  const compiler = createAppNodeCompiler(Object.assign({}, options, { hmr: true }));
+  const compiler = createAppNodeCompiler({ ...options, hmr: true });
   compiler.clean();
   compiler.watch(callback);
   return compiler;
@@ -87,7 +87,7 @@ const watchAndRunCompiler = exports.watchAndRunCompiler = (compiler, options = {
 };
 
 const watchAndRun = exports.watchAndRun = options => {
-  const compiler = createAppNodeCompiler(Object.assign({}, options, { hmr: true }));
+  const compiler = createAppNodeCompiler({ ...options, hmr: true });
   compiler.clean();
   watchAndRunCompiler(compiler);
   return compiler;

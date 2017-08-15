@@ -41,7 +41,9 @@ const buildThrowOnError = stats => {
 };
 
 exports.default = (bundleName, webpackConfig, { progressBar = true, successMessage } = {}) => {
-  const compiler = (0, _webpack2.default)(Object.assign({}, webpackConfig));
+  const compiler = (0, _webpack2.default)({
+    ...webpackConfig
+  });
 
   if (progressBar && process.stdout.isTTY) {
     let bar;
