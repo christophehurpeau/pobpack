@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "pobpack-browser-example",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "scripts": {
     "watch": "echo",
     "build": "pobpack-browser build",
@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "babel-preset-pob-react": "^0.2.2",
-    "pobpack-browser": "^2.0.0",
+    "pobpack-browser": "^2.0.1",
     "webpack": "^3.5.4"
   },
   "dependencies": {

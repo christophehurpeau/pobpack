@@ -1,7 +1,18 @@
 # Change Log
 
 All notable changes to this project will be documented in this file.
-See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@2.0.0...pobpack-utils@2.0.1) (2017-08-25)
+
+
+### Bug Fixes
+
+* babel module use include instead of exclude, and update dependencies ([8d44cda](https://github.com/christophehurpeau/pobpack/commit/8d44cda))
+
+
+
 
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@1.0.0...pobpack-utils@2.0.0) (2017-08-15)

@@ -1,7 +1,15 @@
 # Change Log
 
 All notable changes to this project will be documented in this file.
-See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/christophehurpeau/pobpack/compare/pobpack-node-example@2.0.0...pobpack-node-example@2.0.1) (2017-08-25)
+
+
+
+
+**Note:** Version bump only for package pobpack-node-example
 
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-node-example@1.0.1...pobpack-node-example@2.0.0) (2017-08-15)
