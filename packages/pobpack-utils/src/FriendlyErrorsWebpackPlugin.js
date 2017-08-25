@@ -32,6 +32,7 @@ export default class FriendlyErrorsWebpackPlugin {
     // compilation done
     compiler.plugin('done', stats => {
       const messages = formatWebpackMessages(stats.toJson({}, true));
+      // const messages = stats.toJson({}, true);
 
       if (isSuccessful(messages)) {
         this.logger.success('Compiled successfully!', { env: this.env });

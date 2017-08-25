@@ -27,13 +27,13 @@
     "react-dev-utils": "^3.0.2",
     "react-error-html": "^0.2.0",
     "react-hot-loader": "^3.0.0-beta.6",
-    "source-map-support": "^0.4.15",
-    "webpack": "^3.3.0",
+    "source-map-support": "^0.4.16",
+    "webpack": "^3.5.5",
     "webpack-dev-server": "^2.6.1"
   },
   "devDependencies": {
     "babel-preset-latest-node": "^0.4.0",
-    "pob-babel": "^18.0.1",
+    "pob-babel": "^18.1.4",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   }

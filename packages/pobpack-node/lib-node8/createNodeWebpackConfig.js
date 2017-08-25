@@ -17,6 +17,9 @@ var _pobpackUtils = require('pobpack-utils');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = options => ({
+  // Don't attempt to continue if there are any errors.
+  bail: options.env === 'production',
+
   // Target node
   target: 'node',
 
@@ -46,19 +49,13 @@ exports.default = options => ({
     modules: options.resolveLoaderModules || ['node_modules']
   },
 
-  resolve: (0, _pobpackUtils.createResolveConfig)(['node'], {
-    ...options,
-    babel: {
-      presets: [require.resolve('./babel')],
-      ...options.babel
-    }
-  }),
+  resolve: (0, _pobpackUtils.createResolveConfig)(['node'], Object.assign({}, options, {
+    babel: Object.assign({
+      presets: [require.resolve('./babel')]
+    }, options.babel)
+  })),
 
-  entry: options.entries.reduce((entries, entry) => {
-    if (typeof entry === 'string') entry = { key: entry, path: entry };
-    entries[entry.key] = [options.hmr && require.resolve('../hot'), _path2.default.join(_path2.default.resolve(options.paths.src), entry.path)].filter(Boolean);
-    return entries;
-  }, {}),
+  entry: options.entries.reduce((entries, entry) => (typeof entry === 'string' && (entry = { key: entry, path: entry }), entries[entry.key] = [options.hmr && require.resolve('../hot'), _path2.default.join(_path2.default.resolve(options.paths.src), entry.path)].filter(Boolean), entries), {}),
 
   output: {
     path: _path2.default.resolve(options.paths.build),
@@ -68,14 +65,13 @@ exports.default = options => ({
 
   module: (0, _pobpackUtils.createModuleConfig)(options),
 
-  plugins: (0, _pobpackUtils.createPluginsConfig)({
-    ...options,
+  plugins: (0, _pobpackUtils.createPluginsConfig)(Object.assign({}, options, {
     plugins: [options.hmr && new _pobpackUtils.webpack.BannerPlugin({
       banner: `require("${require.resolve('./source-map-support')}");`,
       raw: true,
       entryOnly: false,
       include: /\.js$/
     }), ...options.plugins]
-  })
+  }))
 }); // const fs = require('fs');
 //# sourceMappingURL=createNodeWebpackConfig.js.map

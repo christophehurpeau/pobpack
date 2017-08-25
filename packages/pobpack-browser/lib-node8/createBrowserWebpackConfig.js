@@ -22,6 +22,9 @@ const ALL = exports.ALL = 'all';
 const TARGETS = exports.TARGETS = [ALL, MODERN];
 
 exports.default = target => options => ({
+  // Don't attempt to continue if there are any errors.
+  bail: options.env === 'production',
+
   // Target web
   target: 'web',
 
@@ -50,20 +53,15 @@ exports.default = target => options => ({
     modules: options.resolveLoaderModules || ['node_modules']
   },
 
-  resolve: (0, _pobpackUtils.createResolveConfig)([target === MODERN && 'modern-browsers', 'browser'].filter(Boolean), {
-    ...options,
-    babel: {
-      presets: [require.resolve('./babel')],
-      ...options.babel,
+  resolve: (0, _pobpackUtils.createResolveConfig)([target === MODERN && 'modern-browsers', 'browser'].filter(Boolean), Object.assign({}, options, {
+    babel: Object.assign({
+      presets: [require.resolve('./babel')]
+    }, options.babel, {
       plugins: [options.hmr && _babel2.default, ...(options.babel.plugins || [])].filter(Boolean)
-    }
-  }),
+    })
+  })),
 
-  entry: options.entries.reduce((entries, entry) => {
-    if (typeof entry === 'string') entry = { key: entry, path: entry };
-    entries[entry.key] = [target !== MODERN && require.resolve('babel-regenerator-runtime'), options.hmr && require.resolve('react-hot-loader/patch'), options.hmr && require.resolve('react-dev-utils/webpackHotDevClient'), _path2.default.join(_path2.default.resolve(options.paths.src), entry.path)].filter(Boolean);
-    return entries;
-  }, {}),
+  entry: options.entries.reduce((entries, entry) => (typeof entry === 'string' && (entry = { key: entry, path: entry }), entries[entry.key] = [target !== MODERN && require.resolve('babel-regenerator-runtime'), options.hmr && require.resolve('react-hot-loader/patch'), options.hmr && require.resolve('react-dev-utils/webpackHotDevClient'), _path2.default.join(_path2.default.resolve(options.paths.src), entry.path)].filter(Boolean), entries), {}),
 
   output: {
     path: _path2.default.resolve(options.paths.build),

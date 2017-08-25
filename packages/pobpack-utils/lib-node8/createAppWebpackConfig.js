@@ -23,23 +23,17 @@ exports.default = createWebpackConfig => {
     const appWebpackConfigPath = _path2.default.resolve('createAppWebpackConfig.js');
     if ((0, _fs.existsSync)(appWebpackConfigPath)) {
       console.log('Using app createAppWebpackConfig.js');
+
       // eslint-disable-next-line import/no-dynamic-require, global-require
       const appWebpackConfigCreator = require(appWebpackConfigPath);
-      if (typeof appWebpackConfigCreator !== 'function') {
-        console.error('app createAppWebpackConfig.js should export a function\nmodule.exports = function (config, options) { ... }');
-      }
+      typeof appWebpackConfigCreator !== 'function' && console.error('app createAppWebpackConfig.js should export a function\nmodule.exports = function (config, options) { ... }'), options = (0, _createOptions2.default)(options);
 
-      options = (0, _createOptions2.default)(options);
       const config = appWebpackConfigCreator(wrapCreateWebpackConfig, options);
 
-      if (typeof config !== 'object') {
-        console.error('app createAppWebpackConfig.js should return the config\nfunction (config, options) { return config; }');
-      }
-
-      return config;
-    } else {
-      return wrapCreateWebpackConfig(options);
+      return typeof config !== 'object' && console.error('app createAppWebpackConfig.js should return the config\nfunction (config, options) { return config; }'), config;
     }
+
+    return wrapCreateWebpackConfig(options);
   };
 };
 //# sourceMappingURL=createAppWebpackConfig.js.map

@@ -23,11 +23,11 @@
     "babel-preset-latest-node": "^0.4.0",
     "flow-runtime": "^0.14.0",
     "pobpack-utils": "^2.0.0",
-    "source-map-support": "^0.4.15",
+    "source-map-support": "^0.4.16",
     "springbokjs-daemon": "^2.1.1",
     "webpack-node-externals": "^1.6.0"
   },
   "devDependencies": {
-    "pob-babel": "^18.0.1"
+    "pob-babel": "^18.1.4"
   }
 }

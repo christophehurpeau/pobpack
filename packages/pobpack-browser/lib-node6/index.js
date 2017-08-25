@@ -17,7 +17,7 @@ var _createBrowserWebpackConfig2 = _interopRequireDefault(_createBrowserWebpackC
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) keys.indexOf(i) >= 0 || Object.prototype.hasOwnProperty.call(obj, i) && (target[i] = obj[i]); return target; }
 
 exports.TARGETS = _createBrowserWebpackConfig.TARGETS;
 exports.ALL = _createBrowserWebpackConfig.ALL;
@@ -28,19 +28,16 @@ const createAppBrowserCompiler = exports.createAppBrowserCompiler = (target, opt
 
 const build = exports.build = (options = {}) => {
   const compilers = _createBrowserWebpackConfig.TARGETS.map(t => createAppBrowserCompiler(t, Object.assign({}, options, { hmr: false })));
-  compilers[0].clean();
-  return compilers.map(compiler => compiler.run());
+
+  return compilers[0].clean(), compilers.map(compiler => compiler.run());
 };
 
 const watch = exports.watch = (options, callback) => {
-  if (typeof options === 'function') {
-    callback = options;
-    options = undefined;
-  }
+  typeof options === 'function' && (callback = options, options = undefined);
+
   const compiler = createAppBrowserCompiler(_createBrowserWebpackConfig.MODERN, Object.assign({}, options, { hmr: true }));
-  compiler.clean();
-  compiler.watch(callback);
-  return compiler;
+
+  return compiler.clean(), compiler.watch(callback), compiler;
 };
 
 const runDevServer = (compiler, options) => {
@@ -54,8 +51,8 @@ const runDevServer = (compiler, options) => {
     https,
     overlay: true
   }, webpackDevServerOptions));
-  browserDevServer.listen(port);
-  return browserDevServer;
+
+  return browserDevServer.listen(port), browserDevServer;
 };
 
 exports.runDevServer = runDevServer;
@@ -65,6 +62,7 @@ const watchAndRunDevServer = exports.watchAndRunDevServer = (options, runOptions
     successMessage: `Your application is running here: ${url}`
   });
   compiler.clean();
+
   const webpackDevServer = runDevServer(compiler, runOptions);
   return Object.assign({}, compiler, { webpackDevServer });
 };

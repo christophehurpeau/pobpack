@@ -14,6 +14,9 @@ export const ALL = 'all';
 export const TARGETS = [ALL, MODERN];
 
 export default (target: BrowserTargetType) => (options: OptionsType) => ({
+  // Don't attempt to continue if there are any errors.
+  bail: options.env === 'production',
+
   // Target web
   target: 'web',
 

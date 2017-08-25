@@ -10,6 +10,9 @@ import {
 } from 'pobpack-utils/src';
 
 export default (options: OptionsType) => ({
+  // Don't attempt to continue if there are any errors.
+  bail: options.env === 'production',
+
   // Target node
   target: 'node',
 

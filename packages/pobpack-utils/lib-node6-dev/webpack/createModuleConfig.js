@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _fs = require('fs');
+
+var _path = require('path');
+
 var _createOptions = require('../createOptions');
 
 var _flowRuntime = require('flow-runtime');
@@ -17,9 +21,7 @@ const OptionsType = _flowRuntime2.default.tdz(() => _createOptions.OptionsType);
 exports.default = function createModuleConfig(options) {
   let _optionsType = _flowRuntime2.default.ref(OptionsType);
 
-  _flowRuntime2.default.param('options', _optionsType).assert(options);
-
-  return {
+  return _flowRuntime2.default.param('options', _optionsType).assert(options), {
     strictExportPresence: true,
 
     rules: [
@@ -35,9 +37,7 @@ exports.default = function createModuleConfig(options) {
     // jsx?
     {
       test: /\.jsx?$/,
-      exclude: [new RegExp(
-      // eslint-disable-next-line prefer-template
-      'node_modules/' + (!options.includeModules || options.includeModules.length === 0 ? '' : `(?!(?:${options.includeModules.join('|')}))/`)), options.paths.build],
+      include: [(0, _path.resolve)(options.paths.src), ...(options.includeModules || []).map(includeModule => (0, _fs.realpathSync)((0, _path.resolve)('node_modules', includeModule)))],
       loaders: [{
         loader: require.resolve('babel-loader'),
         options: Object.assign({

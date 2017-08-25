@@ -1,3 +1,5 @@
+import { realpathSync } from 'fs';
+import { resolve } from 'path';
 import { type OptionsType } from '../createOptions';
 
 export default (options: OptionsType) => ({
@@ -16,15 +18,10 @@ export default (options: OptionsType) => ({
     // jsx?
     {
       test: /\.jsx?$/,
-      exclude: [
-        new RegExp(
-          // eslint-disable-next-line prefer-template
-          'node_modules/' +
-            (!options.includeModules || options.includeModules.length === 0
-              ? ''
-              : `(?!(?:${options.includeModules.join('|')}))/`),
-        ),
-        options.paths.build,
+      include: [
+        resolve(options.paths.src),
+        ...(options.includeModules || [])
+          .map(includeModule => realpathSync(resolve('node_modules', includeModule))),
       ],
       loaders: [
         {

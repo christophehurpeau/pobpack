@@ -38,9 +38,7 @@ var _flowRuntime2 = _interopRequireDefault(_flowRuntime);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const buildThrowOnError = stats => {
-  if (!stats.hasErrors()) {
-    return stats;
-  }
+  if (!stats.hasErrors()) return stats;
 
   throw new Error(stats.toString({}, true));
 };
@@ -71,34 +69,20 @@ exports.default = function createPobpackCompiler(bundleName, webpackConfig, _arg
 
       let _msgType = _flowRuntime2.default.string();
 
-      _flowRuntime2.default.param('percentage', _percentageType).assert(percentage);
-
-      _flowRuntime2.default.param('msg', _msgType).assert(msg);
-
-      if (percentage === 0) {
-        bar = new _progress2.default(`${_chalk2.default.yellow.bold(`Building ${bundleName} bundle...`)} ${_chalk2.default.bold(':percent')} [:bar] → :msg`, { incomplete: ' ', complete: '▇', total: 50, clear: true, stream: process.stdout });
-        // } else if (percentage === 1) {
-        //   // bar.clear();
-        //   bar = null;
-      } else {
-        bar.update(percentage, { msg: msg.length > 20 ? `${msg.substr(0, 20)}...` : msg });
-      }
+      _flowRuntime2.default.param('percentage', _percentageType).assert(percentage), _flowRuntime2.default.param('msg', _msgType).assert(msg), percentage === 0 ? bar = new _progress2.default(`${_chalk2.default.yellow.bold(`Building ${bundleName} bundle...`)} ${_chalk2.default.bold(':percent')} [:bar] → :msg`, { incomplete: ' ', complete: '▇', total: 50, clear: true, stream: process.stdout }) : bar.update(percentage, { msg: msg.length > 20 ? `${msg.substr(0, 20)}...` : msg });
     }));
   }
 
   // human-readable error messages
-  compiler.apply(new _FriendlyErrorsWebpackPlugin2.default({ bundleName, successMessage }));
 
-  return _returnType.assert({
+
+  return compiler.apply(new _FriendlyErrorsWebpackPlugin2.default({ bundleName, successMessage })), _returnType.assert({
     compiler,
     webpackConfig,
     clean: () => webpackConfig.output.path && (0, _child_process.execSync)(`rm -Rf ${webpackConfig.output.path}`),
     run: () => (0, _promiseCallbackFactory2.default)(done => compiler.run(done)).then(buildThrowOnError),
     watch: callback => compiler.watch({}, (err, stats) => {
-      if (err) return;
-      if (stats.hasErrors()) return;
-      buildThrowOnError(stats);
-      callback(stats);
+      err || stats.hasErrors() || (buildThrowOnError(stats), callback(stats));
     })
   });
 };

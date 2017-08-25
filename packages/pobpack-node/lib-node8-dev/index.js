@@ -34,24 +34,19 @@ const createAppNodeCompiler = exports.createAppNodeCompiler = options => {
 };
 
 const build = exports.build = (options = {}) => {
-  const compiler = createAppNodeCompiler({ ...options, hmr: false });
-  compiler.clean();
-  return compiler.run();
+  const compiler = createAppNodeCompiler(Object.assign({}, options, { hmr: false }));
+
+  return compiler.clean(), compiler.run();
 };
 
 const watch = exports.watch = (options, callback) => {
   let _callbackType = _flowRuntime2.default.ref(WatchCallbackType);
 
-  _flowRuntime2.default.param('callback', _callbackType).assert(callback);
+  _flowRuntime2.default.param('callback', _callbackType).assert(callback), typeof options === 'function' && (callback = _callbackType.assert(options), options = undefined);
 
-  if (typeof options === 'function') {
-    callback = _callbackType.assert(options);
-    options = undefined;
-  }
-  const compiler = createAppNodeCompiler({ ...options, hmr: true });
-  compiler.clean();
-  compiler.watch(callback);
-  return compiler;
+  const compiler = createAppNodeCompiler(Object.assign({}, options, { hmr: true }));
+
+  return compiler.clean(), compiler.watch(callback), compiler;
 };
 
 const RunOptions = _flowRuntime2.default.type('RunOptions', _flowRuntime2.default.exactObject(_flowRuntime2.default.property('key', _flowRuntime2.default.nullable(_flowRuntime2.default.string())), _flowRuntime2.default.property('displayName', _flowRuntime2.default.nullable(_flowRuntime2.default.string())), _flowRuntime2.default.property('args', _flowRuntime2.default.nullable(_flowRuntime2.default.array(_flowRuntime2.default.union(_flowRuntime2.default.string(), _flowRuntime2.default.number())))), _flowRuntime2.default.property('cwd', _flowRuntime2.default.nullable(_flowRuntime2.default.string()))));
@@ -59,37 +54,29 @@ const RunOptions = _flowRuntime2.default.type('RunOptions', _flowRuntime2.defaul
 const watchAndRunCompiler = exports.watchAndRunCompiler = (compiler, options = {}) => {
   let _compilerType = _flowRuntime2.default.ref(PobpackCompilerType);
 
-  _flowRuntime2.default.param('compiler', _compilerType).assert(compiler);
-
-  _flowRuntime2.default.param('options', RunOptions).assert(options);
+  _flowRuntime2.default.param('compiler', _compilerType).assert(compiler), _flowRuntime2.default.param('options', RunOptions).assert(options);
 
   let daemon;
   return compiler.watch(() => {
-    if (!daemon) {
-      daemon = (0, _springbokjsDaemon2.default)({
+    if (!daemon) daemon = (0, _springbokjsDaemon2.default)({
         key: options.key || 'pobpack-node',
         displayName: options.displayName,
         cwd: options.cwd,
         args: [(0, _path.join)(compiler.webpackConfig.output.path), ...(options.args || [])]
         // autoRestart: true,
-      });
-      daemon.start();
-      process.on('exit', () => daemon.stop());
-    } else {
+      }), daemon.start(), process.on('exit', () => daemon.stop());else
       // already started, send a signal to ask hot reload
       try {
         daemon.sendSIGUSR2();
       } catch (err) {
         daemon.restart();
       }
-    }
   });
 };
 
 const watchAndRun = exports.watchAndRun = options => {
-  const compiler = createAppNodeCompiler({ ...options, hmr: true });
-  compiler.clean();
-  watchAndRunCompiler(compiler);
-  return compiler;
+  const compiler = createAppNodeCompiler(Object.assign({}, options, { hmr: true }));
+
+  return compiler.clean(), watchAndRunCompiler(compiler), compiler;
 };
 //# sourceMappingURL=index.js.map

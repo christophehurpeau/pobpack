@@ -20,11 +20,9 @@ exports.default = function createResolveConfig(modulePrefixPackageFields, option
 
   let _optionsType = _flowRuntime2.default.ref(OptionsType);
 
-  _flowRuntime2.default.param('modulePrefixPackageFields', _modulePrefixPackageFieldsType).assert(modulePrefixPackageFields);
+  return _flowRuntime2.default.param('modulePrefixPackageFields', _modulePrefixPackageFieldsType).assert(modulePrefixPackageFields), _flowRuntime2.default.param('options', _optionsType).assert(options), {
+    cacheWithContext: false,
 
-  _flowRuntime2.default.param('options', _optionsType).assert(options);
-
-  return {
     modules: ['node_modules'],
     extensions: ['.js', '.jsx'],
 
@@ -32,9 +30,9 @@ exports.default = function createResolveConfig(modulePrefixPackageFields, option
     // old `webpack:` syntax
     options.env !== 'production' && `webpack:${prefix}-dev`, `webpack:${prefix}`])), options.env !== 'production' && 'module-dev', 'module',
     // old webpack: syntax
-    options.env !== 'production' && 'webpack:main-dev', 'webpack:main', ...(!modulePrefixPackageFields.includes('browser') ? [] : [
+    options.env !== 'production' && 'webpack:main-dev', 'webpack:main', ...(modulePrefixPackageFields.includes('browser') ? [
     // Browser builds
-    options.env !== 'production' && 'browser-dev', 'browser']), options.env !== 'production' && 'main-dev', 'main'].filter(Boolean),
+    options.env !== 'production' && 'browser-dev', 'browser'] : []), options.env !== 'production' && 'main-dev', 'main'].filter(Boolean),
 
     aliasFields: [...[].concat(...modulePrefixPackageFields.map(prefix => [options.env !== 'production' && `module:aliases-${prefix}-dev`, `module:aliases-${prefix}`,
 

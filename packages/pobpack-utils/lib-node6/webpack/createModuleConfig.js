@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _fs = require('fs');
+
+var _path = require('path');
+
 require('../createOptions');
 
 exports.default = options => ({
@@ -22,9 +26,7 @@ exports.default = options => ({
   // jsx?
   {
     test: /\.jsx?$/,
-    exclude: [new RegExp(
-    // eslint-disable-next-line prefer-template
-    'node_modules/' + (!options.includeModules || options.includeModules.length === 0 ? '' : `(?!(?:${options.includeModules.join('|')}))/`)), options.paths.build],
+    include: [(0, _path.resolve)(options.paths.src), ...(options.includeModules || []).map(includeModule => (0, _fs.realpathSync)((0, _path.resolve)('node_modules', includeModule)))],
     loaders: [{
       loader: require.resolve('babel-loader'),
       options: Object.assign({

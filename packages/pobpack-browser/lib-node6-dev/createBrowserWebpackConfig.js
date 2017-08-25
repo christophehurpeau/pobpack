@@ -30,14 +30,13 @@ const ALL = exports.ALL = 'all';
 const TARGETS = exports.TARGETS = [ALL, MODERN];
 
 exports.default = function createBrowserWebpackConfig(target) {
-  _flowRuntime2.default.param('target', BrowserTargetType).assert(target);
-
-  return options => {
+  return _flowRuntime2.default.param('target', BrowserTargetType).assert(target), options => {
     let _optionsType = _flowRuntime2.default.ref(OptionsType);
 
-    _flowRuntime2.default.param('options', _optionsType).assert(options);
+    return _flowRuntime2.default.param('options', _optionsType).assert(options), {
+      // Don't attempt to continue if there are any errors.
+      bail: options.env === 'production',
 
-    return {
       // Target web
       target: 'web',
 
@@ -74,11 +73,7 @@ exports.default = function createBrowserWebpackConfig(target) {
         })
       })),
 
-      entry: options.entries.reduce((entries, entry) => {
-        if (typeof entry === 'string') entry = { key: entry, path: entry };
-        entries[entry.key] = [target !== MODERN && require.resolve('babel-regenerator-runtime'), options.hmr && require.resolve('react-hot-loader/patch'), options.hmr && require.resolve('react-dev-utils/webpackHotDevClient'), _path2.default.join(_path2.default.resolve(options.paths.src), entry.path)].filter(Boolean);
-        return entries;
-      }, {}),
+      entry: options.entries.reduce((entries, entry) => (typeof entry === 'string' && (entry = { key: entry, path: entry }), entries[entry.key] = [target !== MODERN && require.resolve('babel-regenerator-runtime'), options.hmr && require.resolve('react-hot-loader/patch'), options.hmr && require.resolve('react-dev-utils/webpackHotDevClient'), _path2.default.join(_path2.default.resolve(options.paths.src), entry.path)].filter(Boolean), entries), {}),
 
       output: {
         path: _path2.default.resolve(options.paths.build),

@@ -17,6 +17,9 @@ var _pobpackUtils = require('pobpack-utils');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = options => ({
+  // Don't attempt to continue if there are any errors.
+  bail: options.env === 'production',
+
   // Target node
   target: 'node',
 
@@ -52,11 +55,7 @@ exports.default = options => ({
     }, options.babel)
   })),
 
-  entry: options.entries.reduce((entries, entry) => {
-    if (typeof entry === 'string') entry = { key: entry, path: entry };
-    entries[entry.key] = [options.hmr && require.resolve('../hot'), _path2.default.join(_path2.default.resolve(options.paths.src), entry.path)].filter(Boolean);
-    return entries;
-  }, {}),
+  entry: options.entries.reduce((entries, entry) => (typeof entry === 'string' && (entry = { key: entry, path: entry }), entries[entry.key] = [options.hmr && require.resolve('../hot'), _path2.default.join(_path2.default.resolve(options.paths.src), entry.path)].filter(Boolean), entries), {}),
 
   output: {
     path: _path2.default.resolve(options.paths.build),
