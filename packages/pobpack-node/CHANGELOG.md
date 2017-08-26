@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.0.2"></a>
+## [2.0.2](https://github.com/christophehurpeau/pobpack/compare/pobpack-node@2.0.1...pobpack-node@2.0.2) (2017-08-26)
+
+
+### Bug Fixes
+
+* update dependencies ([975a9d1](https://github.com/christophehurpeau/pobpack/commit/975a9d1))
+
+
+
+
 <a name="2.0.1"></a>
 ## [2.0.1](https://github.com/christophehurpeau/pobpack/compare/pobpack-node@2.0.0...pobpack-node@2.0.1) (2017-08-25)
 
