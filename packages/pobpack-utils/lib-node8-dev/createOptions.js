@@ -26,7 +26,9 @@ exports.default = function createOptions(options) {
 
   const _returnType = _flowRuntime2.default.return(OptionsType);
 
-  return _flowRuntime2.default.param('options', _optionsType).assert(options), _returnType.assert({
+  _flowRuntime2.default.param('options', _optionsType).assert(options);
+
+  return _returnType.assert({
     env: options.env || process.env.NODE_ENV,
     hmr: options.hmr,
     resolveLoaderModules: options.resolveLoaderModules,

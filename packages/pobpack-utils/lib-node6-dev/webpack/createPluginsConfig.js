@@ -25,7 +25,9 @@ const OptionsType = _flowRuntime2.default.tdz(() => _createOptions.OptionsType);
 exports.default = function createPluginsConfig(options) {
   let _optionsType = _flowRuntime2.default.ref(OptionsType);
 
-  return _flowRuntime2.default.param('options', _optionsType).assert(options), [...options.prependPlugins,
+  _flowRuntime2.default.param('options', _optionsType).assert(options);
+
+  return [...options.prependPlugins,
 
   // enforces the entire path of all required modules match the exact case
   // of the actual path on disk. Using this plugin helps alleviate cases

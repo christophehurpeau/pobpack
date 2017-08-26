@@ -529,9 +529,9 @@ babel-preset-latest-node@^0.4.0:
     babel-plugin-transform-exponentiation-operator "^6.24.1"
     babel-plugin-transform-object-rest-spread "^6.23.0"
 
-babel-preset-optimizations@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/babel-preset-optimizations/-/babel-preset-optimizations-1.2.0.tgz#5fad5b0550411038fae9a940a84f4439eb637e52"
+babel-preset-optimizations@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/babel-preset-optimizations/-/babel-preset-optimizations-1.2.1.tgz#fdbda5bbc0be40d22ab506e6e23a207dfb9d94da"
   dependencies:
     babel-plugin-minify-constant-folding "^0.2.0"
     babel-plugin-minify-dead-code-elimination "^0.2.0"
@@ -1981,8 +1981,8 @@ nan@^2.3.0:
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.6.2.tgz#e4ff34e6c95fdfb5aecc08de6596f43605a7db45"
 
 nightingale-ansi-formatter@^1.7.2:
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/nightingale-ansi-formatter/-/nightingale-ansi-formatter-1.8.0.tgz#890f007b7e0cfe4994efb71c63e37b92076b722a"
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/nightingale-ansi-formatter/-/nightingale-ansi-formatter-1.8.1.tgz#2ee0e138a2e622c7e330f166d641ae1fa696067d"
   dependencies:
     ansi-styles "^3.2.0"
     flow-runtime "0.10.0"
@@ -2288,14 +2288,14 @@ pkg-dir@^2.0.0:
   dependencies:
     find-up "^2.1.0"
 
-pob-babel@^18.1.4:
-  version "18.1.4"
-  resolved "https://registry.yarnpkg.com/pob-babel/-/pob-babel-18.1.4.tgz#8dd041cfa29373c0f371ae3f1ef738431d74fa9f"
+pob-babel@^18.1.5:
+  version "18.1.5"
+  resolved "https://registry.yarnpkg.com/pob-babel/-/pob-babel-18.1.5.tgz#3220f041c7d64a28064f8fca21c4e96b4a7b07f5"
   dependencies:
     babel-core "^6.26.0"
     babel-plugin-discard-module-references "^1.1.2"
     babel-plugin-flow-runtime "^0.10.0"
-    babel-preset-optimizations "^1.2.0"
+    babel-preset-optimizations "^1.2.1"
     babel-preset-pob "^0.5.0"
     babel-preset-pob-stages "^0.2.4"
     babel-register "^6.26.0"

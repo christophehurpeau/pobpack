@@ -28,6 +28,6 @@
     "webpack-node-externals": "^1.6.0"
   },
   "devDependencies": {
-    "pob-babel": "^18.1.4"
+    "pob-babel": "^18.1.5"
   }
 }

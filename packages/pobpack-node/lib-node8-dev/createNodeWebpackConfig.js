@@ -26,7 +26,9 @@ const OptionsType = _flowRuntime2.default.tdz(() => _pobpackUtils.OptionsType);
 exports.default = function createNodeWebpackConfig(options) {
   let _optionsType = _flowRuntime2.default.ref(OptionsType);
 
-  return _flowRuntime2.default.param('options', _optionsType).assert(options), {
+  _flowRuntime2.default.param('options', _optionsType).assert(options);
+
+  return {
     // Don't attempt to continue if there are any errors.
     bail: options.env === 'production',
 
@@ -65,7 +67,11 @@ exports.default = function createNodeWebpackConfig(options) {
       }, options.babel)
     })),
 
-    entry: options.entries.reduce((entries, entry) => (typeof entry === 'string' && (entry = { key: entry, path: entry }), entries[entry.key] = [options.hmr && require.resolve('../hot'), _path2.default.join(_path2.default.resolve(options.paths.src), entry.path)].filter(Boolean), entries), {}),
+    entry: options.entries.reduce((entries, entry) => {
+      if (typeof entry === 'string') entry = { key: entry, path: entry };
+      entries[entry.key] = [options.hmr && require.resolve('../hot'), _path2.default.join(_path2.default.resolve(options.paths.src), entry.path)].filter(Boolean);
+      return entries;
+    }, {}),
 
     output: {
       path: _path2.default.resolve(options.paths.build),

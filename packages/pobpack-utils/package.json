@@ -33,6 +33,6 @@
   },
   "devDependencies": {
     "babel-preset-latest-node": "^0.4.0",
-    "pob-babel": "^18.1.4"
+    "pob-babel": "^18.1.5"
   }
 }

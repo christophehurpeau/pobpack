@@ -4,5 +4,12 @@ var _index = require('./index');
 
 const cmd = process.argv[2];
 
-cmd === 'build' ? (0, _index.build)() : cmd !== 'start' && cmd ? (console.log(`Invalid command: ${cmd}`), process.exit(1)) : (0, _index.watchAndRun)();
+if (cmd === 'build') {
+  (0, _index.build)();
+} else if (cmd === 'start' || !cmd) {
+  (0, _index.watchAndRun)();
+} else {
+  console.log(`Invalid command: ${cmd}`);
+  process.exit(1);
+}
 //# sourceMappingURL=cli.js.map

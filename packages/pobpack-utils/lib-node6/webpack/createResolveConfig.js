@@ -16,9 +16,9 @@ exports.default = (modulePrefixPackageFields, options) => ({
   // old `webpack:` syntax
   options.env !== 'production' && `webpack:${prefix}-dev`, `webpack:${prefix}`])), options.env !== 'production' && 'module-dev', 'module',
   // old webpack: syntax
-  options.env !== 'production' && 'webpack:main-dev', 'webpack:main', ...(modulePrefixPackageFields.includes('browser') ? [
+  options.env !== 'production' && 'webpack:main-dev', 'webpack:main', ...(!modulePrefixPackageFields.includes('browser') ? [] : [
   // Browser builds
-  options.env !== 'production' && 'browser-dev', 'browser'] : []), options.env !== 'production' && 'main-dev', 'main'].filter(Boolean),
+  options.env !== 'production' && 'browser-dev', 'browser']), options.env !== 'production' && 'main-dev', 'main'].filter(Boolean),
 
   aliasFields: [...[].concat(...modulePrefixPackageFields.map(prefix => [options.env !== 'production' && `module:aliases-${prefix}-dev`, `module:aliases-${prefix}`,
 

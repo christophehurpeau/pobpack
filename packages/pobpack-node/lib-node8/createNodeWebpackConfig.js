@@ -55,7 +55,11 @@ exports.default = options => ({
     }, options.babel)
   })),
 
-  entry: options.entries.reduce((entries, entry) => (typeof entry === 'string' && (entry = { key: entry, path: entry }), entries[entry.key] = [options.hmr && require.resolve('../hot'), _path2.default.join(_path2.default.resolve(options.paths.src), entry.path)].filter(Boolean), entries), {}),
+  entry: options.entries.reduce((entries, entry) => {
+    if (typeof entry === 'string') entry = { key: entry, path: entry };
+    entries[entry.key] = [options.hmr && require.resolve('../hot'), _path2.default.join(_path2.default.resolve(options.paths.src), entry.path)].filter(Boolean);
+    return entries;
+  }, {}),
 
   output: {
     path: _path2.default.resolve(options.paths.build),

@@ -21,7 +21,9 @@ const OptionsType = _flowRuntime2.default.tdz(() => _createOptions.OptionsType);
 exports.default = function createModuleConfig(options) {
   let _optionsType = _flowRuntime2.default.ref(OptionsType);
 
-  return _flowRuntime2.default.param('options', _optionsType).assert(options), {
+  _flowRuntime2.default.param('options', _optionsType).assert(options);
+
+  return {
     strictExportPresence: true,
 
     rules: [
