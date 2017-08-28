@@ -42,12 +42,13 @@ export const watch = (options, callback: WatchCallbackType) => {
 };
 
 type RunOptions = {
+  host: ?string,
   port: number,
   https: ?boolean,
 };
 
 export const runDevServer = (compiler: PobpackCompilerType, options: RunOptions) => {
-  const { port, https, ...webpackDevServerOptions } = options;
+  const { host, port, https, ...webpackDevServerOptions } = options;
   const browserDevServer = new WebpackDevServer(compiler.compiler, {
     hot: true,
     // stats: 'errors-only',
@@ -57,7 +58,7 @@ export const runDevServer = (compiler: PobpackCompilerType, options: RunOptions)
     overlay: true,
     ...webpackDevServerOptions,
   });
-  browserDevServer.listen(port);
+  browserDevServer.listen(port, host);
   return browserDevServer;
 };
 

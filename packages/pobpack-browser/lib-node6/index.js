@@ -44,8 +44,8 @@ const watch = exports.watch = (options, callback) => {
 };
 
 const runDevServer = (compiler, options) => {
-  const { port, https } = options,
-        webpackDevServerOptions = _objectWithoutProperties(options, ['port', 'https']);
+  const { host, port, https } = options,
+        webpackDevServerOptions = _objectWithoutProperties(options, ['host', 'port', 'https']);
   const browserDevServer = new _webpackDevServer2.default(compiler.compiler, Object.assign({
     hot: true,
     // stats: 'errors-only',
@@ -54,7 +54,7 @@ const runDevServer = (compiler, options) => {
     https,
     overlay: true
   }, webpackDevServerOptions));
-  browserDevServer.listen(port);
+  browserDevServer.listen(port, host);
   return browserDevServer;
 };
 

@@ -69,7 +69,7 @@ const watch = exports.watch = (options, callback) => {
   return compiler;
 };
 
-const RunOptions = _flowRuntime2.default.type('RunOptions', _flowRuntime2.default.object(_flowRuntime2.default.property('port', _flowRuntime2.default.number()), _flowRuntime2.default.property('https', _flowRuntime2.default.nullable(_flowRuntime2.default.boolean()))));
+const RunOptions = _flowRuntime2.default.type('RunOptions', _flowRuntime2.default.object(_flowRuntime2.default.property('host', _flowRuntime2.default.nullable(_flowRuntime2.default.string())), _flowRuntime2.default.property('port', _flowRuntime2.default.number()), _flowRuntime2.default.property('https', _flowRuntime2.default.nullable(_flowRuntime2.default.boolean()))));
 
 const runDevServer = (compiler, options) => {
   let _compilerType = _flowRuntime2.default.ref(PobpackCompilerType);
@@ -78,8 +78,8 @@ const runDevServer = (compiler, options) => {
 
   _flowRuntime2.default.param('options', RunOptions).assert(options);
 
-  const { port, https } = options,
-        webpackDevServerOptions = _objectWithoutProperties(options, ['port', 'https']);
+  const { host, port, https } = options,
+        webpackDevServerOptions = _objectWithoutProperties(options, ['host', 'port', 'https']);
   const browserDevServer = new _webpackDevServer2.default(compiler.compiler, Object.assign({
     hot: true,
     // stats: 'errors-only',
@@ -88,7 +88,7 @@ const runDevServer = (compiler, options) => {
     https,
     overlay: true
   }, webpackDevServerOptions));
-  browserDevServer.listen(port);
+  browserDevServer.listen(port, host);
   return browserDevServer;
 };
 
