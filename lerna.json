@@ -1,9 +1,15 @@
 {
   "private": true,
-  "lerna": "2.0.0-rc.4",
+  "lerna": "2.1.2",
   "npmClient": "yarn",
-  "packages": [
-    "packages/*"
-  ],
-  "version": "independent"
+  "useWorkspaces": true,
+  "version": "independent",
+  "commands": {
+    "publish": {
+      "ignore": [
+        "pobpack-browser-example",
+        "pobpack-node-example"
+      ]
+    }
+  }
 }

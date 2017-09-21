@@ -42,7 +42,7 @@ export const watch = (options, callback: WatchCallbackType) => {
 };
 
 type RunOptions = {
-  host: ?string,
+  host?: string,
   port: number,
   https: ?boolean,
 };

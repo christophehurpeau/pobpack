@@ -29,10 +29,10 @@ export const watch = (options, callback: WatchCallbackType) => {
 };
 
 type RunOptions = {|
-  key: ?string,
-  displayName: ?string,
-  args: ?Array<string | number>,
-  cwd: ?string,
+  key?: ?string,
+  displayName?: ?string,
+  args?: ?Array<string | number>,
+  cwd?: ?string,
 |};
 
 export const watchAndRunCompiler = (compiler: PobpackCompilerType, options: RunOptions = {}) => {

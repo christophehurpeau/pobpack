@@ -17,19 +17,21 @@
     "watch": "pob-watch"
   },
   "dependencies": {
-    "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "case-sensitive-paths-webpack-plugin": "^2.1.1",
     "chalk": "^2.1.0",
-    "flow-runtime": "0.10.0",
+    "flow-runtime": "0.14.0",
     "json-loader": "^0.5.7",
     "nightingale": "^6.2.1",
     "nightingale-console": "^2.5.1",
     "nightingale-logger": "^3.4.0",
     "progress": "^2.0.0",
     "promise-callback-factory": "^1.4.0",
-    "react-dev-utils": "^3.1.1",
-    "webpack": "^3.5.5"
+    "react-dev-utils": "^4.0.1",
+    "webpack": "^3.6.0"
+  },
+  "peerDependencies": {
+    "babel-core": "^6.26.0 || ^7.0.0-beta.0"
   },
   "devDependencies": {
     "babel-preset-latest-node": "^0.4.0",

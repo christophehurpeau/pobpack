@@ -7,7 +7,7 @@ import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages';
 
 type OptionsType = {|
   bundleName: string,
-  successMessage: ?string,
+  successMessage?: ?string,
 |};
 
 addConfig({ key: 'pobpack-utils', handler: new ConsoleHandler(levels.INFO) });

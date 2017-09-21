@@ -51,7 +51,7 @@ const WatchCallbackType = exports.WatchCallbackType = _flowRuntime2.default.type
 
 const PobpackCompilerType = exports.PobpackCompilerType = _flowRuntime2.default.type('PobpackCompilerType', _flowRuntime2.default.exactObject(_flowRuntime2.default.property('compiler', _flowRuntime2.default.any()), _flowRuntime2.default.property('webpackConfig', _flowRuntime2.default.object()), _flowRuntime2.default.property('clean', _flowRuntime2.default.function(_flowRuntime2.default.return(_flowRuntime2.default.string()))), _flowRuntime2.default.property('run', _flowRuntime2.default.function(_flowRuntime2.default.return(_flowRuntime2.default.ref('Promise')))), _flowRuntime2.default.property('watch', _flowRuntime2.default.function(_flowRuntime2.default.param('callback', WatchCallbackType), _flowRuntime2.default.return(WebpackWatcherType)))));
 
-const CreateComplierOptionsType = _flowRuntime2.default.type('CreateComplierOptionsType', _flowRuntime2.default.exactObject(_flowRuntime2.default.property('progressBar', _flowRuntime2.default.nullable(_flowRuntime2.default.boolean())), _flowRuntime2.default.property('successMessage', _flowRuntime2.default.nullable(_flowRuntime2.default.string()))));
+const CreateComplierOptionsType = _flowRuntime2.default.type('CreateComplierOptionsType', _flowRuntime2.default.exactObject(_flowRuntime2.default.property('progressBar', _flowRuntime2.default.nullable(_flowRuntime2.default.boolean()), true), _flowRuntime2.default.property('successMessage', _flowRuntime2.default.nullable(_flowRuntime2.default.string()), true)));
 
 exports.default = function createPobpackCompiler(bundleName, webpackConfig, _arg = {}) {
   let _bundleNameType = _flowRuntime2.default.string();

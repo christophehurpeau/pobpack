@@ -15,19 +15,19 @@ type ConfigEntryType =
 type BabelConfigType = Object;
 
 export type OptionsType = {|
-  env: ?string,
+  env?: ?string,
   hmr: boolean,
-  resolveLoaderModules: ?Array<string>,
+  resolveLoaderModules?: ?Array<string>,
   webpackPrefixPackageFields: Array<string>,
-  babel: ?BabelConfigType,
-  jsLoaders: ?Array<any>,
-  moduleRules: ?Array<any>,
-  prependPlugins: ?Array<any>,
-  plugins: ?Array<any>,
+  babel?: ?BabelConfigType,
+  jsLoaders?: ?Array<any>,
+  moduleRules?: ?Array<any>,
+  prependPlugins?: ?Array<any>,
+  plugins?: ?Array<any>,
   paths: ConfigPathsType,
-  entries: ?Array<ConfigEntryType>,
-  includeModules: ?Array<string>,
-  defines: ?{ [string]: any },
+  entries?: ?Array<ConfigEntryType>,
+  includeModules?: ?Array<string>,
+  defines?: ?{ [string]: any },
 |};
 
 export default (options: Object): OptionsType => ({

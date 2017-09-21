@@ -26,8 +26,8 @@ export type PobpackCompilerType = {|
 |};
 
 type CreateComplierOptionsType = {|
-  progressBar: ?boolean,
-  successMessage: ?string,
+  progressBar?: ?boolean,
+  successMessage?: ?string,
 |};
 
 export default (

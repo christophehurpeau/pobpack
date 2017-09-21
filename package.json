@@ -1,22 +1,23 @@
 {
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "bootstrap": "lerna bootstrap",
-    "publish": "lerna publish --conventional-commits --ignore example -m 'chore: publish'",
+    "release": "lerna publish --conventional-commits -m 'chore: publish'",
     "lint": "eslint --ext .js,.jsx packages/*/src/",
     "build": "lerna run build",
-    "watch": "lerna exec --parallel --ignore example -- yarn run watch -- --no-spinner",
+    "watch": "lerna exec --parallel --ignore \"*-example\" -- yarn run watch -- --no-spinner",
     "preversion": "yarn run lint && lerna run build && pob-repository-check-clean",
     "postcheckout": "./git-hooks/post-checkout",
     "postmerge": "./git-hooks/post-merge",
     "precommit": "./git-hooks/pre-commit",
-    "preparecommitmsg": "./git-hooks/prepare-commit-msg ${GIT_PARAMS}",
-    "postinstall": "(pob-repository-check-clean && lerna bootstrap) || echo"
+    "preparecommitmsg": "./git-hooks/prepare-commit-msg ${GIT_PARAMS}"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
     "eslint": "^4.5.0",
-    "eslint-config-airbnb-base": "^11.3.2",
+    "eslint-config-airbnb-base": "^12.0.0",
     "eslint-config-pob": "^16.0.4",
     "eslint-config-prettier": "^2.3.0",
     "eslint-plugin-babel": "^4.1.2",

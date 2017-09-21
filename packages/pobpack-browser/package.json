@@ -24,17 +24,18 @@
     "babel-regenerator-runtime": "^6.5.0",
     "flow-runtime": "^0.14.0",
     "pobpack-utils": "^2.0.2",
-    "react-dev-utils": "^3.0.2",
-    "react-error-html": "^0.2.0",
+    "react-dev-utils": "^4.0.1",
+    "react-error-html": "^0.2.1",
     "react-hot-loader": "^3.0.0-beta.6",
-    "source-map-support": "^0.4.16",
-    "webpack": "^3.5.5",
-    "webpack-dev-server": "^2.6.1"
+    "source-map-support": "^0.4.18",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.8.2"
   },
   "devDependencies": {
     "babel-preset-latest-node": "^0.4.0",
+    "eslint": "^4.7.2",
     "pob-babel": "^18.1.5",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react": "^16.0.0-rc.3",
+    "react-dom": "^16.0.0-rc.3"
   }
 }

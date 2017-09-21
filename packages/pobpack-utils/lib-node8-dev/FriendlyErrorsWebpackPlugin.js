@@ -70,7 +70,7 @@ function _initializerWarningHelper() {
   throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 }
 
-const OptionsType = _flowRuntime2.default.type('OptionsType', _flowRuntime2.default.exactObject(_flowRuntime2.default.property('bundleName', _flowRuntime2.default.string()), _flowRuntime2.default.property('successMessage', _flowRuntime2.default.nullable(_flowRuntime2.default.string()))));
+const OptionsType = _flowRuntime2.default.type('OptionsType', _flowRuntime2.default.exactObject(_flowRuntime2.default.property('bundleName', _flowRuntime2.default.string()), _flowRuntime2.default.property('successMessage', _flowRuntime2.default.nullable(_flowRuntime2.default.string()), true)));
 
 (0, _nightingale.addConfig)({ key: 'pobpack-utils', handler: new _nightingaleConsole2.default(_nightingale.levels.INFO) });
 const logger = new _nightingaleLogger2.default('pobpack-utils', 'pobpack');

@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "pobpack-node": "^2.0.2",
-    "webpack": "^3.5.5",
+    "webpack": "^3.6.0",
     "webpack-module-hot-accept": "^1.0.5"
   }
 }
