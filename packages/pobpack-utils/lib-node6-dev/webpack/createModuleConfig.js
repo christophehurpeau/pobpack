@@ -39,7 +39,7 @@ exports.default = function createModuleConfig(options) {
     // jsx?
     {
       test: /\.jsx?$/,
-      include: [(0, _path.resolve)(options.paths.src), ...(options.includeModules || []).map(includeModule => (0, _fs.realpathSync)((0, _path.resolve)('node_modules', includeModule)))],
+      include: [(0, _path.resolve)(options.paths.src), ...options.includeModules.map(includeModule => (0, _fs.realpathSync)((0, _path.resolve)('node_modules', includeModule))), ...options.includePaths],
       loaders: [{
         loader: require.resolve('babel-loader'),
         options: Object.assign({

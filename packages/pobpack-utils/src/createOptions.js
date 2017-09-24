@@ -27,7 +27,9 @@ export type OptionsType = {|
   paths: ConfigPathsType,
   entries?: ?Array<ConfigEntryType>,
   includeModules?: ?Array<string>,
+  includePaths?: ?Array<string>,
   defines?: ?{ [string]: any },
+  aliases?: ?{ [string]: any },
 |};
 
 export default (options: Object): OptionsType => ({
@@ -43,5 +45,7 @@ export default (options: Object): OptionsType => ({
   paths: { src: 'src', build: 'build', ...options.paths },
   entries: options.entries || ['index'],
   includeModules: options.includeModules || [],
+  includePaths: options.includePaths || [],
   defines: options.defines || {},
+  aliases: options.aliases || {},
 });

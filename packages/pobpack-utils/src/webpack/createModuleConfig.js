@@ -20,9 +20,10 @@ export default (options: OptionsType) => ({
       test: /\.jsx?$/,
       include: [
         resolve(options.paths.src),
-        ...(options.includeModules || []).map(includeModule =>
+        ...options.includeModules.map(includeModule =>
           realpathSync(resolve('node_modules', includeModule)),
         ),
+        ...options.includePaths,
       ],
       loaders: [
         {

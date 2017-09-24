@@ -52,4 +52,6 @@ export default (modulePrefixPackageFields: Array<string>, options: OptionsType) 
     modulePrefixPackageFields.includes('browser') && options.env !== 'production' && 'browser-dev',
     modulePrefixPackageFields.includes('browser') && 'browser',
   ].filter(Boolean),
+
+  alias: options.aliases,
 });

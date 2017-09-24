@@ -19,6 +19,8 @@ exports.default = options => ({
   paths: Object.assign({ src: 'src', build: 'build' }, options.paths),
   entries: options.entries || ['index'],
   includeModules: options.includeModules || [],
-  defines: options.defines || {}
+  includePaths: options.includePaths || [],
+  defines: options.defines || {},
+  aliases: options.aliases || {}
 });
 //# sourceMappingURL=createOptions.js.map
