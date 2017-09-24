@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="3.0.0"></a>
+# [3.0.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser@2.2.0...pobpack-browser@3.0.0) (2017-09-24)
+
+
+### Features
+
+* webpack is now a peerDependency ([473f5c9](https://github.com/christophehurpeau/pobpack/commit/473f5c9))
+
+
+### BREAKING CHANGES
+
+* requires your app to have webpack as a devDependency
+
+
+
+
 <a name="2.2.0"></a>
 # [2.2.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser@2.1.0...pobpack-browser@2.2.0) (2017-09-21)
 
