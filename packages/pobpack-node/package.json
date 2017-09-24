@@ -29,5 +29,8 @@
   },
   "devDependencies": {
     "pob-babel": "^18.1.5"
+  },
+  "peerDependencies": {
+    "webpack": "^3.6.0"
   }
 }
