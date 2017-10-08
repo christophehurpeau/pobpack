@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="3.1.1"></a>
+## [3.1.1](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@3.1.0...pobpack-utils@3.1.1) (2017-10-08)
+
+
+
+
+**Note:** Version bump only for package pobpack-utils
+
 <a name="3.1.0"></a>
 # [3.1.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@3.0.0...pobpack-utils@3.1.0) (2017-09-24)
 
