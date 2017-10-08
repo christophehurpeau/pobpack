@@ -8,7 +8,12 @@
     "start": "pobpack-node"
   },
   "devDependencies": {
+    "eslint": "^4.5.0",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-config-prettier": "^2.3.0",
+    "eslint-plugin-flowtype": "^2.35.0",
     "pobpack-node": "^2.0.2",
+    "prettier": "^1.5.3",
     "webpack": "^3.6.0",
     "webpack-module-hot-accept": "^1.0.5"
   }
