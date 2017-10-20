@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="3.2.0"></a>
+# [3.2.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@3.1.2...pobpack-utils@3.2.0) (2017-10-20)
+
+
+### Features
+
+* use package.json for nodeExternals ([13de6b1](https://github.com/christophehurpeau/pobpack/commit/13de6b1))
+
+
+
+
 <a name="3.1.2"></a>
 ## [3.1.2](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@3.1.1...pobpack-utils@3.1.2) (2017-10-19)
 
