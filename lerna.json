@@ -6,6 +6,7 @@
   "version": "independent",
   "commands": {
     "publish": {
+      "registry": "https://registry.npmjs.org/",
       "ignore": [
         "pobpack-browser-example",
         "pobpack-node-example"
