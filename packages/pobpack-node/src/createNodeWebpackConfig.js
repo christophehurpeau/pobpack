@@ -22,7 +22,7 @@ export default (options: OptionsType) => ({
   // don't bundle node_modules dependencies
   externals: nodeExternals({
     importType: 'commonjs',
-    modulesFromFile: true,
+    modulesFromFile: false,
     whitelist: [
       require.resolve('../hot'),
       ...options.includeModules.map(module => new RegExp(`^${module}(/|$)`)),
