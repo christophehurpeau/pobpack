@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="3.1.1"></a>
+## [3.1.1](https://github.com/christophehurpeau/pobpack/compare/pobpack-node@3.1.0...pobpack-node@3.1.1) (2017-10-22)
+
+
+### Bug Fixes
+
+* **pobpack-node:** node-externals use node_modules ([d679d7d](https://github.com/christophehurpeau/pobpack/commit/d679d7d))
+
+
+
+
 <a name="3.1.0"></a>
 # [3.1.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-node@3.0.3...pobpack-node@3.1.0) (2017-10-20)
 
