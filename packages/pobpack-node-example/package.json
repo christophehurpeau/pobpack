@@ -8,9 +8,9 @@
     "start": "pobpack-node"
   },
   "devDependencies": {
-    "eslint": "^4.9.0",
+    "eslint": "^4.10.0",
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-config-prettier": "^2.3.0",
+    "eslint-config-prettier": "^2.7.0",
     "eslint-plugin-flowtype": "^2.35.0",
     "pobpack-node": "^3.0.2",
     "prettier": "^1.5.3",
