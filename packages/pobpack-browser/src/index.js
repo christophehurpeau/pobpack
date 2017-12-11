@@ -44,7 +44,7 @@ export const watch = (options, callback: WatchCallbackType) => {
 type RunOptions = {
   host?: string,
   port: number,
-  https: ?boolean,
+  https?: ?boolean,
 };
 
 export const runDevServer = (compiler: PobpackCompilerType, options: RunOptions) => {

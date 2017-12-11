@@ -21,7 +21,7 @@
     "babel-loader": "^7.1.2",
     "case-sensitive-paths-webpack-plugin": "^2.1.1",
     "chalk": "^2.3.0",
-    "flow-runtime": "0.14.0",
+    "flow-runtime": "0.16.0",
     "json-loader": "^0.5.7",
     "nightingale": "^6.2.1",
     "nightingale-console": "^2.5.1",
@@ -33,17 +33,17 @@
   "devDependencies": {
     "babel-eslint": "^7.2.3",
     "babel-preset-latest-node": "^0.4.0",
-    "eslint": "^4.10.0",
+    "eslint": "^4.13.0",
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-config-pob": "^17.0.0",
-    "eslint-config-prettier": "^2.7.0",
+    "eslint-config-pob": "^17.1.0",
+    "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-babel": "^4.1.2",
-    "eslint-plugin-flowtype": "^2.39.1",
+    "eslint-plugin-flowtype": "^2.40.1",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-prettier": "^2.3.1",
     "lerna": "^2.5.1",
-    "pob-babel": "^18.1.5",
-    "prettier": "^1.7.4"
+    "pob-babel": "^18.2.0",
+    "prettier": "^1.9.1"
   },
   "peerDependencies": {
     "babel-core": "^6.26.0 || ^7.0.0-beta.0",

@@ -10,10 +10,10 @@
   "devDependencies": {
     "babel-preset-pob-react": "^0.2.4",
     "pobpack-browser": "^3.0.2",
-    "webpack": "^3.8.1"
+    "webpack": "^3.10.0"
   },
   "dependencies": {
-    "react": "^16.0.0-rc.3",
-    "react-dom": "^16.0.0-rc.3"
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   }
 }
