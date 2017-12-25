@@ -4,7 +4,7 @@ import { type OptionsType } from '../createOptions';
 export default (modulePrefixPackageFields: Array<string>, options: OptionsType) => ({
   cacheWithContext: false,
 
-  modules: ['node_modules'],
+  modules: ['node_modules', 'src'],
   extensions: ['.js', '.jsx'],
 
   mainFields: [
