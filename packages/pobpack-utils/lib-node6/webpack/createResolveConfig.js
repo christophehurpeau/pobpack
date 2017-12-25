@@ -9,7 +9,7 @@ require('../createOptions');
 exports.default = (modulePrefixPackageFields, options) => ({
   cacheWithContext: false,
 
-  modules: ['node_modules'],
+  modules: ['node_modules', 'src'],
   extensions: ['.js', '.jsx'],
 
   mainFields: [...[].concat(...modulePrefixPackageFields.map(prefix => [options.env !== 'production' && `module:${prefix}-dev`, `module:${prefix}`,

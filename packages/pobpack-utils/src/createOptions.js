@@ -18,7 +18,7 @@ export type OptionsType = {|
   env?: ?string,
   hmr: boolean,
   resolveLoaderModules?: ?Array<string>,
-  webpackPrefixPackageFields: Array<string>,
+  webpackPrefixPackageFields?: Array<string>,
   babel?: ?BabelConfigType,
   jsLoaders?: ?Array<any>,
   moduleRules?: ?Array<any>,

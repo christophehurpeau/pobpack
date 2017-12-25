@@ -3,7 +3,31 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.createResolveConfig = exports.createPluginsConfig = exports.createModuleConfig = exports.createPobpackCompiler = exports.createOptions = exports.createAppWebpackConfig = exports.webpack = undefined;
+exports.WatchCallbackType = exports.PobpackCompilerType = exports.OptionsType = exports.createResolveConfig = exports.createPluginsConfig = exports.createModuleConfig = exports.createPobpackCompiler = exports.createOptions = exports.createAppWebpackConfig = exports.webpack = undefined;
+
+var _createOptions2 = require('./createOptions');
+
+Object.defineProperty(exports, 'OptionsType', {
+  enumerable: true,
+  get: function () {
+    return _createOptions2.OptionsType;
+  }
+});
+
+var _createPobpackCompiler2 = require('./createPobpackCompiler');
+
+Object.defineProperty(exports, 'PobpackCompilerType', {
+  enumerable: true,
+  get: function () {
+    return _createPobpackCompiler2.PobpackCompilerType;
+  }
+});
+Object.defineProperty(exports, 'WatchCallbackType', {
+  enumerable: true,
+  get: function () {
+    return _createPobpackCompiler2.WatchCallbackType;
+  }
+});
 
 var _webpack2 = require('webpack');
 
@@ -13,11 +37,7 @@ var _createAppWebpackConfig2 = require('./createAppWebpackConfig');
 
 var _createAppWebpackConfig3 = _interopRequireDefault(_createAppWebpackConfig2);
 
-var _createOptions2 = require('./createOptions');
-
 var _createOptions3 = _interopRequireDefault(_createOptions2);
-
-var _createPobpackCompiler2 = require('./createPobpackCompiler');
 
 var _createPobpackCompiler3 = _interopRequireDefault(_createPobpackCompiler2);
 
