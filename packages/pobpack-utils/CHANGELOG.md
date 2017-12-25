@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="3.3.0"></a>
+# [3.3.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@3.2.1...pobpack-utils@3.3.0) (2017-12-25)
+
+
+### Features
+
+* resolve src modules too ([413905a](https://github.com/christophehurpeau/pobpack/commit/413905a))
+
+
+
+
 <a name="3.2.1"></a>
 ## [3.2.1](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@3.2.0...pobpack-utils@3.2.1) (2017-11-05)
 
