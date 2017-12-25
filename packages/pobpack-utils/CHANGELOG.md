@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="3.4.1"></a>
+## [3.4.1](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@3.4.0...pobpack-utils@3.4.1) (2017-12-25)
+
+
+### Bug Fixes
+
+* only resolve src in app directory and few flow fixes ([f575cb6](https://github.com/christophehurpeau/pobpack/commit/f575cb6))
+
+
+
+
 <a name="3.4.0"></a>
 # [3.4.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@3.3.0...pobpack-utils@3.4.0) (2017-12-25)
 

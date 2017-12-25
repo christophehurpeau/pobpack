@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="3.2.1"></a>
+## [3.2.1](https://github.com/christophehurpeau/pobpack/compare/pobpack-node@3.2.0...pobpack-node@3.2.1) (2017-12-25)
+
+
+
+
+**Note:** Version bump only for package pobpack-node
+
 <a name="3.2.0"></a>
 # [3.2.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-node@3.1.3...pobpack-node@3.2.0) (2017-12-25)
 
