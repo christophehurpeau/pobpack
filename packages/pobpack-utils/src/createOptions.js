@@ -1,8 +1,8 @@
 /* eslint-disable flowtype/no-weak-types */
 
 type ConfigPathsType = {|
-  src: string,
-  build: string,
+  src?: string,
+  build?: string,
 |};
 
 type ConfigEntryType =
@@ -16,15 +16,15 @@ type BabelConfigType = Object;
 
 export type OptionsType = {|
   env?: ?string,
-  hmr: boolean,
+  hmr?: boolean,
   resolveLoaderModules?: ?Array<string>,
-  webpackPrefixPackageFields?: Array<string>,
+  webpackPrefixPackageFields?: ?Array<string>,
   babel?: ?BabelConfigType,
   jsLoaders?: ?Array<any>,
   moduleRules?: ?Array<any>,
   prependPlugins?: ?Array<any>,
   plugins?: ?Array<any>,
-  paths: ConfigPathsType,
+  paths?: ?ConfigPathsType,
   entries?: ?Array<ConfigEntryType>,
   includeModules?: ?Array<string>,
   includePaths?: ?Array<string>,

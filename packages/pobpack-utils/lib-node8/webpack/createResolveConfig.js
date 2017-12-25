@@ -4,12 +4,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _path = require('path');
+
 require('../createOptions');
 
+/* eslint-disable prettier/prettier */
 exports.default = (modulePrefixPackageFields, options) => ({
   cacheWithContext: false,
 
-  modules: ['node_modules', 'src'],
+  modules: ['node_modules', (0, _path.resolve)('src')],
   extensions: ['.js', '.jsx'],
 
   mainFields: [...[].concat(...modulePrefixPackageFields.map(prefix => [options.env !== 'production' && `module:${prefix}-dev`, `module:${prefix}`,
@@ -29,5 +32,5 @@ exports.default = (modulePrefixPackageFields, options) => ({
   options.env !== 'production' && 'webpack:aliases-dev', 'webpack:aliases', 'webpack', modulePrefixPackageFields.includes('browser') && options.env !== 'production' && 'browser-dev', modulePrefixPackageFields.includes('browser') && 'browser'].filter(Boolean),
 
   alias: options.aliases
-}); /* eslint-disable prettier/prettier */
+});
 //# sourceMappingURL=createResolveConfig.js.map

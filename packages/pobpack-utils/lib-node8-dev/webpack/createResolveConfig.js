@@ -4,6 +4,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _path = require('path');
+
 var _createOptions = require('../createOptions');
 
 var _flowRuntime = require('flow-runtime');
@@ -12,8 +14,8 @@ var _flowRuntime2 = _interopRequireDefault(_flowRuntime);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/* eslint-disable prettier/prettier */
-const OptionsType = _flowRuntime2.default.tdz(() => _createOptions.OptionsType);
+const OptionsType = _flowRuntime2.default.tdz(() => _createOptions.OptionsType); /* eslint-disable prettier/prettier */
+
 
 exports.default = function createResolveConfig(modulePrefixPackageFields, options) {
   let _modulePrefixPackageFieldsType = _flowRuntime2.default.array(_flowRuntime2.default.string());
@@ -27,7 +29,7 @@ exports.default = function createResolveConfig(modulePrefixPackageFields, option
   return {
     cacheWithContext: false,
 
-    modules: ['node_modules', 'src'],
+    modules: ['node_modules', (0, _path.resolve)('src')],
     extensions: ['.js', '.jsx'],
 
     mainFields: [...[].concat(...modulePrefixPackageFields.map(prefix => [options.env !== 'production' && `module:${prefix}-dev`, `module:${prefix}`,

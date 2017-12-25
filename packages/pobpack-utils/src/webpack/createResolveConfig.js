@@ -1,10 +1,11 @@
 /* eslint-disable prettier/prettier */
+import { resolve } from 'path';
 import { type OptionsType } from '../createOptions';
 
 export default (modulePrefixPackageFields: Array<string>, options: OptionsType) => ({
   cacheWithContext: false,
 
-  modules: ['node_modules', 'src'],
+  modules: ['node_modules', resolve('src')],
   extensions: ['.js', '.jsx'],
 
   mainFields: [
