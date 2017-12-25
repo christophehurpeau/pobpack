@@ -1,6 +1,6 @@
 {
   "name": "pobpack-utils",
-  "version": "3.3.0",
+  "version": "3.4.0",
   "description": "Utils for building projects with webpack.",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
