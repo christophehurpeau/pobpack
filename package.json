@@ -1,24 +1,48 @@
 {
+  "name": "pobpack",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
+  "version": "0.0.0",
+  "description": "Build projects with webpack.",
+  "keywords": [],
+  "author":
+    "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "license": "ISC",
+  "repository": "git@github.com:christophehurpeau/pobpack.git",
+  "homepage": "https://github.com/christophehurpeau/pobpack",
+  "workspaces": ["packages/*"],
   "scripts": {
-    "release": "lerna publish --conventional-commits -m 'chore: publish'",
-    "lint": "lerna run lint",
     "build": "lerna run build",
-    "watch": "lerna exec --parallel --ignore \"*-example\" -- yarn run watch -- --no-spinner",
-    "preversion": "yarn run lint && lerna run build && pob-repository-check-clean",
-    "postcheckout": "./git-hooks/post-checkout",
-    "postmerge": "./git-hooks/post-merge",
-    "precommit": "./git-hooks/pre-commit",
-    "preparecommitmsg": "./git-hooks/prepare-commit-msg ${GIT_PARAMS}"
+    "commitmsg": "commitlint -e $GIT_PARAMS",
+    "lint": "lerna run lint",
+    "postcheckout": "yarnhook",
+    "postinstall": "pob-repository-check-clean && lerna bootstrap",
+    "postmerge": "yarnhook",
+    "postrewrite": "yarnhook",
+    "precommit": "lint-staged",
+    "preversion":
+      "yarn run lint && lerna run build && pob-repository-check-clean",
+    "release": "lerna publish --conventional-commits -m 'chore: publish'",
+    "watch":
+      "lerna exec --parallel --ignore \"*-example\" -- yarn run watch -- --no-spinner"
+  },
+  "lint-staged": {
+    "{package.json,packages/*/package.json,.eslintrc.json}": [
+      "prettier --write",
+      "git add"
+    ],
+    "packages/*/lib/**/*.json": ["prettier --write", "git add"],
+    "packages/*/lib/**/*.js": ["eslint --fix --quiet", "git add"]
+  },
+  "commitlint": {
+    "extends": ["@commitlint/config-conventional"]
   },
   "devDependencies": {
+    "@commitlint/cli": "^6.1.2",
+    "@commitlint/config-conventional": "^6.1.2",
     "husky": "^0.14.3",
-    "komet": "^0.1.4",
-    "komet-karma": "^0.2.5",
-    "lerna": "^2.5.1",
-    "pob-release": "^3.1.0"
+    "lerna": "2.9.0",
+    "lint-staged": "^7.0.0",
+    "pob-release": "^3.1.0",
+    "yarnhook": "^0.1.1"
   }
 }

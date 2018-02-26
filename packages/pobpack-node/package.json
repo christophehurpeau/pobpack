@@ -17,30 +17,36 @@
   "scripts": {
     "build": "pob-build",
     "clean": "rm -Rf docs dist test/node6 coverage",
-    "lint": "eslint --ext .js,.jsx src/",
+    "flow": "flow",
+    "lint": "eslint src/",
     "watch": "pob-watch"
   },
+  "prettier": {
+    "trailingComma": "all",
+    "singleQuote": true,
+    "printWidth": 100
+  },
   "dependencies": {
-    "babel-preset-latest-node": "^0.4.0",
-    "flow-runtime": "^0.16.0",
+    "babel-preset-latest-node": "^1.0.0",
+    "flow-runtime": "^0.17.0",
     "pobpack-utils": "^3.4.1",
-    "source-map-support": "^0.5.0",
+    "source-map-support": "^0.5.3",
     "springbokjs-daemon": "^2.3.0",
     "webpack-node-externals": "^1.6.0"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
     "babel-eslint": "^7.2.3",
     "eslint": "^4.13.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-pob": "^17.1.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-babel": "^4.1.2",
-    "eslint-plugin-flowtype": "^2.40.1",
+    "eslint-plugin-flowtype": "^2.46.1",
     "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-prettier": "^2.3.1",
-    "lerna": "^2.5.1",
-    "pob-babel": "^18.2.0",
-    "prettier": "^1.9.1"
+    "eslint-plugin-prettier": "^2.6.0",
+    "pob-babel": "^19.1.2",
+    "prettier": "^1.9.2"
   },
   "peerDependencies": {
     "webpack": "^3.8.1"

@@ -1,5 +1,5 @@
-/* eslint-disable flowtype/no-weak-types */
-
+// /* eslint-disable flowtype/no-weak-types */
+//
 type ConfigPathsType = {|
   src?: string,
   build?: string,

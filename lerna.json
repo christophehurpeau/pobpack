@@ -1,19 +1,13 @@
 {
-  "private": true,
-  "lerna": "2.5.1",
+  "lerna": "2.9.0",
   "npmClient": "yarn",
   "useWorkspaces": true,
   "version": "independent",
   "commands": {
     "publish": {
-      "registry": "https://registry.npmjs.org/",
       "ignore": [
-        "pobpack-browser-example",
-        "pobpack-node-example"
+        "*-example"
       ]
     }
-  },
-  "packages": [
-    "packages/*"
-  ]
+  }
 }

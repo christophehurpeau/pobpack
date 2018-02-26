@@ -50,7 +50,7 @@ export default (options: OptionsType) => ({
   resolve: createResolveConfig(['node'], {
     ...options,
     babel: {
-      presets: [require.resolve('./babel')],
+      presets: [require.resolve('../babel')],
       ...options.babel,
     },
   }),
@@ -77,7 +77,7 @@ export default (options: OptionsType) => ({
     plugins: [
       options.hmr &&
         new webpack.BannerPlugin({
-          banner: `require("${require.resolve('./source-map-support')}");`,
+          banner: `require("${require.resolve('../source-map-support')}");`,
           raw: true,
           entryOnly: false,
           include: /\.js$/,

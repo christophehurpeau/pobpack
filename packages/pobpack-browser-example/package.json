@@ -8,9 +8,9 @@
     "start": "pobpack-browser"
   },
   "devDependencies": {
-    "babel-preset-pob-react": "^0.2.4",
+    "babel-preset-pob-react": "^0.2.5",
     "pobpack-browser": "^3.0.2",
-    "webpack": "^3.10.0"
+    "webpack": "^3.11.0"
   },
   "dependencies": {
     "react": "^16.2.0",

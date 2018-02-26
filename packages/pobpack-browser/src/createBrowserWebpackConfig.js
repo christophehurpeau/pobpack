@@ -50,7 +50,7 @@ export default (target: BrowserTargetType) => (options: OptionsType) => ({
     {
       ...options,
       babel: {
-        presets: [require.resolve('./babel')],
+        presets: [require.resolve('../babel')],
         ...options.babel,
         plugins: [options.hmr && hotLoaderBabelPlugin, ...(options.babel.plugins || [])].filter(
           Boolean,
