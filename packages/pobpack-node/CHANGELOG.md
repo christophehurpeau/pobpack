@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="4.0.0"></a>
+# [4.0.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-node@3.2.1...pobpack-node@4.0.0) (2018-03-04)
+
+
+### Features
+
+* pob update, webpack 4 ([6ce8705](https://github.com/christophehurpeau/pobpack/commit/6ce8705))
+
+
+### BREAKING CHANGES
+
+* webpack 4
+
+
+
+
 <a name="3.2.1"></a>
 ## [3.2.1](https://github.com/christophehurpeau/pobpack/compare/pobpack-node@3.2.0...pobpack-node@3.2.1) (2017-12-25)
 
