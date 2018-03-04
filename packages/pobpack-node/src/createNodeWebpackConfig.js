@@ -10,6 +10,9 @@ import {
 } from 'pobpack-utils/src';
 
 export default (options: OptionsType) => ({
+  // production or development
+  mode: options.env === 'production' ? 'production' : 'development',
+
   // Don't attempt to continue if there are any errors.
   bail: options.env === 'production',
 
@@ -18,6 +21,11 @@ export default (options: OptionsType) => ({
 
   // get right stack traces
   devtool: 'source-map',
+
+  optimization: {
+    noEmitOnErrors: true,
+    minimize: false,
+  },
 
   // don't bundle node_modules dependencies
   externals: nodeExternals({

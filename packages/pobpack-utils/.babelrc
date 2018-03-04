@@ -1,3 +1,0 @@
-{
-  "presets": [["pob-env", { "flow": true, "modules": false }]]
-}

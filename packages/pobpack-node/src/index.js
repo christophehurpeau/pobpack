@@ -28,14 +28,17 @@ export const watch = (options, callback: WatchCallbackType) => {
   return compiler;
 };
 
-type RunOptions = {|
+type RunOptionsType = {|
   key?: ?string,
   displayName?: ?string,
   args?: ?Array<string | number>,
   cwd?: ?string,
 |};
 
-export const watchAndRunCompiler = (compiler: PobpackCompilerType, options: RunOptions = {}) => {
+export const watchAndRunCompiler = (
+  compiler: PobpackCompilerType,
+  options: RunOptionsType = {},
+) => {
   let daemon;
   return compiler.watch(stats => {
     if (!daemon) {
@@ -48,6 +51,8 @@ export const watchAndRunCompiler = (compiler: PobpackCompilerType, options: RunO
       });
       daemon.start();
       process.on('exit', () => daemon.stop());
+    } else if (daemon.hasExited()) {
+      daemon.start();
     } else {
       // already started, send a signal to ask hot reload
       try {

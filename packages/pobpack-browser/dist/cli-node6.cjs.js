@@ -12,6 +12,9 @@ const ALL = 'all';
 const TARGETS = [ALL, MODERN];
 
 var createBrowserWebpackConfig = (target => options => ({
+  // production or development
+  mode: options.env === 'production' ? 'production' : 'development',
+
   // Don't attempt to continue if there are any errors.
   bail: options.env === 'production',
 
@@ -20,6 +23,11 @@ var createBrowserWebpackConfig = (target => options => ({
 
   // get right stack traces
   devtool: options.env === 'production' ? 'nosources-source-map' : 'source-map',
+
+  optimization: {
+    noEmitOnErrors: true,
+    minimize: false
+  },
 
   // use cache
   cache: options.hmr,

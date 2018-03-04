@@ -16,9 +16,6 @@ export default (options: OptionsType) =>
       ...options.defines,
     }),
 
-    new webpack.NoEmitOnErrorsPlugin(),
-
     options.hmr && new webpack.HotModuleReplacementPlugin(),
-    options.hmr && new webpack.NamedModulesPlugin(),
     ...options.plugins,
   ].filter(Boolean);

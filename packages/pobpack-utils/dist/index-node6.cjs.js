@@ -199,7 +199,7 @@ var createPluginsConfig = (options => [...options.prependPlugins,
 // for developers working on case insensitive systems like OSX.
 options.env !== 'production' && new CaseSensitivePathsPlugin(), new webpack.DefinePlugin(Object.assign({
   'process.env.NODE_ENV': JSON.stringify(options.env)
-}, options.defines)), new webpack.NoEmitOnErrorsPlugin(), options.hmr && new webpack.HotModuleReplacementPlugin(), options.hmr && new webpack.NamedModulesPlugin(), ...options.plugins].filter(Boolean));
+}, options.defines)), options.hmr && new webpack.HotModuleReplacementPlugin(), ...options.plugins].filter(Boolean));
 
 /* eslint-disable prettier/prettier */
 

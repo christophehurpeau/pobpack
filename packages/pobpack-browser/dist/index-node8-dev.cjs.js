@@ -25,6 +25,9 @@ var createBrowserWebpackConfig = (target => {
 
     _t.param('options', _optionsType).assert(options);
     return {
+      // production or development
+      mode: options.env === 'production' ? 'production' : 'development',
+
       // Don't attempt to continue if there are any errors.
       bail: options.env === 'production',
 
@@ -33,6 +36,11 @@ var createBrowserWebpackConfig = (target => {
 
       // get right stack traces
       devtool: options.env === 'production' ? 'nosources-source-map' : 'source-map',
+
+      optimization: {
+        noEmitOnErrors: true,
+        minimize: false
+      },
 
       // use cache
       cache: options.hmr,
@@ -137,14 +145,14 @@ const watch = (options, callback) => {
   return compiler;
 };
 
-const RunOptions = _t.type('RunOptions', _t.object(_t.property('host', _t.string(), true), _t.property('port', _t.number()), _t.property('https', _t.nullable(_t.boolean()), true)));
+const RunOptionsType = _t.type('RunOptionsType', _t.object(_t.property('host', _t.string(), true), _t.property('port', _t.number()), _t.property('https', _t.nullable(_t.boolean()), true)));
 
 const runDevServer = (compiler, options) => {
   let _compilerType = _t.ref(PobpackCompilerType);
 
   _t.param('compiler', _compilerType).assert(compiler);
 
-  _t.param('options', RunOptions).assert(options);
+  _t.param('options', RunOptionsType).assert(options);
 
   const { host, port, https } = options,
         webpackDevServerOptions = objectWithoutProperties(options, ['host', 'port', 'https']);
@@ -164,7 +172,7 @@ const watchAndRunDevServer = (options, runOptions) => {
 
   _t.param('options', _optionsType3).assert(options);
 
-  _t.param('runOptions', RunOptions).assert(runOptions);
+  _t.param('runOptions', RunOptionsType).assert(runOptions);
 
   const url = `http${runOptions.https ? 's' : ''}://localhost:${runOptions.port}`;
   const compiler = createAppBrowserCompiler(MODERN, Object.assign({}, options, { hmr: true }), {

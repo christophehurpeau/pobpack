@@ -13,6 +13,9 @@ var createDaemon = _interopDefault(require('springbokjs-daemon'));
 // const fs = require('fs');
 
 var createNodeWebpackConfig = (options => ({
+  // production or development
+  mode: options.env === 'production' ? 'production' : 'development',
+
   // Don't attempt to continue if there are any errors.
   bail: options.env === 'production',
 
@@ -21,6 +24,11 @@ var createNodeWebpackConfig = (options => ({
 
   // get right stack traces
   devtool: 'source-map',
+
+  optimization: {
+    noEmitOnErrors: true,
+    minimize: false
+  },
 
   // don't bundle node_modules dependencies
   externals: nodeExternals({
@@ -109,6 +117,8 @@ const watchAndRunCompiler = (compiler, options = {}) => {
       });
       daemon.start();
       process.on('exit', () => daemon.stop());
+    } else if (daemon.hasExited()) {
+      daemon.start();
     } else {
       // already started, send a signal to ask hot reload
       try {

@@ -16,6 +16,9 @@ var createNodeWebpackConfig = (options => {
 
   t.param('options', _optionsType).assert(options);
   return {
+    // production or development
+    mode: options.env === 'production' ? 'production' : 'development',
+
     // Don't attempt to continue if there are any errors.
     bail: options.env === 'production',
 
@@ -24,6 +27,11 @@ var createNodeWebpackConfig = (options => {
 
     // get right stack traces
     devtool: 'source-map',
+
+    optimization: {
+      noEmitOnErrors: true,
+      minimize: false
+    },
 
     // don't bundle node_modules dependencies
     externals: nodeExternals({
@@ -95,14 +103,14 @@ const build = (options = {}) => {
   return compiler.run();
 };
 
-const RunOptions = t.type('RunOptions', t.exactObject(t.property('key', t.nullable(t.string()), true), t.property('displayName', t.nullable(t.string()), true), t.property('args', t.nullable(t.array(t.union(t.string(), t.number()))), true), t.property('cwd', t.nullable(t.string()), true)));
+const RunOptionsType = t.type('RunOptionsType', t.exactObject(t.property('key', t.nullable(t.string()), true), t.property('displayName', t.nullable(t.string()), true), t.property('args', t.nullable(t.array(t.union(t.string(), t.number()))), true), t.property('cwd', t.nullable(t.string()), true)));
 
 
 const watchAndRunCompiler = (compiler, options = {}) => {
   let _compilerType = t.ref(PobpackCompilerType);
 
   t.param('compiler', _compilerType).assert(compiler);
-  t.param('options', RunOptions).assert(options);
+  t.param('options', RunOptionsType).assert(options);
 
   let daemon;
   return compiler.watch(() => {
@@ -116,6 +124,8 @@ const watchAndRunCompiler = (compiler, options = {}) => {
       });
       daemon.start();
       process.on('exit', () => daemon.stop());
+    } else if (daemon.hasExited()) {
+      daemon.start();
     } else {
       // already started, send a signal to ask hot reload
       try {

@@ -41,13 +41,13 @@ export const watch = (options, callback: WatchCallbackType) => {
   return compiler;
 };
 
-type RunOptions = {
+type RunOptionsType = {
   host?: string,
   port: number,
   https?: ?boolean,
 };
 
-export const runDevServer = (compiler: PobpackCompilerType, options: RunOptions) => {
+export const runDevServer = (compiler: PobpackCompilerType, options: RunOptionsType) => {
   const { host, port, https, ...webpackDevServerOptions } = options;
   const browserDevServer = new WebpackDevServer(compiler.compiler, {
     hot: true,
@@ -62,7 +62,7 @@ export const runDevServer = (compiler: PobpackCompilerType, options: RunOptions)
   return browserDevServer;
 };
 
-export const watchAndRunDevServer = (options: OptionsType, runOptions: RunOptions) => {
+export const watchAndRunDevServer = (options: OptionsType, runOptions: RunOptionsType) => {
   const url = `http${runOptions.https ? 's' : ''}://localhost:${runOptions.port}`;
   const compiler = createAppBrowserCompiler(
     MODERN,
