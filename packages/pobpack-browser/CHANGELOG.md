@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="4.1.0"></a>
+# [4.1.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser@4.0.0...pobpack-browser@4.1.0) (2018-03-18)
+
+
+### Features
+
+* update dependencies ([45f1fd1](https://github.com/christophehurpeau/pobpack/commit/45f1fd1))
+
+
+
+
 <a name="4.0.0"></a>
 # [4.0.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser@3.2.1...pobpack-browser@4.0.0) (2018-03-04)
 

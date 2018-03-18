@@ -1,13 +1,15 @@
 {
   "name": "pobpack-utils",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "description": "Utils for building projects with webpack.",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "ISC",
   "repository": "git@github.com:christophehurpeau/pobpack.git",
   "homepage": "https://github.com/christophehurpeau/pobpack",
-  "engines": { "node": ">=6.5.0" },
+  "engines": {
+    "node": ">=6.5.0"
+  },
   "main": "./index.js",
   "scripts": {
     "build": "pob-build",
@@ -17,7 +19,11 @@
     "test": "No tests",
     "watch": "pob-watch"
   },
-  "prettier": { "trailingComma": "all", "singleQuote": true, "printWidth": 100 },
+  "prettier": {
+    "trailingComma": "all",
+    "singleQuote": true,
+    "printWidth": 100
+  },
   "dependencies": {
     "babel-loader": "^7.1.4",
     "case-sensitive-paths-webpack-plugin": "^2.1.2",
@@ -45,5 +51,8 @@
     "pob-babel": "^20.0.0",
     "prettier": "^1.11.1"
   },
-  "peerDependencies": { "babel-core": "^6.26.0 || ^7.0.0-beta.0", "webpack": "^4.0.1" }
+  "peerDependencies": {
+    "babel-core": "^6.26.0 || ^7.0.0-beta.0",
+    "webpack": "^4.0.1"
+  }
 }
