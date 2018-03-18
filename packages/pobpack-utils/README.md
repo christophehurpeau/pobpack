@@ -1,8 +1,15 @@
-# pobpack-utils [![NPM version][npm-image]][npm-url]
+<h3 align="center">
+  pobpack-utils
+</h3>
 
-Utils for building projects with webpack.
+<p align="center">
+  Utils for building projects with webpack.
+</p>
 
-[![Dependency Status][daviddm-image]][daviddm-url]
+<p align="center">
+  <a href="https://npmjs.org/package/pobpack-utils"><img src="https://img.shields.io/npm/v/pobpack-utils.svg?style=flat-square"></a>
+  <a href="https://david-dm.org/christophehurpeau/pobpack?path=packages/pobpack-utils"><img src="https://david-dm.org/christophehurpeau/pobpack?path=packages/pobpack-utils.svg?style=flat-square"></a>
+</p>
 
 ## See also
 
@@ -24,8 +31,3 @@ use: `import {} from 'pobpack-utils';`
 - createModuleConfig(options: OptionsType)
 - createPluginsConfig(options: OptionsType)
 - createResolveConfig(options: OptionsType)
-
-[npm-image]: https://img.shields.io/npm/v/pobpack-utils.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/pobpack-utils
-[daviddm-image]: https://david-dm.org/christophehurpeau/pobpack?path=packages/pobpack-utils.svg?style=flat-square
-[daviddm-url]: https://david-dm.org/christophehurpeau/pobpack?path=packages/pobpack-utils

@@ -6,26 +6,19 @@
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "ISC",
   "repository": "git@github.com:christophehurpeau/pobpack.git",
-  "homepage": "https://github.com/christophehurpeau/pobpack/tree/master/packages/pobpack-browser",
-  "engines": {
-    "node": ">=6.5.0"
-  },
+  "homepage": "https://github.com/christophehurpeau/pobpack",
+  "engines": { "node": ">=6.5.0" },
   "main": "./index.js",
-  "bin": {
-    "pobpack-browser": "./pobpack-browser"
-  },
+  "bin": { "pobpack-browser": "./pobpack-browser" },
   "scripts": {
     "build": "pob-build",
     "clean": "rm -Rf docs dist test/node6 coverage",
     "flow": "flow",
     "lint": "eslint src/",
+    "test": "No tests",
     "watch": "pob-watch"
   },
-  "prettier": {
-    "trailingComma": "all",
-    "singleQuote": true,
-    "printWidth": 100
-  },
+  "prettier": { "trailingComma": "all", "singleQuote": true, "printWidth": 100 },
   "dependencies": {
     "babel-preset-env": "^1.6.1",
     "babel-regenerator-runtime": "^6.5.0",
@@ -34,28 +27,25 @@
     "react-dev-utils": "^5.0.0",
     "react-error-html": "^0.2.2",
     "react-hot-loader": "^4.0.0",
-    "source-map-support": "^0.5.3",
-    "webpack-dev-server": "^3.1.0"
+    "source-map-support": "^0.5.4",
+    "webpack-dev-server": "^3.1.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
     "babel-preset-latest-node": "^1.0.0",
-    "eslint": "^4.18.2",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-config-pob": "^17.1.0",
-    "eslint-config-prettier": "^2.9.0",
+    "eslint": "^4.19.0",
+    "eslint-config-pob": "^18.0.0",
     "eslint-plugin-babel": "^4.1.2",
     "eslint-plugin-flowtype": "^2.46.1",
-    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.0",
-    "pob-babel": "^19.1.5",
+    "flow-bin": "^0.68.0",
+    "pob-babel": "^20.0.0",
     "prettier": "^1.11.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "webpack": "^4.0.1"
+    "webpack": "^4.1.1"
   },
-  "peerDependencies": {
-    "webpack": "^4.0.1"
-  }
+  "peerDependencies": { "webpack": "^4.0.1" }
 }

@@ -1,8 +1,15 @@
-# pobpack-node [![NPM version][npm-image]][npm-url]
+<h3 align="center">
+  pobpack-node
+</h3>
 
-Build and run node projects with webpack.
+<p align="center">
+  Build and run node projects with webpack.
+</p>
 
-[![Dependency Status][daviddm-image]][daviddm-url]
+<p align="center">
+  <a href="https://npmjs.org/package/pobpack-node"><img src="https://img.shields.io/npm/v/pobpack-node.svg?style=flat-square"></a>
+  <a href="https://david-dm.org/christophehurpeau/pobpack?path=packages/pobpack-node"><img src="https://david-dm.org/christophehurpeau/pobpack?path=packages/pobpack-node.svg?style=flat-square"></a>
+</p>
 
 * [Features](#features)
 * [Install](#install)
@@ -181,8 +188,3 @@ module.exports = function (config, options) {
 
 - [backpack](https://www.npmjs.com/package/backpack-core)
 - [vitaminjs](https://www.npmjs.com/package/vitaminjs)
-
-[npm-image]: https://img.shields.io/npm/v/pobpack-node.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/pobpack-node
-[daviddm-image]: https://david-dm.org/christophehurpeau/pobpack?path=packages/pobpack-node.svg?style=flat-square
-[daviddm-url]: https://david-dm.org/christophehurpeau/pobpack?path=packages/pobpack-node

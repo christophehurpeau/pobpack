@@ -1,3 +1,6 @@
 {
-  "extends": "pob/flow"
+  "extends": [
+    "pob/babel",
+    "pob/flow"
+  ]
 }

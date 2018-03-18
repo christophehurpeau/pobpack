@@ -1,8 +1,15 @@
-# pobpack-browser [![NPM version][npm-image]][npm-url]
+<h3 align="center">
+  pobpack-browser
+</h3>
 
-Build and run browser projects with webpack and webpack-dev-server.
+<p align="center">
+  Build and run browser projects with webpack and webpack-dev-server.
+</p>
 
-[![Dependency Status][daviddm-image]][daviddm-url]
+<p align="center">
+  <a href="https://npmjs.org/package/pobpack-browser"><img src="https://img.shields.io/npm/v/pobpack-browser.svg?style=flat-square"></a>
+  <a href="https://david-dm.org/christophehurpeau/pobpack?path=packages/pobpack-browser"><img src="https://david-dm.org/christophehurpeau/pobpack?path=packages/pobpack-browser.svg?style=flat-square"></a>
+</p>
 
 * [Features](#features)
 * [Install](#install)
@@ -173,8 +180,3 @@ module.exports = function (config, options) {
 ## Alternatives
 
 - [vitaminjs](https://www.npmjs.com/package/vitaminjs)
-
-[npm-image]: https://img.shields.io/npm/v/pobpack-browser.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/pobpack-browser
-[daviddm-image]: https://david-dm.org/christophehurpeau/pobpack?path=packages/pobpack-browser.svg?style=flat-square
-[daviddm-url]: https://david-dm.org/christophehurpeau/pobpack?path=packages/pobpack-browser
