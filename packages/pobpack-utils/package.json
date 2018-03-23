@@ -41,7 +41,7 @@
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
     "babel-preset-latest-node": "^1.0.0",
-    "eslint": "^4.19.0",
+    "eslint": "^4.19.1",
     "eslint-config-pob": "^18.0.0",
     "eslint-plugin-babel": "^4.1.2",
     "eslint-plugin-flowtype": "^2.46.1",
