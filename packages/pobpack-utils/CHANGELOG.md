@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="4.1.1"></a>
+## [4.1.1](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@4.1.0...pobpack-utils@4.1.1) (2018-03-23)
+
+
+
+
+**Note:** Version bump only for package pobpack-utils
+
 <a name="4.1.0"></a>
 # [4.1.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@4.0.0...pobpack-utils@4.1.0) (2018-03-18)
 
