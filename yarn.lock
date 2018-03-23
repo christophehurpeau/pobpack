@@ -4400,10 +4400,6 @@ jsesc@~0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/jsesc/-/jsesc-0.5.0.tgz#e7dee66e35d6fc16f710fe91d5cf69f70f08911d"
 
-json-loader@^0.5.7:
-  version "0.5.7"
-  resolved "https://registry.yarnpkg.com/json-loader/-/json-loader-0.5.7.tgz#dca14a70235ff82f0ac9a3abeb60d337a365185d"
-
 json-parse-better-errors@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/json-parse-better-errors/-/json-parse-better-errors-1.0.1.tgz#50183cd1b2d25275de069e9e71b467ac9eab973a"
@@ -5712,9 +5708,9 @@ pn@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/pn/-/pn-1.1.0.tgz#e2f4cef0e219f463c179ab37463e4e1ecdccbafb"
 
-pob-babel@^20.0.0:
-  version "20.0.0"
-  resolved "https://registry.yarnpkg.com/pob-babel/-/pob-babel-20.0.0.tgz#e10c56bdd3c4085691202ef35ae09192d9d2d253"
+pob-babel@^20.1.0:
+  version "20.1.0"
+  resolved "https://registry.yarnpkg.com/pob-babel/-/pob-babel-20.1.0.tgz#c7c906cebab1eff6f4e2220334321f316871c0a4"
   dependencies:
     babel-cli "^6.26.0"
     babel-plugin-add-jsdoc-annotations "^5.1.0"

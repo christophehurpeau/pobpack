@@ -169,12 +169,6 @@ var createModuleConfig = (options => ({
   // Disable require.ensure as it's not a standard language feature.
   { parser: { requireEnsure: false } },
 
-  // json
-  {
-    test: /\.json$/,
-    loader: 'json-loader'
-  },
-
   // jsx?
   {
     test: /\.jsx?$/,
