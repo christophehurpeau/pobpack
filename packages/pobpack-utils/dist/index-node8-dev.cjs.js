@@ -13,8 +13,8 @@ var Logger = _interopDefault(require('nightingale-logger'));
 var ConsoleHandler = _interopDefault(require('nightingale-console'));
 var formatWebpackMessages = _interopDefault(require('react-dev-utils/formatWebpackMessages'));
 var child_process = require('child_process');
+var util = require('util');
 var chalk = _interopDefault(require('chalk'));
-var promiseCallback = _interopDefault(require('promise-callback-factory'));
 var ProgressBar = _interopDefault(require('progress'));
 var webpack = _interopDefault(require('webpack'));
 var ProgressPlugin = _interopDefault(require('webpack/lib/ProgressPlugin'));
@@ -153,7 +153,7 @@ const WebpackWatcherType = t.type('WebpackWatcherType', t.any());
 
 const WatchCallbackType = t.type('WatchCallbackType', t.function(t.param('stats', t.any()), t.return(t.void())));
 
-const PobpackCompilerType = t.type('PobpackCompilerType', t.exactObject(t.property('compiler', t.any()), t.property('webpackConfig', t.object()), t.property('clean', t.function(t.return(t.string()))), t.property('run', t.function(t.return(t.ref('Promise')))), t.property('watch', t.function(t.param('callback', WatchCallbackType), t.return(WebpackWatcherType)))));
+const PobpackCompilerType = t.type('PobpackCompilerType', t.exactObject(t.property('clean', t.function(t.return(t.string()))), t.property('compiler', t.any()), t.property('run', t.function(t.return(t.ref('Promise')))), t.property('watch', t.function(t.param('callback', WatchCallbackType), t.return(WebpackWatcherType))), t.property('webpackConfig', t.object())));
 
 const CreateComplierOptionsType = t.type('CreateComplierOptionsType', t.exactObject(t.property('progressBar', t.nullable(t.boolean()), true), t.property('successMessage', t.nullable(t.string()), true)));
 
@@ -192,11 +192,13 @@ var createPobpackCompiler = ((bundleName, webpackConfig, _arg = {}) => {
   // human-readable error messages
   compiler.apply(new FriendlyErrorsWebpackPlugin({ bundleName, successMessage }));
 
+  const promisifyRun = util.promisify(compiler.run.bind(compiler));
+
   return _returnType.assert({
     compiler,
     webpackConfig,
     clean: () => webpackConfig.output.path && child_process.execSync(`rm -Rf ${webpackConfig.output.path}`),
-    run: () => promiseCallback(done => compiler.run(done)).then(buildThrowOnError),
+    run: () => promisifyRun().then(buildThrowOnError),
     watch: callback => compiler.watch({}, (err, stats) => {
       if (err) return;
       if (stats.hasErrors()) return;

@@ -33,7 +33,6 @@
     "nightingale-console": "^3.0.0",
     "nightingale-logger": "^4.0.0",
     "progress": "^2.0.0",
-    "promise-callback-factory": "^1.4.0",
     "react-dev-utils": "^5.0.0"
   },
   "devDependencies": {

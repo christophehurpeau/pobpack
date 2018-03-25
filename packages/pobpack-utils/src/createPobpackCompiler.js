@@ -1,6 +1,6 @@
 import { execSync } from 'child_process';
+import { promisify } from 'util';
 import chalk from 'chalk';
-import promiseCallback from 'promise-callback-factory/src';
 import ProgressBar from 'progress';
 import webpack from 'webpack';
 import ProgressPlugin from 'webpack/lib/ProgressPlugin';
@@ -18,11 +18,11 @@ type WebpackWatcherType = any;
 export type WatchCallbackType = (stats: any) => void;
 
 export type PobpackCompilerType = {|
-  compiler: any,
-  webpackConfig: Object,
   clean: () => string,
+  compiler: any,
   run: () => Promise,
   watch: (callback: WatchCallbackType) => WebpackWatcherType,
+  webpackConfig: Object,
 |};
 
 type CreateComplierOptionsType = {|
@@ -63,11 +63,13 @@ export default (
   // human-readable error messages
   compiler.apply(new FriendlyErrorsWebpackPlugin({ bundleName, successMessage }));
 
+  const promisifyRun = promisify(compiler.run.bind(compiler));
+
   return {
     compiler,
     webpackConfig,
     clean: () => webpackConfig.output.path && execSync(`rm -Rf ${webpackConfig.output.path}`),
-    run: () => promiseCallback(done => compiler.run(done)).then(buildThrowOnError),
+    run: () => promisifyRun().then(buildThrowOnError),
     watch: callback =>
       compiler.watch({}, (err, stats) => {
         if (err) return;

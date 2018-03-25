@@ -12,8 +12,8 @@ var Logger = _interopDefault(require('nightingale-logger'));
 var ConsoleHandler = _interopDefault(require('nightingale-console'));
 var formatWebpackMessages = _interopDefault(require('react-dev-utils/formatWebpackMessages'));
 var child_process = require('child_process');
+var util = require('util');
 var chalk = _interopDefault(require('chalk'));
-var promiseCallback = _interopDefault(require('promise-callback-factory'));
 var ProgressBar = _interopDefault(require('progress'));
 var webpack = _interopDefault(require('webpack'));
 var ProgressPlugin = _interopDefault(require('webpack/lib/ProgressPlugin'));
@@ -148,11 +148,13 @@ var createPobpackCompiler = ((bundleName, webpackConfig, { progressBar = true, s
   // human-readable error messages
   compiler.apply(new FriendlyErrorsWebpackPlugin({ bundleName, successMessage }));
 
+  const promisifyRun = util.promisify(compiler.run.bind(compiler));
+
   return {
     compiler,
     webpackConfig,
     clean: () => webpackConfig.output.path && child_process.execSync(`rm -Rf ${webpackConfig.output.path}`),
-    run: () => promiseCallback(done => compiler.run(done)).then(buildThrowOnError),
+    run: () => promisifyRun().then(buildThrowOnError),
     watch: callback => compiler.watch({}, (err, stats) => {
       if (err) return;
       if (stats.hasErrors()) return;
