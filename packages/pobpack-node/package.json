@@ -1,6 +1,6 @@
 {
   "name": "pobpack-node",
-  "version": "4.1.4",
+  "version": "5.0.0",
   "description": "Build and run node projects with webpack.",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
@@ -30,7 +30,7 @@
   "dependencies": {
     "babel-preset-latest-node": "^1.0.0",
     "flow-runtime": "^0.17.0",
-    "pobpack-utils": "^4.1.4",
+    "pobpack-utils": "^5.0.0",
     "source-map-support": "^0.5.4",
     "springbokjs-daemon": "^2.5.0",
     "webpack-node-externals": "^1.6.0"

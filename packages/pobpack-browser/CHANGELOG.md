@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="5.0.0"></a>
+# [5.0.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser@4.1.4...pobpack-browser@5.0.0) (2018-04-20)
+
+
+### Code Refactoring
+
+* webpack 4, targets, minify when production ([69136a5](https://github.com/christophehurpeau/pobpack/commit/69136a5))
+
+
+### BREAKING CHANGES
+
+* - on build, if process.env.NODE_ENV is undefined it is set to production
+- when options.env is production, build is minified with uglify
+- object-assign is replaced by its native implementation
+- babel 7 compatibility and pob-browser/babel uses babel 7 preset
+
+
+
+
 <a name="4.1.4"></a>
 ## [4.1.4](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser@4.1.3...pobpack-browser@4.1.4) (2018-03-30)
 
