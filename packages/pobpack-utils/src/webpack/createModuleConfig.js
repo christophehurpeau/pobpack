@@ -9,9 +9,9 @@ export default (options: OptionsType) => ({
     // Disable require.ensure as it's not a standard language feature.
     { parser: { requireEnsure: false } },
 
-    // jsx?
+    // tsx? / jsx?
     {
-      test: /\.jsx?$/,
+      test: options.typescript ? /\.[tj]sx?$/ : /\.jsx?$/,
       include: [
         resolve(options.paths.src),
         ...options.includeModules.map(includeModule =>

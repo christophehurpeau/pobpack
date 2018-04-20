@@ -6,6 +6,12 @@ export default (options: OptionsType) =>
   [
     ...options.prependPlugins,
 
+    // ignore files when watching
+    new webpack.WatchIgnorePlugin([
+      // typescript definitions
+      /\.d\.ts$/,
+    ]),
+
     // enforces the entire path of all required modules match the exact case
     // of the actual path on disk. Using this plugin helps alleviate cases
     // for developers working on case insensitive systems like OSX.

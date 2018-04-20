@@ -22,12 +22,12 @@ var CaseSensitivePathsPlugin = _interopDefault(require('case-sensitive-paths-web
 
 // /* eslint-disable flowtype/no-weak-types */
 //
-const ConfigPathsType = t.type('ConfigPathsType', t.exactObject(t.property('src', t.string(), true), t.property('build', t.string(), true)));
+const ConfigPathsType = t.type('ConfigPathsType', t.exactObject(t.property('build', t.string(), true), t.property('src', t.string(), true)));
 const ConfigEntryType = t.type('ConfigEntryType', t.union(t.string(), t.exactObject(t.property('key', t.string()), t.property('path', t.string()))));
 const BabelConfigType = t.type('BabelConfigType', t.object());
 
 
-const OptionsType = t.type('OptionsType', t.exactObject(t.property('env', t.nullable(t.string()), true), t.property('hmr', t.boolean(), true), t.property('resolveLoaderModules', t.nullable(t.array(t.string())), true), t.property('webpackPrefixPackageFields', t.nullable(t.array(t.string())), true), t.property('babel', t.nullable(BabelConfigType), true), t.property('jsLoaders', t.nullable(t.array(t.any())), true), t.property('moduleRules', t.nullable(t.array(t.any())), true), t.property('prependPlugins', t.nullable(t.array(t.any())), true), t.property('plugins', t.nullable(t.array(t.any())), true), t.property('paths', t.nullable(ConfigPathsType), true), t.property('entries', t.nullable(t.array(ConfigEntryType)), true), t.property('includeModules', t.nullable(t.array(t.string())), true), t.property('includePaths', t.nullable(t.array(t.string())), true), t.property('defines', t.nullable(t.object(t.indexer('key', t.string(), t.any()))), true), t.property('aliases', t.nullable(t.object(t.indexer('key', t.string(), t.any()))), true)));
+const OptionsType = t.type('OptionsType', t.exactObject(t.property('aliases', t.nullable(t.object(t.indexer('key', t.string(), t.any()))), true), t.property('babel', t.nullable(BabelConfigType), true), t.property('defines', t.nullable(t.object(t.indexer('key', t.string(), t.any()))), true), t.property('entries', t.nullable(t.array(ConfigEntryType)), true), t.property('env', t.nullable(t.string()), true), t.property('hmr', t.boolean(), true), t.property('includeModules', t.nullable(t.array(t.string())), true), t.property('includePaths', t.nullable(t.array(t.string())), true), t.property('jsLoaders', t.nullable(t.array(t.any())), true), t.property('moduleRules', t.nullable(t.array(t.any())), true), t.property('paths', t.nullable(ConfigPathsType), true), t.property('plugins', t.nullable(t.array(t.any())), true), t.property('prependPlugins', t.nullable(t.array(t.any())), true), t.property('resolveLoaderModules', t.nullable(t.array(t.string())), true), t.property('typescript', t.nullable(t.boolean()), true), t.property('webpackPrefixPackageFields', t.nullable(t.array(t.string())), true)));
 
 var createOptions = (options => {
   let _optionsType = t.object();
@@ -36,21 +36,22 @@ var createOptions = (options => {
 
   t.param('options', _optionsType).assert(options);
   return _returnType.assert({
+    aliases: options.aliases || {},
+    babel: options.babel,
+    defines: options.defines || {},
+    entries: options.entries || ['index'],
     env: options.env || process.env.NODE_ENV,
     hmr: options.hmr,
-    resolveLoaderModules: options.resolveLoaderModules,
-    webpackPrefixPackageFields: options.webpackPrefixPackageFields || [],
-    babel: options.babel,
-    jsLoaders: options.jsLoaders,
-    moduleRules: options.moduleRules,
-    plugins: options.plugins || [],
-    prependPlugins: options.prependPlugins || [],
-    paths: Object.assign({ src: 'src', build: 'build' }, options.paths),
-    entries: options.entries || ['index'],
     includeModules: options.includeModules || [],
     includePaths: options.includePaths || [],
-    defines: options.defines || {},
-    aliases: options.aliases || {}
+    jsLoaders: options.jsLoaders,
+    moduleRules: options.moduleRules,
+    paths: Object.assign({ src: 'src', build: 'build' }, options.paths),
+    plugins: options.plugins || [],
+    prependPlugins: options.prependPlugins || [],
+    resolveLoaderModules: options.resolveLoaderModules,
+    typescript: options.typescript || false,
+    webpackPrefixPackageFields: options.webpackPrefixPackageFields || []
   });
 });
 
@@ -223,9 +224,9 @@ var createModuleConfig = (options => {
     // Disable require.ensure as it's not a standard language feature.
     { parser: { requireEnsure: false } },
 
-    // jsx?
+    // tsx? / jsx?
     {
-      test: /\.jsx?$/,
+      test: options.typescript ? /\.[tj]sx?$/ : /\.jsx?$/,
       include: [path.resolve(options.paths.src), ...options.includeModules.map(includeModule => fs.realpathSync(path.resolve('node_modules', includeModule))), ...options.includePaths],
       loaders: [{
         loader: require.resolve('babel-loader'),
@@ -247,6 +248,11 @@ var createPluginsConfig = (options => {
 
   t.param('options', _optionsType).assert(options);
   return [...options.prependPlugins,
+
+  // ignore files when watching
+  new webpack.WatchIgnorePlugin([
+  // typescript definitions
+  /\.d\.ts$/]),
 
   // enforces the entire path of all required modules match the exact case
   // of the actual path on disk. Using this plugin helps alleviate cases

@@ -1,8 +1,8 @@
 // /* eslint-disable flowtype/no-weak-types */
 //
 type ConfigPathsType = {|
-  src?: string,
   build?: string,
+  src?: string,
 |};
 
 type ConfigEntryType =
@@ -15,37 +15,39 @@ type ConfigEntryType =
 type BabelConfigType = Object;
 
 export type OptionsType = {|
+  aliases?: ?{ [string]: any },
+  babel?: ?BabelConfigType,
+  defines?: ?{ [string]: any },
+  entries?: ?Array<ConfigEntryType>,
   env?: ?string,
   hmr?: boolean,
-  resolveLoaderModules?: ?Array<string>,
-  webpackPrefixPackageFields?: ?Array<string>,
-  babel?: ?BabelConfigType,
-  jsLoaders?: ?Array<any>,
-  moduleRules?: ?Array<any>,
-  prependPlugins?: ?Array<any>,
-  plugins?: ?Array<any>,
-  paths?: ?ConfigPathsType,
-  entries?: ?Array<ConfigEntryType>,
   includeModules?: ?Array<string>,
   includePaths?: ?Array<string>,
-  defines?: ?{ [string]: any },
-  aliases?: ?{ [string]: any },
+  jsLoaders?: ?Array<any>,
+  moduleRules?: ?Array<any>,
+  paths?: ?ConfigPathsType,
+  plugins?: ?Array<any>,
+  prependPlugins?: ?Array<any>,
+  resolveLoaderModules?: ?Array<string>,
+  typescript?: ?boolean,
+  webpackPrefixPackageFields?: ?Array<string>,
 |};
 
 export default (options: Object): OptionsType => ({
+  aliases: options.aliases || {},
+  babel: options.babel,
+  defines: options.defines || {},
+  entries: options.entries || ['index'],
   env: options.env || process.env.NODE_ENV,
   hmr: options.hmr,
-  resolveLoaderModules: options.resolveLoaderModules,
-  webpackPrefixPackageFields: options.webpackPrefixPackageFields || [],
-  babel: options.babel,
-  jsLoaders: options.jsLoaders,
-  moduleRules: options.moduleRules,
-  plugins: options.plugins || [],
-  prependPlugins: options.prependPlugins || [],
-  paths: { src: 'src', build: 'build', ...options.paths },
-  entries: options.entries || ['index'],
   includeModules: options.includeModules || [],
   includePaths: options.includePaths || [],
-  defines: options.defines || {},
-  aliases: options.aliases || {},
+  jsLoaders: options.jsLoaders,
+  moduleRules: options.moduleRules,
+  paths: { src: 'src', build: 'build', ...options.paths },
+  plugins: options.plugins || [],
+  prependPlugins: options.prependPlugins || [],
+  resolveLoaderModules: options.resolveLoaderModules,
+  typescript: options.typescript || false,
+  webpackPrefixPackageFields: options.webpackPrefixPackageFields || [],
 });
