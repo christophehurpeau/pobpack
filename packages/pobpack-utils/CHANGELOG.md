@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="5.0.1"></a>
+## [5.0.1](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@5.0.0...pobpack-utils@5.0.1) (2018-04-20)
+
+
+### Bug Fixes
+
+* webpack 4 deprecation warning ([4ab279d](https://github.com/christophehurpeau/pobpack/commit/4ab279d))
+
+
+
+
 <a name="5.0.0"></a>
 # [5.0.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@4.1.4...pobpack-utils@5.0.0) (2018-04-20)
 
