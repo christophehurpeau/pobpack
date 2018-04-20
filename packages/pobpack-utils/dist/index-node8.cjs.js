@@ -149,7 +149,7 @@ var createPobpackCompiler = ((bundleName, webpackConfig, { progressBar = true, s
   }
 
   // human-readable error messages
-  compiler.apply(new FriendlyErrorsWebpackPlugin({ bundleName, successMessage }));
+  new FriendlyErrorsWebpackPlugin({ bundleName, successMessage }).apply(compiler);
 
   const promisifyRun = util.promisify(compiler.run.bind(compiler));
 
