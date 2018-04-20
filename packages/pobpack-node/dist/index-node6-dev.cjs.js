@@ -100,6 +100,7 @@ const createAppNodeCompiler = options => {
 };
 
 const build = (options = {}) => {
+  if (!process.env.NODE_ENV) process.env.NODE_ENV = 'production';
   const compiler = createAppNodeCompiler(Object.assign({}, options, { hmr: false }));
   compiler.clean();
   return compiler.run();
@@ -120,7 +121,7 @@ const watch = (options, callback) => {
   return compiler;
 };
 
-const RunOptionsType = t.type('RunOptionsType', t.exactObject(t.property('key', t.nullable(t.string()), true), t.property('displayName', t.nullable(t.string()), true), t.property('args', t.nullable(t.array(t.union(t.string(), t.number()))), true), t.property('cwd', t.nullable(t.string()), true)));
+const RunOptionsType = t.type('RunOptionsType', t.exactObject(t.property('args', t.nullable(t.array(t.union(t.string(), t.number()))), true), t.property('cwd', t.nullable(t.string()), true), t.property('displayName', t.nullable(t.string()), true), t.property('key', t.nullable(t.string()), true)));
 
 
 const watchAndRunCompiler = (compiler, options = {}) => {

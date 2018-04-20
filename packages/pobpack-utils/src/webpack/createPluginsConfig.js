@@ -17,5 +17,12 @@ export default (options: OptionsType) =>
     }),
 
     options.hmr && new webpack.HotModuleReplacementPlugin(),
+
+    // replace object-assign ponyfill to use native implementation
+    new webpack.NormalModuleReplacementPlugin(
+      /.*\/node_modules\/object-assign\/index.js/,
+      require.resolve('../replacements/object-assign.js'),
+    ),
+
     ...options.plugins,
   ].filter(Boolean);

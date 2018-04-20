@@ -49,6 +49,6 @@
     "prettier": "^1.11.1"
   },
   "peerDependencies": {
-    "webpack": "^4.0.1"
+    "webpack": "^4.6.0"
   }
 }

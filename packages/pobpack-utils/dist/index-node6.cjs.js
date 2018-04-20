@@ -72,6 +72,8 @@ nightingale.addConfig({ key: 'pobpack-utils', handler: new ConsoleHandler(nighti
 const logger = new Logger('pobpack-utils', 'pobpack');
 const isSuccessful = messages => !messages.errors.length && !messages.warnings.length;
 
+const plugin = { name: 'pobpack/FriendlyErrorsWebpackPlugin' };
+
 let FriendlyErrorsWebpackPlugin = class {
 
   constructor(options) {
@@ -81,12 +83,12 @@ let FriendlyErrorsWebpackPlugin = class {
 
   apply(compiler) {
     // webpack is recompiling
-    compiler.plugin('invalid', () => {
+    compiler.hooks.invalid.tap(plugin, () => {
       this.logger.info('Compiling...');
     });
 
     // compilation done
-    compiler.plugin('done', stats => {
+    compiler.hooks.done.tap(plugin, stats => {
       const messages = formatWebpackMessages(stats.toJson({}, true));
       // const messages = stats.toJson({}, true);
 
@@ -133,7 +135,7 @@ var createPobpackCompiler = ((bundleName, webpackConfig, { progressBar = true, s
 
   if (progressBar && process.stdout.isTTY) {
     let bar;
-    compiler.apply(new ProgressPlugin((percentage, msg) => {
+    const progressPlugin = new ProgressPlugin((percentage, msg) => {
       if (percentage === 0) {
         bar = new ProgressBar(`${chalk.yellow.bold(`Building ${bundleName} bundle...`)} ${chalk.bold(':percent')} [:bar] → :msg`, { incomplete: ' ', complete: '▇', total: 50, clear: true, stream: process.stdout });
         // } else if (percentage === 1) {
@@ -142,7 +144,8 @@ var createPobpackCompiler = ((bundleName, webpackConfig, { progressBar = true, s
       } else {
         bar.update(percentage, { msg: msg.length > 20 ? `${msg.substr(0, 20)}...` : msg });
       }
-    }));
+    });
+    progressPlugin.apply(compiler);
   }
 
   // human-readable error messages
@@ -195,7 +198,10 @@ var createPluginsConfig = (options => [...options.prependPlugins,
 // for developers working on case insensitive systems like OSX.
 options.env !== 'production' && new CaseSensitivePathsPlugin(), new webpack.DefinePlugin(Object.assign({
   'process.env.NODE_ENV': JSON.stringify(options.env)
-}, options.defines)), options.hmr && new webpack.HotModuleReplacementPlugin(), ...options.plugins].filter(Boolean));
+}, options.defines)), options.hmr && new webpack.HotModuleReplacementPlugin(),
+
+// replace object-assign ponyfill to use native implementation
+new webpack.NormalModuleReplacementPlugin(/.*\/node_modules\/object-assign\/index.js/, require.resolve('../replacements/object-assign.js')), ...options.plugins].filter(Boolean));
 
 /* eslint-disable prettier/prettier */
 

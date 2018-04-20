@@ -1,17 +1,17 @@
-/* eslint-disable strict */
+/* eslint-disable strict, import/no-commonjs */
 
 'use strict';
 
-module.exports = {
-  presets: [
-    [
-      require.resolve('babel-preset-env'),
-      {
-        modules: false,
-        useBuiltIns: true,
-      },
+module.exports = function(context, opts) {
+  return {
+    presets: [
+      [
+        require.resolve('@babel/preset-env'),
+        // pass options but force modules to false
+        Object.assign({}, opts, { modules: false }),
+      ],
     ],
-  ],
 
-  plugins: [],
+    plugins: [require.resolve('@babel/plugin-external-helpers')],
+  };
 };

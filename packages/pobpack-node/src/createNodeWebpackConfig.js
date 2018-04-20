@@ -7,7 +7,7 @@ import {
   createPluginsConfig,
   createResolveConfig,
   type OptionsType,
-} from 'pobpack-utils/src';
+} from 'pobpack-utils';
 
 export default (options: OptionsType) => ({
   // production or development

@@ -50,6 +50,21 @@ npm install --save pobpack-browser
 npm run start
 ```
 
+## Targets
+
+There is two targets : `modern` and `all`.
+
+You can use `modern` to build a specific file for browsers that supports es modules, and import like this:
+
+```html
+<script defer src="/all.js" nomodule></script>
+<script defer src="/modern.js" type="module"></script>
+```
+
+You should also use [polyfill.io](https://polyfill.io) to import polyfills and reduce build size. Some modules are removed for their native implementation:
+
+- [object-assign](https://www.npmjs.com/package/object-assign)
+
 ## Configuration Options
 
 You can create a file named `createWebpackConfig.js` next to `package.json`:

@@ -39,7 +39,7 @@ var createBrowserWebpackConfig = (target => {
 
       optimization: {
         noEmitOnErrors: true,
-        minimize: false
+        minimize: options.env === 'production'
       },
 
       // use cache
@@ -74,13 +74,15 @@ var createBrowserWebpackConfig = (target => {
 
       entry: options.entries.reduce((entries, entry) => {
         if (typeof entry === 'string') entry = { key: entry, path: entry };
-        entries[entry.key] = [target !== MODERN && require.resolve('babel-regenerator-runtime'), options.hmr && require.resolve('react-hot-loader/patch'), options.hmr && require.resolve('react-dev-utils/webpackHotDevClient'), path.join(path.resolve(options.paths.src), entry.path)].filter(Boolean);
+        entries[entry.key] = [
+        // options.env !== 'production' && require.resolve('../source-map-support'),
+        target !== MODERN && require.resolve('regenerator-runtime/runtime'), options.hmr && require.resolve('react-hot-loader/patch'), options.hmr && require.resolve('react-dev-utils/webpackHotDevClient'), path.join(path.resolve(options.paths.src), entry.path)].filter(Boolean);
         return entries;
       }, {}),
 
       output: {
-        path: path.resolve(options.paths.build),
-        devtoolModuleFilenameTemplate: 'file://[absolute-resource-path]'
+        path: path.resolve(options.paths.build)
+        // devtoolModuleFilenameTemplate: 'file://[absolute-resource-path]',
       },
 
       module: pobpackUtils.createModuleConfig(options),
@@ -119,12 +121,14 @@ const createAppBrowserCompiler = (target, options, compilerOptions) => {
 
   _t.param('options', _optionsType).assert(options);
 
-  return _returnType.assert(pobpackUtils.createPobpackCompiler(target, pobpackUtils.createAppWebpackConfig(createBrowserWebpackConfig(target))(Object.assign({}, options, {
+  return _returnType.assert(pobpackUtils.createPobpackCompiler(target, pobpackUtils.createAppWebpackConfig(createBrowserWebpackConfig(target))(Object.assign({
+    entries: [{ key: target, path: 'index' }] }, options, {
     paths: Object.assign({ build: 'public' }, options.paths)
   })), compilerOptions));
 };
 
 const build = (options = {}) => {
+  if (!process.env.NODE_ENV) process.env.NODE_ENV = 'production';
   const compilers = TARGETS.map(t => createAppBrowserCompiler(t, Object.assign({}, options, { hmr: false })));
   compilers[0].clean();
   return compilers.map(compiler => compiler.run());
@@ -145,7 +149,7 @@ const watch = (options, callback) => {
   return compiler;
 };
 
-const RunOptionsType = _t.type('RunOptionsType', _t.object(_t.property('host', _t.string(), true), _t.property('port', _t.number()), _t.property('https', _t.nullable(_t.boolean()), true)));
+const RunOptionsType = _t.type('RunOptionsType', _t.object(_t.property('host', _t.string(), true), _t.property('https', _t.nullable(_t.boolean()), true), _t.property('port', _t.number())));
 
 const runDevServer = (compiler, options) => {
   let _compilerType = _t.ref(PobpackCompilerType);

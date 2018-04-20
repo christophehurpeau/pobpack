@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
 
-import { addConfig, levels } from 'nightingale/src';
-import Logger from 'nightingale-logger/src';
-import ConsoleHandler from 'nightingale-console/src';
+import { addConfig, levels } from 'nightingale';
+import Logger from 'nightingale-logger';
+import ConsoleHandler from 'nightingale-console';
 import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages';
 
 type OptionsType = {|
@@ -13,6 +13,8 @@ type OptionsType = {|
 addConfig({ key: 'pobpack-utils', handler: new ConsoleHandler(levels.INFO) });
 const logger = new Logger('pobpack-utils', 'pobpack');
 const isSuccessful = messages => !messages.errors.length && !messages.warnings.length;
+
+const plugin = { name: 'pobpack/FriendlyErrorsWebpackPlugin' };
 
 export default class FriendlyErrorsWebpackPlugin {
   bundleName: string;
@@ -25,12 +27,12 @@ export default class FriendlyErrorsWebpackPlugin {
 
   apply(compiler) {
     // webpack is recompiling
-    compiler.plugin('invalid', () => {
+    compiler.hooks.invalid.tap(plugin, () => {
       this.logger.info('Compiling...');
     });
 
     // compilation done
-    compiler.plugin('done', stats => {
+    compiler.hooks.done.tap(plugin, stats => {
       const messages = formatWebpackMessages(stats.toJson({}, true));
       // const messages = stats.toJson({}, true);
 

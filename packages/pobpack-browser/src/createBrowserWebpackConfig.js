@@ -4,7 +4,7 @@ import {
   createPluginsConfig,
   createResolveConfig,
   type OptionsType,
-} from 'pobpack-utils/src';
+} from 'pobpack-utils';
 import hotLoaderBabelPlugin from 'react-hot-loader/babel';
 
 type BrowserTargetType = 'modern' | 'all';
@@ -28,7 +28,7 @@ export default (target: BrowserTargetType) => (options: OptionsType) => ({
 
   optimization: {
     noEmitOnErrors: true,
-    minimize: false,
+    minimize: options.env === 'production',
   },
 
   // use cache
@@ -70,7 +70,8 @@ export default (target: BrowserTargetType) => (options: OptionsType) => ({
   entry: options.entries.reduce((entries, entry) => {
     if (typeof entry === 'string') entry = { key: entry, path: entry };
     entries[entry.key] = [
-      target !== MODERN && require.resolve('babel-regenerator-runtime'),
+      // options.env !== 'production' && require.resolve('../source-map-support'),
+      target !== MODERN && require.resolve('regenerator-runtime/runtime'),
       options.hmr && require.resolve('react-hot-loader/patch'),
       options.hmr && require.resolve('react-dev-utils/webpackHotDevClient'),
       path.join(path.resolve(options.paths.src), entry.path),
@@ -80,7 +81,7 @@ export default (target: BrowserTargetType) => (options: OptionsType) => ({
 
   output: {
     path: path.resolve(options.paths.build),
-    devtoolModuleFilenameTemplate: 'file://[absolute-resource-path]',
+    // devtoolModuleFilenameTemplate: 'file://[absolute-resource-path]',
   },
 
   module: createModuleConfig(options),

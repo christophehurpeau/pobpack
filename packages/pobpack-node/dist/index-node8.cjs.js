@@ -88,6 +88,7 @@ var createNodeWebpackConfig = (options => ({
 const createAppNodeCompiler = options => pobpackUtils.createPobpackCompiler('node', pobpackUtils.createAppWebpackConfig(createNodeWebpackConfig)(options));
 
 const build = (options = {}) => {
+  if (!process.env.NODE_ENV) process.env.NODE_ENV = 'production';
   const compiler = createAppNodeCompiler(Object.assign({}, options, { hmr: false }));
   compiler.clean();
   return compiler.run();

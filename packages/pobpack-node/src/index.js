@@ -1,5 +1,5 @@
 import { join } from 'path';
-import createDaemon from 'springbokjs-daemon/src';
+import createDaemon from 'springbokjs-daemon';
 import {
   createPobpackCompiler,
   createAppWebpackConfig,
@@ -12,6 +12,7 @@ export const createAppNodeCompiler = (options): PobpackCompilerType =>
   createPobpackCompiler('node', createAppWebpackConfig(createNodeWebpackConfig)(options));
 
 export const build = (options = {}) => {
+  if (!process.env.NODE_ENV) process.env.NODE_ENV = 'production';
   const compiler = createAppNodeCompiler({ ...options, hmr: false });
   compiler.clean();
   return compiler.run();
@@ -29,10 +30,10 @@ export const watch = (options, callback: WatchCallbackType) => {
 };
 
 type RunOptionsType = {|
-  key?: ?string,
-  displayName?: ?string,
   args?: ?Array<string | number>,
   cwd?: ?string,
+  displayName?: ?string,
+  key?: ?string,
 |};
 
 export const watchAndRunCompiler = (

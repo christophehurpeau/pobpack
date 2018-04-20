@@ -28,7 +28,7 @@ var createBrowserWebpackConfig = (target => options => ({
 
   optimization: {
     noEmitOnErrors: true,
-    minimize: false
+    minimize: options.env === 'production'
   },
 
   // use cache
@@ -63,13 +63,15 @@ var createBrowserWebpackConfig = (target => options => ({
 
   entry: options.entries.reduce((entries, entry) => {
     if (typeof entry === 'string') entry = { key: entry, path: entry };
-    entries[entry.key] = [target !== MODERN && require.resolve('babel-regenerator-runtime'), options.hmr && require.resolve('react-hot-loader/patch'), options.hmr && require.resolve('react-dev-utils/webpackHotDevClient'), path.join(path.resolve(options.paths.src), entry.path)].filter(Boolean);
+    entries[entry.key] = [
+    // options.env !== 'production' && require.resolve('../source-map-support'),
+    target !== MODERN && require.resolve('regenerator-runtime/runtime'), options.hmr && require.resolve('react-hot-loader/patch'), options.hmr && require.resolve('react-dev-utils/webpackHotDevClient'), path.join(path.resolve(options.paths.src), entry.path)].filter(Boolean);
     return entries;
   }, {}),
 
   output: {
-    path: path.resolve(options.paths.build),
-    devtoolModuleFilenameTemplate: 'file://[absolute-resource-path]'
+    path: path.resolve(options.paths.build)
+    // devtoolModuleFilenameTemplate: 'file://[absolute-resource-path]',
   },
 
   module: pobpackUtils.createModuleConfig(options),
@@ -89,11 +91,13 @@ var objectWithoutProperties = function (obj, keys) {
   return target;
 };
 
-const createAppBrowserCompiler = (target, options, compilerOptions) => pobpackUtils.createPobpackCompiler(target, pobpackUtils.createAppWebpackConfig(createBrowserWebpackConfig(target))(Object.assign({}, options, {
+const createAppBrowserCompiler = (target, options, compilerOptions) => pobpackUtils.createPobpackCompiler(target, pobpackUtils.createAppWebpackConfig(createBrowserWebpackConfig(target))(Object.assign({
+  entries: [{ key: target, path: 'index' }] }, options, {
   paths: Object.assign({ build: 'public' }, options.paths)
 })), compilerOptions);
 
 const build = (options = {}) => {
+  if (!process.env.NODE_ENV) process.env.NODE_ENV = 'production';
   const compilers = TARGETS.map(t => createAppBrowserCompiler(t, Object.assign({}, options, { hmr: false })));
   compilers[0].clean();
   return compilers.map(compiler => compiler.run());

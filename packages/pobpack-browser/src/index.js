@@ -5,7 +5,7 @@ import {
   type OptionsType,
   type PobpackCompilerType,
   type WatchCallbackType,
-} from 'pobpack-utils/src';
+} from 'pobpack-utils';
 import createBrowserWebpackConfig, { TARGETS, ALL, MODERN } from './createBrowserWebpackConfig';
 
 export { TARGETS, ALL, MODERN };
@@ -18,6 +18,7 @@ export const createAppBrowserCompiler = (
   createPobpackCompiler(
     target,
     createAppWebpackConfig(createBrowserWebpackConfig(target))({
+      entries: [{ key: target, path: 'index' }], // override default entry
       ...options,
       paths: { build: 'public', ...options.paths },
     }),
@@ -25,6 +26,7 @@ export const createAppBrowserCompiler = (
   );
 
 export const build = (options = {}) => {
+  if (!process.env.NODE_ENV) process.env.NODE_ENV = 'production';
   const compilers = TARGETS.map(t => createAppBrowserCompiler(t, { ...options, hmr: false }));
   compilers[0].clean();
   return compilers.map(compiler => compiler.run());
@@ -43,8 +45,8 @@ export const watch = (options, callback: WatchCallbackType) => {
 
 type RunOptionsType = {
   host?: string,
-  port: number,
   https?: ?boolean,
+  port: number,
 };
 
 export const runDevServer = (compiler: PobpackCompilerType, options: RunOptionsType) => {
