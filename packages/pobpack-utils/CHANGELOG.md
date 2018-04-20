@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="5.1.1"></a>
+## [5.1.1](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@5.1.0...pobpack-utils@5.1.1) (2018-04-20)
+
+
+### Bug Fixes
+
+* typescript resolve extensions ([0ce5ef1](https://github.com/christophehurpeau/pobpack/commit/0ce5ef1))
+
+
+
+
 <a name="5.1.0"></a>
 # [5.1.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@5.0.1...pobpack-utils@5.1.0) (2018-04-20)
 
