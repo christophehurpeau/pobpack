@@ -215,7 +215,7 @@ var createResolveConfig = ((modulePrefixPackageFields, options) => ({
   cacheWithContext: false,
 
   modules: ['node_modules', path.resolve('src')],
-  extensions: ['.js', '.jsx'],
+  extensions: [options.typescript && '.ts', options.typescript && '.tsx', '.js', '.jsx'].filter(Boolean),
 
   mainFields: [...[].concat(...modulePrefixPackageFields.map(prefix => [options.env !== 'production' && `module:${prefix}-dev`, `module:${prefix}`,
   // old `webpack:` syntax

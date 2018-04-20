@@ -6,7 +6,7 @@ export default (modulePrefixPackageFields: Array<string>, options: OptionsType) 
   cacheWithContext: false,
 
   modules: ['node_modules', resolve('src')],
-  extensions: ['.js', '.jsx'],
+  extensions: [options.typescript && '.ts', options.typescript && '.tsx', '.js', '.jsx'].filter(Boolean),
 
   mainFields: [
     ...[].concat(...modulePrefixPackageFields.map(prefix => ([
