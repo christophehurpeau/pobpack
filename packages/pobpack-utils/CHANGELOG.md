@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="5.3.0"></a>
+# [5.3.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@5.2.0...pobpack-utils@5.3.0) (2018-04-21)
+
+
+### Features
+
+* replace ponyfills Array.isArray Object.setPrototypeOf and String.prototype.repeat ([68fd834](https://github.com/christophehurpeau/pobpack/commit/68fd834))
+
+
+
+
 <a name="5.2.0"></a>
 # [5.2.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@5.1.1...pobpack-utils@5.2.0) (2018-04-21)
 
