@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="5.2.0"></a>
+# [5.2.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@5.1.1...pobpack-utils@5.2.0) (2018-04-21)
+
+
+### Features
+
+* handle any-promise ([6e0d62d](https://github.com/christophehurpeau/pobpack/commit/6e0d62d))
+
+
+
+
 <a name="5.1.1"></a>
 ## [5.1.1](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@5.1.0...pobpack-utils@5.1.1) (2018-04-20)
 
