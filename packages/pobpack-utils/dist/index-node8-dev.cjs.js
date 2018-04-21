@@ -261,8 +261,13 @@ var createPluginsConfig = (options => {
     'process.env.NODE_ENV': JSON.stringify(options.env)
   }, options.defines)), options.hmr && new webpack.HotModuleReplacementPlugin(),
 
-  // replace object-assign ponyfill to use native implementation
-  new webpack.NormalModuleReplacementPlugin(/.*\/node_modules\/object-assign\/index.js/, require.resolve('../replacements/object-assign.js')), ...options.plugins].filter(Boolean);
+  /* replace object-assign ponyfill to use native implementation */
+
+  // Object.assign
+  new webpack.NormalModuleReplacementPlugin(/.*\/node_modules\/object-assign\/index.js/, require.resolve('../replacements/object-assign.js')),
+
+  // Promise
+  new webpack.NormalModuleReplacementPlugin(/.*\/node_modules\/any-promise\/index.js/, require.resolve('../replacements/Promise.js')), new webpack.IgnorePlugin(/.*/, /node_modules\/any-promise$/), ...options.plugins].filter(Boolean);
 });
 
 /* eslint-disable prettier/prettier */
