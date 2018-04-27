@@ -7,50 +7,48 @@
   "license": "ISC",
   "repository": "git@github.com:christophehurpeau/pobpack.git",
   "homepage": "https://github.com/christophehurpeau/pobpack",
-  "engines": {
-    "node": ">=6.5.0"
-  },
+  "engines": { "node": ">=6.5.0" },
   "main": "./index.js",
+  "typings": "./dist/index.d.ts",
+  "module:node": "./dist/index-node8.es.js",
+  "module:node-dev": "./dist/index-node8-dev.es.js",
   "scripts": {
-    "build": "pob-build",
+    "build": "pob-build && tsc -p tsconfig.build.json --emitDeclarationOnly",
     "clean": "rm -Rf docs dist test/node6 coverage",
-    "flow": "flow",
-    "lint": "eslint src/",
-    "test": "No tests",
+    "lint": "tsc --noEmit && eslint --ext .ts  src/",
+    "test": "echo \"No tests\"",
     "watch": "pob-watch"
   },
-  "prettier": {
-    "trailingComma": "all",
-    "singleQuote": true,
-    "printWidth": 100
-  },
+  "prettier": { "trailingComma": "all", "singleQuote": true, "printWidth": 100 },
   "dependencies": {
+    "@types/webpack": "^4.1.4",
     "babel-loader": "^8.0.0-beta.2",
     "case-sensitive-paths-webpack-plugin": "^2.1.2",
-    "chalk": "^2.3.2",
-    "flow-runtime": "^0.17.0",
-    "nightingale": "^7.0.0",
-    "nightingale-console": "^3.0.0",
-    "nightingale-logger": "^4.0.0",
+    "chalk": "^2.4.0",
+    "nightingale": "^8.0.1",
+    "nightingale-console": "^4.0.0",
+    "nightingale-logger": "^5.0.1",
+    "pobpack-types": "^1.0.0",
     "progress": "^2.0.0",
-    "react-dev-utils": "^5.0.0"
+    "react-dev-utils": "^5.0.1"
   },
+  "peerDependencies": { "babel-core": "^6.26.0 || 7.0.0-bridge.0", "webpack": "^4.6.0" },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^8.2.2",
-    "babel-preset-latest-node": "^1.0.0",
+    "@babel/core": "^7.0.0-beta.46",
+    "@types/case-sensitive-paths-webpack-plugin": "^2.1.2",
+    "@types/progress": "^2.0.1",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^8.2.3",
+    "babel-preset-latest-node": "^2.0.0-beta.3",
     "eslint": "^4.19.1",
-    "eslint-config-pob": "^18.0.0",
+    "eslint-config-pob": "^19.1.0",
     "eslint-plugin-babel": "^4.1.2",
-    "eslint-plugin-flowtype": "^2.46.1",
-    "eslint-plugin-import": "^2.10.0",
+    "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-prettier": "^2.6.0",
-    "flow-bin": "^0.69.0",
-    "pob-babel": "^20.2.0",
-    "prettier": "^1.11.1"
-  },
-  "peerDependencies": {
-    "babel-core": "^6.26.0 || 7.0.0-bridge.0",
-    "webpack": "^4.6.0"
+    "eslint-plugin-typescript": "^0.11.0",
+    "pob-babel": "^22.2.4",
+    "prettier": "^1.12.1",
+    "typescript": "^2.8.3",
+    "typescript-eslint-parser": "^15.0.0"
   }
 }

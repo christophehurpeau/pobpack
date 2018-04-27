@@ -11,7 +11,7 @@
   "homepage": "https://github.com/christophehurpeau/pobpack",
   "workspaces": ["packages/*"],
   "scripts": {
-    "build": "lerna run --parallel --ignore \"*-example\" build",
+    "build": "lerna run --ignore \"*-example\" build",
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "generate:docs":
       "lerna run --parallel --ignore \"*-example\" generate:docs",
@@ -34,16 +34,17 @@
     "packages/*/lib/**/*.json": ["prettier --write", "git add"],
     "packages/*/lib/**/*.js": ["eslint --fix --quiet", "git add"]
   },
-  "commitlint": {
-    "extends": ["@commitlint/config-conventional"]
-  },
+  "commitlint": { "extends": ["@commitlint/config-conventional"] },
   "devDependencies": {
     "@commitlint/cli": "^6.1.3",
     "@commitlint/config-conventional": "^6.1.3",
     "husky": "^0.14.3",
-    "lerna": "2.9.1",
-    "lint-staged": "^7.0.0",
-    "pob-release": "^3.1.0",
+    "lerna": "3.0.0-beta.18",
+    "lint-staged": "^7.0.5",
+    "pob-release": "^4.1.1",
     "yarnhook": "^0.2.0"
+  },
+  "resolutions": {
+    "@types/node": "^8.0.0"
   }
 }

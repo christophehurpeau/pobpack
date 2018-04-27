@@ -1,6 +1,10 @@
 {
   "extends": [
     "pob/babel",
-    "pob/flow"
+    "pob/typescript"
+  ],
+  "parser": "typescript-eslint-parser",
+  "plugins": [
+    "typescript"
   ]
 }

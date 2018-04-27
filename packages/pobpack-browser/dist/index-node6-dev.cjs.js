@@ -6,185 +6,157 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var path = _interopDefault(require('path'));
 var pobpackUtils = require('pobpack-utils');
-var hotLoaderBabelPlugin = _interopDefault(require('react-hot-loader/babel'));
-var _t = _interopDefault(require('flow-runtime'));
 var WebpackDevServer = _interopDefault(require('webpack-dev-server'));
 
-const OptionsType = _t.tdz(() => pobpackUtils.OptionsType);
-const BrowserTargetType = _t.type('BrowserTargetType', _t.union(_t.string('modern'), _t.string('all')));
-
-
-const MODERN = 'modern';
-const ALL = 'all';
-const TARGETS = [ALL, MODERN];
-
-var createBrowserWebpackConfig = (target => {
-  _t.param('target', BrowserTargetType).assert(target);
-  return options => {
-    let _optionsType = _t.ref(OptionsType);
-
-    _t.param('options', _optionsType).assert(options);
-    return {
-      // production or development
-      mode: options.env === 'production' ? 'production' : 'development',
-
-      // Don't attempt to continue if there are any errors.
-      bail: options.env === 'production',
-
-      // Target web
-      target: 'web',
-
-      // get right stack traces
-      devtool: options.env === 'production' ? 'nosources-source-map' : 'source-map',
-
-      optimization: {
-        noEmitOnErrors: true,
-        minimize: options.env === 'production'
-      },
-
-      // use cache
-      cache: options.hmr,
-
-      devServer: {
-        // don't watch node_modules (improve cpu and memory usage)
-        watchOptions: {
-          ignored: /node_modules/
-        }
-      },
-
-      // Some libraries import Node modules but don't use them in the browser.
-      // Tell Webpack to provide empty mocks for them so importing them works.
-      // fs and module are used by source-map-support
-      node: {
-        fs: 'empty',
-        module: 'empty'
-      },
-
-      resolveLoader: {
-        modules: options.resolveLoaderModules || ['node_modules']
-      },
-
-      resolve: pobpackUtils.createResolveConfig([target === MODERN && 'modern-browsers', 'browser'].filter(Boolean), Object.assign({}, options, {
-        babel: Object.assign({
-          presets: [require.resolve('../babel')]
-        }, options.babel, {
-          plugins: [options.hmr && hotLoaderBabelPlugin, ...(options.babel.plugins || [])].filter(Boolean)
-        })
-      })),
-
-      entry: options.entries.reduce((entries, entry) => {
-        if (typeof entry === 'string') entry = { key: entry, path: entry };
-        entries[entry.key] = [
-        // options.env !== 'production' && require.resolve('../source-map-support'),
-        target !== MODERN && require.resolve('regenerator-runtime/runtime'), options.hmr && require.resolve('react-hot-loader/patch'), options.hmr && require.resolve('react-dev-utils/webpackHotDevClient'), path.join(path.resolve(options.paths.src), entry.path)].filter(Boolean);
-        return entries;
-      }, {}),
-
-      output: {
-        path: path.resolve(options.paths.build)
-        // devtoolModuleFilenameTemplate: 'file://[absolute-resource-path]',
-      },
-
-      module: pobpackUtils.createModuleConfig(options),
-
-      plugins: pobpackUtils.createPluginsConfig(options)
-    };
-  };
-});
-
-var objectWithoutProperties = function (obj, keys) {
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
   var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
 
-  for (var i in obj) {
-    if (keys.indexOf(i) >= 0) continue;
-    if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
-    target[i] = obj[i];
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
   }
 
   return target;
-};
+}
 
-const OptionsType$1 = _t.tdz(() => pobpackUtils.OptionsType);
+const MODERN = 'modern';
+const ALL = 'all';
+const TARGETS = ["all", "modern"];
+const ExcludesFalsy = Boolean;
+var createBrowserWebpackConfig = (target => options => ({
+  // production or development
+  mode: options.env === 'production' ? 'production' : 'development',
+  // Don't attempt to continue if there are any errors.
+  bail: options.env === 'production',
+  // Target web
+  target: 'web',
+  // get right stack traces
+  devtool: options.env === 'production' ? 'nosources-source-map' : 'source-map',
+  optimization: {
+    noEmitOnErrors: true,
+    minimize: options.env === 'production'
+  },
+  // use cache
+  cache: options.hmr,
+  devServer: {
+    // don't watch node_modules (improve cpu and memory usage)
+    watchOptions: {
+      ignored: /node_modules/
+    }
+  },
+  // Some libraries import Node modules but don't use them in the browser.
+  // Tell Webpack to provide empty mocks for them so importing them works.
+  // fs and module are used by source-map-support
+  node: {
+    fs: 'empty',
+    module: 'empty'
+  },
+  resolveLoader: {
+    modules: options.resolveLoaderModules || ['node_modules']
+  },
+  resolve: pobpackUtils.createResolveConfig([target === "modern" ? 'modern-browsers' : undefined, 'browser'].filter(ExcludesFalsy), Object.assign({}, options, {
+    babel: Object.assign({
+      presets: [require.resolve('../babel')]
+    }, options.babel, {
+      plugins: [options.hmr && require.resolve('react-hot-loader/babel'), ...(options.babel.plugins || [])].filter(ExcludesFalsy)
+    })
+  })),
+  entry: options.entries.reduce((entries, entry) => {
+    if (typeof entry === 'string') entry = {
+      key: entry,
+      path: entry
+    };
+    entries[entry.key] = [// options.env !== 'production' && require.resolve('../source-map-support'),
+    target !== "modern" && require.resolve('regenerator-runtime/runtime'), options.hmr && require.resolve('react-hot-loader/patch'), options.hmr && require.resolve('react-dev-utils/webpackHotDevClient'), path.join(path.resolve(options.paths.src), entry.path)].filter(ExcludesFalsy);
+    return entries;
+  }, {}),
+  output: {
+    path: path.resolve(options.paths.build) // devtoolModuleFilenameTemplate: 'file://[absolute-resource-path]',
 
-const PobpackCompilerType = _t.tdz(() => pobpackUtils.PobpackCompilerType);
+  },
+  module: pobpackUtils.createModuleConfig(options),
+  plugins: pobpackUtils.createPluginsConfig(options)
+}));
 
-const WatchCallbackType = _t.tdz(() => pobpackUtils.WatchCallbackType);
-
-const createAppBrowserCompiler = (target, options, compilerOptions) => {
-  let _targetType = _t.string();
-
-  let _optionsType = _t.ref(OptionsType$1);
-
-  const _returnType = _t.return(_t.ref(PobpackCompilerType));
-
-  _t.param('target', _targetType).assert(target);
-
-  _t.param('options', _optionsType).assert(options);
-
-  return _returnType.assert(pobpackUtils.createPobpackCompiler(target, pobpackUtils.createAppWebpackConfig(createBrowserWebpackConfig(target))(Object.assign({
-    entries: [{ key: target, path: 'index' }] }, options, {
-    paths: Object.assign({ build: 'public' }, options.paths)
-  })), compilerOptions));
-};
-
+const createAppBrowserCompiler = (target, options, compilerOptions) => pobpackUtils.createPobpackCompiler(target, pobpackUtils.createAppWebpackConfig(createBrowserWebpackConfig(target))(Object.assign({
+  entries: [{
+    key: target,
+    path: 'index'
+  }]
+}, options, {
+  paths: Object.assign({
+    build: 'public'
+  }, options.paths)
+})), compilerOptions);
 const build = (options = {}) => {
   if (!process.env.NODE_ENV) process.env.NODE_ENV = 'production';
-  const compilers = TARGETS.map(t => createAppBrowserCompiler(t, Object.assign({}, options, { hmr: false })));
+  const compilers = TARGETS.map(t => createAppBrowserCompiler(t, Object.assign({}, options, {
+    hmr: false
+  })));
   compilers[0].clean();
   return compilers.map(compiler => compiler.run());
 };
-
 const watch = (options, callback) => {
-  let _callbackType = _t.ref(WatchCallbackType);
-
-  _t.param('callback', _callbackType).assert(callback);
-
   if (typeof options === 'function') {
-    callback = _callbackType.assert(options);
-    options = undefined;
+    callback = options;
+    options = {};
   }
-  const compiler = createAppBrowserCompiler(MODERN, Object.assign({}, options, { hmr: true }));
+
+  const compiler = createAppBrowserCompiler(MODERN, Object.assign({}, options, {
+    hmr: true
+  }));
   compiler.clean();
   compiler.watch(callback);
   return compiler;
 };
-
-const RunOptionsType = _t.type('RunOptionsType', _t.object(_t.property('host', _t.string(), true), _t.property('https', _t.nullable(_t.boolean()), true), _t.property('port', _t.number())));
-
 const runDevServer = (compiler, options) => {
-  let _compilerType = _t.ref(PobpackCompilerType);
+  const {
+    host,
+    port,
+    https
+  } = options,
+        webpackDevServerOptions = _objectWithoutProperties(options, ["host", "port", "https"]);
 
-  _t.param('compiler', _compilerType).assert(compiler);
-
-  _t.param('options', RunOptionsType).assert(options);
-
-  const { host, port, https } = options,
-        webpackDevServerOptions = objectWithoutProperties(options, ['host', 'port', 'https']);
   const browserDevServer = new WebpackDevServer(compiler.compiler, Object.assign({
     hot: true,
     // stats: 'errors-only',
-    quiet: true, // errors are displayed with friendly-errors plugin
+    quiet: true,
+    // errors are displayed with friendly-errors plugin
     // without page refresh as fallback in case of build failures: hotOnly: true,
     https,
     overlay: true
   }, webpackDevServerOptions));
-  browserDevServer.listen(port, host);
+  browserDevServer.listen(port, host); // note: host can be undefined, but types does not support it
+
   return browserDevServer;
 };
 const watchAndRunDevServer = (options, runOptions) => {
-  let _optionsType3 = _t.ref(OptionsType$1);
-
-  _t.param('options', _optionsType3).assert(options);
-
-  _t.param('runOptions', RunOptionsType).assert(runOptions);
-
   const url = `http${runOptions.https ? 's' : ''}://localhost:${runOptions.port}`;
-  const compiler = createAppBrowserCompiler(MODERN, Object.assign({}, options, { hmr: true }), {
+  const compiler = createAppBrowserCompiler(MODERN, Object.assign({}, options, {
+    hmr: true
+  }), {
     successMessage: `Your application is running here: ${url}`
   });
   compiler.clean();
   const webpackDevServer = runDevServer(compiler, runOptions);
-  return Object.assign({}, compiler, { webpackDevServer });
+  return Object.assign({}, compiler, {
+    webpackDevServer
+  });
 };
 
 exports.TARGETS = TARGETS;

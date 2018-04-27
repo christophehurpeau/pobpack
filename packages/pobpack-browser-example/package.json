@@ -9,13 +9,13 @@
     "start": "pobpack-browser"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.44",
-    "@babel/preset-react": "^7.0.0-beta.44",
-    "pobpack-browser": "^4.0.0",
+    "@babel/core": "^7.0.0-beta.46",
+    "@babel/preset-react": "^7.0.0-beta.46",
+    "pobpack-browser": "^5.0.5",
     "webpack": "^4.6.0"
   },
   "dependencies": {
-    "react": "^16.3.0",
-    "react-dom": "^16.3.0"
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
   }
 }

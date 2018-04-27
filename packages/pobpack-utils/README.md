@@ -23,11 +23,11 @@
 use: `import {} from 'pobpack-utils';`
 
 - webpack: export `webpack`.
-- type OptionsType
-- type PobpackCompilerType
+- type Options
+- type PobpackCompiler
 - createAppWebpackConfig(createWebpackConfig: Function): WebpackConfig: wrapper arround a webpack config creator which calls `createAppWebpackConfig.js` in the pwd if found.
-- createOptions(options: Object): OptionsType
-- createPobpackCompiler(bundleName: string, webpackConfig): PobpackCompilerType
-- createModuleConfig(options: OptionsType)
-- createPluginsConfig(options: OptionsType)
-- createResolveConfig(options: OptionsType)
+- createOptions(options: Object): Options
+- createPobpackCompiler(bundleName: string, webpackConfig): PobpackCompiler
+- createModuleConfig(options: Options)
+- createPluginsConfig(options: Options)
+- createResolveConfig(options: Options)

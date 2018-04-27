@@ -1,0 +1,68 @@
+import { execSync } from 'child_process';
+import { promisify } from 'util';
+import chalk from 'chalk';
+import ProgressBar from 'progress';
+import webpack, { ProgressPlugin, Stats } from 'webpack';
+import { PobpackCompiler, CreateCompilerOptions } from 'pobpack-types';
+import FriendlyErrorsWebpackPlugin from './FriendlyErrorsWebpackPlugin';
+
+const buildThrowOnError = (stats: Stats) => {
+  if (!stats.hasErrors()) {
+    return stats;
+  }
+
+  throw new Error(stats.toString({}));
+};
+
+export default (
+  bundleName: string,
+  webpackConfig: webpack.Configuration,
+  { progressBar = true, successMessage }: CreateCompilerOptions = {},
+): PobpackCompiler => {
+  const compiler = webpack({
+    ...webpackConfig,
+  });
+
+  if (progressBar && process.stdout.isTTY) {
+    let bar: ProgressBar;
+    const progressPlugin = new ProgressPlugin((percentage: number, msg: string) => {
+      if (percentage === 0) {
+        bar = new ProgressBar(
+          `${chalk.yellow.bold(`Building ${bundleName} bundle...`)} ${chalk.bold(
+            ':percent',
+          )} [:bar] → :msg`,
+          { incomplete: ' ', complete: '▇', total: 50, clear: true, stream: process.stdout },
+        );
+        // } else if (percentage === 1) {
+        //   // bar.clear();
+        //   bar = null;
+      } else {
+        bar.update(percentage, { msg: msg.length > 20 ? `${msg.substr(0, 20)}...` : msg });
+      }
+    });
+    progressPlugin.apply(compiler);
+  }
+
+  // human-readable error messages
+  new FriendlyErrorsWebpackPlugin({ bundleName, successMessage }).apply(compiler);
+
+  const promisifyRun = promisify(compiler.run.bind(compiler));
+
+  return {
+    compiler,
+    webpackConfig,
+    clean: (): void | Buffer => {
+      if (webpackConfig.output && webpackConfig.output.path) {
+        return execSync(`rm -Rf ${webpackConfig.output.path}`);
+      }
+    },
+    run: () => promisifyRun().then(buildThrowOnError),
+    watch: callback =>
+      compiler.watch({}, (err: Error, stats: Stats) => {
+        if (err) return;
+        if (stats.hasErrors()) return;
+        buildThrowOnError(stats);
+        callback(stats);
+      }),
+  };
+};
