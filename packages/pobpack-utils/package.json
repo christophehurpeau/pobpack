@@ -1,13 +1,15 @@
 {
   "name": "pobpack-utils",
-  "version": "5.3.0",
+  "version": "5.3.1",
   "description": "Utils for building projects with webpack.",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "ISC",
   "repository": "git@github.com:christophehurpeau/pobpack.git",
   "homepage": "https://github.com/christophehurpeau/pobpack",
-  "engines": { "node": ">=6.5.0" },
+  "engines": {
+    "node": ">=6.5.0"
+  },
   "main": "./index.js",
   "typings": "./dist/index.d.ts",
   "module:node": "./dist/index-node8.es.js",
@@ -19,7 +21,11 @@
     "test": "echo \"No tests\"",
     "watch": "pob-watch"
   },
-  "prettier": { "trailingComma": "all", "singleQuote": true, "printWidth": 100 },
+  "prettier": {
+    "trailingComma": "all",
+    "singleQuote": true,
+    "printWidth": 100
+  },
   "dependencies": {
     "@types/webpack": "^4.1.4",
     "babel-loader": "^8.0.0-beta.2",
@@ -28,11 +34,14 @@
     "nightingale": "^8.0.1",
     "nightingale-console": "^4.0.0",
     "nightingale-logger": "^5.0.1",
-    "pobpack-types": "^1.0.0",
+    "pobpack-types": "^1.0.1",
     "progress": "^2.0.0",
     "react-dev-utils": "^5.0.1"
   },
-  "peerDependencies": { "babel-core": "^6.26.0 || 7.0.0-bridge.0", "webpack": "^4.6.0" },
+  "peerDependencies": {
+    "babel-core": "^6.26.0 || 7.0.0-bridge.0",
+    "webpack": "^4.6.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.46",
     "@types/case-sensitive-paths-webpack-plugin": "^2.1.2",

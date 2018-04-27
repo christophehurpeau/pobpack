@@ -1,20 +1,28 @@
 {
   "name": "pobpack-node",
-  "version": "5.0.5",
+  "version": "5.0.6",
   "description": "Build and run node projects with webpack.",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "ISC",
   "repository": "git@github.com:christophehurpeau/pobpack.git",
   "homepage": "https://github.com/christophehurpeau/pobpack",
-  "engines": { "node": ">=6.5.0" },
+  "engines": {
+    "node": ">=6.5.0"
+  },
   "main": "./index.js",
   "typings": "./dist/index.d.ts",
   "module:node": "./dist/index-node8.es.js",
   "module:node-dev": "./dist/index-node8-dev.es.js",
-  "module:aliases-node": { "./cli.js": "./dist/cli-node8.es.js" },
-  "module:aliases-node-dev": { "./cli.js": "./dist/cli-node8-dev.es.js" },
-  "bin": { "pobpack-node": "./pobpack-node" },
+  "module:aliases-node": {
+    "./cli.js": "./dist/cli-node8.es.js"
+  },
+  "module:aliases-node-dev": {
+    "./cli.js": "./dist/cli-node8-dev.es.js"
+  },
+  "bin": {
+    "pobpack-node": "./pobpack-node"
+  },
   "scripts": {
     "build": "pob-build && tsc -p tsconfig.build.json --emitDeclarationOnly",
     "clean": "rm -Rf docs dist test/node6 coverage",
@@ -22,16 +30,22 @@
     "test": "echo \"No tests\"",
     "watch": "pob-watch"
   },
-  "prettier": { "trailingComma": "all", "singleQuote": true, "printWidth": 100 },
+  "prettier": {
+    "trailingComma": "all",
+    "singleQuote": true,
+    "printWidth": 100
+  },
   "dependencies": {
     "babel-preset-latest-node": "^2.0.0-beta.3",
-    "pobpack-types": "^1.0.0",
-    "pobpack-utils": "^5.3.0",
+    "pobpack-types": "^1.0.1",
+    "pobpack-utils": "^5.3.1",
     "source-map-support": "^0.5.4",
     "springbokjs-daemon": "^2.7.0",
     "webpack-node-externals": "^1.7.2"
   },
-  "peerDependencies": { "webpack": "^4.6.0" },
+  "peerDependencies": {
+    "webpack": "^4.6.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.46",
     "@types/webpack-node-externals": "^1.6.3",
