@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "pobpack-browser-example",
-  "version": "2.0.3",
+  "version": "3.0.0",
   "scripts": {
     "watch": "echo",
     "build": "pobpack-browser build && gzip -fk9 public/*.js && lzma -fke9 --threads 0 public/*.js && brotli -Z public/*.js",
@@ -10,7 +10,7 @@
   "devDependencies": {
     "@babel/core": "7.0.0",
     "@babel/preset-react": "7.0.0",
-    "pobpack-browser": "5.0.6",
+    "pobpack-browser": "^6.0.0",
     "webpack": "4.17.1"
   },
   "dependencies": {

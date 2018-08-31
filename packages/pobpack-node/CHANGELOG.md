@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.0.0"></a>
+# [6.0.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-node@5.0.6...pobpack-node@6.0.0) (2018-08-31)
+
+
+### Code Refactoring
+
+* typescript ([48da444](https://github.com/christophehurpeau/pobpack/commit/48da444))
+
+
+### BREAKING CHANGES
+
+* webpack@^4.17.1 @babel/core@^7.0.0
+
+
+
+
+
 <a name="5.0.6"></a>
 ## [5.0.6](https://github.com/christophehurpeau/pobpack/compare/pobpack-node@5.0.5...pobpack-node@5.0.6) (2018-04-27)
 
