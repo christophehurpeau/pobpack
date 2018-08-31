@@ -1,14 +1,12 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', { value: true });
-
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
 var path = _interopDefault(require('path'));
 var pobpackUtils = require('pobpack-utils');
 var WebpackDevServer = _interopDefault(require('webpack-dev-server'));
 
-function _objectWithoutProperties(source, excluded) {
+function _objectWithoutPropertiesLoose(source, excluded) {
   if (source == null) return {};
   var target = {};
   var sourceKeys = Object.keys(source);
@@ -18,17 +16,6 @@ function _objectWithoutProperties(source, excluded) {
     key = sourceKeys[i];
     if (excluded.indexOf(key) >= 0) continue;
     target[key] = source[key];
-  }
-
-  if (Object.getOwnPropertySymbols) {
-    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-
-    for (i = 0; i < sourceSymbolKeys.length; i++) {
-      key = sourceSymbolKeys[i];
-      if (excluded.indexOf(key) >= 0) continue;
-      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-      target[key] = source[key];
-    }
   }
 
   return target;
@@ -68,7 +55,7 @@ var createBrowserWebpackConfig = (target => options => ({
   resolveLoader: {
     modules: options.resolveLoaderModules || ['node_modules']
   },
-  resolve: pobpackUtils.createResolveConfig([target === "modern" ? 'modern-browsers' : undefined, 'browser'].filter(ExcludesFalsy), Object.assign({}, options, {
+  resolve: pobpackUtils.createResolveConfig([target === MODERN ? 'modern-browsers' : undefined, 'browser'].filter(ExcludesFalsy), Object.assign({}, options, {
     babel: Object.assign({
       presets: [require.resolve('../babel')]
     }, options.babel, {
@@ -81,7 +68,7 @@ var createBrowserWebpackConfig = (target => options => ({
       path: entry
     };
     entries[entry.key] = [// options.env !== 'production' && require.resolve('../source-map-support'),
-    target !== "modern" && require.resolve('regenerator-runtime/runtime'), options.hmr && require.resolve('react-hot-loader/patch'), options.hmr && require.resolve('react-dev-utils/webpackHotDevClient'), path.join(path.resolve(options.paths.src), entry.path)].filter(ExcludesFalsy);
+    target !== MODERN && require.resolve('regenerator-runtime/runtime'), options.hmr && require.resolve('react-hot-loader/patch'), options.hmr && require.resolve('react-dev-utils/webpackHotDevClient'), path.join(path.resolve(options.paths.src), entry.path)].filter(ExcludesFalsy);
     return entries;
   }, {}),
   output: {
@@ -116,7 +103,7 @@ const runDevServer = (compiler, options) => {
     port,
     https
   } = options,
-        webpackDevServerOptions = _objectWithoutProperties(options, ["host", "port", "https"]);
+        webpackDevServerOptions = _objectWithoutPropertiesLoose(options, ["host", "port", "https"]);
 
   const browserDevServer = new WebpackDevServer(compiler.compiler, Object.assign({
     hot: true,

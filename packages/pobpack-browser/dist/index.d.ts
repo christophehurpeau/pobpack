@@ -1,4 +1,3 @@
-/// <reference types="webpack-dev-server" />
 import WebpackDevServer from 'webpack-dev-server';
 import { Options, PobpackCompiler, WatchCallback, CreateCompilerOptions } from 'pobpack-types';
 import { TARGETS, ALL, MODERN, BrowserTargetType } from './createBrowserWebpackConfig';
@@ -16,3 +15,4 @@ export declare type PobpackBrowserCompiler = PobpackCompiler & {
     webpackDevServer: WebpackDevServer;
 };
 export declare const watchAndRunDevServer: (options: Partial<Options>, runOptions: RunOptions) => PobpackBrowserCompiler;
+//# sourceMappingURL=index.d.ts.map

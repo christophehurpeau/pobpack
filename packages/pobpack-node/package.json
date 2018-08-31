@@ -24,42 +24,41 @@
     "pobpack-node": "./pobpack-node"
   },
   "scripts": {
-    "build": "pob-build && tsc -p tsconfig.build.json --emitDeclarationOnly",
+    "build": "pob-build && tsc -p tsconfig.build.json",
     "clean": "rm -Rf docs dist test/node6 coverage",
-    "lint": "tsc --noEmit && eslint --ext .ts  src/",
+    "lint": "npm run typescript-check && eslint --ext .ts  src/",
     "test": "echo \"No tests\"",
+    "typescript-check": "tsc --noEmit",
     "watch": "pob-watch"
   },
   "prettier": {
     "trailingComma": "all",
     "singleQuote": true,
-    "printWidth": 100
+    "arrowParens": "always"
   },
   "dependencies": {
-    "babel-preset-latest-node": "^2.0.0-beta.3",
+    "babel-preset-latest-node": "^2.0.2",
     "pobpack-types": "^1.0.1",
     "pobpack-utils": "^5.3.1",
-    "source-map-support": "^0.5.4",
+    "source-map-support": "^0.5.9",
     "springbokjs-daemon": "^2.7.0",
     "webpack-node-externals": "^1.7.2"
   },
   "peerDependencies": {
-    "webpack": "^4.6.0"
+    "webpack": "^4.17.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.46",
-    "@types/webpack-node-externals": "^1.6.3",
-    "babel-core": "7.0.0-bridge.0",
-    "babel-eslint": "^8.2.3",
-    "eslint": "^4.19.1",
-    "eslint-config-pob": "^19.1.0",
-    "eslint-plugin-babel": "^4.1.2",
-    "eslint-plugin-import": "^2.11.0",
-    "eslint-plugin-prettier": "^2.6.0",
-    "eslint-plugin-typescript": "^0.11.0",
-    "pob-babel": "^22.2.4",
-    "prettier": "^1.12.1",
-    "typescript": "^2.8.3",
-    "typescript-eslint-parser": "^15.0.0"
+    "@babel/core": "7.0.0",
+    "@types/webpack-node-externals": "1.6.3",
+    "babel-eslint": "9.0.0",
+    "eslint": "5.4.0",
+    "eslint-config-pob": "22.0.3",
+    "eslint-plugin-babel": "5.1.0",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-typescript": "0.12.0",
+    "pob-babel": "23.2.2",
+    "prettier": "1.14.2",
+    "typescript": "3.0.3",
+    "typescript-eslint-parser": "18.0.0"
   }
 }

@@ -19,32 +19,42 @@ export default (
   webpackConfig: webpack.Configuration,
   { progressBar = true, successMessage }: CreateCompilerOptions = {},
 ): PobpackCompiler => {
-  const compiler = webpack({
-    ...webpackConfig,
-  });
+  const compiler = webpack(webpackConfig);
 
   if (progressBar && process.stdout.isTTY) {
     let bar: ProgressBar;
-    const progressPlugin = new ProgressPlugin((percentage: number, msg: string) => {
-      if (percentage === 0) {
-        bar = new ProgressBar(
-          `${chalk.yellow.bold(`Building ${bundleName} bundle...`)} ${chalk.bold(
-            ':percent',
-          )} [:bar] → :msg`,
-          { incomplete: ' ', complete: '▇', total: 50, clear: true, stream: process.stdout },
-        );
-        // } else if (percentage === 1) {
-        //   // bar.clear();
-        //   bar = null;
-      } else {
-        bar.update(percentage, { msg: msg.length > 20 ? `${msg.substr(0, 20)}...` : msg });
-      }
-    });
+    const progressPlugin = new ProgressPlugin(
+      (percentage: number, msg: string) => {
+        if (percentage === 0) {
+          bar = new ProgressBar(
+            `${chalk.yellow.bold(
+              `Building ${bundleName} bundle...`,
+            )} ${chalk.bold(':percent')} [:bar] → :msg`,
+            {
+              incomplete: ' ',
+              complete: '▇',
+              total: 50,
+              clear: true,
+              stream: process.stdout,
+            },
+          );
+          // } else if (percentage === 1) {
+          //   // bar.clear();
+          //   bar = null;
+        } else {
+          bar.update(percentage, {
+            msg: msg.length > 20 ? `${msg.substr(0, 20)}...` : msg,
+          });
+        }
+      },
+    );
     progressPlugin.apply(compiler);
   }
 
   // human-readable error messages
-  new FriendlyErrorsWebpackPlugin({ bundleName, successMessage }).apply(compiler);
+  new FriendlyErrorsWebpackPlugin({ bundleName, successMessage }).apply(
+    compiler,
+  );
 
   const promisifyRun = promisify(compiler.run.bind(compiler));
 
@@ -57,7 +67,7 @@ export default (
       }
     },
     run: () => promisifyRun().then(buildThrowOnError),
-    watch: callback =>
+    watch: (callback) =>
       compiler.watch({}, (err: Error, stats: Stats) => {
         if (err) return;
         if (stats.hasErrors()) return;

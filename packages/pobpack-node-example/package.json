@@ -8,14 +8,14 @@
     "start": "pobpack-node"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.46",
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-import": "^2.11.0",
-    "pobpack-node": "^5.0.5",
-    "prettier": "^1.12.1",
-    "webpack": "^4.6.0",
-    "webpack-module-hot-accept": "^1.0.5"
+    "@babel/core": "7.0.0",
+    "eslint": "5.4.0",
+    "eslint-config-airbnb-base": "13.1.0",
+    "eslint-config-prettier": "3.0.1",
+    "eslint-plugin-import": "2.14.0",
+    "pobpack-node": "5.0.6",
+    "prettier": "1.14.2",
+    "webpack": "4.17.1",
+    "webpack-module-hot-accept": "1.0.5"
   }
 }

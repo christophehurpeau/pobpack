@@ -14,7 +14,7 @@ export default (options: Options) => ({
       test: options.typescript ? /\.[tj]sx?$/ : /\.jsx?$/,
       include: [
         resolve(options.paths.src as string),
-        ...options.includeModules.map(includeModule =>
+        ...options.includeModules.map((includeModule) =>
           realpathSync(resolve('node_modules', includeModule)),
         ),
         ...options.includePaths,

@@ -12,3 +12,4 @@ export interface RunOptions {
 }
 export declare const watchAndRunCompiler: (compiler: PobpackCompiler, options?: RunOptions) => webpack.Compiler.Watching;
 export declare const watchAndRun: (options?: Partial<Options> | undefined) => PobpackCompiler;
+//# sourceMappingURL=index.d.ts.map

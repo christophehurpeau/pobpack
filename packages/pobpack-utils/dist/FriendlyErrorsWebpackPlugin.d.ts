@@ -1,4 +1,3 @@
-/// <reference types="webpack" />
 import Logger from 'nightingale-logger';
 import { Compiler } from 'webpack';
 export interface Options {
@@ -12,3 +11,4 @@ export default class FriendlyErrorsWebpackPlugin {
     constructor(options: Options);
     apply(compiler: Compiler): void;
 }
+//# sourceMappingURL=FriendlyErrorsWebpackPlugin.d.ts.map

@@ -1,4 +1,4 @@
-import { TransformOptions } from 'babel-core';
+import { TransformOptions } from '@babel/core';
 import { Compiler, Configuration } from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 

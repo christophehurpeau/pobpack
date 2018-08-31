@@ -4,3 +4,4 @@ declare const _default: (options: Options) => {
     rules: any[];
 };
 export default _default;
+//# sourceMappingURL=createModuleConfig.d.ts.map

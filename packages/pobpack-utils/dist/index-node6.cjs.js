@@ -78,6 +78,8 @@ nightingale.addConfig({
 const logger = new Logger('pobpack-utils', 'pobpack');
 
 const isSuccessful = messages => !messages.errors.length && !messages.warnings.length;
+
+const pluginName = 'pobpack/FriendlyErrorsWebpackPlugin';
 class FriendlyErrorsWebpackPlugin {
   constructor(options) {
     this.logger = void 0;
@@ -92,11 +94,11 @@ class FriendlyErrorsWebpackPlugin {
 
   apply(compiler) {
     // webpack is recompiling
-    compiler.hooks.invalid.tap("pobpack/FriendlyErrorsWebpackPlugin", () => {
+    compiler.hooks.invalid.tap(pluginName, () => {
       this.logger.info('Compiling...');
     }); // compilation done
 
-    compiler.hooks.done.tap("pobpack/FriendlyErrorsWebpackPlugin", stats => {
+    compiler.hooks.done.tap(pluginName, stats => {
       const messages = formatWebpackMessages(stats.toJson({})); // const messages = stats.toJson({}, true);
 
       if (isSuccessful(messages)) {
@@ -144,7 +146,7 @@ var createPobpackCompiler = ((bundleName, webpackConfig, {
   progressBar = true,
   successMessage
 } = {}) => {
-  const compiler = webpack__default(Object.assign({}, webpackConfig));
+  const compiler = webpack__default(webpackConfig);
 
   if (progressBar && process.stdout.isTTY) {
     let bar;

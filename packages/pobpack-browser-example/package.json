@@ -4,18 +4,17 @@
   "version": "2.0.3",
   "scripts": {
     "watch": "echo",
-    "build":
-      "pobpack-browser build && gzip -fk9 public/*.js && lzma -fke9 --threads 0 public/*.js && brotli -Z public/*.js",
+    "build": "pobpack-browser build && gzip -fk9 public/*.js && lzma -fke9 --threads 0 public/*.js && brotli -Z public/*.js",
     "start": "pobpack-browser"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.46",
-    "@babel/preset-react": "^7.0.0-beta.46",
-    "pobpack-browser": "^5.0.5",
-    "webpack": "^4.6.0"
+    "@babel/core": "7.0.0",
+    "@babel/preset-react": "7.0.0",
+    "pobpack-browser": "5.0.6",
+    "webpack": "4.17.1"
   },
   "dependencies": {
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2"
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2"
   }
 }

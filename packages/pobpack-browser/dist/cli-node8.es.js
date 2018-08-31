@@ -36,7 +36,7 @@ var createBrowserWebpackConfig = (target => options => ({
   resolveLoader: {
     modules: options.resolveLoaderModules || ['node_modules']
   },
-  resolve: createResolveConfig([target === "modern" ? 'modern-browsers' : undefined, 'browser'].filter(ExcludesFalsy), { ...options,
+  resolve: createResolveConfig([target === MODERN ? 'modern-browsers' : undefined, 'browser'].filter(ExcludesFalsy), { ...options,
     babel: {
       presets: [require.resolve('../babel')],
       ...options.babel,
@@ -49,7 +49,7 @@ var createBrowserWebpackConfig = (target => options => ({
       path: entry
     };
     entries[entry.key] = [// options.env !== 'production' && require.resolve('../source-map-support'),
-    target !== "modern" && require.resolve('regenerator-runtime/runtime'), options.hmr && require.resolve('react-hot-loader/patch'), options.hmr && require.resolve('react-dev-utils/webpackHotDevClient'), path.join(path.resolve(options.paths.src), entry.path)].filter(ExcludesFalsy);
+    target !== MODERN && require.resolve('regenerator-runtime/runtime'), options.hmr && require.resolve('react-hot-loader/patch'), options.hmr && require.resolve('react-dev-utils/webpackHotDevClient'), path.join(path.resolve(options.paths.src), entry.path)].filter(ExcludesFalsy);
     return entries;
   }, {}),
   output: {
