@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.0.1"></a>
+## [6.0.1](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser@6.0.0...pobpack-browser@6.0.1) (2018-09-01)
+
+
+### Bug Fixes
+
+* type Options in runDevServer extends WebpackDevServerConfiguration ([a54091c](https://github.com/christophehurpeau/pobpack/commit/a54091c))
+
+
+
+
+
 <a name="6.0.0"></a>
 # [6.0.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser@5.0.6...pobpack-browser@6.0.0) (2018-08-31)
 
