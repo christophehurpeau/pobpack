@@ -1,4 +1,4 @@
-import WebpackDevServer from 'webpack-dev-server';
+import WebpackDevServer, { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
 import { Options, PobpackCompiler, WatchCallback, CreateCompilerOptions } from 'pobpack-types';
 import { createPobpackCompiler, createAppWebpackConfig } from 'pobpack-utils';
 import createBrowserWebpackConfig, {
@@ -43,7 +43,7 @@ export const watch = (options: Partial<Options>, callback?: WatchCallback) => {
   return compiler;
 };
 
-export interface RunOptions {
+export interface RunOptions extends Exclude<WebpackDevServerConfiguration, 'hot' | 'quiet' | 'overlay'> {
   host?: string;
   https?: boolean;
   port: number;
