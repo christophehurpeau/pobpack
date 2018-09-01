@@ -1,6 +1,6 @@
 {
   "name": "pobpack-utils",
-  "version": "6.0.0",
+  "version": "6.1.0",
   "description": "Utils for building projects with webpack.",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
@@ -35,7 +35,7 @@
     "nightingale": "^8.0.8",
     "nightingale-console": "^4.0.6",
     "nightingale-logger": "^5.1.0",
-    "pobpack-types": "^2.0.0",
+    "pobpack-types": "^2.1.0",
     "progress": "^2.0.0",
     "react-dev-utils": "^5.0.2"
   },

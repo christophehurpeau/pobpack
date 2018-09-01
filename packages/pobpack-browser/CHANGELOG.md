@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="6.1.0"></a>
+# [6.1.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser@6.0.2...pobpack-browser@6.1.0) (2018-09-01)
+
+
+### Features
+
+* add type FilledWebpackConfiguration ([c65d50c](https://github.com/christophehurpeau/pobpack/commit/c65d50c))
+
+
+
+
+
 <a name="6.0.2"></a>
 ## [6.0.2](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser@6.0.1...pobpack-browser@6.0.2) (2018-09-01)
 
