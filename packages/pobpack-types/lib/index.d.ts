@@ -37,12 +37,16 @@ export interface Options {
 export type WatchCallback = (stats: any) => void;
 
 
+export type FilledWebpackConfigurationKeys = 'mode' | 'bail' | 'target' | 'devtool' | 'optimization' | 'resolveLoader' | 'resolve' | 'entry' | 'output';
+export type FilledWebpackConfiguration =
+  Pick<Configuration, Exclude<keyof Configuration, FilledWebpackConfigurationKeys>> & Required<Pick<Configuration, FilledWebpackConfigurationKeys>>;
+
 export interface PobpackCompiler {
   clean: () => void | Buffer;
-  compiler: any;
+  compiler: Compiler;
   run: () => Promise<void>;
   watch: (callback: WatchCallback) => Compiler.Watching;
-  webpackConfig: Configuration;
+  webpackConfig: Readonly<FilledWebpackConfiguration>;
 }
 
 

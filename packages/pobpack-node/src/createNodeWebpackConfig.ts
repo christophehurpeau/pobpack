@@ -1,6 +1,7 @@
 // const fs = require('fs');
 import path from 'path';
 import nodeExternals from 'webpack-node-externals';
+import { FilledWebpackConfiguration } from 'pobpack-types';
 import {
   webpack,
   createModuleConfig,
@@ -11,7 +12,7 @@ import { ConfigEntry, Options } from 'pobpack-types';
 
 const ExcludesFalsy = (Boolean as any) as <T>(x: T | false | null | undefined) => x is T;
 
-export default (options: Options): webpack.Configuration => ({
+export default (options: Options): FilledWebpackConfiguration => ({
   // production or development
   mode: options.env === 'production' ? 'production' : 'development',
 

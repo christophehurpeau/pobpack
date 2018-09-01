@@ -1,7 +1,5 @@
-/// <reference types="webpack-dev-server" />
-import webpack from 'webpack';
-import { Options } from 'pobpack-types';
-export declare type CreateWebpackConfig = (options: Options) => webpack.Configuration;
-declare const _default: (createWebpackConfig: CreateWebpackConfig) => (options: Partial<Options>) => any;
+import { Options, FilledWebpackConfiguration } from 'pobpack-types';
+export declare type CreateWebpackConfig = (options: Options) => FilledWebpackConfiguration;
+declare const _default: (createWebpackConfig: CreateWebpackConfig) => (options: Partial<Options>) => FilledWebpackConfiguration;
 export default _default;
 //# sourceMappingURL=createAppWebpackConfig.d.ts.map

@@ -3,7 +3,7 @@ import { promisify } from 'util';
 import chalk from 'chalk';
 import ProgressBar from 'progress';
 import webpack, { ProgressPlugin, Stats } from 'webpack';
-import { PobpackCompiler, CreateCompilerOptions } from 'pobpack-types';
+import { PobpackCompiler, CreateCompilerOptions, FilledWebpackConfiguration } from 'pobpack-types';
 import FriendlyErrorsWebpackPlugin from './FriendlyErrorsWebpackPlugin';
 
 const buildThrowOnError = (stats: Stats) => {
@@ -16,7 +16,7 @@ const buildThrowOnError = (stats: Stats) => {
 
 export default (
   bundleName: string,
-  webpackConfig: webpack.Configuration,
+  webpackConfig: FilledWebpackConfiguration,
   { progressBar = true, successMessage }: CreateCompilerOptions = {},
 ): PobpackCompiler => {
   const compiler = webpack(webpackConfig);

@@ -1,16 +1,15 @@
 import path from 'path';
 import { existsSync } from 'fs';
-import webpack from 'webpack';
-import { Options } from 'pobpack-types';
+import { Options, FilledWebpackConfiguration } from 'pobpack-types';
 import createOptions from './createOptions';
 
-export type CreateWebpackConfig = (options: Options) => webpack.Configuration;
+export type CreateWebpackConfig = (options: Options) => FilledWebpackConfiguration;
 
-export default (createWebpackConfig: CreateWebpackConfig) => {
-  const wrapCreateWebpackConfig = (options: Partial<Options>) =>
+export default (createWebpackConfig: CreateWebpackConfig): (options: Partial<Options>) => FilledWebpackConfiguration => {
+  const wrapCreateWebpackConfig = (options: Partial<Options>): FilledWebpackConfiguration =>
     createWebpackConfig(createOptions(options));
 
-  return (options: Partial<Options>) => {
+  return (options: Partial<Options>): FilledWebpackConfiguration => {
     const appWebpackConfigPath = path.resolve('createAppWebpackConfig.js');
     if (existsSync(appWebpackConfigPath)) {
       console.info('Using app createAppWebpackConfig.js');

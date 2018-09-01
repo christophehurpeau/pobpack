@@ -3,9 +3,8 @@ import {
   createModuleConfig,
   createPluginsConfig,
   createResolveConfig,
-  webpack,
 } from 'pobpack-utils';
-import { Options, ConfigEntry } from 'pobpack-types';
+import { Options, ConfigEntry, FilledWebpackConfiguration } from 'pobpack-types';
 
 export type BrowserTargetType = 'modern' | 'all';
 
@@ -15,7 +14,7 @@ export const TARGETS: Array<BrowserTargetType> = [ALL, MODERN];
 
 const ExcludesFalsy = (Boolean as any) as <T>(x: T | boolean | null | undefined) => x is T;
 
-export default (target: BrowserTargetType) => (options: Options): webpack.Configuration => ({
+export default (target: BrowserTargetType) => (options: Options): FilledWebpackConfiguration => ({
   // production or development
   mode: options.env === 'production' ? 'production' : 'development',
 
