@@ -1,11 +1,12 @@
-import WebpackDevServer from 'webpack-dev-server';
+import WebpackDevServer, { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
 import { Options, PobpackCompiler, WatchCallback, CreateCompilerOptions } from 'pobpack-types';
 import { TARGETS, ALL, MODERN, BrowserTargetType } from './createBrowserWebpackConfig';
 export { TARGETS, ALL, MODERN };
 export declare const createAppBrowserCompiler: (target: BrowserTargetType, options: Partial<Options>, compilerOptions?: CreateCompilerOptions | undefined) => PobpackCompiler;
 export declare const build: (options?: {}) => Promise<void>[];
 export declare const watch: (options: Partial<Options>, callback?: WatchCallback | undefined) => PobpackCompiler;
-export interface RunOptions {
+declare type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+export interface RunOptions extends Omit<WebpackDevServerConfiguration, 'hot' | 'quiet' | 'overlay'> {
     host?: string;
     https?: boolean;
     port: number;

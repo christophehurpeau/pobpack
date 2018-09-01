@@ -43,7 +43,9 @@ export const watch = (options: Partial<Options>, callback?: WatchCallback) => {
   return compiler;
 };
 
-export interface RunOptions extends Exclude<WebpackDevServerConfiguration, 'hot' | 'quiet' | 'overlay'> {
+type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+
+export interface RunOptions extends Omit<WebpackDevServerConfiguration, 'hot' | 'quiet' | 'overlay'> {
   host?: string;
   https?: boolean;
   port: number;
