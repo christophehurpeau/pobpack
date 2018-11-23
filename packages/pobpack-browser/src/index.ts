@@ -1,5 +1,12 @@
-import WebpackDevServer, { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
-import { Options, PobpackCompiler, WatchCallback, CreateCompilerOptions } from 'pobpack-types';
+import WebpackDevServer, {
+  Configuration as WebpackDevServerConfiguration,
+} from 'webpack-dev-server';
+import {
+  Options,
+  PobpackCompiler,
+  WatchCallback,
+  CreateCompilerOptions,
+} from 'pobpack-types';
 import { createPobpackCompiler, createAppWebpackConfig } from 'pobpack-utils';
 import createBrowserWebpackConfig, {
   TARGETS,
@@ -27,9 +34,11 @@ export const createAppBrowserCompiler = (
 
 export const build = (options = {}) => {
   if (!process.env.NODE_ENV) process.env.NODE_ENV = 'production';
-  const compilers = TARGETS.map(t => createAppBrowserCompiler(t, { ...options, hmr: false }));
+  const compilers = TARGETS.map((t) =>
+    createAppBrowserCompiler(t, { ...options, hmr: false }),
+  );
   compilers[0].clean();
-  return compilers.map(compiler => compiler.run());
+  return compilers.map((compiler) => compiler.run());
 };
 
 export const watch = (options: Partial<Options>, callback?: WatchCallback) => {
@@ -45,13 +54,17 @@ export const watch = (options: Partial<Options>, callback?: WatchCallback) => {
 
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
-export interface RunOptions extends Omit<WebpackDevServerConfiguration, 'hot' | 'quiet' | 'overlay'> {
+export interface RunOptions
+  extends Omit<WebpackDevServerConfiguration, 'hot' | 'quiet' | 'overlay'> {
   host?: string;
   https?: boolean;
   port: number;
 }
 
-export const runDevServer = (compiler: PobpackCompiler, options: RunOptions) => {
+export const runDevServer = (
+  compiler: PobpackCompiler,
+  options: RunOptions,
+) => {
   const { host, port, https, ...webpackDevServerOptions } = options;
   const browserDevServer = new WebpackDevServer(compiler.compiler, {
     hot: true,
@@ -66,13 +79,17 @@ export const runDevServer = (compiler: PobpackCompiler, options: RunOptions) => 
   return browserDevServer;
 };
 
-export type PobpackBrowserCompiler = PobpackCompiler & { webpackDevServer: WebpackDevServer };
+export type PobpackBrowserCompiler = PobpackCompiler & {
+  webpackDevServer: WebpackDevServer;
+};
 
 export const watchAndRunDevServer = (
   options: Partial<Options>,
   runOptions: RunOptions,
 ): PobpackBrowserCompiler => {
-  const url = `http${runOptions.https ? 's' : ''}://localhost:${runOptions.port}`;
+  const url = `http${runOptions.https ? 's' : ''}://localhost:${
+    runOptions.port
+  }`;
   const compiler: PobpackCompiler = createAppBrowserCompiler(
     MODERN,
     { ...options, hmr: true },

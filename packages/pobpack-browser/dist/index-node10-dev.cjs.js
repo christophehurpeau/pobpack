@@ -4,9 +4,9 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
+var WebpackDevServer = _interopDefault(require('webpack-dev-server'));
 var path = _interopDefault(require('path'));
 var pobpackUtils = require('pobpack-utils');
-var WebpackDevServer = _interopDefault(require('webpack-dev-server'));
 
 const MODERN = 'modern';
 const ALL = 'all';

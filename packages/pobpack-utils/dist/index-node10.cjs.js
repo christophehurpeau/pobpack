@@ -4,20 +4,21 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
-var path = require('path');
-var path__default = _interopDefault(path);
-var fs = require('fs');
+var child_process = require('child_process');
+var util = require('util');
+var colorette = _interopDefault(require('colorette'));
+var ProgressBar = _interopDefault(require('progress'));
 var nightingale = require('nightingale');
 var Logger = _interopDefault(require('nightingale-logger'));
 var ConsoleHandler = _interopDefault(require('nightingale-console'));
 var formatWebpackMessages = _interopDefault(require('react-dev-utils/formatWebpackMessages'));
-var child_process = require('child_process');
-var util = require('util');
-var chalk = _interopDefault(require('chalk'));
-var ProgressBar = _interopDefault(require('progress'));
+var fs = require('fs');
+var resolveFrom = _interopDefault(require('resolve-from'));
 var webpack = require('webpack');
 var webpack__default = _interopDefault(webpack);
 var CaseSensitivePathsPlugin = _interopDefault(require('case-sensitive-paths-webpack-plugin'));
+var path = require('path');
+var path__default = _interopDefault(path);
 
 var createOptions = (options => ({
   aliases: options.aliases || {},
@@ -112,7 +113,7 @@ class FriendlyErrorsWebpackPlugin {
         return;
       }
 
-      if (messages.errors.length) {
+      if (messages.errors.length !== 0) {
         this.logger.critical('Failed to compile.');
         console.log();
         messages.errors.forEach(message => {
@@ -122,7 +123,7 @@ class FriendlyErrorsWebpackPlugin {
         return;
       }
 
-      if (messages.warnings.length) {
+      if (messages.warnings.length !== 0) {
         this.logger.critical('Compiled with warnings.');
         console.log();
         messages.warnings.forEach(message => {
@@ -153,7 +154,7 @@ var createPobpackCompiler = ((bundleName, webpackConfig, {
     let bar;
     const progressPlugin = new webpack.ProgressPlugin((percentage, msg) => {
       if (percentage === 0) {
-        bar = new ProgressBar(`${chalk.yellow.bold(`Building ${bundleName} bundle...`)} ${chalk.bold(':percent')} [:bar] → :msg`, {
+        bar = new ProgressBar(`${colorette.bold(colorette.yellow(`Building ${bundleName} bundle...`))} ${colorette.bold(':percent')} [:bar] → :msg`, {
           incomplete: ' ',
           complete: '▇',
           total: 50,
@@ -205,7 +206,7 @@ var createModuleConfig = (options => ({
   }, // tsx? / jsx?
   {
     test: options.typescript ? /\.[tj]sx?$/ : /\.jsx?$/,
-    include: [path.resolve(options.paths.src), ...options.includeModules.map(includeModule => fs.realpathSync(path.resolve('node_modules', includeModule))), ...options.includePaths],
+    include: [path.resolve(options.paths.src), ...options.includeModules.map(includeModule => fs.realpathSync(resolveFrom(process.cwd(), includeModule).replace(new RegExp(`(node_modules/${includeModule.replace('-', '\\-')}.*$)`), '$1'))), ...options.includePaths],
     loaders: [{
       loader: require.resolve('babel-loader'),
       options: {

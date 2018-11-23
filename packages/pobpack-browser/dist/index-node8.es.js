@@ -1,6 +1,6 @@
+import WebpackDevServer from 'webpack-dev-server';
 import path from 'path';
 import { createModuleConfig, createPluginsConfig, createResolveConfig, createPobpackCompiler, createAppWebpackConfig } from 'pobpack-utils';
-import WebpackDevServer from 'webpack-dev-server';
 
 const MODERN = 'modern';
 const ALL = 'all';

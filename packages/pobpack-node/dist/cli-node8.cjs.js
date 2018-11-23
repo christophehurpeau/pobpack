@@ -2,11 +2,11 @@
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
+var createDaemon = _interopDefault(require('springbokjs-daemon'));
 var path = require('path');
 var path__default = _interopDefault(path);
 var nodeExternals = _interopDefault(require('webpack-node-externals'));
 var pobpackUtils = require('pobpack-utils');
-var createDaemon = _interopDefault(require('springbokjs-daemon'));
 
 // const fs = require('fs');
 const ExcludesFalsy = Boolean;
@@ -116,6 +116,7 @@ const watchAndRun = options => {
   return compiler;
 };
 
+/* eslint-disable unicorn/no-process-exit */
 const cmd = process.argv[2];
 
 if (cmd === 'build') {

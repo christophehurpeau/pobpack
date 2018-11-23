@@ -1,16 +1,21 @@
 // const fs = require('fs');
 import path from 'path';
 import nodeExternals from 'webpack-node-externals';
-import { FilledWebpackConfiguration } from 'pobpack-types';
 import {
   webpack,
   createModuleConfig,
   createPluginsConfig,
   createResolveConfig,
 } from 'pobpack-utils';
-import { ConfigEntry, Options } from 'pobpack-types';
+import {
+  ConfigEntry,
+  Options,
+  FilledWebpackConfiguration,
+} from 'pobpack-types';
 
-const ExcludesFalsy = (Boolean as any) as <T>(x: T | false | null | undefined) => x is T;
+const ExcludesFalsy = (Boolean as any) as <T>(
+  x: T | false | null | undefined,
+) => x is T;
 
 export default (options: Options): FilledWebpackConfiguration => ({
   // production or development
@@ -36,7 +41,9 @@ export default (options: Options): FilledWebpackConfiguration => ({
     modulesFromFile: false,
     whitelist: [
       require.resolve('../hot'),
-      ...options.includeModules.map((module: string) => new RegExp(`^${module}(/|$)`)),
+      ...options.includeModules.map(
+        (module: string) => new RegExp(`^${module}(/|$)`),
+      ),
     ],
   }),
 
@@ -66,14 +73,17 @@ export default (options: Options): FilledWebpackConfiguration => ({
     },
   }),
 
-  entry: options.entries.reduce((entries: { [key: string]: Array<string> }, entry: ConfigEntry) => {
-    if (typeof entry === 'string') entry = { key: entry, path: entry };
-    entries[entry.key] = [
-      options.hmr ? require.resolve('../hot') : undefined,
-      path.join(path.resolve(options.paths.src as string), entry.path),
-    ].filter(ExcludesFalsy);
-    return entries;
-  }, {}),
+  entry: options.entries.reduce(
+    (entries: { [key: string]: Array<string> }, entry: ConfigEntry) => {
+      if (typeof entry === 'string') entry = { key: entry, path: entry };
+      entries[entry.key] = [
+        options.hmr ? require.resolve('../hot') : undefined,
+        path.join(path.resolve(options.paths.src as string), entry.path),
+      ].filter(ExcludesFalsy);
+      return entries;
+    },
+    {},
+  ),
 
   output: {
     path: path.resolve(options.paths.build as string),

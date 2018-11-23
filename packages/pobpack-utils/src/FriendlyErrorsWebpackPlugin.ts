@@ -3,7 +3,9 @@
 import { addConfig, levels } from 'nightingale';
 import Logger from 'nightingale-logger';
 import ConsoleHandler from 'nightingale-console';
-import formatWebpackMessages, { FormattedResult } from 'react-dev-utils/formatWebpackMessages';
+import formatWebpackMessages, {
+  FormattedResult,
+} from 'react-dev-utils/formatWebpackMessages';
 import { Compiler } from 'webpack';
 
 export interface Options {
@@ -20,7 +22,9 @@ const pluginName = 'pobpack/FriendlyErrorsWebpackPlugin';
 
 export default class FriendlyErrorsWebpackPlugin {
   logger: Logger;
+
   bundleName: string;
+
   successMessage?: string;
 
   constructor(options: Options) {
@@ -36,7 +40,7 @@ export default class FriendlyErrorsWebpackPlugin {
     });
 
     // compilation done
-    compiler.hooks.done.tap(pluginName, stats => {
+    compiler.hooks.done.tap(pluginName, (stats) => {
       const messages = formatWebpackMessages(stats.toJson({}));
       // const messages = stats.toJson({}, true);
 
@@ -48,20 +52,20 @@ export default class FriendlyErrorsWebpackPlugin {
         return;
       }
 
-      if (messages.errors.length) {
+      if (messages.errors.length !== 0) {
         this.logger.critical('Failed to compile.');
         console.log();
-        messages.errors.forEach(message => {
+        messages.errors.forEach((message) => {
           console.log(message);
           console.log();
         });
         return;
       }
 
-      if (messages.warnings.length) {
+      if (messages.warnings.length !== 0) {
         this.logger.critical('Compiled with warnings.');
         console.log();
-        messages.warnings.forEach(message => {
+        messages.warnings.forEach((message) => {
           console.log(message);
           console.log();
         });

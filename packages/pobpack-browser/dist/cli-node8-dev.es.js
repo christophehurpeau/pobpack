@@ -1,6 +1,6 @@
+import WebpackDevServer from 'webpack-dev-server';
 import path from 'path';
 import { createModuleConfig, createPluginsConfig, createResolveConfig, createPobpackCompiler, createAppWebpackConfig } from 'pobpack-utils';
-import WebpackDevServer from 'webpack-dev-server';
 
 const MODERN = 'modern';
 const TARGETS = ["all", "modern"];
@@ -115,6 +115,7 @@ const watchAndRunDevServer = (options, runOptions) => {
   };
 };
 
+/* eslint-disable unicorn/no-process-exit */
 const cmd = process.argv[2];
 
 if (cmd === 'build') {

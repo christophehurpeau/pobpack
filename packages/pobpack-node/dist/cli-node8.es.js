@@ -1,7 +1,7 @@
+import createDaemon from 'springbokjs-daemon';
 import path, { join } from 'path';
 import nodeExternals from 'webpack-node-externals';
 import { webpack, createModuleConfig, createPluginsConfig, createResolveConfig, createPobpackCompiler, createAppWebpackConfig } from 'pobpack-utils';
-import createDaemon from 'springbokjs-daemon';
 
 // const fs = require('fs');
 const ExcludesFalsy = Boolean;
@@ -111,6 +111,7 @@ const watchAndRun = options => {
   return compiler;
 };
 
+/* eslint-disable unicorn/no-process-exit */
 const cmd = process.argv[2];
 
 if (cmd === 'build') {

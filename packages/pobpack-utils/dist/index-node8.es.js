@@ -1,16 +1,17 @@
-import path, { resolve } from 'path';
-import { existsSync, realpathSync } from 'fs';
+import { execSync } from 'child_process';
+import { promisify } from 'util';
+import colorette from 'colorette';
+import ProgressBar from 'progress';
 import { addConfig, levels } from 'nightingale';
 import Logger from 'nightingale-logger';
 import ConsoleHandler from 'nightingale-console';
 import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages';
-import { execSync } from 'child_process';
-import { promisify } from 'util';
-import chalk from 'chalk';
-import ProgressBar from 'progress';
+import { existsSync, realpathSync } from 'fs';
+import resolveFrom from 'resolve-from';
 import webpack, { ProgressPlugin } from 'webpack';
 export { default as webpack } from 'webpack';
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
+import path, { resolve } from 'path';
 
 var createOptions = (options => ({
   aliases: options.aliases || {},
@@ -105,7 +106,7 @@ class FriendlyErrorsWebpackPlugin {
         return;
       }
 
-      if (messages.errors.length) {
+      if (messages.errors.length !== 0) {
         this.logger.critical('Failed to compile.');
         console.log();
         messages.errors.forEach(message => {
@@ -115,7 +116,7 @@ class FriendlyErrorsWebpackPlugin {
         return;
       }
 
-      if (messages.warnings.length) {
+      if (messages.warnings.length !== 0) {
         this.logger.critical('Compiled with warnings.');
         console.log();
         messages.warnings.forEach(message => {
@@ -146,7 +147,7 @@ var createPobpackCompiler = ((bundleName, webpackConfig, {
     let bar;
     const progressPlugin = new ProgressPlugin((percentage, msg) => {
       if (percentage === 0) {
-        bar = new ProgressBar(`${chalk.yellow.bold(`Building ${bundleName} bundle...`)} ${chalk.bold(':percent')} [:bar] → :msg`, {
+        bar = new ProgressBar(`${colorette.bold(colorette.yellow(`Building ${bundleName} bundle...`))} ${colorette.bold(':percent')} [:bar] → :msg`, {
           incomplete: ' ',
           complete: '▇',
           total: 50,
@@ -198,7 +199,7 @@ var createModuleConfig = (options => ({
   }, // tsx? / jsx?
   {
     test: options.typescript ? /\.[tj]sx?$/ : /\.jsx?$/,
-    include: [resolve(options.paths.src), ...options.includeModules.map(includeModule => realpathSync(resolve('node_modules', includeModule))), ...options.includePaths],
+    include: [resolve(options.paths.src), ...options.includeModules.map(includeModule => realpathSync(resolveFrom(process.cwd(), includeModule).replace(new RegExp(`(node_modules/${includeModule.replace('-', '\\-')}.*$)`), '$1'))), ...options.includePaths],
     loaders: [{
       loader: require.resolve('babel-loader'),
       options: {

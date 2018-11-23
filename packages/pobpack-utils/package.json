@@ -11,7 +11,7 @@
     "node": ">=6.5.0"
   },
   "main": "./index.js",
-  "typings": "./dist/index.d.ts",
+  "types": "./dist/index.d.ts",
   "module:node": "./dist/index-node8.es.js",
   "module:node-dev": "./dist/index-node8-dev.es.js",
   "scripts": {
@@ -28,35 +28,37 @@
     "arrowParens": "always"
   },
   "dependencies": {
-    "@types/webpack": "^4.4.11",
-    "babel-loader": "^8.0.0",
+    "@types/webpack": "^4.4.19",
+    "babel-loader": "^8.0.4",
     "case-sensitive-paths-webpack-plugin": "^2.1.2",
-    "chalk": "^2.4.1",
+    "colorette": "^1.0.7",
     "nightingale": "^8.0.8",
     "nightingale-console": "^4.0.6",
     "nightingale-logger": "^5.1.0",
     "pobpack-types": "^2.1.0",
-    "progress": "^2.0.0",
-    "react-dev-utils": "^5.0.2"
+    "progress": "^2.0.1",
+    "react-dev-utils": "^5.0.2",
+    "resolve-from": "^4.0.0"
   },
   "peerDependencies": {
-    "@babel/core": "^7.0.0",
-    "webpack": "^4.17.1"
+    "@babel/core": "^7.1.6",
+    "webpack": "^4.26.0"
   },
   "devDependencies": {
-    "@babel/core": "7.0.0",
+    "@babel/core": "7.1.6",
     "@types/case-sensitive-paths-webpack-plugin": "2.1.2",
     "@types/progress": "2.0.1",
-    "babel-eslint": "9.0.0",
+    "@types/resolve-from": "^0.0.18",
+    "babel-eslint": "10.0.1",
     "babel-preset-latest-node": "2.0.2",
-    "eslint": "5.4.0",
-    "eslint-config-pob": "22.0.3",
-    "eslint-plugin-babel": "5.1.0",
+    "eslint": "5.9.0",
+    "eslint-config-pob": "24.0.1",
+    "eslint-plugin-babel": "5.3.0",
     "eslint-plugin-import": "2.14.0",
-    "eslint-plugin-typescript": "0.12.0",
-    "pob-babel": "23.2.2",
-    "prettier": "1.14.2",
-    "typescript": "3.0.3",
-    "typescript-eslint-parser": "18.0.0"
+    "eslint-plugin-typescript": "0.13.0",
+    "pob-babel": "^23.4.0",
+    "prettier": "1.15.2",
+    "typescript": "3.1.6",
+    "typescript-eslint-parser": "21.0.1"
   }
 }

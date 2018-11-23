@@ -1,5 +1,6 @@
 import { realpathSync } from 'fs';
 import { resolve } from 'path';
+import resolveFrom from 'resolve-from';
 import { Options } from 'pobpack-types';
 
 export default (options: Options) => ({
@@ -15,7 +16,14 @@ export default (options: Options) => ({
       include: [
         resolve(options.paths.src as string),
         ...options.includeModules.map((includeModule) =>
-          realpathSync(resolve('node_modules', includeModule)),
+          realpathSync(
+            resolveFrom(process.cwd(), includeModule).replace(
+              new RegExp(
+                `(node_modules/${includeModule.replace('-', '\\-')}.*$)`,
+              ),
+              '$1',
+            ),
+          ),
         ),
         ...options.includePaths,
       ],

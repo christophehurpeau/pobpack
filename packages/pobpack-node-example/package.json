@@ -8,14 +8,14 @@
     "start": "pobpack-node"
   },
   "devDependencies": {
-    "@babel/core": "7.0.0",
-    "eslint": "5.4.0",
+    "@babel/core": "7.1.6",
+    "eslint": "5.9.0",
     "eslint-config-airbnb-base": "13.1.0",
-    "eslint-config-prettier": "3.0.1",
+    "eslint-config-prettier": "3.3.0",
     "eslint-plugin-import": "2.14.0",
     "pobpack-node": "^6.1.0",
-    "prettier": "1.14.2",
-    "webpack": "4.17.1",
+    "prettier": "1.15.2",
+    "webpack": "4.26.0",
     "webpack-module-hot-accept": "1.0.5"
   }
 }

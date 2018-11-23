@@ -3,11 +3,16 @@ import { existsSync } from 'fs';
 import { Options, FilledWebpackConfiguration } from 'pobpack-types';
 import createOptions from './createOptions';
 
-export type CreateWebpackConfig = (options: Options) => FilledWebpackConfiguration;
+export type CreateWebpackConfig = (
+  options: Options,
+) => FilledWebpackConfiguration;
 
-export default (createWebpackConfig: CreateWebpackConfig): (options: Partial<Options>) => FilledWebpackConfiguration => {
-  const wrapCreateWebpackConfig = (options: Partial<Options>): FilledWebpackConfiguration =>
-    createWebpackConfig(createOptions(options));
+export default (
+  createWebpackConfig: CreateWebpackConfig,
+): ((options: Partial<Options>) => FilledWebpackConfiguration) => {
+  const wrapCreateWebpackConfig = (
+    options: Partial<Options>,
+  ): FilledWebpackConfiguration => createWebpackConfig(createOptions(options));
 
   return (options: Partial<Options>): FilledWebpackConfiguration => {
     const appWebpackConfigPath = path.resolve('createAppWebpackConfig.js');

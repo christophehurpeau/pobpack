@@ -1,4 +1,5 @@
-import { build, watchAndRun } from './index';
+/* eslint-disable unicorn/no-process-exit */
+import { build, watchAndRun } from '.';
 
 const cmd = process.argv[2];
 

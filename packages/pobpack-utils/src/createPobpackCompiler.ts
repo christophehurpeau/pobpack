@@ -1,9 +1,13 @@
 import { execSync } from 'child_process';
 import { promisify } from 'util';
-import chalk from 'chalk';
+import colorette from 'colorette';
 import ProgressBar from 'progress';
 import webpack, { ProgressPlugin, Stats } from 'webpack';
-import { PobpackCompiler, CreateCompilerOptions, FilledWebpackConfiguration } from 'pobpack-types';
+import {
+  PobpackCompiler,
+  CreateCompilerOptions,
+  FilledWebpackConfiguration,
+} from 'pobpack-types';
 import FriendlyErrorsWebpackPlugin from './FriendlyErrorsWebpackPlugin';
 
 const buildThrowOnError = (stats: Stats) => {
@@ -27,9 +31,9 @@ export default (
       (percentage: number, msg: string) => {
         if (percentage === 0) {
           bar = new ProgressBar(
-            `${chalk.yellow.bold(
-              `Building ${bundleName} bundle...`,
-            )} ${chalk.bold(':percent')} [:bar] → :msg`,
+            `${colorette.bold(
+              colorette.yellow(`Building ${bundleName} bundle...`),
+            )} ${colorette.bold(':percent')} [:bar] → :msg`,
             {
               incomplete: ' ',
               complete: '▇',

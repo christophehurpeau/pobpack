@@ -4,7 +4,11 @@ import {
   createPluginsConfig,
   createResolveConfig,
 } from 'pobpack-utils';
-import { Options, ConfigEntry, FilledWebpackConfiguration } from 'pobpack-types';
+import {
+  Options,
+  ConfigEntry,
+  FilledWebpackConfiguration,
+} from 'pobpack-types';
 
 export type BrowserTargetType = 'modern' | 'all';
 
@@ -12,9 +16,13 @@ export const MODERN = 'modern';
 export const ALL = 'all';
 export const TARGETS: Array<BrowserTargetType> = [ALL, MODERN];
 
-const ExcludesFalsy = (Boolean as any) as <T>(x: T | boolean | null | undefined) => x is T;
+const ExcludesFalsy = (Boolean as any) as <T>(
+  x: T | boolean | null | undefined,
+) => x is T;
 
-export default (target: BrowserTargetType) => (options: Options): FilledWebpackConfiguration => ({
+export default (target: BrowserTargetType) => (
+  options: Options,
+): FilledWebpackConfiguration => ({
   // production or development
   mode: options.env === 'production' ? 'production' : 'development',
 
@@ -55,7 +63,9 @@ export default (target: BrowserTargetType) => (options: Options): FilledWebpackC
   },
 
   resolve: createResolveConfig(
-    [target === MODERN ? 'modern-browsers' : undefined, 'browser'].filter(ExcludesFalsy),
+    [target === MODERN ? 'modern-browsers' : undefined, 'browser'].filter(
+      ExcludesFalsy,
+    ),
     {
       ...options,
       babel: {
@@ -69,17 +79,20 @@ export default (target: BrowserTargetType) => (options: Options): FilledWebpackC
     },
   ),
 
-  entry: options.entries.reduce((entries: { [key: string]: Array<string> }, entry: ConfigEntry) => {
-    if (typeof entry === 'string') entry = { key: entry, path: entry };
-    entries[entry.key] = [
-      // options.env !== 'production' && require.resolve('../source-map-support'),
-      target !== MODERN && require.resolve('regenerator-runtime/runtime'),
-      options.hmr && require.resolve('react-hot-loader/patch'),
-      options.hmr && require.resolve('react-dev-utils/webpackHotDevClient'),
-      path.join(path.resolve(options.paths.src as string), entry.path),
-    ].filter(ExcludesFalsy);
-    return entries;
-  }, {}),
+  entry: options.entries.reduce(
+    (entries: { [key: string]: Array<string> }, entry: ConfigEntry) => {
+      if (typeof entry === 'string') entry = { key: entry, path: entry };
+      entries[entry.key] = [
+        // options.env !== 'production' && require.resolve('../source-map-support'),
+        target !== MODERN && require.resolve('regenerator-runtime/runtime'),
+        options.hmr && require.resolve('react-hot-loader/patch'),
+        options.hmr && require.resolve('react-dev-utils/webpackHotDevClient'),
+        path.join(path.resolve(options.paths.src as string), entry.path),
+      ].filter(ExcludesFalsy);
+      return entries;
+    },
+    {},
+  ),
 
   output: {
     path: path.resolve(options.paths.build as string),

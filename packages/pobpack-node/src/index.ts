@@ -1,11 +1,20 @@
 import { join } from 'path';
 import createDaemon, { Daemon } from 'springbokjs-daemon';
-import { createPobpackCompiler, createAppWebpackConfig, webpack } from 'pobpack-utils';
+import {
+  createPobpackCompiler,
+  createAppWebpackConfig,
+  webpack,
+} from 'pobpack-utils';
 import { Options, PobpackCompiler, WatchCallback } from 'pobpack-types';
 import createNodeWebpackConfig from './createNodeWebpackConfig';
 
-export const createAppNodeCompiler = (options: Partial<Options>): PobpackCompiler =>
-  createPobpackCompiler('node', createAppWebpackConfig(createNodeWebpackConfig)(options));
+export const createAppNodeCompiler = (
+  options: Partial<Options>,
+): PobpackCompiler =>
+  createPobpackCompiler(
+    'node',
+    createAppWebpackConfig(createNodeWebpackConfig)(options),
+  );
 
 export const build = (options = {}) => {
   if (!process.env.NODE_ENV) process.env.NODE_ENV = 'production';
@@ -32,7 +41,10 @@ export interface RunOptions {
   key?: string;
 }
 
-export const watchAndRunCompiler = (compiler: PobpackCompiler, options: RunOptions = {}) => {
+export const watchAndRunCompiler = (
+  compiler: PobpackCompiler,
+  options: RunOptions = {},
+) => {
   let daemon: Daemon;
   return compiler.watch((stats: webpack.Stats) => {
     if (!daemon) {
@@ -41,7 +53,11 @@ export const watchAndRunCompiler = (compiler: PobpackCompiler, options: RunOptio
         displayName: options.displayName,
         cwd: options.cwd,
         args: [
-          join((compiler.webpackConfig.output && compiler.webpackConfig.output.path) || ''),
+          join(
+            (compiler.webpackConfig.output &&
+              compiler.webpackConfig.output.path) ||
+              '',
+          ),
           ...(options.args || []),
         ],
         // autoRestart: true,
