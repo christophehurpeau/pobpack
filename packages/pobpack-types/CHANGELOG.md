@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-types@2.1.0...pobpack-types@2.2.0) (2018-11-23)
+
+
+### Features
+
+* update dependencies, replace chalk by colorette and resolve includeModules from pwd ([ccea3a8](https://github.com/christophehurpeau/pobpack/commit/ccea3a8))
+
+
+
+
+
 <a name="2.1.0"></a>
 # [2.1.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-types@2.0.0...pobpack-types@2.1.0) (2018-09-01)
 

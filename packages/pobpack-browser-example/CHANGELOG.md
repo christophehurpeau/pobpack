@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser-example@3.0.3...pobpack-browser-example@3.1.0) (2018-11-23)
+
+
+### Features
+
+* update dependencies, replace chalk by colorette and resolve includeModules from pwd ([ccea3a8](https://github.com/christophehurpeau/pobpack/commit/ccea3a8))
+
+
+
+
+
 <a name="3.0.3"></a>
 ## [3.0.3](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser-example@3.0.2...pobpack-browser-example@3.0.3) (2018-09-01)
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-node@6.1.0...pobpack-node@6.2.0) (2018-11-23)
+
+
+### Features
+
+* update dependencies, replace chalk by colorette and resolve includeModules from pwd ([ccea3a8](https://github.com/christophehurpeau/pobpack/commit/ccea3a8))
+
+
+
+
+
 <a name="6.1.0"></a>
 # [6.1.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-node@6.0.0...pobpack-node@6.1.0) (2018-09-01)
 
