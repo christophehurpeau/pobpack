@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-node-example@3.1.0...pobpack-node-example@4.0.0) (2018-12-09)
+
+
+### Features
+
+* update deps ([a472983](https://github.com/christophehurpeau/pobpack/commit/a472983))
+
+
+### BREAKING CHANGES
+
+* node 6 dropped
+
+
+
+
+
 # [3.1.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-node-example@3.0.1...pobpack-node-example@3.1.0) (2018-11-23)
 
 

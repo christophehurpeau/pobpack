@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.0.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser@6.2.0...pobpack-browser@7.0.0) (2018-12-09)
+
+
+### Features
+
+* update deps ([a472983](https://github.com/christophehurpeau/pobpack/commit/a472983))
+
+
+### BREAKING CHANGES
+
+* node 6 dropped
+
+
+
+
+
 # [6.2.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser@6.1.0...pobpack-browser@6.2.0) (2018-11-23)
 
 
