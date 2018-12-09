@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.1](https://github.com/christophehurpeau/pobpack/compare/pobpack-node@7.0.0...pobpack-node@7.0.1) (2018-12-09)
+
+
+### Bug Fixes
+
+* add missing declaration files ([cb2a7ed](https://github.com/christophehurpeau/pobpack/commit/cb2a7ed))
+
+
+
+
+
 # [7.0.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-node@6.2.0...pobpack-node@7.0.0) (2018-12-09)
 
 
