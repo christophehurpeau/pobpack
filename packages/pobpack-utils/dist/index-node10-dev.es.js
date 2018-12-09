@@ -1,25 +1,18 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
-
-var child_process = require('child_process');
-var util = require('util');
-var colorette = _interopDefault(require('colorette'));
-var ProgressBar = _interopDefault(require('progress'));
-var nightingale = require('nightingale');
-var Logger = _interopDefault(require('nightingale-logger'));
-var ConsoleHandler = _interopDefault(require('nightingale-console'));
-var formatWebpackMessages = _interopDefault(require('react-dev-utils/formatWebpackMessages'));
-var fs = require('fs');
-var resolveFrom = _interopDefault(require('resolve-from'));
-var findUp = _interopDefault(require('find-up'));
-var webpack = require('webpack');
-var webpack__default = _interopDefault(webpack);
-var CaseSensitivePathsPlugin = _interopDefault(require('case-sensitive-paths-webpack-plugin'));
-var path = require('path');
-var path__default = _interopDefault(path);
+import { execSync } from 'child_process';
+import { promisify } from 'util';
+import colorette from 'colorette';
+import ProgressBar from 'progress';
+import { addConfig, levels } from 'nightingale';
+import Logger from 'nightingale-logger';
+import ConsoleHandler from 'nightingale-console';
+import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages';
+import { existsSync, realpathSync } from 'fs';
+import resolveFrom from 'resolve-from';
+import findUp from 'find-up';
+import webpack, { ProgressPlugin } from 'webpack';
+export { default as webpack } from 'webpack';
+import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
+import path, { resolve, dirname } from 'path';
 
 var createOptions = (options => ({
   aliases: options.aliases || {},
@@ -48,9 +41,9 @@ var createAppWebpackConfig = (createWebpackConfig => {
   const wrapCreateWebpackConfig = options => createWebpackConfig(createOptions(options));
 
   return options => {
-    const appWebpackConfigPath = path__default.resolve('createAppWebpackConfig.js');
+    const appWebpackConfigPath = path.resolve('createAppWebpackConfig.js');
 
-    if (fs.existsSync(appWebpackConfigPath)) {
+    if (existsSync(appWebpackConfigPath)) {
       console.info('Using app createAppWebpackConfig.js'); // eslint-disable-next-line import/no-dynamic-require, global-require, typescript/no-var-requires
 
       const appWebpackConfigCreator = require(appWebpackConfigPath);
@@ -74,9 +67,9 @@ var createAppWebpackConfig = (createWebpackConfig => {
 });
 
 /* eslint-disable no-console */
-nightingale.addConfig({
+addConfig({
   key: 'pobpack-utils',
-  handler: new ConsoleHandler(nightingale.levels.INFO)
+  handler: new ConsoleHandler(levels.INFO)
 });
 const logger = new Logger('pobpack-utils', 'pobpack');
 
@@ -149,11 +142,11 @@ var createPobpackCompiler = ((bundleName, webpackConfig, {
   progressBar = true,
   successMessage
 } = {}) => {
-  const compiler = webpack__default(webpackConfig);
+  const compiler = webpack(webpackConfig);
 
   if (progressBar && process.stdout.isTTY) {
     let bar;
-    const progressPlugin = new webpack.ProgressPlugin((percentage, msg) => {
+    const progressPlugin = new ProgressPlugin((percentage, msg) => {
       if (percentage === 0) {
         bar = new ProgressBar(`${colorette.bold(colorette.yellow(`Building ${bundleName} bundle...`))} ${colorette.bold(':percent')} [:bar] → :msg`, {
           incomplete: ' ',
@@ -178,13 +171,13 @@ var createPobpackCompiler = ((bundleName, webpackConfig, {
     bundleName,
     successMessage
   }).apply(compiler);
-  const promisifyRun = util.promisify(compiler.run.bind(compiler));
+  const promisifyRun = promisify(compiler.run.bind(compiler));
   return {
     compiler,
     webpackConfig,
     clean: () => {
       if (webpackConfig.output && webpackConfig.output.path) {
-        return child_process.execSync(`rm -Rf ${webpackConfig.output.path}`);
+        return execSync(`rm -Rf ${webpackConfig.output.path}`);
       }
     },
     run: () => promisifyRun().then(buildThrowOnError),
@@ -207,9 +200,9 @@ var createModuleConfig = (options => ({
   }, // tsx? / jsx?
   {
     test: options.typescript ? /\.[tj]sx?$/ : /\.jsx?$/,
-    include: [path.resolve(options.paths.src), ...options.includeModules.map(includeModule => {
+    include: [resolve(options.paths.src), ...options.includeModules.map(includeModule => {
       const packageJson = findUp.sync('package.json', {
-        cwd: path.dirname(fs.realpathSync(resolveFrom(process.cwd(), includeModule)))
+        cwd: dirname(realpathSync(resolveFrom(process.cwd(), includeModule)))
       });
       if (!packageJson) return;
       return packageJson.slice(0, -12);
@@ -227,21 +220,21 @@ var createModuleConfig = (options => ({
 }));
 
 var createPluginsConfig = (options => [...options.prependPlugins, // ignore files when watching
-new webpack__default.WatchIgnorePlugin([// typescript definitions
+new webpack.WatchIgnorePlugin([// typescript definitions
 /\.d\.ts$/]), // enforces the entire path of all required modules match the exact case
 // of the actual path on disk. Using this plugin helps alleviate cases
 // for developers working on case insensitive systems like OSX.
-options.env !== 'production' && new CaseSensitivePathsPlugin(), new webpack__default.DefinePlugin({
+options.env !== 'production' && new CaseSensitivePathsPlugin(), new webpack.DefinePlugin({
   'process.env.NODE_ENV': JSON.stringify(options.env),
   ...options.defines
-}), options.hmr && new webpack__default.HotModuleReplacementPlugin(),
+}), options.hmr && new webpack.HotModuleReplacementPlugin(),
 /* replace object-assign ponyfill to use native implementation */
 // Array.isArray
-new webpack__default.NormalModuleReplacementPlugin(/.*\/node_modules\/isarray\/index.js$/, require.resolve('../replacements/Array.isArray.js')), // Object.assign
-new webpack__default.NormalModuleReplacementPlugin(/.*\/node_modules\/(object-assign|extend-shallow)\/index.js$/, require.resolve('../replacements/Object.assign.js')), // Object.setPrototypeOf
-new webpack__default.NormalModuleReplacementPlugin(/.*\/node_modules\/setprototypeof\/index.js$/, require.resolve('../replacements/Object.setPrototypeOf.js')), // Promise
-new webpack__default.NormalModuleReplacementPlugin(/.*\/node_modules\/any-promise\/index.js$/, require.resolve('../replacements/Promise.js')), // String.prototype.repeat
-new webpack__default.NormalModuleReplacementPlugin(/.*\/node_modules\/repeat-string\/index.js$/, require.resolve('../replacements/String.prototype.repeat.js')), // Symbol.observable
+new webpack.NormalModuleReplacementPlugin(/.*\/node_modules\/isarray\/index.js$/, require.resolve('../replacements/Array.isArray.js')), // Object.assign
+new webpack.NormalModuleReplacementPlugin(/.*\/node_modules\/(object-assign|extend-shallow)\/index.js$/, require.resolve('../replacements/Object.assign.js')), // Object.setPrototypeOf
+new webpack.NormalModuleReplacementPlugin(/.*\/node_modules\/setprototypeof\/index.js$/, require.resolve('../replacements/Object.setPrototypeOf.js')), // Promise
+new webpack.NormalModuleReplacementPlugin(/.*\/node_modules\/any-promise\/index.js$/, require.resolve('../replacements/Promise.js')), // String.prototype.repeat
+new webpack.NormalModuleReplacementPlugin(/.*\/node_modules\/repeat-string\/index.js$/, require.resolve('../replacements/String.prototype.repeat.js')), // Symbol.observable
 // https://github.com/tc39/proposal-observable
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/observable
 // new webpack.NormalModuleReplacementPlugin(
@@ -255,7 +248,7 @@ const ExcludesFalse = Boolean;
 var createResolveConfig = ((modulePrefixPackageFields, options) => ({
   // https://github.com/DefinitelyTyped/DefinitelyTyped/pull/25209
   // cacheWithContext: false,
-  modules: ['node_modules', path.resolve('src')],
+  modules: ['node_modules', resolve('src')],
   extensions: [options.typescript && '.ts', options.typescript && '.tsx', '.js', '.jsx'].filter(ExcludesFalse),
   mainFields: [...[].concat(...modulePrefixPackageFields.map(prefix => [options.env !== 'production' && `module:${prefix}-dev`, `module:${prefix}`, // old `webpack:` syntax
   options.env !== 'production' && `webpack:${prefix}-dev`, `webpack:${prefix}`])), options.env !== 'production' && 'module-dev', 'module', // old webpack: syntax
@@ -267,11 +260,5 @@ var createResolveConfig = ((modulePrefixPackageFields, options) => ({
   alias: options.aliases
 }));
 
-exports.webpack = webpack__default;
-exports.createAppWebpackConfig = createAppWebpackConfig;
-exports.createOptions = createOptions;
-exports.createPobpackCompiler = createPobpackCompiler;
-exports.createModuleConfig = createModuleConfig;
-exports.createPluginsConfig = createPluginsConfig;
-exports.createResolveConfig = createResolveConfig;
-//# sourceMappingURL=index-node8.cjs.js.map
+export { createAppWebpackConfig, createOptions, createPobpackCompiler, createModuleConfig, createPluginsConfig, createResolveConfig };
+//# sourceMappingURL=index-node10-dev.es.js.map

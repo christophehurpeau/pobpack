@@ -1,6 +1,7 @@
 import { realpathSync } from 'fs';
-import { resolve } from 'path';
+import { resolve, dirname } from 'path';
 import resolveFrom from 'resolve-from';
+import findUp from 'find-up';
 import { Options } from 'pobpack-types';
 
 export default (options: Options) => ({
@@ -15,16 +16,18 @@ export default (options: Options) => ({
       test: options.typescript ? /\.[tj]sx?$/ : /\.jsx?$/,
       include: [
         resolve(options.paths.src as string),
-        ...options.includeModules.map((includeModule) =>
-          realpathSync(
-            resolveFrom(process.cwd(), includeModule).replace(
-              new RegExp(
-                `(node_modules/${includeModule.replace('-', '\\-')}.*$)`,
+        ...options.includeModules
+          .map((includeModule) => {
+            const packageJson = findUp.sync('package.json', {
+              cwd: dirname(
+                realpathSync(resolveFrom(process.cwd(), includeModule)),
               ),
-              '$1',
-            ),
-          ),
-        ),
+            });
+
+            if (!packageJson) return;
+            return packageJson.slice(0, -'package.json'.length);
+          })
+          .filter(Boolean),
         ...options.includePaths,
       ],
       loaders: [

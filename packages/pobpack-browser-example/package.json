@@ -8,10 +8,10 @@
     "start": "pobpack-browser"
   },
   "devDependencies": {
-    "@babel/core": "7.1.6",
+    "@babel/core": "7.2.0",
     "@babel/preset-react": "7.0.0",
     "pobpack-browser": "^6.2.0",
-    "webpack": "4.26.0"
+    "webpack": "4.27.1"
   },
   "dependencies": {
     "react": "^16.6.3",

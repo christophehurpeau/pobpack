@@ -2,9 +2,7 @@
   "name": "pobpack-types",
   "version": "2.2.0",
   "description": "pobpack types for typescript",
-  "keywords": [
-    "logger"
-  ],
+  "keywords": ["logger"],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
   "license": "ISC",
   "repository": "git@github.com:christophehurpeau/pobpack.git",
@@ -24,16 +22,16 @@
     "arrowParens": "always"
   },
   "dependencies": {
-    "@types/babel__core": "^7.0.2",
+    "@types/babel__core": "^7.0.4",
     "@types/babel__generator": "^7.0.1",
     "@types/babel__template": "^7.0.1",
-    "@types/babel__traverse": "^7.0.1"
+    "@types/babel__traverse": "^7.0.3"
   },
   "devDependencies": {
-    "eslint": "5.9.0",
-    "eslint-config-pob": "24.0.1",
+    "eslint": "5.10.0",
+    "eslint-config-pob": "24.0.2",
     "eslint-plugin-import": "2.14.0",
     "eslint-plugin-node": "8.0.0",
-    "prettier": "1.15.2"
+    "prettier": "1.15.3"
   }
 }

@@ -1,5 +1,5 @@
 import { TransformOptions } from '@babel/core';
-import { Compiler, Configuration } from 'webpack';
+import { Compiler, Configuration, Stats } from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 
 export interface ConfigPaths {
@@ -36,7 +36,6 @@ export interface Options {
 
 export type WatchCallback = (stats: any) => void;
 
-
 export type FilledWebpackConfigurationKeys = 'mode' | 'bail' | 'target' | 'devtool' | 'optimization' | 'resolveLoader' | 'resolve' | 'entry' | 'output';
 export type FilledWebpackConfiguration =
   Pick<Configuration, Exclude<keyof Configuration, FilledWebpackConfigurationKeys>> & Required<Pick<Configuration, FilledWebpackConfigurationKeys>>;
@@ -44,12 +43,10 @@ export type FilledWebpackConfiguration =
 export interface PobpackCompiler {
   clean: () => void | Buffer;
   compiler: Compiler;
-  run: () => Promise<void>;
+  run: () => Promise<Stats>;
   watch: (callback: WatchCallback) => Compiler.Watching;
   webpackConfig: Readonly<FilledWebpackConfiguration>;
 }
-
-
 
 export interface CreateCompilerOptions {
   progressBar?: boolean;

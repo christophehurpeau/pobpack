@@ -14,6 +14,7 @@ var ConsoleHandler = _interopDefault(require('nightingale-console'));
 var formatWebpackMessages = _interopDefault(require('react-dev-utils/formatWebpackMessages'));
 var fs = require('fs');
 var resolveFrom = _interopDefault(require('resolve-from'));
+var findUp = _interopDefault(require('find-up'));
 var webpack = require('webpack');
 var webpack__default = _interopDefault(webpack);
 var CaseSensitivePathsPlugin = _interopDefault(require('case-sensitive-paths-webpack-plugin'));
@@ -206,7 +207,13 @@ var createModuleConfig = (options => ({
   }, // tsx? / jsx?
   {
     test: options.typescript ? /\.[tj]sx?$/ : /\.jsx?$/,
-    include: [path.resolve(options.paths.src), ...options.includeModules.map(includeModule => fs.realpathSync(resolveFrom(process.cwd(), includeModule).replace(new RegExp(`(node_modules/${includeModule.replace('-', '\\-')}.*$)`), '$1'))), ...options.includePaths],
+    include: [path.resolve(options.paths.src), ...options.includeModules.map(includeModule => {
+      const packageJson = findUp.sync('package.json', {
+        cwd: path.dirname(fs.realpathSync(resolveFrom(process.cwd(), includeModule)))
+      });
+      if (!packageJson) return;
+      return packageJson.slice(0, -12);
+    }).filter(Boolean), ...options.includePaths],
     loaders: [{
       loader: require.resolve('babel-loader'),
       options: {

@@ -10,7 +10,7 @@ import {
 } from 'pobpack-types';
 import FriendlyErrorsWebpackPlugin from './FriendlyErrorsWebpackPlugin';
 
-const buildThrowOnError = (stats: Stats) => {
+const buildThrowOnError = (stats: Stats): Stats => {
   if (!stats.hasErrors()) {
     return stats;
   }
@@ -60,7 +60,9 @@ export default (
     compiler,
   );
 
-  const promisifyRun = promisify(compiler.run.bind(compiler));
+  const promisifyRun: () => Promise<Stats> = promisify(
+    compiler.run.bind(compiler),
+  );
 
   return {
     compiler,
@@ -70,8 +72,8 @@ export default (
         return execSync(`rm -Rf ${webpackConfig.output.path}`);
       }
     },
-    run: () => promisifyRun().then(buildThrowOnError),
-    watch: (callback) =>
+    run: (): Promise<Stats> => promisifyRun().then(buildThrowOnError),
+    watch: (callback: (stats: Stats) => any) =>
       compiler.watch({}, (err: Error, stats: Stats) => {
         if (err) return;
         if (stats.hasErrors()) return;

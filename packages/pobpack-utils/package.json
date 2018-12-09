@@ -8,12 +8,12 @@
   "repository": "git@github.com:christophehurpeau/pobpack.git",
   "homepage": "https://github.com/christophehurpeau/pobpack",
   "engines": {
-    "node": ">=6.5.0"
+    "node": ">=8.3.0"
   },
   "main": "./index.js",
   "types": "./dist/index.d.ts",
-  "module:node": "./dist/index-node8.es.js",
-  "module:node-dev": "./dist/index-node8-dev.es.js",
+  "module:node": "./dist/index-node10.es.js",
+  "module:node-dev": "./dist/index-node10-dev.es.js",
   "scripts": {
     "build": "pob-build && tsc -p tsconfig.build.json",
     "clean": "rm -Rf docs dist test/node6 coverage",
@@ -28,15 +28,16 @@
     "arrowParens": "always"
   },
   "dependencies": {
-    "@types/webpack": "^4.4.19",
+    "@types/webpack": "^4.4.20",
     "babel-loader": "^8.0.4",
     "case-sensitive-paths-webpack-plugin": "^2.1.2",
     "colorette": "^1.0.7",
-    "nightingale": "^8.0.8",
-    "nightingale-console": "^4.0.6",
-    "nightingale-logger": "^5.1.0",
+    "find-up": "^3.0.0",
+    "nightingale": "^9.0.1",
+    "nightingale-console": "^5.0.0",
+    "nightingale-logger": "^6.0.0",
     "pobpack-types": "^2.2.0",
-    "progress": "^2.0.1",
+    "progress": "^2.0.3",
     "react-dev-utils": "^5.0.2",
     "resolve-from": "^4.0.0"
   },
@@ -45,20 +46,22 @@
     "webpack": "^4.26.0"
   },
   "devDependencies": {
-    "@babel/core": "7.1.6",
+    "@babel/core": "7.2.0",
     "@types/case-sensitive-paths-webpack-plugin": "2.1.2",
+    "@types/find-up": "^2.1.1",
     "@types/progress": "2.0.1",
     "@types/resolve-from": "^0.0.18",
     "babel-eslint": "10.0.1",
-    "babel-preset-latest-node": "2.0.2",
-    "eslint": "5.9.0",
-    "eslint-config-pob": "24.0.1",
+    "babel-preset-latest-node": "3.0.1",
+    "eslint": "5.10.0",
+    "eslint-config-pob": "24.0.2",
     "eslint-plugin-babel": "5.3.0",
     "eslint-plugin-import": "2.14.0",
-    "eslint-plugin-typescript": "0.13.0",
-    "pob-babel": "^23.4.0",
-    "prettier": "1.15.2",
-    "typescript": "3.1.6",
-    "typescript-eslint-parser": "21.0.1"
+    "eslint-plugin-node": "8.0.0",
+    "eslint-plugin-typescript": "0.14.0",
+    "pob-babel": "23.5.0",
+    "prettier": "1.15.3",
+    "typescript": "3.2.2",
+    "typescript-eslint-parser": "21.0.2"
   }
 }
