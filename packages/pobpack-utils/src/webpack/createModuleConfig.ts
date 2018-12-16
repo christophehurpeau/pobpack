@@ -3,6 +3,9 @@ import { resolve, dirname } from 'path';
 import resolveFrom from 'resolve-from';
 import findUp from 'find-up';
 import { Options } from 'pobpack-types';
+// with node 10.12
+// import { createRequireFromPath } from 'module';
+// const requireFromPwd = createRequireFromPath(process.cwd());
 
 export default (options: Options) => ({
   strictExportPresence: true,
@@ -20,6 +23,7 @@ export default (options: Options) => ({
           .map((includeModule) => {
             const packageJson = findUp.sync('package.json', {
               cwd: dirname(
+                // requireFromPwd.resolve(includeModule)
                 realpathSync(resolveFrom(process.cwd(), includeModule)),
               ),
             });

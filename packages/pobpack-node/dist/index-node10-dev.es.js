@@ -1,7 +1,7 @@
-import createDaemon from 'springbokjs-daemon';
 import path, { join } from 'path';
+import createDaemon from 'springbokjs-daemon';
+import { createResolveConfig, createModuleConfig, createPluginsConfig, webpack, createPobpackCompiler, createAppWebpackConfig } from 'pobpack-utils';
 import nodeExternals from 'webpack-node-externals';
-import { webpack, createModuleConfig, createPluginsConfig, createResolveConfig, createPobpackCompiler, createAppWebpackConfig } from 'pobpack-utils';
 
 // const fs = require('fs');
 const ExcludesFalsy = Boolean;

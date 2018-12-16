@@ -14,7 +14,7 @@
   "types": "./dist/index.d.ts",
   "typesVersions": {
     ">=3.1": {
-      "*": ["ts3.1/*"]
+      "BrowserAppContainer.js": ["ts3.1/*"]
     }
   },
   "module:node": "./dist/index-node10.es.js",
@@ -31,8 +31,7 @@
   "scripts": {
     "build": "pob-build && tsc -p tsconfig.build.json",
     "clean": "rm -Rf docs dist test/node6 coverage",
-    "lint": "npm run typescript-check && eslint --ext .ts  src/",
-    "test": "echo \"No tests\"",
+    "lint": "npm run typescript-check && eslint --ext .ts,.tsx  src/",
     "typescript-check": "tsc --noEmit",
     "watch": "pob-watch"
   },
@@ -48,27 +47,32 @@
     "pobpack-utils": "^7.0.0",
     "react-dev-utils": "^5.0.2",
     "react-error-html": "^0.2.2",
-    "react-hot-loader": "^4.3.12",
+    "react-hot-loader": "^4.6.0",
     "regenerator-runtime": "^0.13.1",
     "source-map-support": "^0.5.9",
     "webpack-dev-server": "^3.1.10"
   },
   "peerDependencies": {
+    "react": "^16.6.3",
     "webpack": "^4.26.0"
   },
   "devDependencies": {
-    "@babel/core": "7.2.0",
+    "@babel/core": "7.2.2",
+    "@babel/preset-react": "7.0.0",
     "@types/react-hot-loader": "^4.1.0",
     "@types/webpack-dev-server": "^3.1.1",
     "babel-eslint": "10.0.1",
     "babel-preset-latest-node": "3.0.1",
     "eslint": "5.10.0",
-    "eslint-config-pob": "24.0.2",
+    "eslint-config-airbnb": "17.1.0",
+    "eslint-config-pob": "24.0.3",
     "eslint-plugin-babel": "5.3.0",
     "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-jsx-a11y": "6.1.2",
     "eslint-plugin-node": "8.0.0",
+    "eslint-plugin-react": "7.11.1",
     "eslint-plugin-typescript": "0.14.0",
-    "pob-babel": "23.5.0",
+    "pob-babel": "23.5.2",
     "prettier": "1.15.3",
     "react": "16.6.3",
     "react-dom": "16.6.3",

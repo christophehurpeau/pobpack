@@ -1,3 +1,7 @@
+import webpack, { ProgressPlugin } from 'webpack';
+export { default as webpack } from 'webpack';
+import path, { resolve, dirname } from 'path';
+import { existsSync, realpathSync } from 'fs';
 import { execSync } from 'child_process';
 import { promisify } from 'util';
 import colorette from 'colorette';
@@ -6,13 +10,9 @@ import { addConfig, levels } from 'nightingale';
 import Logger from 'nightingale-logger';
 import ConsoleHandler from 'nightingale-console';
 import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages';
-import { existsSync, realpathSync } from 'fs';
 import resolveFrom from 'resolve-from';
 import findUp from 'find-up';
-import webpack, { ProgressPlugin } from 'webpack';
-export { default as webpack } from 'webpack';
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
-import path, { resolve, dirname } from 'path';
 
 var createOptions = (options => ({
   aliases: options.aliases || {},
@@ -190,6 +190,9 @@ var createPobpackCompiler = ((bundleName, webpackConfig, {
   };
 });
 
+// with node 10.12
+// import { createRequireFromPath } from 'module';
+// const requireFromPwd = createRequireFromPath(process.cwd());
 var createModuleConfig = (options => ({
   strictExportPresence: true,
   rules: [// Disable require.ensure as it's not a standard language feature.
@@ -202,7 +205,8 @@ var createModuleConfig = (options => ({
     test: options.typescript ? /\.[tj]sx?$/ : /\.jsx?$/,
     include: [resolve(options.paths.src), ...options.includeModules.map(includeModule => {
       const packageJson = findUp.sync('package.json', {
-        cwd: dirname(realpathSync(resolveFrom(process.cwd(), includeModule)))
+        cwd: dirname( // requireFromPwd.resolve(includeModule)
+        realpathSync(resolveFrom(process.cwd(), includeModule)))
       });
       if (!packageJson) return;
       return packageJson.slice(0, -12);

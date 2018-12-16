@@ -1,7 +1,6 @@
 {
   "extends": "./tsconfig.json",
 
-
   "compilerOptions": {
     "isolatedModules": false,
     "declaration": true,
@@ -10,7 +9,7 @@
   },
 
   "exclude": [
-    "src/**/*.test.ts",
+    "src/**/*.test.tsx?",
     "src/**/__tests__/**"
   ]
 }

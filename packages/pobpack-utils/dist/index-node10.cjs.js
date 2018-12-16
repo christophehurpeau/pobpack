@@ -4,6 +4,11 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
+var webpack = require('webpack');
+var webpack__default = _interopDefault(webpack);
+var path = require('path');
+var path__default = _interopDefault(path);
+var fs = require('fs');
 var child_process = require('child_process');
 var util = require('util');
 var colorette = _interopDefault(require('colorette'));
@@ -12,14 +17,9 @@ var nightingale = require('nightingale');
 var Logger = _interopDefault(require('nightingale-logger'));
 var ConsoleHandler = _interopDefault(require('nightingale-console'));
 var formatWebpackMessages = _interopDefault(require('react-dev-utils/formatWebpackMessages'));
-var fs = require('fs');
 var resolveFrom = _interopDefault(require('resolve-from'));
 var findUp = _interopDefault(require('find-up'));
-var webpack = require('webpack');
-var webpack__default = _interopDefault(webpack);
 var CaseSensitivePathsPlugin = _interopDefault(require('case-sensitive-paths-webpack-plugin'));
-var path = require('path');
-var path__default = _interopDefault(path);
 
 var createOptions = (options => ({
   aliases: options.aliases || {},
@@ -197,6 +197,9 @@ var createPobpackCompiler = ((bundleName, webpackConfig, {
   };
 });
 
+// with node 10.12
+// import { createRequireFromPath } from 'module';
+// const requireFromPwd = createRequireFromPath(process.cwd());
 var createModuleConfig = (options => ({
   strictExportPresence: true,
   rules: [// Disable require.ensure as it's not a standard language feature.
@@ -209,7 +212,8 @@ var createModuleConfig = (options => ({
     test: options.typescript ? /\.[tj]sx?$/ : /\.jsx?$/,
     include: [path.resolve(options.paths.src), ...options.includeModules.map(includeModule => {
       const packageJson = findUp.sync('package.json', {
-        cwd: path.dirname(fs.realpathSync(resolveFrom(process.cwd(), includeModule)))
+        cwd: path.dirname( // requireFromPwd.resolve(includeModule)
+        fs.realpathSync(resolveFrom(process.cwd(), includeModule)))
       });
       if (!packageJson) return;
       return packageJson.slice(0, -12);
