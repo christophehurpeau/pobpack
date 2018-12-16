@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-types@3.0.0...pobpack-types@3.1.0) (2018-12-16)
+
+
+### Features
+
+* update dependencies ([e255a7b](https://github.com/christophehurpeau/pobpack/commit/e255a7b))
+
+
+
+
+
 # [3.0.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-types@2.2.0...pobpack-types@3.0.0) (2018-12-09)
 
 
