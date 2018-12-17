@@ -8,10 +8,36 @@ var path = require('path');
 var path__default = _interopDefault(path);
 var createDaemon = _interopDefault(require('springbokjs-daemon'));
 var pobpackUtils = require('pobpack-utils');
+var fs = _interopDefault(require('fs'));
 var nodeExternals = _interopDefault(require('webpack-node-externals'));
 
 // const fs = require('fs');
 const ExcludesFalsy = Boolean;
+
+const createExternals = options => {
+  const baseOptions = {
+    importType: 'commonjs',
+    modulesFromFile: false,
+    whitelist: [require.resolve('../hot'), ...options.includeModules.map(module => new RegExp(`^${module}(/|$)`))]
+  };
+  const nodeModulesPaths = [];
+  let p = process.cwd();
+
+  do {
+    const nodeModulesCurrentPath = path__default.join(p, 'node_modules');
+
+    if (fs.existsSync(nodeModulesCurrentPath)) {
+      nodeModulesPaths.push(nodeModulesCurrentPath);
+    }
+
+    p = path__default.dirname(p);
+  } while (p !== '/');
+
+  return nodeModulesPaths.map(nodeModulesPath => nodeExternals({ ...baseOptions,
+    modulesDir: nodeModulesPath
+  }));
+};
+
 var createNodeWebpackConfig = (options => ({
   // production or development
   mode: options.env === 'production' ? 'production' : 'development',
@@ -23,14 +49,11 @@ var createNodeWebpackConfig = (options => ({
   devtool: 'source-map',
   optimization: {
     noEmitOnErrors: true,
-    minimize: false
+    minimize: false,
+    ...options.optimization
   },
   // don't bundle node_modules dependencies
-  externals: nodeExternals({
-    importType: 'commonjs',
-    modulesFromFile: false,
-    whitelist: [require.resolve('../hot'), ...options.includeModules.map(module => new RegExp(`^${module}(/|$)`))]
-  }),
+  externals: createExternals(options),
   // __dirname and __filename
   node: {
     __filename: true,

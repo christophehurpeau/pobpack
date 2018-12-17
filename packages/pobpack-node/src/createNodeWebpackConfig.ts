@@ -1,6 +1,9 @@
 // const fs = require('fs');
 import path from 'path';
-import nodeExternals from 'webpack-node-externals';
+import fs from 'fs';
+import nodeExternals, {
+  Options as NodeExternalsOptions,
+} from 'webpack-node-externals';
 import {
   webpack,
   createModuleConfig,
@@ -16,6 +19,33 @@ import {
 const ExcludesFalsy = (Boolean as any) as <T>(
   x: T | false | null | undefined,
 ) => x is T;
+
+const createExternals = (options: Options) => {
+  const baseOptions: NodeExternalsOptions = {
+    importType: 'commonjs',
+    modulesFromFile: false,
+    whitelist: [
+      require.resolve('../hot'),
+      ...options.includeModules.map(
+        (module: string) => new RegExp(`^${module}(/|$)`),
+      ),
+    ],
+  };
+
+  const nodeModulesPaths = [];
+  let p = process.cwd();
+  do {
+    const nodeModulesCurrentPath = path.join(p, 'node_modules');
+    if (fs.existsSync(nodeModulesCurrentPath)) {
+      nodeModulesPaths.push(nodeModulesCurrentPath);
+    }
+    p = path.dirname(p);
+  } while (p !== '/');
+
+  return nodeModulesPaths.map((nodeModulesPath) =>
+    nodeExternals({ ...baseOptions, modulesDir: nodeModulesPath }),
+  );
+};
 
 export default (options: Options): FilledWebpackConfiguration => ({
   // production or development
@@ -33,19 +63,11 @@ export default (options: Options): FilledWebpackConfiguration => ({
   optimization: {
     noEmitOnErrors: true,
     minimize: false,
+    ...options.optimization,
   },
 
   // don't bundle node_modules dependencies
-  externals: nodeExternals({
-    importType: 'commonjs',
-    modulesFromFile: false,
-    whitelist: [
-      require.resolve('../hot'),
-      ...options.includeModules.map(
-        (module: string) => new RegExp(`^${module}(/|$)`),
-      ),
-    ],
-  }),
+  externals: createExternals(options),
 
   // __dirname and __filename
   node: {

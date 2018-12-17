@@ -20,7 +20,8 @@ var createBrowserWebpackConfig = (target => options => ({
   devtool: options.env === 'production' ? 'nosources-source-map' : 'source-map',
   optimization: {
     noEmitOnErrors: true,
-    minimize: options.env === 'production'
+    minimize: options.env === 'production',
+    ...options.optimization
   },
   // use cache
   cache: options.hmr,

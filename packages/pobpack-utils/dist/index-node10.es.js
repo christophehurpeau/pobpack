@@ -30,6 +30,7 @@ var createOptions = (options => ({
     build: 'build',
     ...options.paths
   },
+  optimization: options.optimization,
   plugins: options.plugins || [],
   prependPlugins: options.prependPlugins || [],
   resolveLoaderModules: options.resolveLoaderModules,

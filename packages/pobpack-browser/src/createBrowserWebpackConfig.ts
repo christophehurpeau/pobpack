@@ -38,6 +38,7 @@ export default (target: BrowserTargetType) => (
   optimization: {
     noEmitOnErrors: true,
     minimize: options.env === 'production',
+    ...options.optimization,
   },
 
   // use cache

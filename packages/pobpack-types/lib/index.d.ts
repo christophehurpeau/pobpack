@@ -1,6 +1,5 @@
 import { TransformOptions } from '@babel/core';
-import { Compiler, Configuration, Stats } from 'webpack';
-import WebpackDevServer from 'webpack-dev-server';
+import { Compiler, Configuration, Stats, Options as WebpackOptions } from 'webpack';
 
 export interface ConfigPaths {
   build?: string;
@@ -27,6 +26,7 @@ export interface Options {
   moduleRules?: Array<any>;
   paths: ConfigPaths;
   plugins: Array<any>;
+  optimization?: WebpackOptions.Optimization;
   prependPlugins: Array<any>;
   resolveLoaderModules?: Array<string>;
   typescript: boolean;

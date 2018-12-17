@@ -12,6 +12,7 @@ export default (options: Partial<Options>): Options => ({
   jsLoaders: options.jsLoaders,
   moduleRules: options.moduleRules,
   paths: { src: 'src', build: 'build', ...options.paths },
+  optimization: options.optimization,
   plugins: options.plugins || [],
   prependPlugins: options.prependPlugins || [],
   resolveLoaderModules: options.resolveLoaderModules,
