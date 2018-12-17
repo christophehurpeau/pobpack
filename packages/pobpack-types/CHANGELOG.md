@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-types@3.1.0...pobpack-types@3.2.0) (2018-12-17)
+
+
+### Features
+
+* optimization option and node_modules parents support ([e871c24](https://github.com/christophehurpeau/pobpack/commit/e871c24))
+
+
+
+
+
 # [3.1.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-types@3.0.0...pobpack-types@3.1.0) (2018-12-16)
 
 
