@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.2.2](https://github.com/christophehurpeau/pobpack/compare/pobpack-node@7.2.1...pobpack-node@7.2.2) (2018-12-21)
+
+**Note:** Version bump only for package pobpack-node
+
+
+
+
+
 ## [7.2.1](https://github.com/christophehurpeau/pobpack/compare/pobpack-node@7.2.0...pobpack-node@7.2.1) (2018-12-21)
 
 **Note:** Version bump only for package pobpack-node

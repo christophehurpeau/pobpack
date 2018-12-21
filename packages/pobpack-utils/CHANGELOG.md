@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.3.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@7.2.1...pobpack-utils@7.3.0) (2018-12-21)
+
+
+### Features
+
+* update react-dev-utils ([8ff5d06](https://github.com/christophehurpeau/pobpack/commit/8ff5d06))
+
+
+
+
+
 ## [7.2.1](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@7.2.0...pobpack-utils@7.2.1) (2018-12-21)
 
 **Note:** Version bump only for package pobpack-utils

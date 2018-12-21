@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.4.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser@7.3.0...pobpack-browser@7.4.0) (2018-12-21)
+
+
+### Features
+
+* update react-dev-utils ([8ff5d06](https://github.com/christophehurpeau/pobpack/commit/8ff5d06))
+
+
+
+
+
 # [7.3.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser@7.2.0...pobpack-browser@7.3.0) (2018-12-21)
 
 
