@@ -49,7 +49,7 @@
     "@babel/preset-env": "^7.2.3",
     "pobpack-types": "^3.2.0",
     "pobpack-utils": "^7.2.1",
-    "react-dev-utils": "^5.0.2",
+    "react-dev-utils": "^6.1.1",
     "react-error-html": "^0.2.2",
     "react-hot-loader": "^4.6.3",
     "regenerator-runtime": "^0.13.1",
