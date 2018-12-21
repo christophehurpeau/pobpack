@@ -1,15 +1,9 @@
-/* eslint-disable */
 import React from 'react';
 import { render } from 'react-dom';
 import HelloWorld from './HelloWorld';
-import AppContainer from 'pobpack-browser/AppContainer';
 
-const renderApp = () => (
-  render(
-    <AppContainer><HelloWorld /></AppContainer>,
-    document.getElementById('app'),
-  )
-);
+const renderApp = () =>
+  render(React.createElement(HelloWorld), document.getElementById('app'));
 
 renderApp();
 

@@ -88,7 +88,21 @@ module.exports = function (config, options) {
 
 You should read [webpack documentation about HMR](https://webpack.github.io/docs/hot-module-replacement.html)
 
-[react-hot-loader 3](https://www.npmjs.com/package/react-hot-loader) is included
+[react-hot-loader 4](https://www.npmjs.com/package/react-hot-loader) is included
+      
+> App.js
+
+```js
+import React from 'react'
+import hot from 'pobpack-browser/hot'
+
+const App = () => <div>Hello world!</div>;
+
+export default hot(App)
+
+```
+
+You can activate accept hot-reload by default with [webpack-module-hot-accept](https://www.npmjs.com/package/webpack-module-hot-accept) (not recommended)
 
 > createWebpackConfig.js
 

@@ -1,7 +1,9 @@
 import React from 'react';
+import hot from 'pobpack-browser/hot';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import ObjectAssign from 'object-assign';
 
-export default () => <div>Hello World !</div>;
+export default hot(() => <div>Hello World !</div>);
 
 // export default () => {
 //   console.log(new Error('fail'));
@@ -9,6 +11,6 @@ export default () => <div>Hello World !</div>;
 // };
 
 (async function test() {
-  console.log(await new Promise((resolve => resolve('ok'))));
-  console.log(ObjectAssign({}, { a: true}));
+  console.log(await new Promise((resolve) => resolve('ok')));
+  console.log(ObjectAssign({}, { a: true }));
 })();

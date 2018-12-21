@@ -7,13 +7,18 @@
     "build": "pobpack-browser build && gzip -fk9 public/*.js && lzma -fke9 --threads 0 public/*.js && brotli -Z public/*.js",
     "start": "pobpack-browser"
   },
+  "prettier": {
+    "trailingComma": "all",
+    "singleQuote": true,
+    "arrowParens": "always"
+  },
   "devDependencies": {
     "@babel/core": "7.2.2",
     "@babel/preset-react": "7.0.0",
-    "pobpack-browser": "^7.2.0",
     "webpack": "4.27.1"
   },
   "dependencies": {
+    "pobpack-browser": "^7.2.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3"
   }

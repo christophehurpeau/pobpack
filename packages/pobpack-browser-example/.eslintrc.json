@@ -1,0 +1,6 @@
+{
+  "extends": ["pob/babel-node", "pob/react"],
+  "env": {
+    "browser": true
+  }
+}
