@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.3.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser@7.2.0...pobpack-browser@7.3.0) (2018-12-21)
+
+
+### Features
+
+* **pobpack-browser:** export hot function as pobpack-browser/hot ([72025c9](https://github.com/christophehurpeau/pobpack/commit/72025c9))
+
+
+
+
+
 # [7.2.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser@7.1.0...pobpack-browser@7.2.0) (2018-12-17)
 
 
