@@ -15,7 +15,7 @@
   "devDependencies": {
     "@babel/core": "7.2.2",
     "@babel/preset-react": "7.0.0",
-    "webpack": "4.27.1"
+    "webpack": "4.28.1"
   },
   "dependencies": {
     "pobpack-browser": "^7.2.0",

@@ -26,8 +26,12 @@
     "singleQuote": true,
     "arrowParens": "always"
   },
+  "peerDependencies": {
+    "@babel/core": "^7.1.6",
+    "webpack": "^4.28.1"
+  },
   "dependencies": {
-    "@types/webpack": "^4.4.21",
+    "@types/webpack": "^4.4.22",
     "babel-loader": "^8.0.4",
     "case-sensitive-paths-webpack-plugin": "^2.1.2",
     "colorette": "^1.0.7",
@@ -40,16 +44,12 @@
     "react-dev-utils": "^5.0.2",
     "resolve-from": "^4.0.0"
   },
-  "peerDependencies": {
-    "@babel/core": "^7.1.6",
-    "webpack": "^4.26.0"
-  },
   "devDependencies": {
     "@babel/core": "7.2.2",
     "@types/case-sensitive-paths-webpack-plugin": "2.1.2",
     "@types/find-up": "^2.1.1",
     "@types/progress": "2.0.3",
-    "@types/resolve-from": "^0.0.18",
+    "@types/resolve-from": "^4.0.0",
     "babel-eslint": "10.0.1",
     "babel-preset-latest-node": "3.0.1",
     "eslint": "5.10.0",
@@ -58,7 +58,7 @@
     "eslint-plugin-import": "2.14.0",
     "eslint-plugin-node": "8.0.0",
     "eslint-plugin-typescript": "0.14.0",
-    "pob-babel": "23.5.2",
+    "pob-babel": "23.5.4",
     "prettier": "1.15.3",
     "typescript": "3.2.2",
     "typescript-eslint-parser": "21.0.2"

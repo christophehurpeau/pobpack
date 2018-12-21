@@ -40,9 +40,13 @@
     "singleQuote": true,
     "arrowParens": "always"
   },
+  "peerDependencies": {
+    "react": "^16.6.3",
+    "webpack": "^4.28.1"
+  },
   "dependencies": {
     "@babel/plugin-external-helpers": "^7.2.0",
-    "@babel/preset-env": "^7.2.0",
+    "@babel/preset-env": "^7.2.3",
     "pobpack-types": "^3.2.0",
     "pobpack-utils": "^7.2.0",
     "react-dev-utils": "^5.0.2",
@@ -51,10 +55,6 @@
     "regenerator-runtime": "^0.13.1",
     "source-map-support": "^0.5.9",
     "webpack-dev-server": "^3.1.10"
-  },
-  "peerDependencies": {
-    "react": "^16.6.3",
-    "webpack": "^4.26.0"
   },
   "devDependencies": {
     "@babel/core": "7.2.2",
@@ -72,12 +72,12 @@
     "eslint-plugin-node": "8.0.0",
     "eslint-plugin-react": "7.11.1",
     "eslint-plugin-typescript": "0.14.0",
-    "pob-babel": "23.5.2",
+    "pob-babel": "23.5.4",
     "prettier": "1.15.3",
     "react": "16.6.3",
     "react-dom": "16.6.3",
     "typescript": "3.2.2",
     "typescript-eslint-parser": "21.0.2",
-    "webpack": "4.27.1"
+    "webpack": "4.28.1"
   }
 }

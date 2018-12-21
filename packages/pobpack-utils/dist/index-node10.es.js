@@ -79,9 +79,6 @@ const isSuccessful = messages => !messages.errors.length && !messages.warnings.l
 const pluginName = 'pobpack/FriendlyErrorsWebpackPlugin';
 class FriendlyErrorsWebpackPlugin {
   constructor(options) {
-    this.logger = void 0;
-    this.bundleName = void 0;
-    this.successMessage = void 0;
     this.bundleName = options.bundleName;
     this.successMessage = options.successMessage;
     this.logger = logger.context({

@@ -35,6 +35,9 @@
     "singleQuote": true,
     "arrowParens": "always"
   },
+  "peerDependencies": {
+    "webpack": "^4.28.1"
+  },
   "dependencies": {
     "babel-preset-latest-node": "^3.0.1",
     "pobpack-types": "^3.2.0",
@@ -42,9 +45,6 @@
     "source-map-support": "^0.5.9",
     "springbokjs-daemon": "^3.0.0",
     "webpack-node-externals": "^1.7.2"
-  },
-  "peerDependencies": {
-    "webpack": "^4.26.0"
   },
   "devDependencies": {
     "@babel/core": "7.2.2",
@@ -56,7 +56,7 @@
     "eslint-plugin-import": "2.14.0",
     "eslint-plugin-node": "8.0.0",
     "eslint-plugin-typescript": "0.14.0",
-    "pob-babel": "23.5.2",
+    "pob-babel": "23.5.4",
     "prettier": "1.15.3",
     "typescript": "3.2.2",
     "typescript-eslint-parser": "21.0.2"
