@@ -8,6 +8,9 @@ import {
   CreateCompilerOptions,
 } from 'pobpack-types';
 import { createPobpackCompiler, createAppWebpackConfig } from 'pobpack-utils';
+import createLaunchEditorMiddleware from 'react-dev-utils/errorOverlayMiddleware';
+import evalSourceMapMiddleware from 'react-dev-utils/evalSourceMapMiddleware';
+import noopServiceWorkerMiddleware from 'react-dev-utils/noopServiceWorkerMiddleware';
 import createBrowserWebpackConfig, {
   TARGETS,
   ALL,
@@ -55,7 +58,10 @@ export const watch = (options: Partial<Options>, callback?: WatchCallback) => {
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
 export interface RunOptions
-  extends Omit<WebpackDevServerConfiguration, 'hot' | 'quiet' | 'overlay'> {
+  extends Omit<
+    WebpackDevServerConfiguration,
+    'hot' | 'quiet' | 'overlay' | 'compress' | 'before'
+  > {
   host?: string;
   https?: boolean;
   port: number;
@@ -70,10 +76,30 @@ export const runDevServer = (
     hot: true,
     // stats: 'errors-only',
     quiet: true, // errors are displayed with friendly-errors plugin
+    overlay: false, // We use create-react-app-overlay
+    compress: true, // Enable gzip compression of generated files
+    // Silence WebpackDevServer's logs. Still displays errors and warnings
+    clientLogLevel: 'none',
+
     // without page refresh as fallback in case of build failures: hotOnly: true,
     https,
-    overlay: true,
     ...webpackDevServerOptions,
+
+    // @ts-ignore
+    before(app: any, server: any) {
+      // https://github.com/facebook/create-react-app/blob/30ee52cf3b2cbb6ac70999c02b1196bcaba8d4ca/packages/react-scripts/config/webpackDevServer.config.js#L99
+      // This lets us fetch source contents from webpack for the error overlay
+      app.use(evalSourceMapMiddleware(server));
+      // This lets us open files from the runtime error overlay.
+      app.use(createLaunchEditorMiddleware());
+
+      // This service worker file is effectively a 'no-op' that will reset any
+      // previous service worker registered for the same host:port combination.
+      // We do this in development to avoid hitting the production cache if
+      // it used the same host and port.
+      // https://github.com/facebook/create-react-app/issues/2272#issuecomment-302832432
+      app.use(noopServiceWorkerMiddleware());
+    },
   });
   browserDevServer.listen(port, host as string); // note: host can be undefined, but types does not support it
   return browserDevServer;

@@ -9,13 +9,13 @@
   },
   "devDependencies": {
     "@babel/core": "7.2.2",
-    "eslint": "5.10.0",
+    "eslint": "5.11.0",
     "eslint-config-airbnb-base": "13.1.0",
     "eslint-config-prettier": "3.3.0",
     "eslint-plugin-import": "2.14.0",
     "pobpack-node": "^7.2.2",
     "prettier": "1.15.3",
-    "webpack": "4.28.1",
+    "webpack": "4.28.2",
     "webpack-module-hot-accept": "1.0.5"
   }
 }

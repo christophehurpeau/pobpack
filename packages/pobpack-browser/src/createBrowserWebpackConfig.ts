@@ -73,8 +73,11 @@ export default (target: BrowserTargetType) => (
         presets: [require.resolve('../babel')],
         ...options.babel,
         plugins: [
-          options.hmr && require.resolve('react-hot-loader/babel'),
           ...(options.babel.plugins || []),
+          options.hmr
+            ? require.resolve('react-hot-loader/dist/babel.development.js')
+            : // removes import { hot } from 'react-hot-loader';
+              require.resolve('react-hot-loader/dist/babel.production.min.js'),
         ].filter(ExcludesFalsy),
       },
     },
@@ -86,7 +89,6 @@ export default (target: BrowserTargetType) => (
       entries[entry.key] = [
         // options.env !== 'production' && require.resolve('../source-map-support'),
         target !== MODERN && require.resolve('regenerator-runtime/runtime'),
-        options.hmr && require.resolve('react-hot-loader/patch'),
         options.hmr && require.resolve('react-dev-utils/webpackHotDevClient'),
         path.join(path.resolve(options.paths.src as string), entry.path),
       ].filter(ExcludesFalsy);
@@ -97,7 +99,19 @@ export default (target: BrowserTargetType) => (
 
   output: {
     path: path.resolve(options.paths.build as string),
+    // Point sourcemap entries to original disk location
+
     // devtoolModuleFilenameTemplate: 'file://[absolute-resource-path]',
+    devtoolModuleFilenameTemplate:
+      // eslint-disable-next-line no-nested-ternary
+      options.env === 'production'
+        ? (info) =>
+            path
+              .relative(options.paths.src as string, info.absoluteResourcePath)
+              .replace(/\\/g, '/')
+        : options.env === 'development'
+        ? (info) => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')
+        : undefined,
   },
 
   module: createModuleConfig(options),
