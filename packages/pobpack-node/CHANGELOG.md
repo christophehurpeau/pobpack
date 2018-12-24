@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.3.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-node@7.2.3...pobpack-node@7.3.0) (2018-12-24)
+
+
+### Features
+
+* implements Watching to kill daemon ([a072255](https://github.com/christophehurpeau/pobpack/commit/a072255))
+
+
+
+
+
 ## [7.2.3](https://github.com/christophehurpeau/pobpack/compare/pobpack-node@7.2.2...pobpack-node@7.2.3) (2018-12-24)
 
 

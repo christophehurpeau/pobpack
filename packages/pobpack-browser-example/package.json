@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "pobpack-browser-example",
-  "version": "4.2.2",
+  "version": "4.2.3",
   "scripts": {
     "lint": "eslint src",
     "build": "pobpack-browser build && gzip -fk9 public/*.js && lzma -fke9 --threads 0 public/*.js && brotli -Z public/*.js",
@@ -19,7 +19,7 @@
     "webpack": "4.28.2"
   },
   "dependencies": {
-    "pobpack-browser": "^7.4.1",
+    "pobpack-browser": "^7.5.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3"
   }
