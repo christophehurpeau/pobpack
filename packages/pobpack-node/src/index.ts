@@ -6,6 +6,7 @@ import {
   webpack,
 } from 'pobpack-utils';
 import { Options, PobpackCompiler, WatchCallback } from 'pobpack-types';
+import { Watching } from 'webpack';
 import createNodeWebpackConfig from './createNodeWebpackConfig';
 
 export const createAppNodeCompiler = (
@@ -44,9 +45,9 @@ export interface RunOptions {
 export const watchAndRunCompiler = (
   compiler: PobpackCompiler,
   options: RunOptions = {},
-) => {
+): Watching => {
   let daemon: Daemon;
-  return compiler.watch((stats: webpack.Stats) => {
+  const watchingCompiler = compiler.watch((stats: webpack.Stats) => {
     if (!daemon) {
       daemon = createDaemon({
         key: options.key || 'pobpack-node',
@@ -75,6 +76,16 @@ export const watchAndRunCompiler = (
       }
     }
   });
+
+  return {
+    invalidate: () => {
+      watchingCompiler.invalidate();
+    },
+    close: (callback) => {
+      if (daemon) daemon.stop();
+      watchingCompiler.close(callback);
+    },
+  };
 };
 
 export const watchAndRun = (options?: Partial<Options>): PobpackCompiler => {

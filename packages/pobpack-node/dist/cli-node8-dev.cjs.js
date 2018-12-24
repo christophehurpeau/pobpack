@@ -107,7 +107,7 @@ const build = (options = {}) => {
 };
 const watchAndRunCompiler = (compiler, options = {}) => {
   let daemon;
-  return compiler.watch(() => {
+  const watchingCompiler = compiler.watch(() => {
     if (!daemon) {
       daemon = createDaemon({
         key: options.key || 'pobpack-node',
@@ -129,6 +129,15 @@ const watchAndRunCompiler = (compiler, options = {}) => {
       }
     }
   });
+  return {
+    invalidate: () => {
+      watchingCompiler.invalidate();
+    },
+    close: callback => {
+      if (daemon) daemon.stop();
+      watchingCompiler.close(callback);
+    }
+  };
 };
 const watchAndRun = options => {
   const compiler = createAppNodeCompiler({ ...options,
