@@ -2,5 +2,10 @@
   "extends": ["pob/babel-node", "pob/react"],
   "env": {
     "browser": true
+  },
+  "settings": {
+    "import/core-modules": [
+      "react-hot-loader"
+    ]
   }
 }

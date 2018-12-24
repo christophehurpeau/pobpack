@@ -4,6 +4,9 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var WebpackDevServer = _interopDefault(require('webpack-dev-server'));
 var pobpackUtils = require('pobpack-utils');
+var createLaunchEditorMiddleware = _interopDefault(require('react-dev-utils/errorOverlayMiddleware'));
+var evalSourceMapMiddleware = _interopDefault(require('react-dev-utils/evalSourceMapMiddleware'));
+var noopServiceWorkerMiddleware = _interopDefault(require('react-dev-utils/noopServiceWorkerMiddleware'));
 var path = _interopDefault(require('path'));
 
 const MODERN = 'modern';
@@ -45,7 +48,8 @@ var createBrowserWebpackConfig = (target => options => ({
     babel: {
       presets: [require.resolve('../babel')],
       ...options.babel,
-      plugins: [options.hmr && require.resolve('react-hot-loader/babel'), ...(options.babel.plugins || [])].filter(ExcludesFalsy)
+      plugins: [...(options.babel.plugins || []), options.hmr ? require.resolve('react-hot-loader/dist/babel.development.js') : // removes import { hot } from 'react-hot-loader';
+      require.resolve('react-hot-loader/dist/babel.production.min.js')].filter(ExcludesFalsy)
     }
   }),
   entry: options.entries.reduce((entries, entry) => {
@@ -54,12 +58,15 @@ var createBrowserWebpackConfig = (target => options => ({
       path: entry
     };
     entries[entry.key] = [// options.env !== 'production' && require.resolve('../source-map-support'),
-    target !== MODERN && require.resolve('regenerator-runtime/runtime'), options.hmr && require.resolve('react-hot-loader/patch'), options.hmr && require.resolve('react-dev-utils/webpackHotDevClient'), path.join(path.resolve(options.paths.src), entry.path)].filter(ExcludesFalsy);
+    target !== MODERN && require.resolve('regenerator-runtime/runtime'), options.hmr && require.resolve('react-dev-utils/webpackHotDevClient'), path.join(path.resolve(options.paths.src), entry.path)].filter(ExcludesFalsy);
     return entries;
   }, {}),
   output: {
-    path: path.resolve(options.paths.build) // devtoolModuleFilenameTemplate: 'file://[absolute-resource-path]',
-
+    path: path.resolve(options.paths.build),
+    // Point sourcemap entries to original disk location
+    // devtoolModuleFilenameTemplate: 'file://[absolute-resource-path]',
+    devtoolModuleFilenameTemplate: // eslint-disable-next-line no-nested-ternary
+    options.env === 'production' ? info => path.relative(options.paths.src, info.absoluteResourcePath).replace(/\\/g, '/') : options.env === 'development' ? info => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/') : undefined
   },
   module: pobpackUtils.createModuleConfig(options),
   plugins: pobpackUtils.createPluginsConfig(options)
@@ -97,10 +104,31 @@ const runDevServer = (compiler, options) => {
     // stats: 'errors-only',
     quiet: true,
     // errors are displayed with friendly-errors plugin
+    overlay: false,
+    // We use create-react-app-overlay
+    compress: true,
+    // Enable gzip compression of generated files
+    // Silence WebpackDevServer's logs. Still displays errors and warnings
+    clientLogLevel: 'none',
     // without page refresh as fallback in case of build failures: hotOnly: true,
     https,
-    overlay: true,
-    ...webpackDevServerOptions
+    ...webpackDevServerOptions,
+
+    // @ts-ignore
+    before(app, server) {
+      // https://github.com/facebook/create-react-app/blob/30ee52cf3b2cbb6ac70999c02b1196bcaba8d4ca/packages/react-scripts/config/webpackDevServer.config.js#L99
+      // This lets us fetch source contents from webpack for the error overlay
+      app.use(evalSourceMapMiddleware(server)); // This lets us open files from the runtime error overlay.
+
+      app.use(createLaunchEditorMiddleware()); // This service worker file is effectively a 'no-op' that will reset any
+      // previous service worker registered for the same host:port combination.
+      // We do this in development to avoid hitting the production cache if
+      // it used the same host and port.
+      // https://github.com/facebook/create-react-app/issues/2272#issuecomment-302832432
+
+      app.use(noopServiceWorkerMiddleware());
+    }
+
   });
   browserDevServer.listen(port, host); // note: host can be undefined, but types does not support it
 

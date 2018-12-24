@@ -1,9 +1,11 @@
+import { hot } from 'react-hot-loader/root';
 import React from 'react';
-import hot from 'pobpack-browser/hot';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import ObjectAssign from 'object-assign';
 
-export default hot(() => <div>Hello World !</div>);
+const HelloWorld = () => <div>Hello World !</div>;
+
+export default hot(HelloWorld);
 
 // export default () => {
 //   console.log(new Error('fail'));

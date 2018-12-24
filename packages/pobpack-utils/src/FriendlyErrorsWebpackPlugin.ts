@@ -55,7 +55,7 @@ export default class FriendlyErrorsWebpackPlugin {
       if (messages.errors.length !== 0) {
         this.logger.critical('Failed to compile.');
         console.log();
-        messages.errors.forEach((message) => {
+        messages.errors.forEach((message: string) => {
           console.log(message);
           console.log();
         });
@@ -65,7 +65,7 @@ export default class FriendlyErrorsWebpackPlugin {
       if (messages.warnings.length !== 0) {
         this.logger.critical('Compiled with warnings.');
         console.log();
-        messages.warnings.forEach((message) => {
+        messages.warnings.forEach((message: string) => {
           console.log(message);
           console.log();
         });
