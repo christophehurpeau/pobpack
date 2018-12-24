@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.1](https://github.com/christophehurpeau/pobpack/compare/pobpack-types@3.2.0...pobpack-types@3.2.1) (2018-12-24)
+
+
+### Bug Fixes
+
+* downgrade react-dev-utils and update doc on react-hot-loader ([29585f1](https://github.com/christophehurpeau/pobpack/commit/29585f1))
+
+
+
+
+
 # [3.2.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-types@3.1.0...pobpack-types@3.2.0) (2018-12-17)
 
 

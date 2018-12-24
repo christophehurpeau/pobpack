@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.4](https://github.com/christophehurpeau/pobpack/compare/pobpack-node-example@4.1.3...pobpack-node-example@4.1.4) (2018-12-24)
+
+
+### Bug Fixes
+
+* downgrade react-dev-utils and update doc on react-hot-loader ([29585f1](https://github.com/christophehurpeau/pobpack/commit/29585f1))
+
+
+
+
+
 ## [4.1.3](https://github.com/christophehurpeau/pobpack/compare/pobpack-node-example@4.1.2...pobpack-node-example@4.1.3) (2018-12-21)
 
 **Note:** Version bump only for package pobpack-node-example

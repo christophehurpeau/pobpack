@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.2.3](https://github.com/christophehurpeau/pobpack/compare/pobpack-node@7.2.2...pobpack-node@7.2.3) (2018-12-24)
+
+
+### Bug Fixes
+
+* downgrade react-dev-utils and update doc on react-hot-loader ([29585f1](https://github.com/christophehurpeau/pobpack/commit/29585f1))
+
+
+
+
+
 ## [7.2.2](https://github.com/christophehurpeau/pobpack/compare/pobpack-node@7.2.1...pobpack-node@7.2.2) (2018-12-21)
 
 **Note:** Version bump only for package pobpack-node
