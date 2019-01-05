@@ -29,9 +29,10 @@
     "pobpack-browser": "./pobpack-browser"
   },
   "scripts": {
-    "build": "pob-build && tsc -p tsconfig.build.json",
+    "build": "pob-build",
+    "build:definitions": "tsc -p tsconfig.build.json",
     "clean": "rm -Rf docs dist test/node6 coverage",
-    "lint": "npm run typescript-check && eslint --ext .ts,.tsx  src/",
+    "lint": "npm run typescript-check && eslint --ext .ts,.tsx src/",
     "typescript-check": "tsc --noEmit",
     "watch": "pob-watch"
   },
@@ -50,12 +51,12 @@
     "@types/react-hot-loader": "^4.1.0",
     "pobpack-types": "^3.2.1",
     "pobpack-utils": "^7.3.1",
-    "react-dev-utils": "^6.1.1",
+    "react-dev-utils": "^7.0.1",
     "react-error-html": "^0.2.2",
     "react-hot-loader": "^4.6.3",
     "regenerator-runtime": "^0.13.1",
     "source-map-support": "^0.5.9",
-    "webpack-dev-server": "3.1.9"
+    "webpack-dev-server": "3.1.14"
   },
   "devDependencies": {
     "@babel/core": "7.2.2",
@@ -63,21 +64,21 @@
     "@types/webpack-dev-server": "^3.1.1",
     "babel-eslint": "10.0.1",
     "babel-preset-latest-node": "3.0.1",
-    "eslint": "5.11.0",
+    "eslint": "5.12.0",
     "eslint-config-airbnb": "17.1.0",
     "eslint-config-pob": "24.0.3",
     "eslint-plugin-babel": "5.3.0",
     "eslint-plugin-import": "2.14.0",
     "eslint-plugin-jsx-a11y": "6.1.2",
-    "eslint-plugin-node": "8.0.0",
-    "eslint-plugin-react": "7.11.1",
+    "eslint-plugin-node": "8.0.1",
+    "eslint-plugin-react": "7.12.3",
     "eslint-plugin-typescript": "0.14.0",
     "pob-babel": "23.5.5",
     "prettier": "1.15.3",
-    "react": "16.6.3",
-    "react-dom": "16.6.3",
+    "react": "16.7.0",
+    "react-dom": "16.7.0",
     "typescript": "3.2.2",
     "typescript-eslint-parser": "21.0.2",
-    "webpack": "4.28.2"
+    "webpack": "4.28.3"
   }
 }

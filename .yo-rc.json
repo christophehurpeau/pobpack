@@ -4,6 +4,21 @@
       "authorName": "Christophe Hurpeau",
       "authorEmail": "christophe@hurpeau.com",
       "authorUrl": "https://christophe.hurpeau.com"
+    },
+    "monorepo": {
+      "ci": true,
+      "testing": true,
+      "codecov": true,
+      "documentation": false,
+      "packageNames": [
+        "pobpack-browser",
+        "pobpack-browser-example",
+        "pobpack-node",
+        "pobpack-node-example",
+        "pobpack-types",
+        "pobpack-utils"
+      ],
+      "typescript": false
     }
   }
 }
