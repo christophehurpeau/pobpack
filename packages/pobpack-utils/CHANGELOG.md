@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.3.2](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@7.3.1...pobpack-utils@7.3.2) (2019-01-05)
+
+
+### Bug Fixes
+
+* update dependencies ([3342f3d](https://github.com/christophehurpeau/pobpack/commit/3342f3d))
+
+
+
+
+
 ## [7.3.1](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@7.3.0...pobpack-utils@7.3.1) (2018-12-24)
 
 
