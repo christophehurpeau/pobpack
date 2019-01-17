@@ -71,7 +71,7 @@
     "eslint-plugin-import": "2.14.0",
     "eslint-plugin-jsx-a11y": "6.1.2",
     "eslint-plugin-node": "8.0.1",
-    "eslint-plugin-react": "7.12.3",
+    "eslint-plugin-react": "7.12.4",
     "eslint-plugin-typescript": "0.14.0",
     "pob-babel": "23.5.5",
     "prettier": "1.15.3",
