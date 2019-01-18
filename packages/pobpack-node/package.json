@@ -60,6 +60,6 @@
     "pob-babel": "23.5.5",
     "prettier": "1.15.3",
     "typescript": "3.2.2",
-    "typescript-eslint-parser": "21.0.2"
+    "typescript-eslint-parser": "22.0.0"
   }
 }
