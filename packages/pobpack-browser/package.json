@@ -74,7 +74,7 @@
     "eslint-plugin-react": "7.12.3",
     "eslint-plugin-typescript": "0.14.0",
     "pob-babel": "23.5.5",
-    "prettier": "1.16.0",
+    "prettier": "1.16.4",
     "react": "16.7.0",
     "react-dom": "16.7.0",
     "typescript": "3.2.2",

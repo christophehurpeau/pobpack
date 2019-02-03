@@ -31,6 +31,6 @@
     "eslint-config-pob": "24.0.3",
     "eslint-plugin-import": "2.14.0",
     "eslint-plugin-node": "8.0.1",
-    "prettier": "1.16.0"
+    "prettier": "1.16.4"
   }
 }
