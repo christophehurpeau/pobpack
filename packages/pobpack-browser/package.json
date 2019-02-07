@@ -79,6 +79,6 @@
     "react-dom": "16.7.0",
     "typescript": "3.2.2",
     "typescript-eslint-parser": "21.0.2",
-    "webpack": "4.28.3"
+    "webpack": "4.29.3"
   }
 }
