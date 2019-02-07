@@ -61,7 +61,7 @@
     "eslint-plugin-typescript": "0.14.0",
     "pob-babel": "23.5.5",
     "prettier": "1.16.0",
-    "typescript": "3.2.2",
+    "typescript": "3.3.3",
     "typescript-eslint-parser": "21.0.2"
   }
 }
