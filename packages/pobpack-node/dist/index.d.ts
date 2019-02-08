@@ -5,7 +5,7 @@ export declare const createAppNodeCompiler: (options: Partial<Options>) => Pobpa
 export declare const build: (options?: {}) => Promise<webpack.Stats>;
 export declare const watch: (options: Partial<Options>, callback: WatchCallback) => PobpackCompiler;
 export interface RunOptions {
-    args?: Array<string | number>;
+    args?: (string | number)[];
     cwd?: string;
     displayName?: string;
     key?: string;
