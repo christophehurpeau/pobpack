@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.3.1](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser-example@4.3.0...pobpack-browser-example@4.3.1) (2019-02-08)
+
+**Note:** Version bump only for package pobpack-browser-example
+
+
+
+
+
 # [4.3.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser-example@4.2.4...pobpack-browser-example@4.3.0) (2019-02-08)
 
 

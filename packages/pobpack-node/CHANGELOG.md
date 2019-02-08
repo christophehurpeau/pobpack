@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.4.1](https://github.com/christophehurpeau/pobpack/compare/pobpack-node@7.4.0...pobpack-node@7.4.1) (2019-02-08)
+
+
+### Bug Fixes
+
+* update .map ([23cc7c1](https://github.com/christophehurpeau/pobpack/commit/23cc7c1))
+
+
+
+
+
 # [7.4.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-node@7.3.1...pobpack-node@7.4.0) (2019-02-08)
 
 
