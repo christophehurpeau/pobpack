@@ -96,7 +96,7 @@ export default (options: Options): FilledWebpackConfiguration => ({
   }),
 
   entry: options.entries.reduce(
-    (entries: { [key: string]: Array<string> }, entry: ConfigEntry) => {
+    (entries: { [key: string]: string[] }, entry: ConfigEntry) => {
       if (typeof entry === 'string') entry = { key: entry, path: entry };
       entries[entry.key] = [
         options.hmr ? require.resolve('../hot') : undefined,

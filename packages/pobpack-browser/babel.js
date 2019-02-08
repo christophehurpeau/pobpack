@@ -12,6 +12,6 @@ module.exports = function(context, opts) {
       ],
     ],
 
-    plugins: [require.resolve('@babel/plugin-external-helpers')],
+    plugins: [],
   };
 };

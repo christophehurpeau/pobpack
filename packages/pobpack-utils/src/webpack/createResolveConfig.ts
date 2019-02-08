@@ -5,20 +5,23 @@ import { Options } from 'pobpack-types';
 
 const ExcludesFalse = Boolean as any as <T>(x: T | false) => x is T;
 
-export default (modulePrefixPackageFields: Array<string>, options: Options): webpack.Resolve  => ({
+export default (modulePrefixPackageFields: string[], options: Options): webpack.Resolve  => ({
   // https://github.com/DefinitelyTyped/DefinitelyTyped/pull/25209
   // cacheWithContext: false,
 
-  modules: ['node_modules', resolve('src')],
+  modules: [
+    'node_modules',
+    resolve('src')
+  ],
   extensions: ([
     options.typescript && '.ts',
     options.typescript && '.tsx',
     '.js',
     '.jsx',
-  ]  as Array<string | false>).filter(ExcludesFalse),
+  ]  as (string | false)[]).filter(ExcludesFalse),
 
   mainFields: [
-    ...([] as Array<string | false>).concat(...modulePrefixPackageFields.map((prefix: string): Array<string | false> => ([
+    ...([] as (string | false)[]).concat(...modulePrefixPackageFields.map((prefix: string): (string | false)[] => ([
       options.env !== 'production' && `module:${prefix}-dev`,
       `module:${prefix}`,
       // old `webpack:` syntax
@@ -43,7 +46,7 @@ export default (modulePrefixPackageFields: Array<string>, options: Options): web
   ].filter(ExcludesFalse) as string[],
 
   aliasFields: [
-    ...([] as Array<string | false>).concat(...modulePrefixPackageFields.map((prefix: string): Array<string | false> => ([
+    ...([] as (string | false)[]).concat(...modulePrefixPackageFields.map((prefix: string): (string | false)[] => ([
       options.env !== 'production' && `module:aliases-${prefix}-dev`,
       `module:aliases-${prefix}`,
 

@@ -45,7 +45,7 @@ var createAppWebpackConfig = (createWebpackConfig => {
     const appWebpackConfigPath = path.resolve('createAppWebpackConfig.js');
 
     if (existsSync(appWebpackConfigPath)) {
-      console.info('Using app createAppWebpackConfig.js'); // eslint-disable-next-line import/no-dynamic-require, global-require, typescript/no-var-requires
+      console.info('Using app createAppWebpackConfig.js'); // eslint-disable-next-line import/no-dynamic-require, global-require, @typescript-eslint/no-var-requires
 
       const appWebpackConfigCreator = require(appWebpackConfigPath);
 

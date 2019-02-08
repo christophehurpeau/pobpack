@@ -1,7 +1,7 @@
 import { setConfig } from 'react-hot-loader';
 import React from 'react';
 import { render } from 'react-dom';
-import HelloWorld from './HelloWorld';
+import App from './App';
 
 setConfig({ logLevel: 'debug' });
-render(React.createElement(HelloWorld), document.getElementById('app'));
+render(React.createElement(App), document.getElementById('app'));

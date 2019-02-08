@@ -14,7 +14,7 @@ export type BrowserTargetType = 'modern' | 'all';
 
 export const MODERN = 'modern';
 export const ALL = 'all';
-export const TARGETS: Array<BrowserTargetType> = [ALL, MODERN];
+export const TARGETS: BrowserTargetType[] = [ALL, MODERN];
 
 const ExcludesFalsy = (Boolean as any) as <T>(
   x: T | boolean | null | undefined,
@@ -84,7 +84,7 @@ export default (target: BrowserTargetType) => (
   ),
 
   entry: options.entries.reduce(
-    (entries: { [key: string]: Array<string> }, entry: ConfigEntry) => {
+    (entries: { [key: string]: string[] }, entry: ConfigEntry) => {
       if (typeof entry === 'string') entry = { key: entry, path: entry };
       entries[entry.key] = [
         // options.env !== 'production' && require.resolve('../source-map-support'),

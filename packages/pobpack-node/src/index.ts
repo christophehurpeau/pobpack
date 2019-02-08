@@ -36,7 +36,7 @@ export const watch = (options: Partial<Options>, callback: WatchCallback) => {
 };
 
 export interface RunOptions {
-  args?: Array<string | number>;
+  args?: (string | number)[];
   cwd?: string;
   displayName?: string;
   key?: string;
