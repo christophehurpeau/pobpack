@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-node-example@4.1.6...pobpack-node-example@4.2.0) (2019-02-08)
+
+
+### Features
+
+* update dependencies ([9f54ca8](https://github.com/christophehurpeau/pobpack/commit/9f54ca8))
+
+
+
+
+
 ## [4.1.6](https://github.com/christophehurpeau/pobpack/compare/pobpack-node-example@4.1.5...pobpack-node-example@4.1.6) (2019-01-05)
 
 
