@@ -7112,10 +7112,10 @@ pob-babel@23.6.2:
     rollup-plugin-babel "^4.3.2"
     rollup-plugin-node-resolve "^4.0.0"
 
-pob-release@4.7.1:
-  version "4.7.1"
-  resolved "https://registry.yarnpkg.com/pob-release/-/pob-release-4.7.1.tgz#8d1693f95f0a937844b6473b19d0da887f3f9858"
-  integrity sha512-SiK3ESnKPsdyg+5sqySkZg+G5plsiXuKkS/k7M8FYZLYafeRWeK7SapwfjvRWL/nivT29VU85d+nH/rTMuIvsA==
+pob-release@4.7.2:
+  version "4.7.2"
+  resolved "https://registry.yarnpkg.com/pob-release/-/pob-release-4.7.2.tgz#10c11efff02d85dcd9e3541539ed8d73c542ac60"
+  integrity sha512-rvtAuXf/zYPHlXAs9K7XpXjCws9Eak3MrqW/mtW1cJV48NOrbxHbW5Kq0CxFp/t27495kXerzSV+QtVArQvPig==
   dependencies:
     conventional-recommended-bump "^0.3.0"
     inquirer "^6.2.1"
