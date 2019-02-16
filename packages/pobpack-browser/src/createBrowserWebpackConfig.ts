@@ -16,7 +16,7 @@ export const MODERN = 'modern';
 export const ALL = 'all';
 export const TARGETS: BrowserTargetType[] = [ALL, MODERN];
 
-const ExcludesFalsy = (Boolean as any) as <T>(
+const ExcludesFalsy = (Boolean as unknown) as <T>(
   x: T | boolean | null | undefined,
 ) => x is T;
 
