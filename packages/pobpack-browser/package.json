@@ -83,6 +83,6 @@
     "react": "16.8.1",
     "react-dom": "16.8.1",
     "typescript": "3.3.3",
-    "webpack": "4.29.3"
+    "webpack": "4.29.6"
   }
 }

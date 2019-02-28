@@ -15,7 +15,7 @@
     "eslint-plugin-import": "2.16.0",
     "pobpack-node": "^7.4.1",
     "prettier": "1.16.4",
-    "webpack": "4.29.3",
+    "webpack": "4.29.6",
     "webpack-module-hot-accept": "1.0.5"
   }
 }
