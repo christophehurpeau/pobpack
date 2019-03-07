@@ -54,7 +54,7 @@
     "@types/react-hot-loader": "^4.1.0",
     "pobpack-types": "^3.3.0",
     "pobpack-utils": "^7.4.0",
-    "react-dev-utils": "^7.0.1",
+    "react-dev-utils": "^8.0.0",
     "react-error-html": "^0.2.2",
     "react-hot-loader": "^4.6.5",
     "regenerator-runtime": "^0.13.1",
