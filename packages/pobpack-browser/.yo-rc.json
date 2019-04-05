@@ -26,5 +26,10 @@
         "cli"
       ]
     }
+  },
+  "pobpack-browser": {
+    "type": {
+      "type": "lib"
+    }
   }
 }

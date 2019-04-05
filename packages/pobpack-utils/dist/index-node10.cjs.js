@@ -232,13 +232,11 @@ var createPluginsConfig = (options => [...options.prependPlugins, // ignore file
 new webpack__default.WatchIgnorePlugin([// typescript definitions
 /\.d\.ts$/]), // enforces the entire path of all required modules match the exact case
 // of the actual path on disk. Using this plugin helps alleviate cases
-// for developers working on case insensitive systems like OSX.
 options.env !== 'production' && new CaseSensitivePathsPlugin(), new webpack__default.DefinePlugin({
   'process.env.NODE_ENV': JSON.stringify(options.env),
   ...options.defines
 }), options.hmr && new webpack__default.HotModuleReplacementPlugin(),
 /* replace object-assign ponyfill to use native implementation */
-// Array.isArray
 new webpack__default.NormalModuleReplacementPlugin(/.*\/node_modules\/isarray\/index.js$/, require.resolve('../replacements/Array.isArray.js')), // Object.assign
 new webpack__default.NormalModuleReplacementPlugin(/.*\/node_modules\/(object-assign|extend-shallow)\/index.js$/, require.resolve('../replacements/Object.assign.js')), // Object.setPrototypeOf
 new webpack__default.NormalModuleReplacementPlugin(/.*\/node_modules\/setprototypeof\/index.js$/, require.resolve('../replacements/Object.setPrototypeOf.js')), // Promise
@@ -249,7 +247,6 @@ new webpack__default.NormalModuleReplacementPlugin(/.*\/node_modules\/repeat-str
 // new webpack.NormalModuleReplacementPlugin(
 //   /.*\/node_modules\/symbol-observable\/es\/ponyfill.js$/,
 //   require.resolve('../replacements/Symbol.observable.js'),
-// ),
 ...options.plugins].filter(Boolean));
 
 /* eslint-disable prettier/prettier */
@@ -271,9 +268,9 @@ var createResolveConfig = ((modulePrefixPackageFields, options) => ({
 
 exports.webpack = webpack__default;
 exports.createAppWebpackConfig = createAppWebpackConfig;
-exports.createOptions = createOptions;
-exports.createPobpackCompiler = createPobpackCompiler;
 exports.createModuleConfig = createModuleConfig;
+exports.createOptions = createOptions;
 exports.createPluginsConfig = createPluginsConfig;
+exports.createPobpackCompiler = createPobpackCompiler;
 exports.createResolveConfig = createResolveConfig;
 //# sourceMappingURL=index-node10.cjs.js.map

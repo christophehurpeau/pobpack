@@ -1,6 +1,7 @@
 module.exports = function(config, options) {
   return config(
     Object.assign({}, options, {
+      typescript: true,
       babel: {
         presets: [
           [

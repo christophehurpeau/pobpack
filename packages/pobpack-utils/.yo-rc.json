@@ -25,5 +25,10 @@
         "index"
       ]
     }
+  },
+  "pobpack-utils": {
+    "type": {
+      "type": "lib"
+    }
   }
 }

@@ -8,7 +8,7 @@
 
 <p align="center">
   <a href="https://npmjs.org/package/pobpack-node"><img src="https://img.shields.io/npm/v/pobpack-node.svg?style=flat-square"></a>
-  <a href="https://david-dm.org/christophehurpeau/pobpack?path=packages/pobpack-node"><img src="https://david-dm.org/christophehurpeau/pobpack?path=packages/pobpack-node.svg?style=flat-square"></a>
+  <a href="https://david-dm.org/christophehurpeau/pobpack?path=packages/pobpack-node"><img src="https://david-dm.org/christophehurpeau/pobpack.svg?path=packages/pobpack-node?style=flat-square"></a>
 </p>
 
 * [Features](#features)

@@ -158,5 +158,5 @@ const watchAndRunDevServer = (options, runOptions) => {
   };
 };
 
-export { TARGETS, ALL, MODERN, createAppBrowserCompiler, build, watch, runDevServer, watchAndRunDevServer };
+export { ALL, MODERN, TARGETS, build, createAppBrowserCompiler, runDevServer, watch, watchAndRunDevServer };
 //# sourceMappingURL=index-node10.es.js.map

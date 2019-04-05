@@ -19,6 +19,9 @@
         "pobpack-utils"
       ],
       "typescript": false
+    },
+    "renovate": {
+      "enable": true
     }
   }
 }

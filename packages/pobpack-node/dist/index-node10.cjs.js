@@ -163,9 +163,9 @@ const watchAndRun = options => {
   return compiler;
 };
 
-exports.createAppNodeCompiler = createAppNodeCompiler;
 exports.build = build;
+exports.createAppNodeCompiler = createAppNodeCompiler;
 exports.watch = watch;
-exports.watchAndRunCompiler = watchAndRunCompiler;
 exports.watchAndRun = watchAndRun;
+exports.watchAndRunCompiler = watchAndRunCompiler;
 //# sourceMappingURL=index-node10.cjs.js.map

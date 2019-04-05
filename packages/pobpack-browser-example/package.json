@@ -1,10 +1,18 @@
 {
-  "private": true,
   "name": "pobpack-browser-example",
+  "private": true,
   "version": "4.3.1",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com>",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com:christophehurpeau/pobpack.git",
+    "directory": "packages/pobpack-browser-example"
+  },
+  "homepage": "https://github.com/christophehurpeau/pobpack",
   "scripts": {
-    "lint": "eslint src",
     "build": "pobpack-browser build && gzip -fk9 public/*.js && lzma -fke9 --threads 0 public/*.js && brotli -Z public/*.js",
+    "lint": "tsc && eslint --ext .ts,.tsx src/",
     "start": "pobpack-browser"
   },
   "prettier": {
@@ -12,15 +20,20 @@
     "singleQuote": true,
     "arrowParens": "always"
   },
-  "devDependencies": {
-    "@babel/core": "7.2.2",
-    "@babel/preset-react": "7.0.0",
-    "eslint": "5.13.0",
-    "webpack": "4.29.3"
-  },
   "dependencies": {
     "pobpack-browser": "^7.6.1",
     "react": "^16.8.1",
     "react-dom": "^16.8.1"
+  },
+  "devDependencies": {
+    "@babel/core": "7.2.2",
+    "@babel/preset-react": "7.0.0",
+    "@pob/eslint-config-babel": "29.1.0",
+    "@pob/eslint-config-typescript": "29.1.0",
+    "@pob/eslint-config-typescript-react": "29.1.0",
+    "eslint": "5.16.0",
+    "prettier": "1.16.4",
+    "typescript": "3.4.1",
+    "webpack": "4.29.3"
   }
 }

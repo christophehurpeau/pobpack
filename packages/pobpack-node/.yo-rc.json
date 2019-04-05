@@ -26,5 +26,10 @@
         "cli"
       ]
     }
+  },
+  "pobpack-node": {
+    "type": {
+      "type": "lib"
+    }
   }
 }

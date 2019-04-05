@@ -1,20 +1,33 @@
 {
-  "private": true,
   "name": "pobpack-node-example",
+  "private": true,
   "version": "4.2.1",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com>",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com:christophehurpeau/pobpack.git",
+    "directory": "packages/pobpack-node-example"
+  },
+  "homepage": "https://github.com/christophehurpeau/pobpack",
   "scripts": {
-    "watch": "echo",
     "build": "pobpack-node build",
+    "lint": "tsc && eslint --ext .ts src/",
     "start": "pobpack-node"
+  },
+  "prettier": {
+    "trailingComma": "all",
+    "singleQuote": true,
+    "arrowParens": "always"
   },
   "devDependencies": {
     "@babel/core": "7.2.2",
-    "eslint": "5.13.0",
-    "eslint-config-airbnb-base": "13.1.0",
-    "eslint-config-prettier": "4.0.0",
-    "eslint-plugin-import": "2.16.0",
+    "@pob/eslint-config-babel": "29.1.0",
+    "@pob/eslint-config-typescript": "29.1.0",
+    "eslint": "5.16.0",
     "pobpack-node": "^7.4.1",
     "prettier": "1.16.4",
+    "typescript": "3.4.1",
     "webpack": "4.29.3",
     "webpack-module-hot-accept": "1.0.5"
   }

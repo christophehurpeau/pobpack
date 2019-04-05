@@ -164,12 +164,12 @@ const watchAndRunDevServer = (options, runOptions) => {
   };
 };
 
-exports.TARGETS = TARGETS;
 exports.ALL = ALL;
 exports.MODERN = MODERN;
-exports.createAppBrowserCompiler = createAppBrowserCompiler;
+exports.TARGETS = TARGETS;
 exports.build = build;
-exports.watch = watch;
+exports.createAppBrowserCompiler = createAppBrowserCompiler;
 exports.runDevServer = runDevServer;
+exports.watch = watch;
 exports.watchAndRunDevServer = watchAndRunDevServer;
 //# sourceMappingURL=index-node10.cjs.js.map
