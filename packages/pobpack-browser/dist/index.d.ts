@@ -12,7 +12,7 @@ export interface RunOptions extends Omit<WebpackDevServerConfiguration, 'hot' | 
     https?: boolean;
     port: number;
 }
-export declare const runDevServer: (compiler: PobpackCompiler, options: RunOptions) => any;
+export declare const runDevServer: (compiler: PobpackCompiler, options: RunOptions) => WebpackDevServer;
 export declare type PobpackBrowserCompiler = PobpackCompiler & {
     webpackDevServer: WebpackDevServer;
 };

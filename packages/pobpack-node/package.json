@@ -46,12 +46,12 @@
     "babel-preset-latest-node": "^3.0.1",
     "pobpack-types": "^3.3.0",
     "pobpack-utils": "^7.4.0",
-    "source-map-support": "^0.5.10",
-    "springbokjs-daemon": "^3.0.0",
+    "source-map-support": "^0.5.11",
+    "springbokjs-daemon": "^3.1.0",
     "webpack-node-externals": "^1.7.2"
   },
   "devDependencies": {
-    "@babel/core": "7.4.0",
+    "@babel/core": "7.4.3",
     "@pob/eslint-config-babel": "29.1.0",
     "@pob/eslint-config-babel-node": "29.1.0",
     "@pob/eslint-config-typescript": "29.1.0",
