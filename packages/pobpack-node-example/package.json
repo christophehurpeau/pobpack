@@ -24,6 +24,7 @@
     "@babel/core": "7.4.3",
     "@pob/eslint-config-babel": "29.1.0",
     "@pob/eslint-config-typescript": "29.1.0",
+    "@types/webpack-env": "^1.13.9",
     "eslint": "5.16.0",
     "pobpack-node": "^7.4.1",
     "prettier": "1.16.4",
