@@ -4,24 +4,24 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
-var webpack = require('webpack');
-var webpack__default = _interopDefault(webpack);
-var path = require('path');
-var path__default = _interopDefault(path);
-var fs = require('fs');
-var child_process = require('child_process');
-var util = require('util');
-var colorette = _interopDefault(require('colorette'));
-var ProgressBar = _interopDefault(require('progress'));
-var nightingale = require('nightingale');
-var Logger = _interopDefault(require('nightingale-logger'));
-var ConsoleHandler = _interopDefault(require('nightingale-console'));
-var formatWebpackMessages = _interopDefault(require('react-dev-utils/formatWebpackMessages'));
-var resolveFrom = _interopDefault(require('resolve-from'));
-var findUp = _interopDefault(require('find-up'));
-var CaseSensitivePathsPlugin = _interopDefault(require('case-sensitive-paths-webpack-plugin'));
+const webpack = require('webpack');
+const webpack__default = _interopDefault(webpack);
+const path = require('path');
+const path__default = _interopDefault(path);
+const fs = require('fs');
+const child_process = require('child_process');
+const util = require('util');
+const colorette = _interopDefault(require('colorette'));
+const ProgressBar = _interopDefault(require('progress'));
+const nightingale = require('nightingale');
+const Logger = _interopDefault(require('nightingale-logger'));
+const ConsoleHandler = _interopDefault(require('nightingale-console'));
+const formatWebpackMessages = _interopDefault(require('react-dev-utils/formatWebpackMessages'));
+const resolveFrom = _interopDefault(require('resolve-from'));
+const findUp = _interopDefault(require('find-up'));
+const CaseSensitivePathsPlugin = _interopDefault(require('case-sensitive-paths-webpack-plugin'));
 
-var createOptions = (options => ({
+const createOptions = (options => ({
   aliases: options.aliases || {},
   babel: options.babel || {},
   defines: options.defines || {},
@@ -45,7 +45,7 @@ var createOptions = (options => ({
   webpackPrefixPackageFields: options.webpackPrefixPackageFields || []
 }));
 
-var createAppWebpackConfig = (createWebpackConfig => {
+const createAppWebpackConfig = (createWebpackConfig => {
   const wrapCreateWebpackConfig = options => createWebpackConfig(createOptions(options));
 
   return options => {
@@ -143,7 +143,7 @@ const buildThrowOnError = stats => {
   throw new Error(stats.toString({}));
 };
 
-var createPobpackCompiler = ((bundleName, webpackConfig, {
+const createPobpackCompiler = ((bundleName, webpackConfig, {
   progressBar = true,
   successMessage
 } = {}) => {
@@ -198,7 +198,7 @@ var createPobpackCompiler = ((bundleName, webpackConfig, {
 // with node 10.12
 // import { createRequireFromPath } from 'module';
 // const requireFromPwd = createRequireFromPath(process.cwd());
-var createModuleConfig = (options => ({
+const createModuleConfig = (options => ({
   strictExportPresence: true,
   rules: [// Disable require.ensure as it's not a standard language feature.
   {
@@ -228,7 +228,7 @@ var createModuleConfig = (options => ({
   ...(options.moduleRules || [])]
 }));
 
-var createPluginsConfig = (options => [...options.prependPlugins, // ignore files when watching
+const createPluginsConfig = (options => [...options.prependPlugins, // ignore files when watching
 new webpack__default.WatchIgnorePlugin([// typescript definitions
 /\.d\.ts$/]), // enforces the entire path of all required modules match the exact case
 // of the actual path on disk. Using this plugin helps alleviate cases
@@ -251,7 +251,7 @@ new webpack__default.NormalModuleReplacementPlugin(/.*\/node_modules\/repeat-str
 
 /* eslint-disable prettier/prettier */
 const ExcludesFalse = Boolean;
-var createResolveConfig = ((modulePrefixPackageFields, options) => ({
+const createResolveConfig = ((modulePrefixPackageFields, options) => ({
   // https://github.com/DefinitelyTyped/DefinitelyTyped/pull/25209
   // cacheWithContext: false,
   modules: ['node_modules', path.resolve('src')],

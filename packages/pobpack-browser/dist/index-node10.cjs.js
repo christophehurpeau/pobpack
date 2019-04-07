@@ -4,18 +4,18 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
-var WebpackDevServer = _interopDefault(require('webpack-dev-server'));
-var pobpackUtils = require('pobpack-utils');
-var createLaunchEditorMiddleware = _interopDefault(require('react-dev-utils/errorOverlayMiddleware'));
-var evalSourceMapMiddleware = _interopDefault(require('react-dev-utils/evalSourceMapMiddleware'));
-var noopServiceWorkerMiddleware = _interopDefault(require('react-dev-utils/noopServiceWorkerMiddleware'));
-var path = _interopDefault(require('path'));
+const WebpackDevServer = _interopDefault(require('webpack-dev-server'));
+const pobpackUtils = require('pobpack-utils');
+const createLaunchEditorMiddleware = _interopDefault(require('react-dev-utils/errorOverlayMiddleware'));
+const evalSourceMapMiddleware = _interopDefault(require('react-dev-utils/evalSourceMapMiddleware'));
+const noopServiceWorkerMiddleware = _interopDefault(require('react-dev-utils/noopServiceWorkerMiddleware'));
+const path = _interopDefault(require('path'));
 
 const MODERN = 'modern';
 const ALL = 'all';
 const TARGETS = ["all", "modern"];
 const ExcludesFalsy = Boolean;
-var createBrowserWebpackConfig = (target => options => ({
+const createBrowserWebpackConfig = (target => options => ({
   // production or development
   mode: options.env === 'production' ? 'production' : 'development',
   // Don't attempt to continue if there are any errors.

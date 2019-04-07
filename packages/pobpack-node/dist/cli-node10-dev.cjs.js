@@ -2,12 +2,12 @@
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
-var path = require('path');
-var path__default = _interopDefault(path);
-var createDaemon = _interopDefault(require('springbokjs-daemon'));
-var pobpackUtils = require('pobpack-utils');
-var fs = _interopDefault(require('fs'));
-var nodeExternals = _interopDefault(require('webpack-node-externals'));
+const path = require('path');
+const path__default = _interopDefault(path);
+const createDaemon = _interopDefault(require('springbokjs-daemon'));
+const pobpackUtils = require('pobpack-utils');
+const fs = _interopDefault(require('fs'));
+const nodeExternals = _interopDefault(require('webpack-node-externals'));
 
 // const fs = require('fs');
 const ExcludesFalsy = Boolean;
@@ -36,7 +36,7 @@ const createExternals = options => {
   }));
 };
 
-var createNodeWebpackConfig = (options => ({
+const createNodeWebpackConfig = (options => ({
   // production or development
   mode: options.env === 'production' ? 'production' : 'development',
   // Don't attempt to continue if there are any errors.

@@ -31,7 +31,7 @@ const createExternals = options => {
   }));
 };
 
-var createNodeWebpackConfig = (options => ({
+const createNodeWebpackConfig = (options => ({
   // production or development
   mode: options.env === 'production' ? 'production' : 'development',
   // Don't attempt to continue if there are any errors.

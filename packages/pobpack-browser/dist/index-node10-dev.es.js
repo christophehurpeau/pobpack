@@ -9,7 +9,7 @@ const MODERN = 'modern';
 const ALL = 'all';
 const TARGETS = ["all", "modern"];
 const ExcludesFalsy = Boolean;
-var createBrowserWebpackConfig = (target => options => ({
+const createBrowserWebpackConfig = (target => options => ({
   // production or development
   mode: options.env === 'production' ? 'production' : 'development',
   // Don't attempt to continue if there are any errors.

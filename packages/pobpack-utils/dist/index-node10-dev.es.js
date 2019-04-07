@@ -14,7 +14,7 @@ import resolveFrom from 'resolve-from';
 import findUp from 'find-up';
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
 
-var createOptions = (options => ({
+const createOptions = (options => ({
   aliases: options.aliases || {},
   babel: options.babel || {},
   defines: options.defines || {},
@@ -38,7 +38,7 @@ var createOptions = (options => ({
   webpackPrefixPackageFields: options.webpackPrefixPackageFields || []
 }));
 
-var createAppWebpackConfig = (createWebpackConfig => {
+const createAppWebpackConfig = (createWebpackConfig => {
   const wrapCreateWebpackConfig = options => createWebpackConfig(createOptions(options));
 
   return options => {
@@ -136,7 +136,7 @@ const buildThrowOnError = stats => {
   throw new Error(stats.toString({}));
 };
 
-var createPobpackCompiler = ((bundleName, webpackConfig, {
+const createPobpackCompiler = ((bundleName, webpackConfig, {
   progressBar = true,
   successMessage
 } = {}) => {
@@ -191,7 +191,7 @@ var createPobpackCompiler = ((bundleName, webpackConfig, {
 // with node 10.12
 // import { createRequireFromPath } from 'module';
 // const requireFromPwd = createRequireFromPath(process.cwd());
-var createModuleConfig = (options => ({
+const createModuleConfig = (options => ({
   strictExportPresence: true,
   rules: [// Disable require.ensure as it's not a standard language feature.
   {
@@ -221,7 +221,7 @@ var createModuleConfig = (options => ({
   ...(options.moduleRules || [])]
 }));
 
-var createPluginsConfig = (options => [...options.prependPlugins, // ignore files when watching
+const createPluginsConfig = (options => [...options.prependPlugins, // ignore files when watching
 new webpack.WatchIgnorePlugin([// typescript definitions
 /\.d\.ts$/]), // enforces the entire path of all required modules match the exact case
 // of the actual path on disk. Using this plugin helps alleviate cases
@@ -244,7 +244,7 @@ new webpack.NormalModuleReplacementPlugin(/.*\/node_modules\/repeat-string\/inde
 
 /* eslint-disable prettier/prettier */
 const ExcludesFalse = Boolean;
-var createResolveConfig = ((modulePrefixPackageFields, options) => ({
+const createResolveConfig = ((modulePrefixPackageFields, options) => ({
   // https://github.com/DefinitelyTyped/DefinitelyTyped/pull/25209
   // cacheWithContext: false,
   modules: ['node_modules', resolve('src')],
