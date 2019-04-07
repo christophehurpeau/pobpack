@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.5.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@7.4.0...pobpack-utils@7.5.0) (2019-04-07)
+
+
+### Features
+
+* update deps ([5e3fa35](https://github.com/christophehurpeau/pobpack/commit/5e3fa35))
+
+
+
+
+
 # [7.4.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@7.3.2...pobpack-utils@7.4.0) (2019-02-08)
 
 

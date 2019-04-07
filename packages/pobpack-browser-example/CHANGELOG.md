@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.4.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser-example@4.3.1...pobpack-browser-example@4.4.0) (2019-04-07)
+
+
+### Bug Fixes
+
+* missing typings ([e4a8c6e](https://github.com/christophehurpeau/pobpack/commit/e4a8c6e))
+
+
+### Features
+
+* update deps ([5e3fa35](https://github.com/christophehurpeau/pobpack/commit/5e3fa35))
+
+
+
+
+
 ## [4.3.1](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser-example@4.3.0...pobpack-browser-example@4.3.1) (2019-02-08)
 
 **Note:** Version bump only for package pobpack-browser-example
