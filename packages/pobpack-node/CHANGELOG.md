@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.6.1](https://github.com/christophehurpeau/pobpack/compare/pobpack-node@7.6.0...pobpack-node@7.6.1) (2019-04-17)
+
+
+### Bug Fixes
+
+* regexp ([d47048c](https://github.com/christophehurpeau/pobpack/commit/d47048c))
+
+
+
+
+
 # [7.6.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-node@7.5.0...pobpack-node@7.6.0) (2019-04-17)
 
 
