@@ -29,7 +29,11 @@ const createExternals = (options: Options) => {
       ...options.includeModules.map(
         (module: string) => new RegExp(`^${module}(/|$)`),
       ),
-    ],
+    ].concat(
+      options.whitelistExternalExtensions
+        ? [new RegExp(`${options.whitelistExternalExtensions.join('|')}$`)]
+        : [],
+    ),
   };
 
   const nodeModulesPaths = [];

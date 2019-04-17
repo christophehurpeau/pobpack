@@ -20,6 +20,7 @@ export interface Options {
   entries: Array<ConfigEntry>;
   env?: string;
   hmr?: boolean;
+  whitelistExternalExtensions: Array<string>;
   includeModules: Array<string>;
   includePaths: Array<string>;
   jsLoaders?: Array<any>;

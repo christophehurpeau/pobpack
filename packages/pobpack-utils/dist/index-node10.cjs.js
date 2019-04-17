@@ -28,6 +28,7 @@ const createOptions = (options => ({
   entries: options.entries || ['index'],
   env: options.env || process.env.NODE_ENV,
   hmr: options.hmr,
+  whitelistExternalExtensions: options.whitelistExternalExtensions || [],
   includeModules: options.includeModules || [],
   includePaths: options.includePaths || [],
   jsLoaders: options.jsLoaders,
