@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.6.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@7.5.0...pobpack-utils@7.6.0) (2019-04-17)
+
+
+### Features
+
+* add options.whitelistExternalExtensions ([baa06ce](https://github.com/christophehurpeau/pobpack/commit/baa06ce))
+
+
+
+
+
 # [7.5.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@7.4.0...pobpack-utils@7.5.0) (2019-04-07)
 
 

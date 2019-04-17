@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.5.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-types@3.4.0...pobpack-types@3.5.0) (2019-04-17)
+
+
+### Features
+
+* add options.whitelistExternalExtensions ([baa06ce](https://github.com/christophehurpeau/pobpack/commit/baa06ce))
+
+
+
+
+
 # [3.4.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-types@3.3.0...pobpack-types@3.4.0) (2019-04-07)
 
 
