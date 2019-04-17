@@ -31,7 +31,7 @@ const createExternals = (options: Options) => {
       ),
     ].concat(
       options.whitelistExternalExtensions
-        ? [new RegExp(`${options.whitelistExternalExtensions.join('|')}$`)]
+        ? [new RegExp(`(${options.whitelistExternalExtensions.join('|')})$`)]
         : [],
     ),
   };
