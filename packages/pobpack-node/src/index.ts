@@ -47,8 +47,16 @@ export const watchAndRunCompiler = (
   options: RunOptions = {},
 ): Watching => {
   let daemon: Daemon;
+  let hadError = false;
   const daemonStop = () => daemon.stop();
   const watchingCompiler = compiler.watch((stats: webpack.Stats) => {
+    const hasErrors = stats.hasErrors();
+
+    if (hasErrors) {
+      hadError = true;
+      return;
+    }
+
     if (!daemon) {
       daemon = createDaemon({
         key: options.key || 'pobpack-node',
@@ -68,6 +76,8 @@ export const watchAndRunCompiler = (
       process.on('exit', daemonStop);
     } else if (daemon.hasExited()) {
       daemon.start();
+    } else if (hadError) {
+      daemon.restart();
     } else {
       // already started, send a signal to ask hot reload
       try {
@@ -76,6 +86,7 @@ export const watchAndRunCompiler = (
         daemon.restart();
       }
     }
+    hadError = false;
   });
 
   return {
