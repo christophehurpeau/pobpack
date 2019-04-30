@@ -47,6 +47,7 @@ export const watchAndRunCompiler = (
   options: RunOptions = {},
 ): Watching => {
   let daemon: Daemon;
+  const daemonStop = () => daemon.stop();
   const watchingCompiler = compiler.watch((stats: webpack.Stats) => {
     if (!daemon) {
       daemon = createDaemon({
@@ -64,7 +65,7 @@ export const watchAndRunCompiler = (
         // autoRestart: true,
       });
       daemon.start();
-      process.on('exit', () => daemon.stop());
+      process.on('exit', daemonStop);
     } else if (daemon.hasExited()) {
       daemon.start();
     } else {
@@ -82,7 +83,10 @@ export const watchAndRunCompiler = (
       watchingCompiler.invalidate();
     },
     close: (callback) => {
-      if (daemon) daemon.stop();
+      if (daemon) {
+        daemon.stop();
+        process.off('exit', daemonStop);
+      }
       watchingCompiler.close(callback);
     },
   };

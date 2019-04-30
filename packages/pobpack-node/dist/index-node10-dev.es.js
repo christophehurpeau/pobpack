@@ -115,6 +115,9 @@ const watch = (options, callback) => {
 };
 const watchAndRunCompiler = (compiler, options = {}) => {
   let daemon;
+
+  const daemonStop = () => daemon.stop();
+
   const watchingCompiler = compiler.watch(() => {
     if (!daemon) {
       daemon = createDaemon({
@@ -125,7 +128,7 @@ const watchAndRunCompiler = (compiler, options = {}) => {
 
       });
       daemon.start();
-      process.on('exit', () => daemon.stop());
+      process.on('exit', daemonStop);
     } else if (daemon.hasExited()) {
       daemon.start();
     } else {
@@ -142,7 +145,11 @@ const watchAndRunCompiler = (compiler, options = {}) => {
       watchingCompiler.invalidate();
     },
     close: callback => {
-      if (daemon) daemon.stop();
+      if (daemon) {
+        daemon.stop();
+        process.off('exit', daemonStop);
+      }
+
       watchingCompiler.close(callback);
     }
   };
