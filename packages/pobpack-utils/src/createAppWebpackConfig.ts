@@ -7,9 +7,9 @@ export type CreateWebpackConfig = (
   options: Options,
 ) => FilledWebpackConfiguration;
 
-export default (
+export default function createAppWebpackConfig(
   createWebpackConfig: CreateWebpackConfig,
-): ((options: Partial<Options>) => FilledWebpackConfiguration) => {
+): (options: Partial<Options>) => FilledWebpackConfiguration {
   const wrapCreateWebpackConfig = (
     options: Partial<Options>,
   ): FilledWebpackConfiguration => createWebpackConfig(createOptions(options));
@@ -42,4 +42,4 @@ export default (
       return wrapCreateWebpackConfig(options);
     }
   };
-};
+}

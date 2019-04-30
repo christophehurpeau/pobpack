@@ -5,13 +5,16 @@
     "noEmit": false,
     "emitDeclarationOnly": true,
     "outDir": "dist",
+    "tsBuildInfoFile": "dist/tsbuildinfo",
     "isolatedModules": false,
     "declaration": true,
     "declarationMap": true
   },
 
   "exclude": [
-    "src/**/*.test.tsx?",
+    "dist/**",
+    "src/**/*.test.ts",
+    "src/**/*.test.tsx",
     "src/**/__tests__/**"
   ]
 }

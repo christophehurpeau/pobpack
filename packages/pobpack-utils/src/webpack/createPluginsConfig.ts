@@ -2,8 +2,8 @@ import webpack from 'webpack';
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
 import { Options } from 'pobpack-types';
 
-export default (options: Options) =>
-  [
+export default function createPluginsConfig(options: Options) {
+  return [
     ...options.prependPlugins,
 
     // ignore files when watching
@@ -66,3 +66,4 @@ export default (options: Options) =>
 
     ...options.plugins,
   ].filter(Boolean);
+}

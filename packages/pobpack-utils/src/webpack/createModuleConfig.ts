@@ -7,47 +7,49 @@ import { Options } from 'pobpack-types';
 // import { createRequireFromPath } from 'module';
 // const requireFromPwd = createRequireFromPath(process.cwd());
 
-export default (options: Options) => ({
-  strictExportPresence: true,
+export default function createModuleConfig(options: Options) {
+  return {
+    strictExportPresence: true,
 
-  rules: [
-    // Disable require.ensure as it's not a standard language feature.
-    { parser: { requireEnsure: false } },
+    rules: [
+      // Disable require.ensure as it's not a standard language feature.
+      { parser: { requireEnsure: false } },
 
-    // tsx? / jsx?
-    {
-      test: options.typescript ? /\.[tj]sx?$/ : /\.jsx?$/,
-      include: [
-        resolve(options.paths.src as string),
-        ...options.includeModules
-          .map((includeModule) => {
-            const packageJson = findUp.sync('package.json', {
-              cwd: dirname(
-                // requireFromPwd.resolve(includeModule)
-                realpathSync(resolveFrom(process.cwd(), includeModule)),
-              ),
-            });
+      // tsx? / jsx?
+      {
+        test: options.typescript ? /\.[tj]sx?$/ : /\.jsx?$/,
+        include: [
+          resolve(options.paths.src as string),
+          ...options.includeModules
+            .map((includeModule) => {
+              const packageJson = findUp.sync('package.json', {
+                cwd: dirname(
+                  // requireFromPwd.resolve(includeModule)
+                  realpathSync(resolveFrom(process.cwd(), includeModule)),
+                ),
+              });
 
-            if (!packageJson) return;
-            return packageJson.slice(0, -'package.json'.length);
-          })
-          .filter(Boolean),
-        ...options.includePaths,
-      ],
-      loaders: [
-        {
-          loader: require.resolve('babel-loader'),
-          options: {
-            babelrc: false,
-            cacheDirectory: true,
-            ...options.babel,
+              if (!packageJson) return;
+              return packageJson.slice(0, -'package.json'.length);
+            })
+            .filter(Boolean),
+          ...options.includePaths,
+        ],
+        loaders: [
+          {
+            loader: require.resolve('babel-loader'),
+            options: {
+              babelrc: false,
+              cacheDirectory: true,
+              ...options.babel,
+            },
           },
-        },
-        ...(options.jsLoaders || []),
-      ],
-    },
+          ...(options.jsLoaders || []),
+        ],
+      },
 
-    // other rules
-    ...(options.moduleRules || []),
-  ],
-});
+      // other rules
+      ...(options.moduleRules || []),
+    ],
+  };
+}

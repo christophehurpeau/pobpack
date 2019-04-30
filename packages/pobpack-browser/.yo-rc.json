@@ -24,7 +24,8 @@
       "entries": [
         "index",
         "cli"
-      ]
+      ],
+      "withReact": true
     }
   },
   "pobpack-browser": {

@@ -18,11 +18,11 @@ const buildThrowOnError = (stats: Stats): Stats => {
   throw new Error(stats.toString({}));
 };
 
-export default (
+export default function createPobpackCompiler(
   bundleName: string,
   webpackConfig: FilledWebpackConfiguration,
   { progressBar = true, successMessage }: CreateCompilerOptions = {},
-): PobpackCompiler => {
+): PobpackCompiler {
   const compiler = webpack(webpackConfig);
 
   if (progressBar && process.stdout.isTTY) {
@@ -81,4 +81,4 @@ export default (
         callback(stats);
       }),
   };
-};
+}

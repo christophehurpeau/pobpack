@@ -107,10 +107,18 @@ const build = (options = {}) => {
 };
 const watchAndRunCompiler = (compiler, options = {}) => {
   let daemon;
+  let hadError = false;
 
   const daemonStop = () => daemon.stop();
 
-  const watchingCompiler = compiler.watch(() => {
+  const watchingCompiler = compiler.watch(stats => {
+    const hasErrors = stats.hasErrors();
+
+    if (hasErrors) {
+      hadError = true;
+      return;
+    }
+
     if (!daemon) {
       daemon = createDaemon({
         key: options.key || 'pobpack-node',
@@ -123,6 +131,8 @@ const watchAndRunCompiler = (compiler, options = {}) => {
       process.on('exit', daemonStop);
     } else if (daemon.hasExited()) {
       daemon.start();
+    } else if (hadError) {
+      daemon.restart();
     } else {
       // already started, send a signal to ask hot reload
       try {
@@ -131,6 +141,8 @@ const watchAndRunCompiler = (compiler, options = {}) => {
         daemon.restart();
       }
     }
+
+    hadError = false;
   });
   return {
     invalidate: () => {

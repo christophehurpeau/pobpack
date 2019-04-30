@@ -36,7 +36,7 @@
     "build": "pob-build",
     "build:definitions": "tsc -p tsconfig.build.json",
     "clean": "rm -Rf docs dist test/node6 coverage",
-    "lint": "tsc && eslint --ext .ts,.tsx src/",
+    "lint": "tsc && eslint --ext .ts,.tsx --quiet src/",
     "watch": "pob-watch"
   },
   "prettier": {
@@ -61,20 +61,20 @@
     "webpack-dev-server": "3.2.1"
   },
   "devDependencies": {
-    "@babel/core": "7.4.3",
+    "@babel/core": "7.4.4",
     "@babel/preset-react": "7.0.0",
-    "@pob/eslint-config-babel": "29.2.0",
-    "@pob/eslint-config-babel-node": "29.1.1",
-    "@pob/eslint-config-typescript": "29.2.0",
-    "@pob/eslint-config-typescript-react": "29.2.0",
+    "@pob/eslint-config-babel": "31.0.0",
+    "@pob/eslint-config-babel-node": "31.0.0",
+    "@pob/eslint-config-typescript": "31.1.0",
+    "@pob/eslint-config-typescript-react": "31.0.0",
     "@types/webpack-dev-server": "3.1.5",
     "babel-preset-latest-node": "3.1.1",
     "eslint": "5.16.0",
-    "pob-babel": "23.12.0",
-    "prettier": "1.16.4",
+    "pob-babel": "23.15.0",
+    "prettier": "1.17.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "typescript": "3.4.2",
+    "typescript": "3.4.5",
     "webpack": "4.29.6"
   }
 }
