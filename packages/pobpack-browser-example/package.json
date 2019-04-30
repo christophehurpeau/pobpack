@@ -11,7 +11,7 @@
   },
   "homepage": "https://github.com/christophehurpeau/pobpack",
   "scripts": {
-    "build": "pobpack-browser build && gzip -fk9 public/*.js && lzma -fke9 --threads 0 public/*.js && brotli -Z public/*.js",
+    "build": "pobpack-browser build && gzip -fk9 public/*.js && lzma -fke9 --threads 0 public/*.js && brotli -Z public/*.js && echo",
     "lint": "eslint --ext .ts,.tsx --quiet src/",
     "start": "pobpack-browser"
   },

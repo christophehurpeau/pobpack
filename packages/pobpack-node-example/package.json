@@ -11,7 +11,7 @@
   },
   "homepage": "https://github.com/christophehurpeau/pobpack",
   "scripts": {
-    "build": "pobpack-node build",
+    "build": "pobpack-node build && echo",
     "lint": "eslint --ext .ts --quiet src/",
     "start": "pobpack-node"
   },
