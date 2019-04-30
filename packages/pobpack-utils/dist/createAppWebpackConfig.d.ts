@@ -1,5 +1,4 @@
 import { Options, FilledWebpackConfiguration } from 'pobpack-types';
 export declare type CreateWebpackConfig = (options: Options) => FilledWebpackConfiguration;
-declare const _default: (createWebpackConfig: CreateWebpackConfig) => (options: Partial<Options>) => FilledWebpackConfiguration;
-export default _default;
+export default function createAppWebpackConfig(createWebpackConfig: CreateWebpackConfig): (options: Partial<Options>) => FilledWebpackConfiguration;
 //# sourceMappingURL=createAppWebpackConfig.d.ts.map

@@ -12,7 +12,7 @@
   "homepage": "https://github.com/christophehurpeau/pobpack",
   "scripts": {
     "build": "pobpack-node build",
-    "lint": "tsc && eslint --ext .ts --quiet src/",
+    "lint": "eslint --ext .ts --quiet src/",
     "start": "pobpack-node"
   },
   "prettier": {
@@ -28,7 +28,6 @@
     "eslint": "5.16.0",
     "pobpack-node": "^7.6.1",
     "prettier": "1.17.0",
-    "typescript": "3.4.5",
     "webpack": "4.29.6",
     "webpack-module-hot-accept": "1.0.5"
   }

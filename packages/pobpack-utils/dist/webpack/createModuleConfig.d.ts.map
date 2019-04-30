@@ -1,1 +1,1 @@
-{"version":3,"file":"createModuleConfig.d.ts","sourceRoot":"","sources":["../../src/webpack/createModuleConfig.ts"],"names":[],"mappings":"AAIA,OAAO,EAAE,OAAO,EAAE,MAAM,eAAe,CAAC;;;;;AAKxC,wBA2CG"}
+{"version":3,"file":"createModuleConfig.d.ts","sourceRoot":"","sources":["../../src/webpack/createModuleConfig.ts"],"names":[],"mappings":"AAIA,OAAO,EAAE,OAAO,EAAE,MAAM,eAAe,CAAC;AAKxC,MAAM,CAAC,OAAO,UAAU,kBAAkB,CAAC,OAAO,EAAE,OAAO;;;EA6C1D"}

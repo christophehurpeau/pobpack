@@ -12,7 +12,7 @@
   "homepage": "https://github.com/christophehurpeau/pobpack",
   "scripts": {
     "build": "pobpack-browser build && gzip -fk9 public/*.js && lzma -fke9 --threads 0 public/*.js && brotli -Z public/*.js",
-    "lint": "tsc && eslint --ext .ts,.tsx --quiet src/",
+    "lint": "eslint --ext .ts,.tsx --quiet src/",
     "start": "pobpack-browser"
   },
   "prettier": {
@@ -23,11 +23,13 @@
   "dependencies": {
     "pobpack-browser": "^7.7.1",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-hot-loader": "^4.8.4"
   },
   "devDependencies": {
     "@babel/core": "7.4.3",
     "@babel/preset-react": "7.0.0",
+    "@hot-loader/react-dom": "^16.8.6",
     "@pob/eslint-config-babel": "31.0.0",
     "@pob/eslint-config-typescript": "31.1.0",
     "@pob/eslint-config-typescript-react": "31.0.0",
@@ -36,7 +38,6 @@
     "@types/react-dom": "^16.8.3",
     "eslint": "5.16.0",
     "prettier": "1.17.0",
-    "typescript": "3.4.5",
     "webpack": "4.29.6"
   }
 }

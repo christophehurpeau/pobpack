@@ -69,6 +69,10 @@ export default function createBrowserWebpackConfig(target: BrowserTargetType) {
       ),
       {
         ...options,
+        aliases: {
+          ...options.aliases,
+          'react-dom': require.resolve('@hot-loader/react-dom'),
+        },
         babel: {
           presets: [require.resolve('../babel')],
           ...options.babel,
@@ -91,6 +95,7 @@ export default function createBrowserWebpackConfig(target: BrowserTargetType) {
         entries[entry.key] = [
           // options.env !== 'production' && require.resolve('../source-map-support'),
           target !== MODERN && require.resolve('regenerator-runtime/runtime'),
+          options.hmr && require.resolve('react-hot-loader/patch'),
           options.hmr && require.resolve('react-dev-utils/webpackHotDevClient'),
           path.join(path.resolve(options.paths.src as string), entry.path),
         ].filter(ExcludesFalsy);

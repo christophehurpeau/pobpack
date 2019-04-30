@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    /* in monorepo */
+    "composite": true,
+    "rootDir": "src",
+
     /* No emit in default config file. See build config file for config to build declaration files */
     "noEmit": true,
     /* No need to check .d.ts files */
@@ -9,7 +13,7 @@
     "module": "esnext",                       /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */
     "lib": ["dom", "esnext"],                 /* Polyfills are imported either by babel or with polyfill.io */
     // "jsx": "preserve",                     /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
-    "isolatedModules": true,                  /* Transpile each file as a separate module (similar to 'ts.transpileModule'). */
+    "isolatedModules": false,                  /* Transpile each file as a separate module (similar to 'ts.transpileModule'). */
 
     /* Enable all strict type-checking options. */
     "strict": true,
@@ -30,5 +34,9 @@
     // "paths": {},                           /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
     // "typeRoots": [],                       /* List of folders to include type definitions from. */
     // "types": [],                           /* Type declaration files to be included in compilation. */
-  }
+  },
+  "references": [
+    { "path": "../pobpack-utils" }
+  ]
+
 }

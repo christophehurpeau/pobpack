@@ -10,9 +10,9 @@
   "workspaces": ["packages/*"],
   "scripts": {
     "build": "lerna run --stream build",
-    "build:definitions": "lerna run --stream build:definitions",
+    "build:definitions": "tsc -b tsconfig.build.json",
     "lint": "lerna run --stream lint",
-    "postbuild": "yarn run build:definitions --since",
+    "postbuild": "yarn run build:definitions",
     "preversion": "yarn run lint --since && yarn run build --since -- -- --no-clean && repository-check-dirty",
     "release": "GH_TOKEN=$POB_GITHUB_TOKEN lerna version --conventional-commits --github-release -m 'chore: release' && lerna publish from-git",
     "typescript-check": "lerna run --parallel typescript-check",
@@ -46,6 +46,7 @@
     "lerna": "3.13.4",
     "lint-staged": "8.1.5",
     "repository-check-dirty": "1.0.2",
+    "typescript": "3.4.5",
     "yarn-update-lock": "0.5.0",
     "yarnhook": "0.4.0"
   }

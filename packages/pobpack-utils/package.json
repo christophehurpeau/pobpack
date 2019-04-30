@@ -22,7 +22,7 @@
     "build": "pob-build",
     "build:definitions": "tsc -p tsconfig.build.json",
     "clean": "rm -Rf docs dist test/node6 coverage",
-    "lint": "tsc && eslint --ext .ts --quiet src/",
+    "lint": "eslint --ext .ts --quiet src/",
     "watch": "pob-watch"
   },
   "prettier": {
@@ -60,7 +60,6 @@
     "babel-preset-latest-node": "3.1.1",
     "eslint": "5.16.0",
     "pob-babel": "23.15.0",
-    "prettier": "1.17.0",
-    "typescript": "3.4.5"
+    "prettier": "1.17.0"
   }
 }

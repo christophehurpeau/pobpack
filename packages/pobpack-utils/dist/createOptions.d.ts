@@ -1,4 +1,3 @@
 import { Options } from 'pobpack-types';
-declare const _default: (options: Partial<Options>) => Options;
-export default _default;
+export default function createOptions(options: Partial<Options>): Options;
 //# sourceMappingURL=createOptions.d.ts.map

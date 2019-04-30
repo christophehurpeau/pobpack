@@ -1,1 +1,1 @@
-{"version":3,"file":"createPluginsConfig.d.ts","sourceRoot":"","sources":["../../src/webpack/createPluginsConfig.ts"],"names":[],"mappings":"AAEA,OAAO,EAAE,OAAO,EAAE,MAAM,eAAe,CAAC;;AAExC,wBA+DoB"}
+{"version":3,"file":"createPluginsConfig.d.ts","sourceRoot":"","sources":["../../src/webpack/createPluginsConfig.ts"],"names":[],"mappings":"AAEA,OAAO,EAAE,OAAO,EAAE,MAAM,eAAe,CAAC;AAExC,MAAM,CAAC,OAAO,UAAU,mBAAmB,CAAC,OAAO,EAAE,OAAO,SAgE3D"}

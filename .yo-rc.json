@@ -10,6 +10,7 @@
       "testing": true,
       "codecov": true,
       "documentation": false,
+      "typescript": true,
       "packageNames": [
         "pobpack-browser",
         "pobpack-browser-example",
@@ -17,8 +18,7 @@
         "pobpack-node-example",
         "pobpack-types",
         "pobpack-utils"
-      ],
-      "typescript": false
+      ]
     },
     "renovate": {
       "enable": true

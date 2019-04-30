@@ -14,32 +14,34 @@ import resolveFrom from 'resolve-from';
 import findUp from 'find-up';
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
 
-const createOptions = (options => ({
-  aliases: options.aliases || {},
-  babel: options.babel || {},
-  defines: options.defines || {},
-  entries: options.entries || ['index'],
-  env: options.env || process.env.NODE_ENV,
-  hmr: options.hmr,
-  whitelistExternalExtensions: options.whitelistExternalExtensions || [],
-  includeModules: options.includeModules || [],
-  includePaths: options.includePaths || [],
-  jsLoaders: options.jsLoaders,
-  moduleRules: options.moduleRules,
-  paths: {
-    src: 'src',
-    build: 'build',
-    ...options.paths
-  },
-  optimization: options.optimization,
-  plugins: options.plugins || [],
-  prependPlugins: options.prependPlugins || [],
-  resolveLoaderModules: options.resolveLoaderModules,
-  typescript: options.typescript || false,
-  webpackPrefixPackageFields: options.webpackPrefixPackageFields || []
-}));
+function createOptions(options) {
+  return {
+    aliases: options.aliases || {},
+    babel: options.babel || {},
+    defines: options.defines || {},
+    entries: options.entries || ['index'],
+    env: options.env || process.env.NODE_ENV,
+    hmr: options.hmr,
+    whitelistExternalExtensions: options.whitelistExternalExtensions || [],
+    includeModules: options.includeModules || [],
+    includePaths: options.includePaths || [],
+    jsLoaders: options.jsLoaders,
+    moduleRules: options.moduleRules,
+    paths: {
+      src: 'src',
+      build: 'build',
+      ...options.paths
+    },
+    optimization: options.optimization,
+    plugins: options.plugins || [],
+    prependPlugins: options.prependPlugins || [],
+    resolveLoaderModules: options.resolveLoaderModules,
+    typescript: options.typescript || false,
+    webpackPrefixPackageFields: options.webpackPrefixPackageFields || []
+  };
+}
 
-const createAppWebpackConfig = (createWebpackConfig => {
+function createAppWebpackConfig(createWebpackConfig) {
   const wrapCreateWebpackConfig = options => createWebpackConfig(createOptions(options));
 
   return options => {
@@ -66,7 +68,7 @@ const createAppWebpackConfig = (createWebpackConfig => {
       return wrapCreateWebpackConfig(options);
     }
   };
-});
+}
 
 /* eslint-disable no-console */
 addConfig({
@@ -137,10 +139,10 @@ const buildThrowOnError = stats => {
   throw new Error(stats.toString({}));
 };
 
-const createPobpackCompiler = ((bundleName, webpackConfig, {
+function createPobpackCompiler(bundleName, webpackConfig, {
   progressBar = true,
   successMessage
-} = {}) => {
+} = {}) {
   const compiler = webpack(webpackConfig);
 
   if (progressBar && process.stdout.isTTY) {
@@ -187,78 +189,84 @@ const createPobpackCompiler = ((bundleName, webpackConfig, {
       callback(stats);
     })
   };
-});
+}
 
 // with node 10.12
 // import { createRequireFromPath } from 'module';
 // const requireFromPwd = createRequireFromPath(process.cwd());
-const createModuleConfig = (options => ({
-  strictExportPresence: true,
-  rules: [// Disable require.ensure as it's not a standard language feature.
-  {
-    parser: {
-      requireEnsure: false
-    }
-  }, // tsx? / jsx?
-  {
-    test: options.typescript ? /\.[tj]sx?$/ : /\.jsx?$/,
-    include: [resolve(options.paths.src), ...options.includeModules.map(includeModule => {
-      const packageJson = findUp.sync('package.json', {
-        cwd: dirname( // requireFromPwd.resolve(includeModule)
-        realpathSync(resolveFrom(process.cwd(), includeModule)))
-      });
-      if (!packageJson) return;
-      return packageJson.slice(0, -12);
-    }).filter(Boolean), ...options.includePaths],
-    loaders: [{
-      loader: require.resolve('babel-loader'),
-      options: {
-        babelrc: false,
-        cacheDirectory: true,
-        ...options.babel
+function createModuleConfig(options) {
+  return {
+    strictExportPresence: true,
+    rules: [// Disable require.ensure as it's not a standard language feature.
+    {
+      parser: {
+        requireEnsure: false
       }
-    }, ...(options.jsLoaders || [])]
-  }, // other rules
-  ...(options.moduleRules || [])]
-}));
+    }, // tsx? / jsx?
+    {
+      test: options.typescript ? /\.[tj]sx?$/ : /\.jsx?$/,
+      include: [resolve(options.paths.src), ...options.includeModules.map(includeModule => {
+        const packageJson = findUp.sync('package.json', {
+          cwd: dirname( // requireFromPwd.resolve(includeModule)
+          realpathSync(resolveFrom(process.cwd(), includeModule)))
+        });
+        if (!packageJson) return;
+        return packageJson.slice(0, -12);
+      }).filter(Boolean), ...options.includePaths],
+      loaders: [{
+        loader: require.resolve('babel-loader'),
+        options: {
+          babelrc: false,
+          cacheDirectory: true,
+          ...options.babel
+        }
+      }, ...(options.jsLoaders || [])]
+    }, // other rules
+    ...(options.moduleRules || [])]
+  };
+}
 
-const createPluginsConfig = (options => [...options.prependPlugins, // ignore files when watching
-new webpack.WatchIgnorePlugin([// typescript definitions
-/\.d\.ts$/]), // enforces the entire path of all required modules match the exact case
-// of the actual path on disk. Using this plugin helps alleviate cases
-options.env !== 'production' && new CaseSensitivePathsPlugin(), new webpack.DefinePlugin({
-  'process.env.NODE_ENV': JSON.stringify(options.env),
-  ...options.defines
-}), options.hmr && new webpack.HotModuleReplacementPlugin(),
-/* replace object-assign ponyfill to use native implementation */
-new webpack.NormalModuleReplacementPlugin(/.*\/node_modules\/isarray\/index.js$/, require.resolve('../replacements/Array.isArray.js')), // Object.assign
-new webpack.NormalModuleReplacementPlugin(/.*\/node_modules\/(object-assign|extend-shallow)\/index.js$/, require.resolve('../replacements/Object.assign.js')), // Object.setPrototypeOf
-new webpack.NormalModuleReplacementPlugin(/.*\/node_modules\/setprototypeof\/index.js$/, require.resolve('../replacements/Object.setPrototypeOf.js')), // Promise
-new webpack.NormalModuleReplacementPlugin(/.*\/node_modules\/any-promise\/index.js$/, require.resolve('../replacements/Promise.js')), // String.prototype.repeat
-new webpack.NormalModuleReplacementPlugin(/.*\/node_modules\/repeat-string\/index.js$/, require.resolve('../replacements/String.prototype.repeat.js')), // Symbol.observable
-// https://github.com/tc39/proposal-observable
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/observable
-// new webpack.NormalModuleReplacementPlugin(
-//   /.*\/node_modules\/symbol-observable\/es\/ponyfill.js$/,
-//   require.resolve('../replacements/Symbol.observable.js'),
-...options.plugins].filter(Boolean));
+function createPluginsConfig(options) {
+  return [...options.prependPlugins, // ignore files when watching
+  new webpack.WatchIgnorePlugin([// typescript definitions
+  /\.d\.ts$/]), // enforces the entire path of all required modules match the exact case
+  // of the actual path on disk. Using this plugin helps alleviate cases
+  options.env !== 'production' && new CaseSensitivePathsPlugin(), new webpack.DefinePlugin({
+    'process.env.NODE_ENV': JSON.stringify(options.env),
+    ...options.defines
+  }), options.hmr && new webpack.HotModuleReplacementPlugin(),
+  /* replace object-assign ponyfill to use native implementation */
+  new webpack.NormalModuleReplacementPlugin(/.*\/node_modules\/isarray\/index.js$/, require.resolve('../replacements/Array.isArray.js')), // Object.assign
+  new webpack.NormalModuleReplacementPlugin(/.*\/node_modules\/(object-assign|extend-shallow)\/index.js$/, require.resolve('../replacements/Object.assign.js')), // Object.setPrototypeOf
+  new webpack.NormalModuleReplacementPlugin(/.*\/node_modules\/setprototypeof\/index.js$/, require.resolve('../replacements/Object.setPrototypeOf.js')), // Promise
+  new webpack.NormalModuleReplacementPlugin(/.*\/node_modules\/any-promise\/index.js$/, require.resolve('../replacements/Promise.js')), // String.prototype.repeat
+  new webpack.NormalModuleReplacementPlugin(/.*\/node_modules\/repeat-string\/index.js$/, require.resolve('../replacements/String.prototype.repeat.js')), // Symbol.observable
+  // https://github.com/tc39/proposal-observable
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/observable
+  // new webpack.NormalModuleReplacementPlugin(
+  //   /.*\/node_modules\/symbol-observable\/es\/ponyfill.js$/,
+  //   require.resolve('../replacements/Symbol.observable.js'),
+  ...options.plugins].filter(Boolean);
+}
 
 /* eslint-disable prettier/prettier */
 const ExcludesFalse = Boolean;
-const createResolveConfig = ((modulePrefixPackageFields, options) => ({
-  // https://github.com/DefinitelyTyped/DefinitelyTyped/pull/25209
-  // cacheWithContext: false,
-  modules: ['node_modules', resolve('src')],
-  extensions: [options.typescript && '.ts', options.typescript && '.tsx', '.js', '.jsx'].filter(ExcludesFalse),
-  mainFields: [...[].concat(...modulePrefixPackageFields.map(prefix => [options.env !== 'production' && `module:${prefix}-dev`, `module:${prefix}`, // old `webpack:` syntax
-  options.env !== 'production' && `webpack:${prefix}-dev`, `webpack:${prefix}`])), options.env !== 'production' && 'module-dev', 'module', // old webpack: syntax
-  options.env !== 'production' && 'webpack:main-dev', 'webpack:main', ...(!modulePrefixPackageFields.includes('browser') ? [] : [// Browser builds
-  options.env !== 'production' && 'browser-dev', 'browser']), options.env !== 'production' && 'main-dev', 'main'].filter(ExcludesFalse),
-  aliasFields: [...[].concat(...modulePrefixPackageFields.map(prefix => [options.env !== 'production' && `module:aliases-${prefix}-dev`, `module:aliases-${prefix}`, // old webpack: syntax
-  options.env !== 'production' && `webpack:aliases-${prefix}-dev`, `webpack:aliases-${prefix}`])), options.env !== 'production' && 'module:aliases-dev', 'module:aliases', // old webpack: syntax
-  options.env !== 'production' && 'webpack:aliases-dev', 'webpack:aliases', 'webpack', modulePrefixPackageFields.includes('browser') && options.env !== 'production' && 'browser-dev', modulePrefixPackageFields.includes('browser') && 'browser'].filter(ExcludesFalse),
-  alias: options.aliases
-}));
+function createResolveConfig(modulePrefixPackageFields, options) {
+  return {
+    // https://github.com/DefinitelyTyped/DefinitelyTyped/pull/25209
+    // cacheWithContext: false,
+    modules: ['node_modules', resolve('src')],
+    extensions: [options.typescript && '.ts', options.typescript && '.tsx', '.js', '.jsx'].filter(ExcludesFalse),
+    mainFields: [...[].concat(...modulePrefixPackageFields.map(prefix => [options.env !== 'production' && `module:${prefix}-dev`, `module:${prefix}`, // old `webpack:` syntax
+    options.env !== 'production' && `webpack:${prefix}-dev`, `webpack:${prefix}`])), options.env !== 'production' && 'module-dev', 'module', // old webpack: syntax
+    options.env !== 'production' && 'webpack:main-dev', 'webpack:main', ...(!modulePrefixPackageFields.includes('browser') ? [] : [// Browser builds
+    options.env !== 'production' && 'browser-dev', 'browser']), options.env !== 'production' && 'main-dev', 'main'].filter(ExcludesFalse),
+    aliasFields: [...[].concat(...modulePrefixPackageFields.map(prefix => [options.env !== 'production' && `module:aliases-${prefix}-dev`, `module:aliases-${prefix}`, // old webpack: syntax
+    options.env !== 'production' && `webpack:aliases-${prefix}-dev`, `webpack:aliases-${prefix}`])), options.env !== 'production' && 'module:aliases-dev', 'module:aliases', // old webpack: syntax
+    options.env !== 'production' && 'webpack:aliases-dev', 'webpack:aliases', 'webpack', modulePrefixPackageFields.includes('browser') && options.env !== 'production' && 'browser-dev', modulePrefixPackageFields.includes('browser') && 'browser'].filter(ExcludesFalse),
+    alias: options.aliases
+  };
+}
 
 export { createAppWebpackConfig, createModuleConfig, createOptions, createPluginsConfig, createPobpackCompiler, createResolveConfig };
 //# sourceMappingURL=index-node10-dev.es.js.map
