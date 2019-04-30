@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.6.2](https://github.com/christophehurpeau/pobpack/compare/pobpack-node@7.6.1...pobpack-node@7.6.2) (2019-04-30)
+
+
+### Bug Fixes
+
+* clean process.exit on watcher close ([dc090f2](https://github.com/christophehurpeau/pobpack/commit/dc090f2))
+* restart after compile error ([cfea9c5](https://github.com/christophehurpeau/pobpack/commit/cfea9c5))
+
+
+
+
+
 ## [7.6.1](https://github.com/christophehurpeau/pobpack/compare/pobpack-node@7.6.0...pobpack-node@7.6.1) (2019-04-17)
 
 
