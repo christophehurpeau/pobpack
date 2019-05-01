@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.7.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-node@7.6.3...pobpack-node@7.7.0) (2019-05-01)
+
+
+### Features
+
+* allow to pass compilerOptions in createAppNodeCompiler ([0f9e5be](https://github.com/christophehurpeau/pobpack/commit/0f9e5be))
+
+
+
+
+
 ## [7.6.3](https://github.com/christophehurpeau/pobpack/compare/pobpack-node@7.6.2...pobpack-node@7.6.3) (2019-05-01)
 
 **Note:** Version bump only for package pobpack-node
