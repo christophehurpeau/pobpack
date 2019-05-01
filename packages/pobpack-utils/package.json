@@ -41,7 +41,7 @@
     "colorette": "^1.0.7",
     "find-up": "^3.0.0",
     "nightingale": "^9.2.2",
-    "nightingale-console": "^5.2.1",
+    "nightingale-console": "^6.0.0",
     "nightingale-logger": "^6.2.1",
     "pobpack-types": "^3.5.1",
     "progress": "^2.0.3",
