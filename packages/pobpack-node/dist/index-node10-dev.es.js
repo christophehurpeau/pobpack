@@ -93,7 +93,7 @@ function createNodeWebpackConfig(options) {
   };
 }
 
-const createAppNodeCompiler = options => createPobpackCompiler('node', createAppWebpackConfig(createNodeWebpackConfig)(options));
+const createAppNodeCompiler = (options, compilerOptions) => createPobpackCompiler('node', createAppWebpackConfig(createNodeWebpackConfig)(options), compilerOptions);
 const build = (options = {}) => {
   if (!process.env.NODE_ENV) process.env.NODE_ENV = 'production';
   const compiler = createAppNodeCompiler({ ...options,

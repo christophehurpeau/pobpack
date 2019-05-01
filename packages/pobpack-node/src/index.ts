@@ -5,16 +5,23 @@ import {
   createAppWebpackConfig,
   webpack,
 } from 'pobpack-utils';
-import { Options, PobpackCompiler, WatchCallback } from 'pobpack-types';
+import {
+  CreateCompilerOptions,
+  Options,
+  PobpackCompiler,
+  WatchCallback,
+} from 'pobpack-types';
 import { Watching } from 'webpack';
 import createNodeWebpackConfig from './createNodeWebpackConfig';
 
 export const createAppNodeCompiler = (
   options: Partial<Options>,
+  compilerOptions?: CreateCompilerOptions,
 ): PobpackCompiler =>
   createPobpackCompiler(
     'node',
     createAppWebpackConfig(createNodeWebpackConfig)(options),
+    compilerOptions,
   );
 
 export const build = (options = {}) => {

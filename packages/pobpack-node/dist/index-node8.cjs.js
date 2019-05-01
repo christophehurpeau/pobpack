@@ -100,7 +100,7 @@ function createNodeWebpackConfig(options) {
   };
 }
 
-const createAppNodeCompiler = options => pobpackUtils.createPobpackCompiler('node', pobpackUtils.createAppWebpackConfig(createNodeWebpackConfig)(options));
+const createAppNodeCompiler = (options, compilerOptions) => pobpackUtils.createPobpackCompiler('node', pobpackUtils.createAppWebpackConfig(createNodeWebpackConfig)(options), compilerOptions);
 const build = (options = {}) => {
   if (!process.env.NODE_ENV) process.env.NODE_ENV = 'production';
   const compiler = createAppNodeCompiler({ ...options,
