@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.7.3](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser@7.7.2...pobpack-browser@7.7.3) (2019-05-01)
+
+**Note:** Version bump only for package pobpack-browser
+
+
+
+
+
 ## [7.7.2](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser@7.7.1...pobpack-browser@7.7.2) (2019-04-30)
 
 **Note:** Version bump only for package pobpack-browser
