@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.8.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@7.7.0...pobpack-utils@7.8.0) (2019-05-01)
+
+
+### Features
+
+* update nightingale deps ([d8010d5](https://github.com/christophehurpeau/pobpack/commit/d8010d5))
+
+
+
+
+
 # [7.7.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@7.6.1...pobpack-utils@7.7.0) (2019-05-01)
 
 

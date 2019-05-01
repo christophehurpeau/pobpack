@@ -1,7 +1,7 @@
 {
   "name": "pobpack-browser-example",
   "private": true,
-  "version": "4.4.3",
+  "version": "4.4.4",
   "author": "Christophe Hurpeau <christophe@hurpeau.com>",
   "license": "ISC",
   "repository": {
@@ -21,7 +21,7 @@
     "arrowParens": "always"
   },
   "dependencies": {
-    "pobpack-browser": "^7.7.3",
+    "pobpack-browser": "^7.7.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-hot-loader": "^4.8.4"
