@@ -83,9 +83,6 @@ nightingale.addConfig({
   handler: new ConsoleHandler(nightingale.levels.INFO)
 });
 const logger = new Logger('pobpack-utils', 'pobpack');
-
-const isSuccessful = messages => !messages.errors.length && !messages.warnings.length;
-
 const pluginName = 'pobpack/FriendlyErrorsWebpackPlugin';
 class FriendlyErrorsWebpackPlugin {
   constructor(options) {
@@ -105,16 +102,6 @@ class FriendlyErrorsWebpackPlugin {
     compiler.hooks.done.tap(pluginName, stats => {
       const messages = formatWebpackMessages(stats.toJson({})); // const messages = stats.toJson({}, true);
 
-      if (isSuccessful(messages)) {
-        this.logger.success('Compiled successfully!');
-
-        if (this.successMessage) {
-          console.log(this.successMessage);
-        }
-
-        return;
-      }
-
       if (messages.errors.length !== 0) {
         this.logger.critical('Failed to compile.');
         console.log();
@@ -125,6 +112,8 @@ class FriendlyErrorsWebpackPlugin {
         return;
       }
 
+      if (process.send) process.send('ready');
+
       if (messages.warnings.length !== 0) {
         this.logger.critical('Compiled with warnings.');
         console.log();
@@ -132,6 +121,12 @@ class FriendlyErrorsWebpackPlugin {
           console.log(message);
           console.log();
         });
+      }
+
+      this.logger.success('Compiled successfully!');
+
+      if (this.successMessage) {
+        console.log(this.successMessage);
       }
     });
   }
