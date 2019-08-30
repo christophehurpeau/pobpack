@@ -1758,10 +1758,10 @@
     "@types/connect" "*"
     "@types/node" "*"
 
-"@types/case-sensitive-paths-webpack-plugin@2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@types/case-sensitive-paths-webpack-plugin/-/case-sensitive-paths-webpack-plugin-2.1.2.tgz#8fbac6359d31f75861f3c2f93a60768c8293c563"
-  integrity sha512-ah/PG3Iz3CLuHk8bczITiGvDcNLogZQfJDL+e7pcJXKdD/5Qp1FB6lxSjPsfXw8fHbhEfaJIq9om3hK6ir391g==
+"@types/case-sensitive-paths-webpack-plugin@2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@types/case-sensitive-paths-webpack-plugin/-/case-sensitive-paths-webpack-plugin-2.1.3.tgz#d58a352e66b5fa070f9cc740beff4bf7da63cf99"
+  integrity sha512-rzaWoftG22Xy/HOPKE9eNya8wfdBy8uyc5mLfnLEp3Ywd2az/ND9/ey/rcgJLTO8V1TlEyQ1qmy+aJE7avwlRw==
   dependencies:
     "@types/webpack" "*"
 
@@ -9949,10 +9949,10 @@ yarn-deduplicate@^1.1.1:
     commander "^2.10.0"
     semver "^5.3.0"
 
-yarn-update-lock@0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/yarn-update-lock/-/yarn-update-lock-0.5.0.tgz#0bde30b3a72ad47fd2d7fff86ab788df302439dc"
-  integrity sha512-O9Fq2XM6JVcSU6WVHQEOv+mRkJc04YiWUNYQva+rL4qQxLH3YTr2fcDUqSuUG+YUUqrfpQnS/xCY61iiKeFmOA==
+yarn-update-lock@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/yarn-update-lock/-/yarn-update-lock-1.0.0.tgz#2b06b953246770a93f85fe28eec8d78e94a0be84"
+  integrity sha512-eXbu2pbTKl61dmm4406qGP9VbPUdy9ZdQaAeS7iL4yQyap/4gKombMt9xddxqWGr4SZOaPb/qX1J825ihGQIiw==
   dependencies:
     yarn-deduplicate "^1.1.1"
 
