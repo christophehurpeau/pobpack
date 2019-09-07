@@ -52,11 +52,11 @@
   },
   "devDependencies": {
     "@babel/core": "7.4.4",
-    "@pob/eslint-config-babel": "31.0.0",
-    "@pob/eslint-config-babel-node": "31.0.0",
-    "@pob/eslint-config-typescript": "31.1.0",
+    "@pob/eslint-config-babel": "32.0.3",
+    "@pob/eslint-config-babel-node": "32.0.13",
+    "@pob/eslint-config-typescript": "32.0.13",
     "@types/webpack-node-externals": "1.6.3",
-    "eslint": "5.16.0",
+    "eslint": "6.3.0",
     "pob-babel": "23.15.0",
     "prettier": "1.17.0"
   }

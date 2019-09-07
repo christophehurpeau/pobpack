@@ -30,13 +30,13 @@
     "@babel/core": "7.4.3",
     "@babel/preset-react": "7.0.0",
     "@hot-loader/react-dom": "^16.8.6",
-    "@pob/eslint-config-babel": "31.0.0",
-    "@pob/eslint-config-typescript": "31.1.0",
-    "@pob/eslint-config-typescript-react": "31.0.0",
+    "@pob/eslint-config-babel": "32.0.3",
+    "@pob/eslint-config-typescript": "32.0.13",
+    "@pob/eslint-config-typescript-react": "32.0.10",
     "@types/object-assign": "^4.0.30",
     "@types/react": "^16.8.12",
     "@types/react-dom": "^16.8.3",
-    "eslint": "5.16.0",
+    "eslint": "6.3.0",
     "prettier": "1.17.0",
     "webpack": "4.29.6"
   }

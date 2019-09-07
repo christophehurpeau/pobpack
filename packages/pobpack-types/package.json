@@ -36,9 +36,9 @@
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
-    "@pob/eslint-config": "31.0.0",
-    "@pob/eslint-config-node": "31.0.0",
-    "eslint": "5.16.0",
+    "@pob/eslint-config": "32.0.2",
+    "@pob/eslint-config-node": "32.0.13",
+    "eslint": "6.3.0",
     "prettier": "1.17.0"
   }
 }
