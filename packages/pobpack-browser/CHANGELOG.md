@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.7.5](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser@7.7.4...pobpack-browser@7.7.5) (2019-09-14)
+
+
+### Bug Fixes
+
+* resolve peerdep @hot-loader/react-dom from process.cwd ([00e205e](https://github.com/christophehurpeau/pobpack/commit/00e205e))
+* **deps:** update dependency react-dev-utils to v9 ([#64](https://github.com/christophehurpeau/pobpack/issues/64)) ([4dee585](https://github.com/christophehurpeau/pobpack/commit/4dee585))
+
+
+
+
+
 ## [7.7.4](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser@7.7.3...pobpack-browser@7.7.4) (2019-05-01)
 
 **Note:** Version bump only for package pobpack-browser

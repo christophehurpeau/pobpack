@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.8.1](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@7.8.0...pobpack-utils@7.8.1) (2019-09-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency react-dev-utils to v9 ([#64](https://github.com/christophehurpeau/pobpack/issues/64)) ([4dee585](https://github.com/christophehurpeau/pobpack/commit/4dee585))
+
+
+
+
+
 # [7.8.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@7.7.0...pobpack-utils@7.8.0) (2019-05-01)
 
 
