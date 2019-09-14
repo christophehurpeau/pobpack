@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.7.6](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser@7.7.5...pobpack-browser@7.7.6) (2019-09-14)
+
+
+### Bug Fixes
+
+* resolve react-hot-loader from cwd too ([ea70c64](https://github.com/christophehurpeau/pobpack/commit/ea70c64))
+
+
+
+
+
 ## [7.7.5](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser@7.7.4...pobpack-browser@7.7.5) (2019-09-14)
 
 
