@@ -8,6 +8,7 @@ const createLaunchEditorMiddleware = _interopDefault(require('react-dev-utils/er
 const evalSourceMapMiddleware = _interopDefault(require('react-dev-utils/evalSourceMapMiddleware'));
 const noopServiceWorkerMiddleware = _interopDefault(require('react-dev-utils/noopServiceWorkerMiddleware'));
 const path = _interopDefault(require('path'));
+const resolveFrom = _interopDefault(require('resolve-from'));
 
 const MODERN = 'modern';
 const TARGETS = ["all", "modern"];
@@ -47,7 +48,7 @@ function createBrowserWebpackConfig(target) {
     },
     resolve: pobpackUtils.createResolveConfig([target === MODERN ? 'modern-browsers' : undefined, 'browser'].filter(ExcludesFalsy), { ...options,
       aliases: { ...options.aliases,
-        'react-dom': require.resolve('@hot-loader/react-dom')
+        'react-dom': resolveFrom(process.cwd(), '@hot-loader/react-dom')
       },
       babel: {
         presets: [require.resolve('../babel')],

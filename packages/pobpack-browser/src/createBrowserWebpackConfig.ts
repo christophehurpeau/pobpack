@@ -1,4 +1,5 @@
 import path from 'path';
+import resolveFrom from 'resolve-from';
 import {
   createModuleConfig,
   createPluginsConfig,
@@ -71,7 +72,7 @@ export default function createBrowserWebpackConfig(target: BrowserTargetType) {
         ...options,
         aliases: {
           ...options.aliases,
-          'react-dom': require.resolve('@hot-loader/react-dom'),
+          'react-dom': resolveFrom(process.cwd(), '@hot-loader/react-dom'),
         },
         babel: {
           presets: [require.resolve('../babel')],

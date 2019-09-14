@@ -75,6 +75,7 @@
     "react-dev-utils": "^9.0.0",
     "react-error-html": "^0.2.2",
     "regenerator-runtime": "^0.13.2",
+    "resolve-from": "^5.0.0",
     "source-map-support": "^0.5.11",
     "webpack-dev-server": "3.2.1"
   },

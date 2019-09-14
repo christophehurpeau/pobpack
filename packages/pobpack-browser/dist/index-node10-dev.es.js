@@ -4,6 +4,7 @@ import createLaunchEditorMiddleware from 'react-dev-utils/errorOverlayMiddleware
 import evalSourceMapMiddleware from 'react-dev-utils/evalSourceMapMiddleware';
 import noopServiceWorkerMiddleware from 'react-dev-utils/noopServiceWorkerMiddleware';
 import path from 'path';
+import resolveFrom from 'resolve-from';
 
 const MODERN = 'modern';
 const ALL = 'all';
@@ -44,7 +45,7 @@ function createBrowserWebpackConfig(target) {
     },
     resolve: createResolveConfig([target === MODERN ? 'modern-browsers' : undefined, 'browser'].filter(ExcludesFalsy), { ...options,
       aliases: { ...options.aliases,
-        'react-dom': require.resolve('@hot-loader/react-dom')
+        'react-dom': resolveFrom(process.cwd(), '@hot-loader/react-dom')
       },
       babel: {
         presets: [require.resolve('../babel')],
