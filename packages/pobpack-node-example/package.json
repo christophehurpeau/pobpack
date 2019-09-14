@@ -2,7 +2,7 @@
   "name": "pobpack-node-example",
   "private": true,
   "version": "4.3.6",
-  "author": "Christophe Hurpeau <christophe@hurpeau.com>",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "ISC",
   "repository": {
     "type": "git",
@@ -22,12 +22,11 @@
   },
   "devDependencies": {
     "@babel/core": "7.4.3",
-    "@pob/eslint-config-babel": "31.0.0",
-    "@pob/eslint-config-typescript": "31.1.0",
+    "@pob/eslint-config-typescript": "32.1.0",
     "@types/webpack-env": "^1.13.9",
-    "eslint": "5.16.0",
+    "eslint": "6.3.0",
     "pobpack-node": "^7.7.1",
-    "prettier": "1.17.0",
+    "prettier": "1.18.2",
     "webpack": "4.29.6",
     "webpack-module-hot-accept": "1.0.5"
   }

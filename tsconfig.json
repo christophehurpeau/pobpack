@@ -1,10 +1,10 @@
 {
   "files": [],
   "references": [
+    { "path": "packages/pobpack-utils/tsconfig.json" },
     { "path": "packages/pobpack-browser/tsconfig.json" },
-    { "path": "packages/pobpack-browser-example/tsconfig.json" },
     { "path": "packages/pobpack-node/tsconfig.json" },
-    { "path": "packages/pobpack-node-example/tsconfig.json" },
-    { "path": "packages/pobpack-utils/tsconfig.json" }
+    { "path": "packages/pobpack-browser-example/tsconfig.json" },
+    { "path": "packages/pobpack-node-example/tsconfig.json" }
   ]
 }

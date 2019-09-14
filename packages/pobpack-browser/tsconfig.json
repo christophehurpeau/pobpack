@@ -1,4 +1,8 @@
 {
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ],
   "compilerOptions": {
     /* in monorepo */
     "composite": true,

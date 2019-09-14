@@ -125,7 +125,9 @@ const watchAndRunCompiler = (compiler, options = {}) => {
 
       });
       daemon.start();
-      process.on('exit', daemonStop);
+      process.on('exit', () => {
+        daemonStop();
+      });
     } else if (daemon.hasExited()) {
       daemon.start();
     } else if (hadError) {
@@ -148,7 +150,9 @@ const watchAndRunCompiler = (compiler, options = {}) => {
     close: callback => {
       if (daemon) {
         daemon.stop();
-        process.off('exit', daemonStop);
+        process.off('exit', () => {
+          daemonStop();
+        });
       }
 
       watchingCompiler.close(callback);
