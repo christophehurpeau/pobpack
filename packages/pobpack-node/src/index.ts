@@ -80,7 +80,9 @@ export const watchAndRunCompiler = (
         // autoRestart: true,
       });
       daemon.start();
-      process.on('exit', daemonStop);
+      process.on('exit', () => {
+        daemonStop();
+      });
     } else if (daemon.hasExited()) {
       daemon.start();
     } else if (hadError) {
@@ -103,7 +105,9 @@ export const watchAndRunCompiler = (
     close: (callback) => {
       if (daemon) {
         daemon.stop();
-        process.off('exit', daemonStop);
+        process.off('exit', () => {
+          daemonStop();
+        });
       }
       watchingCompiler.close(callback);
     },

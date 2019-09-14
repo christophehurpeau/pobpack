@@ -2,30 +2,8 @@
   "pob": {
     "pob-config": {
       "lerna": true,
-      "envs": [
-        {
-          "target": "node",
-          "version": "10",
-          "formats": [
-            "cjs",
-            "es"
-          ]
-        },
-        {
-          "target": "node",
-          "version": "8",
-          "formats": [
-            "cjs"
-          ]
-        }
-      ],
       "documentation": false,
-      "testing": false,
-      "entries": [
-        "index",
-        "cli"
-      ],
-      "withReact": true
+      "testing": false
     }
   },
   "pobpack-browser": {

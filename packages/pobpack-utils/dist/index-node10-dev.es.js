@@ -226,11 +226,13 @@ function createPluginsConfig(options) {
   new webpack.WatchIgnorePlugin([// typescript definitions
   /\.d\.ts$/]), // enforces the entire path of all required modules match the exact case
   // of the actual path on disk. Using this plugin helps alleviate cases
+  // for developers working on case insensitive systems like OSX.
   options.env !== 'production' && new CaseSensitivePathsPlugin(), new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify(options.env),
     ...options.defines
   }), options.hmr && new webpack.HotModuleReplacementPlugin(),
   /* replace object-assign ponyfill to use native implementation */
+  // Array.isArray
   new webpack.NormalModuleReplacementPlugin(/.*\/node_modules\/isarray\/index.js$/, require.resolve('../replacements/Array.isArray.js')), // Object.assign
   new webpack.NormalModuleReplacementPlugin(/.*\/node_modules\/(object-assign|extend-shallow)\/index.js$/, require.resolve('../replacements/Object.assign.js')), // Object.setPrototypeOf
   new webpack.NormalModuleReplacementPlugin(/.*\/node_modules\/setprototypeof\/index.js$/, require.resolve('../replacements/Object.setPrototypeOf.js')), // Promise
@@ -241,6 +243,7 @@ function createPluginsConfig(options) {
   // new webpack.NormalModuleReplacementPlugin(
   //   /.*\/node_modules\/symbol-observable\/es\/ponyfill.js$/,
   //   require.resolve('../replacements/Symbol.observable.js'),
+  // ),
   ...options.plugins].filter(Boolean);
 }
 

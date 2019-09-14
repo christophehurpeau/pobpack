@@ -12,12 +12,12 @@
       "documentation": false,
       "typescript": true,
       "packageNames": [
-        "pobpack-browser",
-        "pobpack-browser-example",
-        "pobpack-node",
-        "pobpack-node-example",
         "pobpack-types",
-        "pobpack-utils"
+        "pobpack-utils",
+        "pobpack-browser",
+        "pobpack-node",
+        "pobpack-browser-example",
+        "pobpack-node-example"
       ]
     },
     "renovate": {

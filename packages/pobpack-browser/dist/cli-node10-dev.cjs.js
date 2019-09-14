@@ -119,7 +119,6 @@ const runDevServer = (compiler, options) => {
     https,
     ...webpackDevServerOptions,
 
-    // @ts-ignore
     before(app, server) {
       // https://github.com/facebook/create-react-app/blob/30ee52cf3b2cbb6ac70999c02b1196bcaba8d4ca/packages/react-scripts/config/webpackDevServer.config.js#L99
       // This lets us fetch source contents from webpack for the error overlay
