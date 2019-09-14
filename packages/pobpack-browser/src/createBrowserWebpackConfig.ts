@@ -22,6 +22,7 @@ const ExcludesFalsy = (Boolean as unknown) as <T>(
 ) => x is T;
 
 export default function createBrowserWebpackConfig(target: BrowserTargetType) {
+  const cwd = process.cwd();
   return (options: Options): FilledWebpackConfiguration => ({
     // production or development
     mode: options.env === 'production' ? 'production' : 'development',
@@ -72,7 +73,7 @@ export default function createBrowserWebpackConfig(target: BrowserTargetType) {
         ...options,
         aliases: {
           ...options.aliases,
-          'react-dom': resolveFrom(process.cwd(), '@hot-loader/react-dom'),
+          'react-dom': resolveFrom(cwd, '@hot-loader/react-dom'),
         },
         babel: {
           presets: [require.resolve('../babel')],
@@ -80,9 +81,10 @@ export default function createBrowserWebpackConfig(target: BrowserTargetType) {
           plugins: [
             ...(options.babel.plugins || []),
             options.hmr
-              ? require.resolve('react-hot-loader/dist/babel.development.js')
+              ? resolveFrom(cwd, 'react-hot-loader/dist/babel.development.js')
               : // removes import { hot } from 'react-hot-loader';
-                require.resolve(
+                resolveFrom(
+                  cwd,
                   'react-hot-loader/dist/babel.production.min.js',
                 ),
           ].filter(ExcludesFalsy),

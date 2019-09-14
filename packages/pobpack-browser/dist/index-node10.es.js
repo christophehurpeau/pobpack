@@ -11,6 +11,7 @@ const ALL = 'all';
 const TARGETS = ["all", "modern"];
 const ExcludesFalsy = Boolean;
 function createBrowserWebpackConfig(target) {
+  const cwd = process.cwd();
   return options => ({
     // production or development
     mode: options.env === 'production' ? 'production' : 'development',
@@ -45,13 +46,13 @@ function createBrowserWebpackConfig(target) {
     },
     resolve: createResolveConfig([target === MODERN ? 'modern-browsers' : undefined, 'browser'].filter(ExcludesFalsy), { ...options,
       aliases: { ...options.aliases,
-        'react-dom': resolveFrom(process.cwd(), '@hot-loader/react-dom')
+        'react-dom': resolveFrom(cwd, '@hot-loader/react-dom')
       },
       babel: {
         presets: [require.resolve('../babel')],
         ...options.babel,
-        plugins: [...(options.babel.plugins || []), options.hmr ? require.resolve('react-hot-loader/dist/babel.development.js') : // removes import { hot } from 'react-hot-loader';
-        require.resolve('react-hot-loader/dist/babel.production.min.js')].filter(ExcludesFalsy)
+        plugins: [...(options.babel.plugins || []), options.hmr ? resolveFrom(cwd, 'react-hot-loader/dist/babel.development.js') : // removes import { hot } from 'react-hot-loader';
+        resolveFrom(cwd, 'react-hot-loader/dist/babel.production.min.js')].filter(ExcludesFalsy)
       }
     }),
     entry: options.entries.reduce((entries, entry) => {

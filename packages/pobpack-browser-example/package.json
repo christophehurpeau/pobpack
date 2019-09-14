@@ -23,8 +23,8 @@
   "dependencies": {
     "pobpack-browser": "^7.7.5",
     "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-hot-loader": "^4.8.4"
+    "react-hot-loader": "^4.8.4",
+    "react-dom": "^16.9.0"
   },
   "devDependencies": {
     "@babel/core": "7.4.3",
