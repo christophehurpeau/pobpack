@@ -54,7 +54,7 @@
     "babel-loader": "^8.0.5",
     "case-sensitive-paths-webpack-plugin": "^2.2.0",
     "colorette": "^1.0.7",
-    "find-up": "^3.0.0",
+    "find-up": "^4.0.0",
     "nightingale": "^9.2.3",
     "nightingale-console": "^6.0.1",
     "nightingale-logger": "^6.2.2",
