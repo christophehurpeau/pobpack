@@ -1,5 +1,6 @@
 import { join } from 'path';
 import createDaemon, { Daemon } from 'springbokjs-daemon';
+import debounce from 'debounce';
 import {
   createPobpackCompiler,
   createAppWebpackConfig,
@@ -55,7 +56,13 @@ export const watchAndRunCompiler = (
 ): Watching => {
   let daemon: Daemon;
   let hadError = false;
-  const daemonStop = () => daemon.stop();
+  const debounceRestart = debounce(() => {
+    daemon.restart();
+  }, 1000);
+  const daemonStop = (): void => {
+    debounceRestart.clear();
+    daemon.stop();
+  };
   const watchingCompiler = compiler.watch((stats: webpack.Stats) => {
     const hasErrors = stats.hasErrors();
 
@@ -80,19 +87,17 @@ export const watchAndRunCompiler = (
         // autoRestart: true,
       });
       daemon.start();
-      process.on('exit', () => {
-        daemonStop();
-      });
+      process.on('exit', daemonStop);
     } else if (daemon.hasExited()) {
       daemon.start();
     } else if (hadError) {
-      daemon.restart();
+      debounceRestart();
     } else {
       // already started, send a signal to ask hot reload
       try {
         daemon.sendSIGUSR2();
       } catch (err) {
-        daemon.restart();
+        debounceRestart();
       }
     }
     hadError = false;
@@ -104,10 +109,8 @@ export const watchAndRunCompiler = (
     },
     close: (callback) => {
       if (daemon) {
-        daemon.stop();
-        process.off('exit', () => {
-          daemonStop();
-        });
+        daemonStop();
+        process.off('exit', daemonStop);
       }
       watchingCompiler.close(callback);
     },
