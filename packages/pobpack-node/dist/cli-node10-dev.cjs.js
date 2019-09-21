@@ -5,6 +5,7 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 const path = require('path');
 const path__default = _interopDefault(path);
 const createDaemon = _interopDefault(require('springbokjs-daemon'));
+const debounce = _interopDefault(require('debounce'));
 const pobpackUtils = require('pobpack-utils');
 const fs = _interopDefault(require('fs'));
 const nodeExternals = _interopDefault(require('webpack-node-externals'));
@@ -110,8 +111,14 @@ const build = (options = {}) => {
 const watchAndRunCompiler = (compiler, options = {}) => {
   let daemon;
   let hadError = false;
+  const debounceRestart = debounce(() => {
+    daemon.restart();
+  }, 1000);
 
-  const daemonStop = () => daemon.stop();
+  const daemonStop = () => {
+    debounceRestart.clear();
+    daemon.stop();
+  };
 
   const watchingCompiler = compiler.watch(stats => {
     const hasErrors = stats.hasErrors();
@@ -130,19 +137,17 @@ const watchAndRunCompiler = (compiler, options = {}) => {
 
       });
       daemon.start();
-      process.on('exit', () => {
-        daemonStop();
-      });
+      process.on('exit', daemonStop);
     } else if (daemon.hasExited()) {
       daemon.start();
     } else if (hadError) {
-      daemon.restart();
+      debounceRestart();
     } else {
       // already started, send a signal to ask hot reload
       try {
         daemon.sendSIGUSR2();
       } catch (err) {
-        daemon.restart();
+        debounceRestart();
       }
     }
 
@@ -154,10 +159,8 @@ const watchAndRunCompiler = (compiler, options = {}) => {
     },
     close: callback => {
       if (daemon) {
-        daemon.stop();
-        process.off('exit', () => {
-          daemonStop();
-        });
+        daemonStop();
+        process.off('exit', daemonStop);
       }
 
       watchingCompiler.close(callback);

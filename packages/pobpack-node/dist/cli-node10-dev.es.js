@@ -1,5 +1,6 @@
 import path, { join } from 'path';
 import createDaemon from 'springbokjs-daemon';
+import debounce from 'debounce';
 import { createResolveConfig, createModuleConfig, createPluginsConfig, webpack, createPobpackCompiler, createAppWebpackConfig } from 'pobpack-utils';
 import fs from 'fs';
 import nodeExternals from 'webpack-node-externals';
@@ -105,8 +106,14 @@ const build = (options = {}) => {
 const watchAndRunCompiler = (compiler, options = {}) => {
   let daemon;
   let hadError = false;
+  const debounceRestart = debounce(() => {
+    daemon.restart();
+  }, 1000);
 
-  const daemonStop = () => daemon.stop();
+  const daemonStop = () => {
+    debounceRestart.clear();
+    daemon.stop();
+  };
 
   const watchingCompiler = compiler.watch(stats => {
     const hasErrors = stats.hasErrors();
@@ -125,19 +132,17 @@ const watchAndRunCompiler = (compiler, options = {}) => {
 
       });
       daemon.start();
-      process.on('exit', () => {
-        daemonStop();
-      });
+      process.on('exit', daemonStop);
     } else if (daemon.hasExited()) {
       daemon.start();
     } else if (hadError) {
-      daemon.restart();
+      debounceRestart();
     } else {
       // already started, send a signal to ask hot reload
       try {
         daemon.sendSIGUSR2();
       } catch (err) {
-        daemon.restart();
+        debounceRestart();
       }
     }
 
@@ -149,10 +154,8 @@ const watchAndRunCompiler = (compiler, options = {}) => {
     },
     close: callback => {
       if (daemon) {
-        daemon.stop();
-        process.off('exit', () => {
-          daemonStop();
-        });
+        daemonStop();
+        process.off('exit', daemonStop);
       }
 
       watchingCompiler.close(callback);
