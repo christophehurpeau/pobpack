@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.8.2](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@7.8.1...pobpack-utils@7.8.2) (2019-09-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency find-up to v4 ([#67](https://github.com/christophehurpeau/pobpack/issues/67)) ([d08579a](https://github.com/christophehurpeau/pobpack/commit/d08579a))
+
+
+
+
+
 ## [7.8.1](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@7.8.0...pobpack-utils@7.8.1) (2019-09-14)
 
 
