@@ -24,7 +24,7 @@
   "devDependencies": {
     "@pob/repo-config": "1.0.2",
     "@pob/version": "4.33.3",
-    "husky": "3.0.5",
+    "husky": "3.0.8",
     "lerna": "3.16.4",
     "repository-check-dirty": "1.0.2",
     "typescript": "3.6.3"
