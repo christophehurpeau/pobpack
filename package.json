@@ -22,7 +22,7 @@
     "extends": ["@commitlint/config-conventional"]
   },
   "devDependencies": {
-    "@pob/repo-config": "1.0.2",
+    "@pob/repo-config": "1.0.3",
     "@pob/version": "4.33.3",
     "husky": "3.1.0",
     "lerna": "3.16.4",
