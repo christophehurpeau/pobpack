@@ -4,14 +4,16 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
+const path = _interopDefault(require('path'));
 const WebpackDevServer = _interopDefault(require('webpack-dev-server'));
 const pobpackUtils = require('pobpack-utils');
 const createLaunchEditorMiddleware = _interopDefault(require('react-dev-utils/errorOverlayMiddleware'));
 const evalSourceMapMiddleware = _interopDefault(require('react-dev-utils/evalSourceMapMiddleware'));
 const noopServiceWorkerMiddleware = _interopDefault(require('react-dev-utils/noopServiceWorkerMiddleware'));
-const path = _interopDefault(require('path'));
+const ignoredFiles = _interopDefault(require('react-dev-utils/ignoredFiles'));
 const resolveFrom = _interopDefault(require('resolve-from'));
 
+/* eslint-disable complexity */
 const MODERN = 'modern';
 const ALL = 'all';
 const TARGETS = ["all", "modern"];
@@ -34,12 +36,6 @@ function createBrowserWebpackConfig(target) {
     },
     // use cache
     cache: options.hmr,
-    devServer: {
-      // don't watch node_modules (improve cpu and memory usage)
-      watchOptions: {
-        ignored: /node_modules/
-      }
-    },
     // Some libraries import Node modules but don't use them in the browser.
     // Tell Webpack to provide empty mocks for them so importing them works.
     // fs and module are used by source-map-support
@@ -74,8 +70,8 @@ function createBrowserWebpackConfig(target) {
       path: path.resolve(options.paths.build),
       // Point sourcemap entries to original disk location
       // devtoolModuleFilenameTemplate: 'file://[absolute-resource-path]',
-      devtoolModuleFilenameTemplate: // eslint-disable-next-line no-nested-ternary
-      options.env === 'production' ? info => path.relative(options.paths.src, info.absoluteResourcePath).replace(/\\/g, '/') : options.env === 'development' ? info => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/') : undefined
+      devtoolModuleFilenameTemplate: options.env === 'production' ? info => path.relative(options.paths.src, info.absoluteResourcePath).replace(/\\/g, '/') : // eslint-disable-next-line unicorn/no-nested-ternary
+      options.env === 'development' ? info => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/') : undefined
     },
     module: pobpackUtils.createModuleConfig(options),
     plugins: pobpackUtils.createPluginsConfig(options)
@@ -115,7 +111,7 @@ const watch = (options, callback) => {
   compiler.watch(callback);
   return compiler;
 };
-const runDevServer = (compiler, options) => {
+const runDevServer = (compiler, options, srcPath = path.resolve('src')) => {
   const {
     host,
     port,
@@ -124,6 +120,17 @@ const runDevServer = (compiler, options) => {
   } = options;
   const browserDevServer = new WebpackDevServer(compiler.compiler, {
     hot: true,
+    // Use 'ws' instead of 'sockjs-node' on server since we're using native
+    // websockets in react-scripts `webpackHotDevClient`.
+    transportMode: 'ws',
+    // Prevent a WS client from getting injected as we're already including
+    // react-scripts `webpackHotDevClient`.
+    injectClient: false,
+    publicPath: '/',
+    // use react-scripts ignoredFiles for perf
+    watchOptions: {
+      ignored: ignoredFiles(srcPath)
+    },
     // stats: 'errors-only',
     quiet: true,
     // errors are displayed with friendly-errors plugin

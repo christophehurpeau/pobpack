@@ -1,11 +1,13 @@
+import path from 'path';
 import WebpackDevServer from 'webpack-dev-server';
 import { createResolveConfig, createModuleConfig, createPluginsConfig, createPobpackCompiler, createAppWebpackConfig } from 'pobpack-utils';
 import createLaunchEditorMiddleware from 'react-dev-utils/errorOverlayMiddleware';
 import evalSourceMapMiddleware from 'react-dev-utils/evalSourceMapMiddleware';
 import noopServiceWorkerMiddleware from 'react-dev-utils/noopServiceWorkerMiddleware';
-import path from 'path';
+import ignoredFiles from 'react-dev-utils/ignoredFiles';
 import resolveFrom from 'resolve-from';
 
+/* eslint-disable complexity */
 const MODERN = 'modern';
 const TARGETS = ["all", "modern"];
 const ExcludesFalsy = Boolean;
@@ -27,12 +29,6 @@ function createBrowserWebpackConfig(target) {
     },
     // use cache
     cache: options.hmr,
-    devServer: {
-      // don't watch node_modules (improve cpu and memory usage)
-      watchOptions: {
-        ignored: /node_modules/
-      }
-    },
     // Some libraries import Node modules but don't use them in the browser.
     // Tell Webpack to provide empty mocks for them so importing them works.
     // fs and module are used by source-map-support
@@ -67,8 +63,8 @@ function createBrowserWebpackConfig(target) {
       path: path.resolve(options.paths.build),
       // Point sourcemap entries to original disk location
       // devtoolModuleFilenameTemplate: 'file://[absolute-resource-path]',
-      devtoolModuleFilenameTemplate: // eslint-disable-next-line no-nested-ternary
-      options.env === 'production' ? info => path.relative(options.paths.src, info.absoluteResourcePath).replace(/\\/g, '/') : options.env === 'development' ? info => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/') : undefined
+      devtoolModuleFilenameTemplate: options.env === 'production' ? info => path.relative(options.paths.src, info.absoluteResourcePath).replace(/\\/g, '/') : // eslint-disable-next-line unicorn/no-nested-ternary
+      options.env === 'development' ? info => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/') : undefined
     },
     module: createModuleConfig(options),
     plugins: createPluginsConfig(options)
@@ -95,7 +91,7 @@ const build = (options = {}) => {
   compilers[0].clean();
   return compilers.map(compiler => compiler.run());
 };
-const runDevServer = (compiler, options) => {
+const runDevServer = (compiler, options, srcPath = path.resolve('src')) => {
   const {
     host,
     port,
@@ -104,6 +100,17 @@ const runDevServer = (compiler, options) => {
   } = options;
   const browserDevServer = new WebpackDevServer(compiler.compiler, {
     hot: true,
+    // Use 'ws' instead of 'sockjs-node' on server since we're using native
+    // websockets in react-scripts `webpackHotDevClient`.
+    transportMode: 'ws',
+    // Prevent a WS client from getting injected as we're already including
+    // react-scripts `webpackHotDevClient`.
+    injectClient: false,
+    publicPath: '/',
+    // use react-scripts ignoredFiles for perf
+    watchOptions: {
+      ignored: ignoredFiles(srcPath)
+    },
     // stats: 'errors-only',
     quiet: true,
     // errors are displayed with friendly-errors plugin

@@ -155,7 +155,7 @@ function createPobpackCompiler(bundleName, webpackConfig, {
         //   bar = null;
       } else {
         bar.update(percentage, {
-          msg: msg.length > 20 ? `${msg.substr(0, 20)}...` : msg
+          msg: msg.length > 20 ? `${msg.slice(0, 20)}...` : msg
         });
       }
     });
@@ -199,7 +199,7 @@ function createModuleConfig(options) {
       }
     }, // tsx? / jsx?
     {
-      test: options.typescript ? /\.[tj]sx?$/ : /\.jsx?$/,
+      test: options.typescript ? /\.[jt]sx?$/ : /\.jsx?$/,
       include: [resolve(options.paths.src), ...options.includeModules.map(includeModule => {
         const packageJson = findUp.sync('package.json', {
           cwd: dirname( // requireFromPwd.resolve(includeModule)
