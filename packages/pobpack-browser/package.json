@@ -12,7 +12,7 @@
   },
   "homepage": "https://github.com/christophehurpeau/pobpack",
   "engines": {
-    "node": ">=8.6.0"
+    "node": ">=10.13.0"
   },
   "main": "./index.js",
   "types": "./dist/index.d.ts",
@@ -36,7 +36,7 @@
     "build": "pob-build",
     "build:definitions": "tsc -p tsconfig.build.json",
     "clean": "rm -Rf docs dist test/node6 coverage",
-    "lint": "eslint --ext .ts,.tsx --quiet src/",
+    "lint": "eslint --ext .js,.ts,.tsx --quiet src",
     "watch": "pob-watch"
   },
   "prettier": {
@@ -50,11 +50,6 @@
         "target": "node",
         "version": "10",
         "formats": ["cjs", "es"]
-      },
-      {
-        "target": "node",
-        "version": "8",
-        "formats": ["cjs"]
       }
     ],
     "entries": ["index", "cli"],
@@ -80,16 +75,16 @@
     "webpack-dev-server": "3.2.1"
   },
   "devDependencies": {
-    "@babel/core": "7.6.0",
-    "@babel/preset-react": "7.0.0",
-    "@pob/eslint-config-babel-node": "32.1.0",
-    "@pob/eslint-config-typescript": "32.1.0",
-    "@pob/eslint-config-typescript-react": "32.1.0",
+    "@babel/core": "7.7.5",
+    "@babel/preset-react": "7.7.4",
+    "@pob/eslint-config-babel-node": "33.0.0",
+    "@pob/eslint-config-typescript": "33.0.8",
+    "@pob/eslint-config-typescript-react": "33.0.8",
     "@types/webpack-dev-server": "3.1.5",
-    "babel-preset-latest-node": "3.2.1",
-    "eslint": "6.3.0",
-    "pob-babel": "23.22.1",
-    "prettier": "1.18.2",
+    "babel-preset-latest-node": "4.0.1",
+    "eslint": "6.7.2",
+    "pob-babel": "24.0.1",
+    "prettier": "1.19.1",
     "react": "16.9.0",
     "react-dom": "16.9.0",
     "webpack": "4.29.6"

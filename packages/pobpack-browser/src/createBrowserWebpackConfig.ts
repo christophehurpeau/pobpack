@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import path from 'path';
 import resolveFrom from 'resolve-from';
 import {
@@ -113,7 +114,6 @@ export default function createBrowserWebpackConfig(target: BrowserTargetType) {
 
       // devtoolModuleFilenameTemplate: 'file://[absolute-resource-path]',
       devtoolModuleFilenameTemplate:
-        // eslint-disable-next-line no-nested-ternary
         options.env === 'production'
           ? (info) =>
               path
@@ -122,7 +122,8 @@ export default function createBrowserWebpackConfig(target: BrowserTargetType) {
                   info.absoluteResourcePath,
                 )
                 .replace(/\\/g, '/')
-          : options.env === 'development'
+          : // eslint-disable-next-line unicorn/no-nested-ternary
+          options.env === 'development'
           ? (info) =>
               path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')
           : undefined,

@@ -15,7 +15,7 @@
     "postbuild": "yarn run build:definitions",
     "preversion": "yarn run lint --since && yarn run build --since -- -- --no-clean && repository-check-dirty",
     "release": "cross-env GH_TOKEN=$POB_GITHUB_TOKEN lerna version --conventional-commits --conventional-graduate --create-release=github -m 'chore: release' && lerna publish from-git",
-    "typescript-check": "lerna run --parallel typescript-check",
+    "tsc": "tsc -b",
     "watch": "lerna run --parallel --ignore \"*-example\" watch"
   },
   "commitlint": {
@@ -23,10 +23,10 @@
   },
   "devDependencies": {
     "@pob/repo-config": "1.0.3",
-    "@pob/version": "4.33.3",
+    "@pob/version": "5.0.0",
     "husky": "3.1.0",
-    "lerna": "3.16.4",
-    "repository-check-dirty": "1.0.2",
-    "typescript": "3.6.3"
+    "lerna": "3.19.0",
+    "repository-check-dirty": "1.0.3",
+    "typescript": "3.7.3"
   }
 }

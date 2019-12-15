@@ -47,7 +47,7 @@ export default function createPobpackCompiler(
           //   bar = null;
         } else {
           bar.update(percentage, {
-            msg: msg.length > 20 ? `${msg.substr(0, 20)}...` : msg,
+            msg: msg.length > 20 ? `${msg.slice(0, 20)}...` : msg,
           });
         }
       },
