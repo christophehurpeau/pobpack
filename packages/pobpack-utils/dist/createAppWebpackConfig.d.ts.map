@@ -1,0 +1,1 @@
+{"version":3,"file":"createAppWebpackConfig.d.ts","sourceRoot":"","sources":["../src/createAppWebpackConfig.ts"],"names":[],"mappings":"AAEA,OAAO,EAAE,OAAO,EAAE,0BAA0B,EAAE,MAAM,eAAe,CAAC;AAGpE,oBAAY,mBAAmB,GAAG,CAChC,OAAO,EAAE,OAAO,KACb,0BAA0B,CAAC;AAEhC,MAAM,CAAC,OAAO,UAAU,sBAAsB,CAC5C,mBAAmB,EAAE,mBAAmB,GACvC,CAAC,OAAO,EAAE,OAAO,CAAC,OAAO,CAAC,KAAK,0BAA0B,CAiC3D"}

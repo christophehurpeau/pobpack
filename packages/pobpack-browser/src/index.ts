@@ -101,7 +101,7 @@ export const runDevServer = (
     https,
     ...webpackDevServerOptions,
 
-    before(app: any, server: any) {
+    before(app: any, server: WebpackDevServer) {
       // https://github.com/facebook/create-react-app/blob/30ee52cf3b2cbb6ac70999c02b1196bcaba8d4ca/packages/react-scripts/config/webpackDevServer.config.js#L99
       // This lets us fetch source contents from webpack for the error overlay
       app.use(evalSourceMapMiddleware(server));
