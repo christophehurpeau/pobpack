@@ -58,7 +58,7 @@
     "pobpack-types": "^3.5.2",
     "pobpack-utils": "^7.8.2",
     "source-map-support": "^0.5.16",
-    "springbokjs-daemon": "^3.6.0",
+    "springbokjs-daemon": "^4.0.0",
     "webpack-node-externals": "^1.7.2"
   },
   "devDependencies": {
