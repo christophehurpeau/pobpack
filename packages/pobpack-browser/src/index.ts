@@ -1,3 +1,4 @@
+import path from 'path';
 import WebpackDevServer, {
   Configuration as WebpackDevServerConfiguration,
 } from 'webpack-dev-server';
@@ -11,6 +12,7 @@ import { createPobpackCompiler, createAppWebpackConfig } from 'pobpack-utils';
 import createLaunchEditorMiddleware from 'react-dev-utils/errorOverlayMiddleware';
 import evalSourceMapMiddleware from 'react-dev-utils/evalSourceMapMiddleware';
 import noopServiceWorkerMiddleware from 'react-dev-utils/noopServiceWorkerMiddleware';
+import ignoredFiles from 'react-dev-utils/ignoredFiles';
 import createBrowserWebpackConfig, {
   TARGETS,
   ALL,
@@ -70,10 +72,24 @@ export interface RunOptions
 export const runDevServer = (
   compiler: PobpackCompiler,
   options: RunOptions,
+  srcPath = path.resolve('src'),
 ) => {
   const { host, port, https, ...webpackDevServerOptions } = options;
   const browserDevServer = new WebpackDevServer(compiler.compiler, {
     hot: true,
+    // Use 'ws' instead of 'sockjs-node' on server since we're using native
+    // websockets in react-scripts `webpackHotDevClient`.
+    transportMode: 'ws',
+    // Prevent a WS client from getting injected as we're already including
+    // react-scripts `webpackHotDevClient`.
+    injectClient: false,
+    publicPath: '/',
+
+    // use react-scripts ignoredFiles for perf
+    watchOptions: {
+      ignored: ignoredFiles(srcPath),
+    },
+
     // stats: 'errors-only',
     quiet: true, // errors are displayed with friendly-errors plugin
     overlay: false, // We use create-react-app-overlay
