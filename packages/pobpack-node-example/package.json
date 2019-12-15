@@ -21,9 +21,9 @@
     "arrowParens": "always"
   },
   "devDependencies": {
-    "@babel/core": "7.4.3",
+    "@babel/core": "7.7.5",
     "@pob/eslint-config-typescript": "33.0.8",
-    "@types/webpack-env": "1.13.9",
+    "@types/webpack-env": "1.14.1",
     "eslint": "6.7.2",
     "pobpack-node": "^7.7.3",
     "prettier": "1.19.1",

@@ -24,17 +24,17 @@
     "pobpack-browser": "^7.7.7",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-hot-loader": "^4.8.4"
+    "react-hot-loader": "^4.12.18"
   },
   "devDependencies": {
-    "@babel/core": "7.4.3",
-    "@babel/preset-react": "7.0.0",
+    "@babel/core": "7.7.5",
+    "@babel/preset-react": "7.7.4",
     "@hot-loader/react-dom": "16.9.0",
     "@pob/eslint-config-typescript": "33.0.8",
     "@pob/eslint-config-typescript-react": "33.0.8",
     "@types/object-assign": "4.0.30",
-    "@types/react": "16.9.2",
-    "@types/react-dom": "16.9.0",
+    "@types/react": "16.9.16",
+    "@types/react-dom": "16.9.4",
     "eslint": "6.7.2",
     "prettier": "1.19.1",
     "webpack": "4.29.6"
