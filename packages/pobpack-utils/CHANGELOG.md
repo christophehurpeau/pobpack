@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.1](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@8.0.0...pobpack-utils@8.0.1) (2019-12-15)
+
+**Note:** Version bump only for package pobpack-utils
+
+
+
+
+
 # [8.0.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@7.8.2...pobpack-utils@8.0.0) (2019-12-15)
 
 

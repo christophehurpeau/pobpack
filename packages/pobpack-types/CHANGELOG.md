@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.1](https://github.com/christophehurpeau/pobpack/compare/pobpack-types@4.0.0...pobpack-types@4.0.1) (2019-12-15)
+
+**Note:** Version bump only for package pobpack-types
+
+
+
+
+
 # [4.0.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-types@3.5.2...pobpack-types@4.0.0) (2019-12-15)
 
 
