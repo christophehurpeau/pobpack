@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-types@3.5.2...pobpack-types@4.0.0) (2019-12-15)
+
+
+### chore
+
+* update config and drop node 8 ([2c98e79](https://github.com/christophehurpeau/pobpack/commit/2c98e79))
+
+
+### Features
+
+* update minor dependencies ([5415706](https://github.com/christophehurpeau/pobpack/commit/5415706))
+
+
+### BREAKING CHANGES
+
+* drop node 8
+
+
+
+
+
 ## [3.5.2](https://github.com/christophehurpeau/pobpack/compare/pobpack-types@3.5.1...pobpack-types@3.5.2) (2019-09-14)
 
 **Note:** Version bump only for package pobpack-types

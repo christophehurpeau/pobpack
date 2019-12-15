@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.0.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@7.8.2...pobpack-utils@8.0.0) (2019-12-15)
+
+
+### chore
+
+* update config and drop node 8 ([2c98e79](https://github.com/christophehurpeau/pobpack/commit/2c98e79))
+
+
+### Features
+
+* update minor dependencies ([5415706](https://github.com/christophehurpeau/pobpack/commit/5415706))
+* update react-scripts ([bf29e29](https://github.com/christophehurpeau/pobpack/commit/bf29e29))
+
+
+### BREAKING CHANGES
+
+* drop node 8
+
+
+
+
+
 ## [7.8.2](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@7.8.1...pobpack-utils@7.8.2) (2019-09-21)
 
 
