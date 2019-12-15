@@ -17,21 +17,21 @@ export interface Options {
   aliases: { [key: string]: any };
   babel: TransformOptions;
   defines: { [key: string]: any };
-  entries: Array<ConfigEntry>;
+  entries: ConfigEntry[];
   env?: string;
   hmr?: boolean;
-  whitelistExternalExtensions: Array<string>;
-  includeModules: Array<string>;
-  includePaths: Array<string>;
-  jsLoaders?: Array<any>;
-  moduleRules?: Array<any>;
+  whitelistExternalExtensions: string[];
+  includeModules: string[];
+  includePaths: string[];
+  jsLoaders?: any[];
+  moduleRules?: any[];
   paths: ConfigPaths;
-  plugins: Array<any>;
+  plugins: any[];
   optimization?: WebpackOptions.Optimization;
-  prependPlugins: Array<any>;
-  resolveLoaderModules?: Array<string>;
+  prependPlugins: any[];
+  resolveLoaderModules?: string[];
   typescript: boolean;
-  webpackPrefixPackageFields: Array<string>;
+  webpackPrefixPackageFields: string[];
 }
 
 
