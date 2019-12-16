@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.1.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@8.0.1...pobpack-utils@8.1.0) (2019-12-16)
+
+
+### Features
+
+* improve prependPlugins definition ([1991ac7](https://github.com/christophehurpeau/pobpack/commit/1991ac7))
+
+
+
+
+
 ## [8.0.1](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@8.0.0...pobpack-utils@8.0.1) (2019-12-15)
 
 **Note:** Version bump only for package pobpack-utils
