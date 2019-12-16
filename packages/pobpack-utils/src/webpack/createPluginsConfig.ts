@@ -1,8 +1,8 @@
-import webpack from 'webpack';
+import webpack, { Plugin } from 'webpack';
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
 import { Options } from 'pobpack-types';
 
-export default function createPluginsConfig(options: Options) {
+export default function createPluginsConfig(options: Options): Plugin[] {
   return [
     ...options.prependPlugins,
 
