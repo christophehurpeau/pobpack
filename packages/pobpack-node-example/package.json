@@ -1,7 +1,7 @@
 {
   "name": "pobpack-node-example",
   "private": true,
-  "version": "5.0.2",
+  "version": "5.0.3",
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "ISC",
   "repository": {
