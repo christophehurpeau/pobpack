@@ -20,6 +20,7 @@ export default function createResolveConfig(
     extensions: ([
       options.typescript && '.ts',
       options.typescript && '.tsx',
+      '.mjs',
       '.js',
       '.jsx',
     ] as (string | false)[]).filter(ExcludesFalse),

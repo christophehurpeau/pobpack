@@ -17,7 +17,7 @@ export default function createModuleConfig(options: Options) {
 
       // tsx? / jsx?
       {
-        test: options.typescript ? /\.[jt]sx?$/ : /\.jsx?$/,
+        test: options.typescript ? /\.(mjs|[jt]sx?)$/ : /\.(mjs|jsx?)$/,
         include: [
           resolve(options.paths.src as string),
           ...options.includeModules

@@ -199,7 +199,7 @@ function createModuleConfig(options) {
       }
     }, // tsx? / jsx?
     {
-      test: options.typescript ? /\.[jt]sx?$/ : /\.jsx?$/,
+      test: options.typescript ? /\.(mjs|[jt]sx?)$/ : /\.(mjs|jsx?)$/,
       include: [resolve(options.paths.src), ...options.includeModules.map(includeModule => {
         const packageJson = findUp.sync('package.json', {
           cwd: dirname( // requireFromPwd.resolve(includeModule)
@@ -254,7 +254,7 @@ function createResolveConfig(modulePrefixPackageFields, options) {
     // https://github.com/DefinitelyTyped/DefinitelyTyped/pull/25209
     // cacheWithContext: false,
     modules: ['node_modules', resolve('src')],
-    extensions: [options.typescript && '.ts', options.typescript && '.tsx', '.js', '.jsx'].filter(ExcludesFalse),
+    extensions: [options.typescript && '.ts', options.typescript && '.tsx', '.mjs', '.js', '.jsx'].filter(ExcludesFalse),
     mainFields: [...[].concat(...modulePrefixPackageFields.map(prefix => [options.env !== 'production' && `module:${prefix}-dev`, `module:${prefix}`, // old `webpack:` syntax
     options.env !== 'production' && `webpack:${prefix}-dev`, `webpack:${prefix}`])), options.env !== 'production' && 'module-dev', 'module', // old webpack: syntax
     options.env !== 'production' && 'webpack:main-dev', 'webpack:main', ...(!modulePrefixPackageFields.includes('browser') ? [] : [// Browser builds
