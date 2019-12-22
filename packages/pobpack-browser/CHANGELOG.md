@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.4](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser@8.0.3...pobpack-browser@8.0.4) (2019-12-22)
+
+
+### Bug Fixes
+
+* update minor dependencies ([f18bcf6](https://github.com/christophehurpeau/pobpack/commit/f18bcf6))
+
+
+
+
+
 ## [8.0.3](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser@8.0.2...pobpack-browser@8.0.3) (2019-12-18)
 
 **Note:** Version bump only for package pobpack-browser

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.2.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@8.1.0...pobpack-utils@8.2.0) (2019-12-22)
+
+
+### Bug Fixes
+
+* update minor dependencies ([f18bcf6](https://github.com/christophehurpeau/pobpack/commit/f18bcf6))
+
+
+### Features
+
+* add mjs support ([025ad70](https://github.com/christophehurpeau/pobpack/commit/025ad70))
+
+
+
+
+
 # [8.1.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-utils@8.0.1...pobpack-utils@8.1.0) (2019-12-16)
 
 
