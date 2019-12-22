@@ -27,6 +27,6 @@
     "husky": "3.1.0",
     "lerna": "3.19.0",
     "repository-check-dirty": "1.0.3",
-    "typescript": "3.7.3"
+    "typescript": "3.7.4"
   }
 }

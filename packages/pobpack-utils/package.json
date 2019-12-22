@@ -59,16 +59,16 @@
     "resolve-from": "^5.0.0"
   },
   "devDependencies": {
-    "@babel/core": "7.7.5",
+    "@babel/core": "7.7.7",
     "@pob/eslint-config-babel-node": "33.0.0",
     "@pob/eslint-config-typescript": "33.0.8",
     "@types/case-sensitive-paths-webpack-plugin": "2.1.4",
     "@types/find-up": "4.0.0",
     "@types/progress": "2.0.3",
-    "@types/react-dev-utils": "9.0.1",
+    "@types/react-dev-utils": "9.0.2",
     "babel-preset-latest-node": "4.0.1",
     "eslint": "6.7.2",
-    "pob-babel": "24.0.1",
+    "pob-babel": "24.2.0",
     "prettier": "1.19.1"
   }
 }

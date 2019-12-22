@@ -27,13 +27,13 @@
     "react-hot-loader": "^4.12.18"
   },
   "devDependencies": {
-    "@babel/core": "7.7.5",
+    "@babel/core": "7.7.7",
     "@babel/preset-react": "7.7.4",
     "@hot-loader/react-dom": "16.9.0",
     "@pob/eslint-config-typescript": "33.0.8",
     "@pob/eslint-config-typescript-react": "33.0.8",
     "@types/object-assign": "4.0.30",
-    "@types/react": "16.9.16",
+    "@types/react": "16.9.17",
     "@types/react-dom": "16.9.4",
     "eslint": "6.7.2",
     "prettier": "1.19.1",

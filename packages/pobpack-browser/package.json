@@ -63,7 +63,7 @@
     "webpack": "^4.28.1"
   },
   "dependencies": {
-    "@babel/preset-env": "^7.7.6",
+    "@babel/preset-env": "^7.7.7",
     "@types/react-hot-loader": "^4.1.1",
     "pobpack-types": "^4.1.0",
     "pobpack-utils": "^8.1.0",
@@ -72,19 +72,19 @@
     "regenerator-runtime": "^0.13.3",
     "resolve-from": "^5.0.0",
     "source-map-support": "^0.5.16",
-    "webpack-dev-server": "3.9.0"
+    "webpack-dev-server": "3.10.1"
   },
   "devDependencies": {
-    "@babel/core": "7.7.5",
+    "@babel/core": "7.7.7",
     "@babel/preset-react": "7.7.4",
     "@pob/eslint-config-babel-node": "33.0.0",
     "@pob/eslint-config-typescript": "33.0.8",
     "@pob/eslint-config-typescript-react": "33.0.8",
-    "@types/react-dev-utils": "9.0.1",
+    "@types/react-dev-utils": "9.0.2",
     "@types/webpack-dev-server": "3.9.0",
     "babel-preset-latest-node": "4.0.1",
     "eslint": "6.7.2",
-    "pob-babel": "24.0.1",
+    "pob-babel": "24.2.0",
     "prettier": "1.19.1",
     "react": "16.9.0",
     "react-dom": "16.9.0",
