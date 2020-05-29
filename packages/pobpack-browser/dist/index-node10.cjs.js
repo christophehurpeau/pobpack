@@ -7,7 +7,7 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 const path = _interopDefault(require('path'));
 const WebpackDevServer = _interopDefault(require('webpack-dev-server'));
 const pobpackUtils = require('pobpack-utils');
-const createLaunchEditorMiddleware = _interopDefault(require('react-dev-utils/errorOverlayMiddleware'));
+const errorOverlayMiddleware = _interopDefault(require('react-dev-utils/errorOverlayMiddleware'));
 const evalSourceMapMiddleware = _interopDefault(require('react-dev-utils/evalSourceMapMiddleware'));
 const noopServiceWorkerMiddleware = _interopDefault(require('react-dev-utils/noopServiceWorkerMiddleware'));
 const ignoredFiles = _interopDefault(require('react-dev-utils/ignoredFiles'));
@@ -149,7 +149,7 @@ const runDevServer = (compiler, options, srcPath = path.resolve('src')) => {
       // This lets us fetch source contents from webpack for the error overlay
       app.use(evalSourceMapMiddleware(server)); // This lets us open files from the runtime error overlay.
 
-      app.use(createLaunchEditorMiddleware()); // This service worker file is effectively a 'no-op' that will reset any
+      app.use(errorOverlayMiddleware()); // This service worker file is effectively a 'no-op' that will reset any
       // previous service worker registered for the same host:port combination.
       // We do this in development to avoid hitting the production cache if
       // it used the same host and port.
