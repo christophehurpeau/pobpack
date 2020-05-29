@@ -9,7 +9,7 @@ import {
   CreateCompilerOptions,
 } from 'pobpack-types';
 import { createPobpackCompiler, createAppWebpackConfig } from 'pobpack-utils';
-import createLaunchEditorMiddleware from 'react-dev-utils/errorOverlayMiddleware';
+import errorOverlayMiddleware from 'react-dev-utils/errorOverlayMiddleware';
 import evalSourceMapMiddleware from 'react-dev-utils/evalSourceMapMiddleware';
 import noopServiceWorkerMiddleware from 'react-dev-utils/noopServiceWorkerMiddleware';
 import ignoredFiles from 'react-dev-utils/ignoredFiles';
@@ -106,7 +106,7 @@ export const runDevServer = (
       // This lets us fetch source contents from webpack for the error overlay
       app.use(evalSourceMapMiddleware(server));
       // This lets us open files from the runtime error overlay.
-      app.use(createLaunchEditorMiddleware());
+      app.use(errorOverlayMiddleware());
 
       // This service worker file is effectively a 'no-op' that will reset any
       // previous service worker registered for the same host:port combination.
