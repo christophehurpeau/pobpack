@@ -2,13 +2,13 @@
 
 'use strict';
 
-module.exports = function(context, opts) {
+module.exports = function (context, opts) {
   return {
     presets: [
       [
         require.resolve('@babel/preset-env'),
         // pass options but force modules to false
-        Object.assign({}, opts, { modules: false }),
+        { ...opts, modules: false },
       ],
     ],
 
