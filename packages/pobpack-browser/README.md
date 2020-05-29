@@ -11,13 +11,13 @@
   <a href="https://david-dm.org/christophehurpeau/pobpack?path=packages/pobpack-browser"><img src="https://david-dm.org/christophehurpeau/pobpack.svg?path=packages/pobpack-browser?style=flat-square"></a>
 </p>
 
-* [Features](#features)
-* [Install](#install)
-* [Usage](#usage)
-* [Hot Reload](#hot-reload)
-* [Configuration Options](#configuration-options)
-* [Configuration Examples](#configuration-examples)
-* [Alternatives](#alternatives)
+- [Features](#features)
+- [Install](#install)
+- [Usage](#usage)
+- [Hot Reload](#hot-reload)
+- [Configuration Options](#configuration-options)
+- [Configuration Examples](#configuration-examples)
+- [Alternatives](#alternatives)
 
 ## Features
 
@@ -83,23 +83,21 @@ module.exports = function (config, options) {
 };
 ```
 
-
 ## Hot Reload
 
 You should read [webpack documentation about HMR](https://webpack.github.io/docs/hot-module-replacement.html)
 
 [react-hot-loader 4](https://www.npmjs.com/package/react-hot-loader) is included
-      
+
 > App.js
 
 ```js
-import React from 'react'
-import hot from 'pobpack-browser/hot'
+import React from 'react';
+import hot from 'pobpack-browser/hot';
 
 const App = () => <div>Hello world!</div>;
 
-export default hot(App)
-
+export default hot(App);
 ```
 
 You can activate accept hot-reload by default with [webpack-module-hot-accept](https://www.npmjs.com/package/webpack-module-hot-accept) (not recommended)
@@ -108,11 +106,11 @@ You can activate accept hot-reload by default with [webpack-module-hot-accept](h
 
 ```js
 module.exports = function (config, options) {
-  return config(Object.assign({}, options, {
-    jsLoaders: [
-      'webpack-module-hot-accept',
-    ]
-  }));
+  return config(
+    Object.assign({}, options, {
+      jsLoaders: ['webpack-module-hot-accept'],
+    })
+  );
 };
 ```
 
@@ -120,8 +118,7 @@ module.exports = function (config, options) {
 
 ```js
 module.exports = function (config, options) {
-  return config(Object.assign({}, options, {
-  }));
+  return config(Object.assign({}, options, {}));
 };
 ```
 
@@ -129,9 +126,11 @@ module.exports = function (config, options) {
 
 ```js
 module.exports = function (config, options) {
-  return config(Object.assign({}, options, {
-    plugins: [new WebPackPlugin()],
-  }));
+  return config(
+    Object.assign({}, options, {
+      plugins: [new WebPackPlugin()],
+    })
+  );
 };
 ```
 
@@ -151,11 +150,13 @@ module.exports = function (config, options) {
 const babelPlugin = require('babel-plugin-example');
 
 module.exports = function (config, options) {
-  return config(Object.assign({}, options, {
-    babel: {
-      plugins: [babelPlugin]
-    }
-  }));
+  return config(
+    Object.assign({}, options, {
+      babel: {
+        plugins: [babelPlugin],
+      },
+    })
+  );
 };
 ```
 
@@ -165,14 +166,13 @@ module.exports = function (config, options) {
 const babelPlugin = require('babel-plugin-example');
 
 module.exports = function (config, options) {
-  return config(Object.assign({}, options, {
-    babel: {
-      presets: [
-        'pobpack/babel',
-        'stage-1',
-      ]
-    }
-  }));
+  return config(
+    Object.assign({}, options, {
+      babel: {
+        presets: ['pobpack/babel', 'stage-1'],
+      },
+    })
+  );
 };
 ```
 
@@ -184,11 +184,13 @@ pobpack handle `json` and `js`/`jsx` files
 const babelPlugin = require('babel-plugin-example');
 
 module.exports = function (config, options) {
-  return config(Object.assign({}, options, {
-    loaders: [
-      // add your loaders
-    ]
-  }));
+  return config(
+    Object.assign({}, options, {
+      loaders: [
+        // add your loaders
+      ],
+    })
+  );
 };
 ```
 
@@ -198,11 +200,13 @@ module.exports = function (config, options) {
 const babelPlugin = require('babel-plugin-example');
 
 module.exports = function (config, options) {
-  return config(Object.assign({}, options, {
-    jsLoaders: [
-      // add your loaders
-    ]
-  }));
+  return config(
+    Object.assign({}, options, {
+      jsLoaders: [
+        // add your loaders
+      ],
+    })
+  );
 };
 ```
 

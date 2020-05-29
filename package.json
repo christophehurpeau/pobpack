@@ -7,26 +7,32 @@
   "license": "ISC",
   "repository": "https://github.com:christophehurpeau/pobpack.git",
   "homepage": "https://github.com/christophehurpeau/pobpack",
-  "workspaces": ["packages/*"],
+  "engines": {
+    "node": ">=10.13.0"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "build": "lerna run --stream build",
     "build:definitions": "tsc -b tsconfig.build.json",
     "lint": "lerna run --stream lint",
-    "postbuild": "yarn run build:definitions",
+    "postbuild": "yarn run build:definitions ",
     "preversion": "yarn run lint --since && yarn run build --since -- -- --no-clean && repository-check-dirty",
     "release": "cross-env GH_TOKEN=$POB_GITHUB_TOKEN lerna version --conventional-commits --conventional-graduate --create-release=github -m 'chore: release' && lerna publish from-git",
     "tsc": "tsc -b",
     "watch": "lerna run --parallel --ignore \"*-example\" watch"
   },
   "commitlint": {
-    "extends": ["@commitlint/config-conventional"]
+    "extends": [
+      "@pob/commitlint-config"
+    ]
   },
   "devDependencies": {
-    "@pob/repo-config": "1.0.3",
-    "@pob/version": "5.0.0",
-    "husky": "3.1.0",
-    "lerna": "3.19.0",
-    "repository-check-dirty": "1.0.3",
-    "typescript": "3.7.4"
+    "@pob/commitlint-config": "1.1.2",
+    "@pob/root": "2.2.0",
+    "husky": "4.2.5",
+    "lerna": "3.22.0",
+    "typescript": "3.9.3"
   }
 }

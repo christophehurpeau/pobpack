@@ -7,10 +7,8 @@
     },
     "app": {
       "type": "pobpack"
-    }
-  },
-  "pobpack-browser-example": {
-    "type": {
+    },
+    "project": {
       "type": "app"
     }
   }

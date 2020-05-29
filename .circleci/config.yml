@@ -3,7 +3,7 @@ version: 2
 jobs:
   test-node10:
     docker:
-      - image: circleci/node:10.17
+      - image: circleci/node:10.20
     steps:
       - checkout
       - restore_cache:
@@ -21,9 +21,6 @@ jobs:
           name: lint code
           command: yarn run lint
       - run:
-          name: tests
-          command: yarn run test
-      - run:
           name: Generate Coverage doc
           command: yarn run generate:test-coverage
       - run:
@@ -35,7 +32,7 @@ jobs:
 
   test-node12:
     docker:
-      - image: circleci/node:12.13
+      - image: circleci/node:12.16
     steps:
       - checkout
       - restore_cache:

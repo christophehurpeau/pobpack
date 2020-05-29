@@ -4,10 +4,8 @@
       "lerna": true,
       "documentation": false,
       "testing": false
-    }
-  },
-  "pobpack-node": {
-    "type": {
+    },
+    "project": {
       "type": "lib"
     }
   }

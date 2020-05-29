@@ -11,13 +11,13 @@
   <a href="https://david-dm.org/christophehurpeau/pobpack?path=packages/pobpack-node"><img src="https://david-dm.org/christophehurpeau/pobpack.svg?path=packages/pobpack-node?style=flat-square"></a>
 </p>
 
-* [Features](#features)
-* [Install](#install)
-* [Usage](#usage)
-* [Hot Reload](#hot-reload)
-* [Configuration Options](#configuration-options)
-* [Configuration Examples](#configuration-examples)
-* [Alternatives](#alternatives)
+- [Features](#features)
+- [Install](#install)
+- [Usage](#usage)
+- [Hot Reload](#hot-reload)
+- [Configuration Options](#configuration-options)
+- [Configuration Examples](#configuration-examples)
+- [Alternatives](#alternatives)
 
 ## Screenshot
 
@@ -71,7 +71,6 @@ module.exports = function (config, options) {
 };
 ```
 
-
 ## Hot Reload
 
 You should read [webpack documentation about HMR](https://webpack.github.io/docs/hot-module-replacement.html)
@@ -86,11 +85,11 @@ npm install --save-dev webpack-module-hot-accept
 
 ```js
 module.exports = function (config, options) {
-  return config(Object.assign({}, options, {
-    jsLoaders: [
-      'webpack-module-hot-accept',
-    ]
-  }));
+  return config(
+    Object.assign({}, options, {
+      jsLoaders: ['webpack-module-hot-accept'],
+    })
+  );
 };
 ```
 
@@ -98,8 +97,7 @@ module.exports = function (config, options) {
 
 ```js
 module.exports = function (config, options) {
-  return config(Object.assign({}, options, {
-  }));
+  return config(Object.assign({}, options, {}));
 };
 ```
 
@@ -107,9 +105,11 @@ module.exports = function (config, options) {
 
 ```js
 module.exports = function (config, options) {
-  return config(Object.assign({}, options, {
-    plugins: [new WebPackPlugin()],
-  }));
+  return config(
+    Object.assign({}, options, {
+      plugins: [new WebPackPlugin()],
+    })
+  );
 };
 ```
 
@@ -129,11 +129,13 @@ module.exports = function (config, options) {
 const babelPlugin = require('babel-plugin-example');
 
 module.exports = function (config, options) {
-  return config(Object.assign({}, options, {
-    babel: {
-      plugins: [babelPlugin]
-    }
-  }));
+  return config(
+    Object.assign({}, options, {
+      babel: {
+        plugins: [babelPlugin],
+      },
+    })
+  );
 };
 ```
 
@@ -143,14 +145,13 @@ module.exports = function (config, options) {
 const babelPlugin = require('babel-plugin-example');
 
 module.exports = function (config, options) {
-  return config(Object.assign({}, options, {
-    babel: {
-      presets: [
-        'pobpack/babel',
-        'stage-1',
-      ]
-    }
-  }));
+  return config(
+    Object.assign({}, options, {
+      babel: {
+        presets: ['pobpack/babel', 'stage-1'],
+      },
+    })
+  );
 };
 ```
 
@@ -162,11 +163,13 @@ pobpack handle `json` and `js`/`jsx` files
 const babelPlugin = require('babel-plugin-example');
 
 module.exports = function (config, options) {
-  return config(Object.assign({}, options, {
-    loaders: [
-      // add your loaders
-    ]
-  }));
+  return config(
+    Object.assign({}, options, {
+      loaders: [
+        // add your loaders
+      ],
+    })
+  );
 };
 ```
 
@@ -176,11 +179,13 @@ module.exports = function (config, options) {
 const babelPlugin = require('babel-plugin-example');
 
 module.exports = function (config, options) {
-  return config(Object.assign({}, options, {
-    jsLoaders: [
-      // add your loaders
-    ]
-  }));
+  return config(
+    Object.assign({}, options, {
+      jsLoaders: [
+        // add your loaders
+      ],
+    })
+  );
 };
 ```
 
