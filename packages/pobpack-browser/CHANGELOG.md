@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.1.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser@8.0.4...pobpack-browser@8.1.0) (2020-05-29)
+
+
+### Features
+
+* update webpack-dev-server ([8d8838a](https://github.com/christophehurpeau/pobpack/commit/8d8838a))
+
+
+
+
+
 ## [8.0.4](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser@8.0.3...pobpack-browser@8.0.4) (2019-12-22)
 
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.1.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-node@8.0.3...pobpack-node@8.1.0) (2020-05-29)
+
+
+### Features
+
+* add use strict ([771a002](https://github.com/christophehurpeau/pobpack/commit/771a002))
+* update nightingale and springbokjs-daemon ([b2dcb50](https://github.com/christophehurpeau/pobpack/commit/b2dcb50))
+
+
+
+
+
 ## [8.0.3](https://github.com/christophehurpeau/pobpack/compare/pobpack-node@8.0.2...pobpack-node@8.0.3) (2019-12-22)
 
 
