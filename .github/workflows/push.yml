@@ -34,18 +34,6 @@ jobs:
         run: yarn run lint
         if: startsWith(matrix.node-version, '12.')
 
-      - name: Generate Coverage doc
-        run: yarn run generate:test-coverage
-        if: startsWith(matrix.node-version, '12.')
-        env:
-          CI: true
-
-      - name: Send results to codecov
-        uses: codecov/codecov-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-        if: startsWith(matrix.node-version, '12.')
-
       - name: Check nothing was forgotten before commit
         if: startsWith(matrix.node-version, '12.')
         run: yarn run repository-check-dirty

@@ -8,7 +8,7 @@
     "monorepo": {
       "ci": true,
       "testing": true,
-      "codecov": true,
+      "codecov": false,
       "documentation": false,
       "typescript": true,
       "packageNames": [
