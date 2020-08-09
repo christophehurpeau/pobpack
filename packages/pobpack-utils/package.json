@@ -60,7 +60,7 @@
     "nightingale-logger": "^10.0.1",
     "pobpack-types": "^4.1.2",
     "progress": "^2.0.3",
-    "react-dev-utils": "^10.0.0",
+    "react-dev-utils": "~10.2.1",
     "resolve-from": "^5.0.0"
   },
   "devDependencies": {
@@ -72,7 +72,7 @@
     "@types/case-sensitive-paths-webpack-plugin": "2.1.4",
     "@types/find-up": "4.0.0",
     "@types/progress": "2.0.3",
-    "@types/react-dev-utils": "9.0.2",
+    "@types/react-dev-utils": "9.0.4",
     "@typescript-eslint/eslint-plugin": "2.34.0",
     "babel-preset-latest-node": "4.1.0",
     "eslint": "6.8.0",

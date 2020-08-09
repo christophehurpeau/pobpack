@@ -101,19 +101,21 @@ export const runDevServer = (
     https,
     ...webpackDevServerOptions,
 
-    before(app: any, server: WebpackDevServer) {
+    before(app, server): void {
       // https://github.com/facebook/create-react-app/blob/30ee52cf3b2cbb6ac70999c02b1196bcaba8d4ca/packages/react-scripts/config/webpackDevServer.config.js#L99
       // This lets us fetch source contents from webpack for the error overlay
       app.use(evalSourceMapMiddleware(server));
       // This lets us open files from the runtime error overlay.
       app.use(errorOverlayMiddleware());
+    },
 
+    after(app): void {
       // This service worker file is effectively a 'no-op' that will reset any
       // previous service worker registered for the same host:port combination.
       // We do this in development to avoid hitting the production cache if
       // it used the same host and port.
       // https://github.com/facebook/create-react-app/issues/2272#issuecomment-302832432
-      app.use(noopServiceWorkerMiddleware());
+      app.use(noopServiceWorkerMiddleware('/'));
     },
   });
   browserDevServer.listen(port, host as string); // note: host can be undefined, but types does not support it
