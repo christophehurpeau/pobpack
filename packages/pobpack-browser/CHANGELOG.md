@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.0.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser@8.1.1...pobpack-browser@9.0.0) (2020-08-09)
+
+
+### Features
+
+* use react fast refresh ([6062291](https://github.com/christophehurpeau/pobpack/commit/6062291))
+
+
+### BREAKING CHANGES
+
+* you should remove react-hot-loader and @hot-loader/react-dom, and update react to its latest version
+
+
+
+
+
 ## [8.1.1](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser@8.1.0...pobpack-browser@8.1.1) (2020-08-09)
 
 
