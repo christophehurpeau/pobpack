@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.1](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser@8.1.0...pobpack-browser@8.1.1) (2020-08-09)
+
+
+### Bug Fixes
+
+* update react-dev-tools ([476b871](https://github.com/christophehurpeau/pobpack/commit/476b871))
+
+
+
+
+
 # [8.1.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser@8.0.4...pobpack-browser@8.1.0) (2020-05-29)
 
 

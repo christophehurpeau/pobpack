@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.6](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser-example@5.0.5...pobpack-browser-example@5.0.6) (2020-08-09)
+
+**Note:** Version bump only for package pobpack-browser-example
+
+
+
+
+
 ## [5.0.5](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser-example@5.0.4...pobpack-browser-example@5.0.5) (2020-05-29)
 
 **Note:** Version bump only for package pobpack-browser-example
