@@ -60,7 +60,7 @@
     "nightingale-logger": "^10.0.1",
     "pobpack-types": "^4.1.2",
     "progress": "^2.0.3",
-    "react-dev-utils": "~10.2.1",
+    "react-dev-utils": "~11.0.0-next.77",
     "resolve-from": "^5.0.0"
   },
   "devDependencies": {

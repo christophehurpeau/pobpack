@@ -62,7 +62,7 @@
     "babel-preset-latest-node": "^4.0.1",
     "debounce": "^1.2.0",
     "pobpack-types": "^4.1.2",
-    "pobpack-utils": "^8.3.1",
+    "pobpack-utils": "^8.3.0",
     "source-map-support": "^0.5.16",
     "springbokjs-daemon": "^5.1.0",
     "webpack-node-externals": "^1.7.2"

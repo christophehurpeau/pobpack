@@ -1,11 +1,10 @@
-import { hot } from 'react-hot-loader/root';
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import ObjectAssign from 'object-assign';
 
 const HelloWorld = () => <div>Hello World !</div>;
 
-export default hot(HelloWorld);
+export default HelloWorld;
 
 // export default () => {
 //   console.log(new Error('fail'));

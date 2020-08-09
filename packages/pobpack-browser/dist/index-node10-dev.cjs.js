@@ -11,15 +11,17 @@ const errorOverlayMiddleware = _interopDefault(require('react-dev-utils/errorOve
 const evalSourceMapMiddleware = _interopDefault(require('react-dev-utils/evalSourceMapMiddleware'));
 const noopServiceWorkerMiddleware = _interopDefault(require('react-dev-utils/noopServiceWorkerMiddleware'));
 const ignoredFiles = _interopDefault(require('react-dev-utils/ignoredFiles'));
-const resolveFrom = _interopDefault(require('resolve-from'));
+const ReactRefreshWebpackPlugin = _interopDefault(require('@pmmmwh/react-refresh-webpack-plugin'));
 
 /* eslint-disable complexity */
 const MODERN = 'modern';
 const ALL = 'all';
 const TARGETS = ["all", "modern"];
 const ExcludesFalsy = Boolean;
+
+const webpackDevClientEntry = require.resolve('react-dev-utils/webpackHotDevClient');
+
 function createBrowserWebpackConfig(target) {
-  const cwd = process.cwd();
   return options => ({
     // production or development
     mode: options.env === 'production' ? 'production' : 'development',
@@ -47,14 +49,10 @@ function createBrowserWebpackConfig(target) {
       modules: options.resolveLoaderModules || ['node_modules']
     },
     resolve: pobpackUtils.createResolveConfig([target === MODERN ? 'modern-browsers' : undefined, 'browser'].filter(ExcludesFalsy), { ...options,
-      aliases: { ...options.aliases,
-        'react-dom': resolveFrom(cwd, '@hot-loader/react-dom')
-      },
       babel: {
         presets: [require.resolve('../babel')],
         ...options.babel,
-        plugins: [...(options.babel.plugins || []), options.hmr ? resolveFrom(cwd, 'react-hot-loader/dist/babel.development.js') : // removes import { hot } from 'react-hot-loader';
-        resolveFrom(cwd, 'react-hot-loader/dist/babel.production.min.js')].filter(ExcludesFalsy)
+        plugins: [...(options.babel.plugins || []), options.hmr && require.resolve('react-refresh/babel')].filter(ExcludesFalsy)
       }
     }),
     entry: options.entries.reduce((entries, entry) => {
@@ -63,7 +61,7 @@ function createBrowserWebpackConfig(target) {
         path: entry
       };
       entries[entry.key] = [// options.env !== 'production' && require.resolve('../source-map-support'),
-      target !== MODERN && require.resolve('regenerator-runtime/runtime'), options.hmr && require.resolve('react-hot-loader/patch'), options.hmr && require.resolve('react-dev-utils/webpackHotDevClient'), path.join(path.resolve(options.paths.src), entry.path)].filter(ExcludesFalsy);
+      target !== MODERN && require.resolve('regenerator-runtime/runtime'), options.hmr && webpackDevClientEntry, path.join(path.resolve(options.paths.src), entry.path)].filter(ExcludesFalsy);
       return entries;
     }, {}),
     output: {
@@ -74,7 +72,14 @@ function createBrowserWebpackConfig(target) {
       options.env === 'development' ? info => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/') : undefined
     },
     module: pobpackUtils.createModuleConfig(options),
-    plugins: pobpackUtils.createPluginsConfig(options)
+    plugins: [...pobpackUtils.createPluginsConfig(options), options.hmr && new ReactRefreshWebpackPlugin({
+      overlay: {
+        // Create React App overlay config
+        entry: webpackDevClientEntry,
+        module: require.resolve('react-dev-utils/refreshOverlayInterop'),
+        sockIntegration: false
+      }
+    })].filter(ExcludesFalsy)
   });
 }
 

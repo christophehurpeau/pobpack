@@ -1,6 +1,6 @@
 /* eslint-disable complexity */
 import path from 'path';
-import resolveFrom from 'resolve-from';
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import {
   createModuleConfig,
   createPluginsConfig,
@@ -22,8 +22,11 @@ const ExcludesFalsy = (Boolean as unknown) as <T>(
   x: T | boolean | null | undefined,
 ) => x is T;
 
+const webpackDevClientEntry = require.resolve(
+  'react-dev-utils/webpackHotDevClient',
+);
+
 export default function createBrowserWebpackConfig(target: BrowserTargetType) {
-  const cwd = process.cwd();
   return (options: Options): FilledWebpackConfiguration => ({
     // production or development
     mode: options.env === 'production' ? 'production' : 'development',
@@ -65,22 +68,12 @@ export default function createBrowserWebpackConfig(target: BrowserTargetType) {
       ),
       {
         ...options,
-        aliases: {
-          ...options.aliases,
-          'react-dom': resolveFrom(cwd, '@hot-loader/react-dom'),
-        },
         babel: {
           presets: [require.resolve('../babel')],
           ...options.babel,
           plugins: [
             ...(options.babel.plugins || []),
-            options.hmr
-              ? resolveFrom(cwd, 'react-hot-loader/dist/babel.development.js')
-              : // removes import { hot } from 'react-hot-loader';
-                resolveFrom(
-                  cwd,
-                  'react-hot-loader/dist/babel.production.min.js',
-                ),
+            options.hmr && require.resolve('react-refresh/babel'),
           ].filter(ExcludesFalsy),
         },
       },
@@ -92,8 +85,7 @@ export default function createBrowserWebpackConfig(target: BrowserTargetType) {
         entries[entry.key] = [
           // options.env !== 'production' && require.resolve('../source-map-support'),
           target !== MODERN && require.resolve('regenerator-runtime/runtime'),
-          options.hmr && require.resolve('react-hot-loader/patch'),
-          options.hmr && require.resolve('react-dev-utils/webpackHotDevClient'),
+          options.hmr && webpackDevClientEntry,
           path.join(path.resolve(options.paths.src as string), entry.path),
         ].filter(ExcludesFalsy);
         return entries;
@@ -124,6 +116,17 @@ export default function createBrowserWebpackConfig(target: BrowserTargetType) {
 
     module: createModuleConfig(options),
 
-    plugins: createPluginsConfig(options),
+    plugins: [
+      ...createPluginsConfig(options),
+      options.hmr &&
+        new ReactRefreshWebpackPlugin({
+          overlay: {
+            // Create React App overlay config
+            entry: webpackDevClientEntry,
+            module: require.resolve('react-dev-utils/refreshOverlayInterop'),
+            sockIntegration: false,
+          },
+        }),
+    ].filter(ExcludesFalsy),
   });
 }

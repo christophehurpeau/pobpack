@@ -1,8 +1,7 @@
-import { hot } from 'react-hot-loader/root';
 import React, { useState } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 
-function Counter() {
+export default function Counter() {
   const [count, setCount] = useState(0);
   return (
     <div>
@@ -13,5 +12,3 @@ function Counter() {
     </div>
   );
 }
-
-export default hot(Counter);
