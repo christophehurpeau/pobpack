@@ -70,7 +70,7 @@
   "devDependencies": {
     "@babel/core": "7.10.1",
     "@pob/eslint-config": "37.2.0",
-    "@pob/eslint-config-babel-node": "37.0.2",
+    "@pob/eslint-config-babel-node": "37.2.0",
     "@pob/eslint-config-node": "37.2.0",
     "@pob/eslint-config-typescript": "37.2.0",
     "@types/debounce": "1.2.0",
