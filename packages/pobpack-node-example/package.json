@@ -37,7 +37,7 @@
     "eslint-plugin-prettier": "3.1.4",
     "eslint-plugin-unicorn": "18.0.1",
     "pobpack-node": "^9.0.0",
-    "prettier": "2.0.5",
+    "prettier": "2.1.2",
     "webpack": "4.41.3",
     "webpack-module-hot-accept": "1.0.5"
   }

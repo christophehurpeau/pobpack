@@ -82,6 +82,6 @@
     "eslint-plugin-prettier": "3.1.4",
     "eslint-plugin-unicorn": "18.0.1",
     "pob-babel": "24.12.0",
-    "prettier": "2.0.5"
+    "prettier": "2.1.2"
   }
 }
