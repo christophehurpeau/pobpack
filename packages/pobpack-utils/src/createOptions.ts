@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import { Options } from 'pobpack-types';
 
 export default function createOptions(options: Partial<Options>): Options {
@@ -6,6 +7,10 @@ export default function createOptions(options: Partial<Options>): Options {
     babel: options.babel || {},
     defines: options.defines || {},
     entries: options.entries || ['index'],
+    serviceWorkerEntry:
+      options.serviceWorkerEntry === undefined
+        ? 'service-worker'
+        : options.serviceWorkerEntry,
     env: options.env || process.env.NODE_ENV,
     hmr: options.hmr,
     whitelistExternalExtensions: options.whitelistExternalExtensions || [],

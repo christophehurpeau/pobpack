@@ -18,6 +18,7 @@ export interface Options {
   babel: TransformOptions;
   defines: { [key: string]: any };
   entries: ConfigEntry[];
+  serviceWorkerEntry: false | string;
   env?: string;
   hmr?: boolean;
   whitelistExternalExtensions: string[];

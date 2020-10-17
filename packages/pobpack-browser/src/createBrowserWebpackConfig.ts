@@ -1,5 +1,6 @@
 /* eslint-disable complexity */
 import path from 'path';
+import WorkboxWebpackPlugin from 'workbox-webpack-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import {
   createModuleConfig,
@@ -127,6 +128,24 @@ export default function createBrowserWebpackConfig(target: BrowserTargetType) {
             sockIntegration: false,
           },
         }),
+      options.env === 'production' &&
+      options.paths.src &&
+      options.serviceWorkerEntry
+        ? new WorkboxWebpackPlugin.InjectManifest({
+            swSrc: path.resolve(
+              options.paths.src,
+              options.serviceWorkerEntry.endsWith('.js') ||
+                options.serviceWorkerEntry.endsWith('.ts')
+                ? options.serviceWorkerEntry
+                : `${options.serviceWorkerEntry}${
+                    options.typescript ? '.ts' : '.js'
+                  }`,
+            ),
+            compileSrc: true,
+            dontCacheBustURLsMatching: /\.[\da-f]{8}\./,
+            exclude: [/\.map$/, /asset-manifest\.json$/, /LICENSE/],
+          })
+        : undefined,
     ].filter(ExcludesFalsy),
   });
 }

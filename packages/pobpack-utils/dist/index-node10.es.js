@@ -14,12 +14,14 @@ import resolveFrom from 'resolve-from';
 import findUp from 'find-up';
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
 
+/* eslint-disable complexity */
 function createOptions(options) {
   return {
     aliases: options.aliases || {},
     babel: options.babel || {},
     defines: options.defines || {},
     entries: options.entries || ['index'],
+    serviceWorkerEntry: options.serviceWorkerEntry === undefined ? 'service-worker' : options.serviceWorkerEntry,
     env: options.env || process.env.NODE_ENV,
     hmr: options.hmr,
     whitelistExternalExtensions: options.whitelistExternalExtensions || [],

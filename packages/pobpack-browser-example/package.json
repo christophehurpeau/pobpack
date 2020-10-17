@@ -16,7 +16,8 @@
   "scripts": {
     "build": "pobpack-browser build && gzip -fk9 public/*.js && lzma -fke9 --threads 0 public/*.js && brotli -Z public/*.js && echo",
     "lint": "eslint --ext .js,.ts,.tsx --quiet src",
-    "start": "pobpack-browser"
+    "start": "pobpack-browser",
+    "serve": "cp -f index.html public/ && serve -s public"
   },
   "prettier": {
     "trailingComma": "all",
@@ -26,7 +27,9 @@
   "dependencies": {
     "pobpack-browser": "^9.0.0",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "workbox-core": "^5.1.4",
+    "workbox-precaching": "^5.1.4"
   },
   "devDependencies": {
     "@babel/core": "7.7.7",
@@ -46,6 +49,7 @@
     "eslint-plugin-prettier": "3.1.4",
     "eslint-plugin-unicorn": "18.0.1",
     "prettier": "2.1.2",
-    "webpack": "4.41.3"
+    "serve": "11.3.2",
+    "webpack": "4.44.2"
   }
 }

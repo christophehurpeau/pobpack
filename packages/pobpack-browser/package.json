@@ -66,7 +66,7 @@
   "peerDependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "webpack": "^4.28.1"
+    "webpack": "^4.44.2"
   },
   "dependencies": {
     "@babel/preset-env": "^7.7.7",
@@ -78,11 +78,13 @@
     "react-refresh": "^0.8.3",
     "regenerator-runtime": "^0.13.3",
     "source-map-support": "^0.5.16",
-    "webpack-dev-server": "3.11.0"
+    "webpack-dev-server": "3.11.0",
+    "workbox-webpack-plugin": "^5.1.4"
   },
   "devDependencies": {
     "@babel/core": "7.10.1",
     "@babel/preset-react": "7.10.1",
+    "@babel/preset-typescript": "7.10.4",
     "@pob/eslint-config": "37.2.0",
     "@pob/eslint-config-babel-node": "37.2.0",
     "@pob/eslint-config-node": "37.2.0",
@@ -90,6 +92,7 @@
     "@pob/eslint-config-typescript-react": "37.2.0",
     "@types/react-dev-utils": "9.0.4",
     "@types/webpack-dev-server": "3.11.0",
+    "@types/workbox-webpack-plugin": "5.1.5",
     "@typescript-eslint/eslint-plugin": "2.34.0",
     "babel-preset-latest-node": "4.1.0",
     "eslint": "6.8.0",
@@ -102,6 +105,6 @@
     "prettier": "2.1.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "webpack": "4.41.3"
+    "webpack": "4.44.2"
   }
 }

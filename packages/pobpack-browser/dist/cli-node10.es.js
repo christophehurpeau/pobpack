@@ -5,6 +5,7 @@ import errorOverlayMiddleware from 'react-dev-utils/errorOverlayMiddleware';
 import evalSourceMapMiddleware from 'react-dev-utils/evalSourceMapMiddleware';
 import noopServiceWorkerMiddleware from 'react-dev-utils/noopServiceWorkerMiddleware';
 import ignoredFiles from 'react-dev-utils/ignoredFiles';
+import WorkboxWebpackPlugin from 'workbox-webpack-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 
 /* eslint-disable complexity */
@@ -72,7 +73,12 @@ function createBrowserWebpackConfig(target) {
         module: require.resolve('react-dev-utils/refreshOverlayInterop'),
         sockIntegration: false
       }
-    })].filter(ExcludesFalsy)
+    }), options.env === 'production' && options.paths.src && options.serviceWorkerEntry ? new WorkboxWebpackPlugin.InjectManifest({
+      swSrc: path.resolve(options.paths.src, options.serviceWorkerEntry.endsWith('.js') || options.serviceWorkerEntry.endsWith('.ts') ? options.serviceWorkerEntry : `${options.serviceWorkerEntry}${options.typescript ? '.ts' : '.js'}`),
+      compileSrc: true,
+      dontCacheBustURLsMatching: /\.[\da-f]{8}\./,
+      exclude: [/\.map$/, /asset-manifest\.json$/, /LICENSE/]
+    }) : undefined].filter(ExcludesFalsy)
   });
 }
 

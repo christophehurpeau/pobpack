@@ -21,12 +21,14 @@ const resolveFrom = _interopDefault(require('resolve-from'));
 const findUp = _interopDefault(require('find-up'));
 const CaseSensitivePathsPlugin = _interopDefault(require('case-sensitive-paths-webpack-plugin'));
 
+/* eslint-disable complexity */
 function createOptions(options) {
   return {
     aliases: options.aliases || {},
     babel: options.babel || {},
     defines: options.defines || {},
     entries: options.entries || ['index'],
+    serviceWorkerEntry: options.serviceWorkerEntry === undefined ? 'service-worker' : options.serviceWorkerEntry,
     env: options.env || process.env.NODE_ENV,
     hmr: options.hmr,
     whitelistExternalExtensions: options.whitelistExternalExtensions || [],
