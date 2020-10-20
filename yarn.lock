@@ -2069,12 +2069,12 @@
     "@pob/use-eslint-plugin" "^37.2.0"
     eslint-plugin-node "^11.0.0"
 
-"@pob/eslint-config-node@40.0.0":
-  version "40.0.0"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config-node/-/eslint-config-node-40.0.0.tgz#bab3a4a7cb753e5face1e3e5c1736233b814f935"
-  integrity sha512-6psU8tLTBJ09Al/iIWRGSOs+9GFGiCqoqvH6rweJtol4wvdqWnex/zz/iVWXOZXhdaNfLwY5qgtZYT3xQyKMiw==
+"@pob/eslint-config-node@40.1.0":
+  version "40.1.0"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-node/-/eslint-config-node-40.1.0.tgz#d6afe49824ae97d7ecac83d8974a7d78ba009c62"
+  integrity sha512-e4k4TBSIuF55KyFkMSue5IgKudrOFgaj0AfKH/a1xDx0OgouOBLIwSkt/NuD1BFjmxFzxnOinGcOtb75P+TfmQ==
   dependencies:
-    "@pob/use-eslint-plugin" "^40.0.0"
+    "@pob/use-eslint-plugin" "^40.1.0"
     eslint-plugin-node "^11.1.0"
 
 "@pob/eslint-config-react@^37.2.0":
@@ -2137,10 +2137,10 @@
   resolved "https://registry.yarnpkg.com/@pob/use-eslint-plugin/-/use-eslint-plugin-37.2.0.tgz#38be232f71082e05dcc7fefd240c61e5e0c3e08f"
   integrity sha512-m5Imht2peetGgaJhrfQZ7SuLp9CNCMsp4jXazdSiDIUyYZcUYRtkQmL6pC25YdcpU7PebrQkxV0NpKQKZSq8Sg==
 
-"@pob/use-eslint-plugin@^40.0.0":
-  version "40.0.0"
-  resolved "https://registry.yarnpkg.com/@pob/use-eslint-plugin/-/use-eslint-plugin-40.0.0.tgz#2d9395333319d5c2c4b13fa76efcff9698c71b57"
-  integrity sha512-GW+0R1N+yIcRxS4fM0wmzSO87PcURHhFajQNkxAPYwql6WCAqeNcOeZfZweUhpd+rt7yvTMoBbtjn7PV63wfEw==
+"@pob/use-eslint-plugin@^40.1.0":
+  version "40.1.0"
+  resolved "https://registry.yarnpkg.com/@pob/use-eslint-plugin/-/use-eslint-plugin-40.1.0.tgz#c8ede1d6354105c5e1df31486c6a534bfcfc273e"
+  integrity sha512-qz+E6WroUQbI6QQUBJwYXoJtwwibVjTRpAHIpTMAZ/G6iyP/p0K/uiQ6NgApzsOAJsqRXop9ORWabYYljeUheQ==
 
 "@rollup/plugin-node-resolve@^7.1.1":
   version "7.1.3"

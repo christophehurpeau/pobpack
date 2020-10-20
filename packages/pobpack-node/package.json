@@ -71,7 +71,7 @@
     "@babel/core": "7.10.1",
     "@pob/eslint-config": "37.2.0",
     "@pob/eslint-config-babel-node": "37.2.0",
-    "@pob/eslint-config-node": "40.0.0",
+    "@pob/eslint-config-node": "40.1.0",
     "@pob/eslint-config-typescript": "37.2.0",
     "@types/debounce": "1.2.0",
     "@types/webpack-node-externals": "1.7.0",

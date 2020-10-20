@@ -26,7 +26,7 @@
   "devDependencies": {
     "@babel/core": "7.7.7",
     "@pob/eslint-config": "37.2.0",
-    "@pob/eslint-config-node": "40.0.0",
+    "@pob/eslint-config-node": "40.1.0",
     "@pob/eslint-config-typescript": "37.2.0",
     "@types/webpack-env": "1.14.1",
     "@typescript-eslint/eslint-plugin": "2.34.0",
