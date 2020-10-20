@@ -75,7 +75,7 @@
     "pobpack-utils": "^9.0.0",
     "react-dev-utils": "~11.0.0-next.77",
     "react-error-html": "^0.2.2",
-    "react-refresh": "^0.8.3",
+    "react-refresh": "^0.9.0",
     "regenerator-runtime": "^0.13.3",
     "source-map-support": "^0.5.16",
     "webpack-dev-server": "3.11.0",
@@ -103,8 +103,8 @@
     "eslint-plugin-unicorn": "18.0.1",
     "pob-babel": "24.12.0",
     "prettier": "2.1.2",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
     "webpack": "4.44.2"
   }
 }
