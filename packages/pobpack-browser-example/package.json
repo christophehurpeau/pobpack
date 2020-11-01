@@ -37,7 +37,7 @@
     "@pob/eslint-config": "37.2.0",
     "@pob/eslint-config-node": "40.1.0",
     "@pob/eslint-config-typescript": "37.2.0",
-    "@pob/eslint-config-typescript-react": "37.2.0",
+    "@pob/eslint-config-typescript-react": "40.1.0",
     "@types/object-assign": "4.0.30",
     "@types/react": "16.9.17",
     "@types/react-dom": "16.9.4",

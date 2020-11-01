@@ -89,7 +89,7 @@
     "@pob/eslint-config-babel-node": "37.2.0",
     "@pob/eslint-config-node": "40.1.0",
     "@pob/eslint-config-typescript": "37.2.0",
-    "@pob/eslint-config-typescript-react": "37.2.0",
+    "@pob/eslint-config-typescript-react": "40.1.0",
     "@types/react-dev-utils": "9.0.4",
     "@types/webpack-dev-server": "3.11.0",
     "@types/workbox-webpack-plugin": "5.1.5",
