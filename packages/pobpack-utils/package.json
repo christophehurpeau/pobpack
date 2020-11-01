@@ -68,7 +68,7 @@
     "@pob/eslint-config": "37.2.0",
     "@pob/eslint-config-babel-node": "37.2.0",
     "@pob/eslint-config-node": "40.1.0",
-    "@pob/eslint-config-typescript": "37.2.0",
+    "@pob/eslint-config-typescript": "40.1.0",
     "@types/case-sensitive-paths-webpack-plugin": "2.1.4",
     "@types/find-up": "4.0.0",
     "@types/progress": "2.0.3",
