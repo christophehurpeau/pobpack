@@ -34,7 +34,7 @@
   "devDependencies": {
     "@babel/core": "7.7.7",
     "@babel/preset-react": "7.7.4",
-    "@pob/eslint-config": "37.2.0",
+    "@pob/eslint-config": "41.0.4",
     "@pob/eslint-config-node": "40.1.0",
     "@pob/eslint-config-typescript": "37.2.0",
     "@pob/eslint-config-typescript-react": "37.2.0",

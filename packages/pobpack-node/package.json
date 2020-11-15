@@ -69,7 +69,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.10.1",
-    "@pob/eslint-config": "37.2.0",
+    "@pob/eslint-config": "41.0.4",
     "@pob/eslint-config-babel-node": "37.2.0",
     "@pob/eslint-config-node": "40.1.0",
     "@pob/eslint-config-typescript": "37.2.0",
