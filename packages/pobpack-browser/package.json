@@ -106,7 +106,7 @@
     "@pob/eslint-config-typescript-node": "41.0.4",
     "@pob/eslint-config-typescript-react": "41.0.4",
     "@types/react-dev-utils": "9.0.4",
-    "@types/webpack-dev-server": "3.11.0",
+    "@types/webpack-dev-server": "3.11.1",
     "@types/workbox-webpack-plugin": "5.1.5",
     "@typescript-eslint/eslint-plugin": "4.7.0",
     "@typescript-eslint/parser": "4.7.0",
