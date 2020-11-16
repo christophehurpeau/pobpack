@@ -9,18 +9,20 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com:christophehurpeau/pobpack.git",
+    "url": "https://github.com/christophehurpeau/pobpack.git",
     "directory": "packages/pobpack-types"
   },
   "homepage": "https://github.com/christophehurpeau/pobpack",
   "engines": {
-    "node": ">=10.13.0"
+    "node": ">=12.10.0"
   },
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
+  "sideEffects": false,
   "scripts": {
+    "build": "yarn run build:definitions",
     "build:definitions": "tsc --lib esnext --noEmit ./lib/index.d.ts",
-    "lint": "eslint --quiet lib"
+    "lint:eslint": "eslint --report-unused-disable-directives --quiet lib"
   },
   "prettier": {
     "trailingComma": "all",
@@ -39,14 +41,13 @@
   },
   "devDependencies": {
     "@babel/core": "7.7.7",
-    "@pob/eslint-config": "37.2.0",
-    "@pob/eslint-config-node": "40.1.0",
-    "eslint": "6.8.0",
+    "@pob/eslint-config": "41.0.4",
+    "@pob/eslint-config-node": "41.0.4",
+    "eslint": "7.13.0",
     "eslint-import-resolver-node": "0.3.4",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-node": "11.1.0",
-    "eslint-plugin-prettier": "3.1.4",
-    "eslint-plugin-unicorn": "18.0.1",
+    "eslint-plugin-unicorn": "23.0.0",
     "prettier": "2.1.2"
   }
 }

@@ -8,10 +8,10 @@
 
 <p align="center">
   <a href="https://npmjs.org/package/pobpack-browser"><img src="https://img.shields.io/npm/v/pobpack-browser.svg?style=flat-square"></a>
-  <a href="https://david-dm.org/christophehurpeau/pobpack?path=packages/pobpack-browser"><img src="https://david-dm.org/christophehurpeau/pobpack.svg?path=packages/pobpack-browser?style=flat-square"></a>
 </p>
 
-- [Features](#features)
+#features)
+
 - [Install](#install)
 - [Usage](#usage)
 - [Hot Reload](#hot-reload)
@@ -109,7 +109,7 @@ module.exports = function (config, options) {
   return config(
     Object.assign({}, options, {
       jsLoaders: ['webpack-module-hot-accept'],
-    })
+    }),
   );
 };
 ```
@@ -129,7 +129,7 @@ module.exports = function (config, options) {
   return config(
     Object.assign({}, options, {
       plugins: [new WebPackPlugin()],
-    })
+    }),
   );
 };
 ```
@@ -155,7 +155,7 @@ module.exports = function (config, options) {
       babel: {
         plugins: [babelPlugin],
       },
-    })
+    }),
   );
 };
 ```
@@ -171,7 +171,7 @@ module.exports = function (config, options) {
       babel: {
         presets: ['pobpack/babel', 'stage-1'],
       },
-    })
+    }),
   );
 };
 ```
@@ -189,7 +189,7 @@ module.exports = function (config, options) {
       loaders: [
         // add your loaders
       ],
-    })
+    }),
   );
 };
 ```
@@ -205,7 +205,7 @@ module.exports = function (config, options) {
       jsLoaders: [
         // add your loaders
       ],
-    })
+    }),
   );
 };
 ```

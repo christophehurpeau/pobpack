@@ -3,7 +3,7 @@
     "promptValues": {
       "authorName": "Christophe Hurpeau",
       "authorEmail": "christophe@hurpeau.com",
-      "authorUrl": "d"
+      "authorUrl": "https://christophe.hurpeau.com"
     },
     "app": {
       "type": "pobpack"

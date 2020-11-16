@@ -6,16 +6,16 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com:christophehurpeau/pobpack.git",
+    "url": "https://github.com/christophehurpeau/pobpack.git",
     "directory": "packages/pobpack-node-example"
   },
   "homepage": "https://github.com/christophehurpeau/pobpack",
   "engines": {
-    "node": ">=10.13.0"
+    "node": ">=12.10.0"
   },
   "scripts": {
     "build": "pobpack-node build && echo",
-    "lint": "eslint --ext .js,.ts --quiet src",
+    "lint:eslint": "eslint --ext .js,.ts --report-unused-disable-directives --quiet src",
     "start": "pobpack-node"
   },
   "prettier": {
@@ -25,17 +25,17 @@
   },
   "devDependencies": {
     "@babel/core": "7.7.7",
-    "@pob/eslint-config": "37.2.0",
-    "@pob/eslint-config-node": "40.1.0",
-    "@pob/eslint-config-typescript": "37.2.0",
+    "@pob/eslint-config": "41.0.4",
+    "@pob/eslint-config-node": "41.0.4",
+    "@pob/eslint-config-typescript": "41.0.4",
     "@types/webpack-env": "1.14.1",
-    "@typescript-eslint/eslint-plugin": "2.34.0",
-    "eslint": "6.8.0",
+    "@typescript-eslint/eslint-plugin": "4.7.0",
+    "@typescript-eslint/parser": "4.7.0",
+    "eslint": "7.13.0",
     "eslint-import-resolver-node": "0.3.4",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-node": "11.1.0",
-    "eslint-plugin-prettier": "3.1.4",
-    "eslint-plugin-unicorn": "18.0.1",
+    "eslint-plugin-unicorn": "23.0.0",
     "pobpack-node": "^9.0.0",
     "prettier": "2.1.2",
     "webpack": "4.44.2",

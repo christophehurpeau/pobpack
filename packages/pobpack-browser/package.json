@@ -7,12 +7,12 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com:christophehurpeau/pobpack.git",
+    "url": "https://github.com/christophehurpeau/pobpack.git",
     "directory": "packages/pobpack-browser"
   },
   "homepage": "https://github.com/christophehurpeau/pobpack",
   "engines": {
-    "node": ">=10.13.0"
+    "node": ">=12.10.0"
   },
   "main": "./index.js",
   "types": "./dist/index.d.ts",
@@ -23,22 +23,37 @@
       ]
     }
   },
-  "module:node": "./dist/index-node10.es.js",
-  "module:node-dev": "./dist/index-node10-dev.es.js",
-  "module:aliases-node": {
-    "./cli.js": "./dist/cli-node10.es.js"
+  "exports": {
+    ".": {
+      "node": {
+        "development": {
+          "import": "./dist/index-node12-dev.mjs",
+          "require": "./dist/index-node12-dev.cjs.js"
+        },
+        "import": "./dist/index-node12.mjs",
+        "require": "./dist/index-node12.cjs.js"
+      }
+    },
+    "./cli": {
+      "node": {
+        "development": {
+          "import": "./dist/cli-node12-dev.mjs",
+          "require": "./dist/cli-node12-dev.cjs.js"
+        },
+        "import": "./dist/cli-node12.mjs",
+        "require": "./dist/cli-node12.cjs.js"
+      }
+    }
   },
-  "module:aliases-node-dev": {
-    "./cli.js": "./dist/cli-node10-dev.es.js"
-  },
+  "sideEffects": false,
   "bin": {
     "pobpack-browser": "./pobpack-browser"
   },
   "scripts": {
-    "build": "pob-build",
+    "build": "pob-build && yarn run build:definitions",
     "build:definitions": "tsc -p tsconfig.build.json",
     "clean": "rm -Rf docs dist test/node6 coverage",
-    "lint": "eslint --ext .js,.ts,.tsx --quiet *.js src",
+    "lint:eslint": "eslint --ext .js,.ts,.tsx --report-unused-disable-directives --quiet *.js src",
     "watch": "pob-watch"
   },
   "prettier": {
@@ -50,7 +65,7 @@
     "babelEnvs": [
       {
         "target": "node",
-        "version": "10",
+        "version": "12",
         "formats": [
           "cjs",
           "es"
@@ -82,29 +97,30 @@
     "workbox-webpack-plugin": "^5.1.4"
   },
   "devDependencies": {
-    "@babel/core": "7.10.1",
-    "@babel/preset-react": "7.10.1",
+    "@babel/core": "7.12.3",
+    "@babel/preset-react": "7.12.5",
     "@babel/preset-typescript": "7.12.1",
-    "@pob/eslint-config": "37.2.0",
-    "@pob/eslint-config-babel-node": "37.2.0",
-    "@pob/eslint-config-node": "40.1.0",
-    "@pob/eslint-config-typescript": "37.2.0",
-    "@pob/eslint-config-typescript-react": "37.2.0",
+    "@pob/eslint-config": "41.0.4",
+    "@pob/eslint-config-node": "41.0.4",
+    "@pob/eslint-config-typescript": "41.0.4",
+    "@pob/eslint-config-typescript-node": "41.0.4",
+    "@pob/eslint-config-typescript-react": "41.0.4",
     "@types/react-dev-utils": "9.0.4",
     "@types/webpack-dev-server": "3.11.0",
     "@types/workbox-webpack-plugin": "5.1.5",
-    "@typescript-eslint/eslint-plugin": "2.34.0",
-    "babel-preset-latest-node": "4.1.0",
-    "eslint": "6.8.0",
+    "@typescript-eslint/eslint-plugin": "4.7.0",
+    "@typescript-eslint/parser": "4.7.0",
+    "babel-preset-latest-node": "5.1.1",
+    "eslint": "7.13.0",
     "eslint-import-resolver-node": "0.3.4",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-node": "11.1.0",
-    "eslint-plugin-prettier": "3.1.4",
-    "eslint-plugin-unicorn": "18.0.1",
-    "pob-babel": "24.12.0",
+    "eslint-plugin-unicorn": "23.0.0",
+    "pob-babel": "26.0.1",
     "prettier": "2.1.2",
     "react": "16.14.0",
     "react-dom": "16.14.0",
+    "rollup": "2.33.2",
     "webpack": "4.44.2"
   }
 }

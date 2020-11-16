@@ -1,5 +1,11 @@
 import { TransformOptions } from '@babel/core';
-import { Compiler, Configuration, Stats, Options as WebpackOptions, Plugin } from 'webpack';
+import {
+  Compiler,
+  Configuration,
+  Stats,
+  Options as WebpackOptions,
+  Plugin,
+} from 'webpack';
 
 export interface ConfigPaths {
   build?: string;
@@ -35,12 +41,23 @@ export interface Options {
   webpackPrefixPackageFields: string[];
 }
 
-
 export type WatchCallback = (stats: any) => void;
 
-export type FilledWebpackConfigurationKeys = 'mode' | 'bail' | 'target' | 'devtool' | 'optimization' | 'resolveLoader' | 'resolve' | 'entry' | 'output';
-export type FilledWebpackConfiguration =
-  Pick<Configuration, Exclude<keyof Configuration, FilledWebpackConfigurationKeys>> & Required<Pick<Configuration, FilledWebpackConfigurationKeys>>;
+export type FilledWebpackConfigurationKeys =
+  | 'mode'
+  | 'bail'
+  | 'target'
+  | 'devtool'
+  | 'optimization'
+  | 'resolveLoader'
+  | 'resolve'
+  | 'entry'
+  | 'output';
+export type FilledWebpackConfiguration = Pick<
+  Configuration,
+  Exclude<keyof Configuration, FilledWebpackConfigurationKeys>
+> &
+  Required<Pick<Configuration, FilledWebpackConfigurationKeys>>;
 
 export interface PobpackCompiler {
   clean: () => void | Buffer;

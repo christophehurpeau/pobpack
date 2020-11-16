@@ -5,11 +5,17 @@
     "project": "./tsconfig.json",
     "createDefaultProgram": true
   },
-  "plugins": [
-    "@typescript-eslint"
-  ],
+  "plugins": ["@typescript-eslint"],
   "extends": [
     "@pob/eslint-config-typescript",
     "@pob/eslint-config-typescript-react"
-  ]
+  ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["./node_modules", "./src"]
+      }
+    }
+  },
+  "ignorePatterns": ["*.d.ts"]
 }

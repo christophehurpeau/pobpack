@@ -6,18 +6,18 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com:christophehurpeau/pobpack.git",
+    "url": "https://github.com/christophehurpeau/pobpack.git",
     "directory": "packages/pobpack-browser-example"
   },
   "homepage": "https://github.com/christophehurpeau/pobpack",
   "engines": {
-    "node": ">=10.13.0"
+    "node": ">=12.10.0"
   },
   "scripts": {
     "build": "pobpack-browser build && gzip -fk9 public/*.js && lzma -fke9 --threads 0 public/*.js && brotli -Z public/*.js && echo",
-    "lint": "eslint --ext .js,.ts,.tsx --quiet src",
-    "start": "pobpack-browser",
-    "serve": "cp -f index.html public/ && serve -s public"
+    "lint:eslint": "eslint --ext .js,.ts,.tsx --report-unused-disable-directives --quiet src",
+    "serve": "cp -f index.html public/ && serve -s public",
+    "start": "pobpack-browser"
   },
   "prettier": {
     "trailingComma": "all",
@@ -34,20 +34,20 @@
   "devDependencies": {
     "@babel/core": "7.7.7",
     "@babel/preset-react": "7.7.4",
-    "@pob/eslint-config": "37.2.0",
-    "@pob/eslint-config-node": "40.1.0",
-    "@pob/eslint-config-typescript": "37.2.0",
-    "@pob/eslint-config-typescript-react": "37.2.0",
+    "@pob/eslint-config": "41.0.4",
+    "@pob/eslint-config-node": "41.0.4",
+    "@pob/eslint-config-typescript": "41.0.4",
+    "@pob/eslint-config-typescript-react": "41.0.4",
     "@types/object-assign": "4.0.30",
     "@types/react": "16.9.17",
     "@types/react-dom": "16.9.4",
-    "@typescript-eslint/eslint-plugin": "2.34.0",
-    "eslint": "6.8.0",
+    "@typescript-eslint/eslint-plugin": "4.7.0",
+    "@typescript-eslint/parser": "4.7.0",
+    "eslint": "7.13.0",
     "eslint-import-resolver-node": "0.3.4",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-node": "11.1.0",
-    "eslint-plugin-prettier": "3.1.4",
-    "eslint-plugin-unicorn": "18.0.1",
+    "eslint-plugin-unicorn": "23.0.0",
     "prettier": "2.1.2",
     "serve": "11.3.2",
     "webpack": "4.44.2"

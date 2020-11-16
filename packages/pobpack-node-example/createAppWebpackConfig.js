@@ -1,4 +1,4 @@
-module.exports = function(config, options) {
+module.exports = function (config, options) {
   return config({
     ...options,
     typescript: true,
