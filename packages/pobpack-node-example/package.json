@@ -38,7 +38,7 @@
     "eslint-plugin-unicorn": "23.0.0",
     "pobpack-node": "^9.0.0",
     "prettier": "2.1.2",
-    "webpack": "4.44.2",
+    "webpack": "5.5.0",
     "webpack-module-hot-accept": "1.0.5"
   }
 }
