@@ -26,8 +26,8 @@
   },
   "dependencies": {
     "pobpack-browser": "^9.0.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
     "workbox-core": "^5.1.4",
     "workbox-precaching": "^5.1.4"
   },
