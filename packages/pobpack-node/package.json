@@ -71,7 +71,7 @@
     ]
   },
   "peerDependencies": {
-    "webpack": "^4.44.2"
+    "webpack": "^4.44.2 || ^5.0.0"
   },
   "dependencies": {
     "babel-preset-latest-node": "^4.0.1",
