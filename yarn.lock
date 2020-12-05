@@ -1879,19 +1879,19 @@
     "@lerna/run" "3.21.0"
     "@lerna/version" "3.22.1"
 
-"@pob/root@3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@pob/root/-/root-3.0.1.tgz#1217a1c4d95bb35aa31530c9f1652beda45e4fdf"
-  integrity sha512-sIbWeJi5J28IFqqL0nyqjfHXWIVkz08cUmMXYgffs8pSpR7hakhijQuNuwBqDLrBVXIVaVpuXiEMhXpcWs/nsQ==
+"@pob/root@3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@pob/root/-/root-3.0.3.tgz#6982e2757bf73b33057904349698ec470c1ad665"
+  integrity sha512-k7rPQ6tMoTMJBuwEMvARczEpD1wiMu7wLAn+wO791Gjwwe2qsAZtq4J+TiKmxiR0MapPuT2cjYNnP9gEYKxslg==
   dependencies:
     "@commitlint/cli" "11.0.0"
     cross-env "^7.0.2"
-    lint-staged "10.5.1"
+    lint-staged "10.5.3"
     repository-check-dirty "^2.0.1"
     semver "^7.1.2"
     which-pm-runs "1.0.0"
     yarn-deduplicate "3.1.0"
-    yarnhook "^0.4.3"
+    yarnhook "^0.5.0"
 
 "@pob/use-eslint-plugin@^41.0.4":
   version "41.0.4"
@@ -4945,7 +4945,7 @@ execa@^1.0.0:
     signal-exit "^3.0.0"
     strip-eof "^1.0.0"
 
-execa@^4.1.0:
+execa@^4.0.3, execa@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/execa/-/execa-4.1.0.tgz#4e5491ad1572f2f17a77d388c6c857135b22847a"
   integrity sha512-j5W0//W7f8UxAn8hXVnwG8tLwdiUy4FJLcSupCg6maBYZDpyBvTApK7KyuI4bKj8KOh1r2YH+6ucuYtJv1bTZA==
@@ -6606,10 +6606,10 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
   integrity sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=
 
-lint-staged@10.5.1:
-  version "10.5.1"
-  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-10.5.1.tgz#901e915c2360072dded0e7d752a0d9a49e079daa"
-  integrity sha512-fTkTGFtwFIJJzn/PbUO3RXyEBHIhbfYBE7+rJyLcOXabViaO/h6OslgeK6zpeUtzkDrzkgyAYDTLAwx6JzDTHw==
+lint-staged@10.5.3:
+  version "10.5.3"
+  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-10.5.3.tgz#c682838b3eadd4c864d1022da05daa0912fb1da5"
+  integrity sha512-TanwFfuqUBLufxCc3RUtFEkFraSPNR3WzWcGF39R3f2J7S9+iF9W0KTVLfSy09lYGmZS5NDCxjNvhGMSJyFCWg==
   dependencies:
     chalk "^4.1.0"
     cli-truncate "^2.1.0"
@@ -10745,10 +10745,10 @@ yarn-deduplicate@3.1.0:
     commander "^6.1.0"
     semver "^7.3.2"
 
-yarnhook@^0.4.3:
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/yarnhook/-/yarnhook-0.4.3.tgz#d80443f86596f72cf58ddf16f69d9b8f9584f056"
-  integrity sha512-GIAWEJ/iBv5ywDGmEJp1qHPydof7pysgAyU8UYM5Z0Izm2mJAbJPbT4PIXFCh2e2ia1TYSUy+uwbD80mtBuK8w==
+yarnhook@^0.5.0:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/yarnhook/-/yarnhook-0.5.1.tgz#27d47947412bd124874d56aa75725b76b68cc398"
+  integrity sha512-YPLLXO/PzsFXKvRfsOG/r60WBz8RT7VbkkQv2oHDb6o+EjX0vcUSeA3aw5el2AEWjbcg1sgemjHyCwRIvQxZWw==
   dependencies:
-    execa "^0.8.0"
+    execa "^4.0.3"
     find-parent-dir "^0.3.0"
