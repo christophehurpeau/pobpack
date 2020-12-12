@@ -100,7 +100,7 @@
   "devDependencies": {
     "@babel/core": "7.12.10",
     "@babel/preset-react": "7.12.10",
-    "@babel/preset-typescript": "7.12.1",
+    "@babel/preset-typescript": "7.12.7",
     "@pob/eslint-config": "41.0.4",
     "@pob/eslint-config-node": "41.0.4",
     "@pob/eslint-config-typescript": "41.0.4",
