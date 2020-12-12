@@ -1,0 +1,16 @@
+{
+  "version": "independent",
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "command": {
+    "publish": {
+      "npmClient": "npm",
+      "ignoreChanges": [
+        "**/.yo-rc.json",
+        "**/.eslintrc.json",
+        "**/tsconfig.json",
+        "**/tsconfig.build.json"
+      ]
+    }
+  }
+}

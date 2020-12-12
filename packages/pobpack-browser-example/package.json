@@ -15,6 +15,7 @@
   },
   "scripts": {
     "build": "pobpack-browser build && gzip -fk9 public/*.js && lzma -fke9 --threads 0 public/*.js && brotli -Z public/*.js && echo",
+    "lint": "yarn run lint:eslint",
     "lint:eslint": "eslint --ext .js,.ts,.tsx --report-unused-disable-directives --quiet src",
     "serve": "cp -f index.html public/ && serve -s public",
     "start": "pobpack-browser"
@@ -41,14 +42,14 @@
     "@types/object-assign": "4.0.30",
     "@types/react": "16.9.17",
     "@types/react-dom": "16.9.4",
-    "@typescript-eslint/eslint-plugin": "4.7.0",
-    "@typescript-eslint/parser": "4.7.0",
-    "eslint": "7.13.0",
+    "@typescript-eslint/eslint-plugin": "4.9.1",
+    "@typescript-eslint/parser": "4.9.1",
+    "eslint": "7.15.0",
     "eslint-import-resolver-node": "0.3.4",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-unicorn": "23.0.0",
-    "prettier": "2.1.2",
+    "prettier": "2.2.1",
     "serve": "11.3.2",
     "webpack": "5.5.0"
   }

@@ -10,22 +10,6 @@
   "engines": {
     "node": ">=12.10.0"
   },
-  "lerna": {
-    "version": "independent",
-    "npmClient": "yarn",
-    "useWorkspaces": true,
-    "command": {
-      "publish": {
-        "npmClient": "npm",
-        "ignoreChanges": [
-          "**/.yo-rc.json",
-          "**/.eslintrc.json",
-          "**/tsconfig.json",
-          "**/tsconfig.build.json"
-        ]
-      }
-    }
-  },
   "workspaces": [
     "packages/*"
   ],
@@ -55,16 +39,16 @@
     "@pob/eslint-config": "41.0.4",
     "@pob/eslint-config-node": "41.0.4",
     "@pob/lerna-light": "3.23.0",
-    "@pob/root": "3.0.1",
-    "@typescript-eslint/eslint-plugin": "4.7.0",
-    "@typescript-eslint/parser": "4.7.0",
-    "eslint": "7.13.0",
+    "@pob/root": "3.0.3",
+    "@typescript-eslint/eslint-plugin": "4.9.1",
+    "@typescript-eslint/parser": "4.9.1",
+    "eslint": "7.15.0",
     "eslint-import-resolver-node": "0.3.4",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-unicorn": "23.0.0",
-    "husky": "4.3.0",
-    "prettier": "2.1.2",
-    "typescript": "4.0.5"
+    "husky": "4.3.5",
+    "prettier": "2.2.1",
+    "typescript": "4.1.3"
   }
 }
