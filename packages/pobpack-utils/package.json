@@ -66,7 +66,7 @@
     "babel-loader": "^8.0.6",
     "case-sensitive-paths-webpack-plugin": "^2.2.0",
     "colorette": "^1.1.0",
-    "find-up": "^4.0.0",
+    "find-up": "^5.0.0",
     "nightingale": "^10.0.1",
     "nightingale-console": "^10.0.1",
     "nightingale-logger": "^10.0.1",
