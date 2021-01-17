@@ -16,7 +16,7 @@
   "scripts": {
     "build": "pobpack-browser build && gzip -fk9 public/*.js && lzma -fke9 --threads 0 public/*.js && brotli -Z public/*.js && echo",
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn --cwd ../.. eslint --ext .js,.ts,.tsx --report-unused-disable-directives --quiet packages/pobpack-browser-example",
+    "lint:eslint": "yarn --cwd ../.. eslint --ext .js,.mjs,.ts,.tsx --report-unused-disable-directives --quiet packages/pobpack-browser-example",
     "serve": "cp -f index.html public/ && serve -s public",
     "start": "pobpack-browser"
   },

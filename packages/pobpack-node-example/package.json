@@ -16,7 +16,7 @@
   "scripts": {
     "build": "pobpack-node build && echo",
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn --cwd ../.. eslint --ext .js,.ts --report-unused-disable-directives --quiet packages/pobpack-node-example",
+    "lint:eslint": "yarn --cwd ../.. eslint --ext .js,.mjs,.ts --report-unused-disable-directives --quiet packages/pobpack-node-example",
     "start": "pobpack-node"
   },
   "prettier": {
