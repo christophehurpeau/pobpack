@@ -1,8 +1,7 @@
-import { webpack } from 'pobpack-utils';
-import { CreateCompilerOptions, Options, PobpackCompiler, WatchCallback } from 'pobpack-types';
-import { Watching } from 'webpack';
+import type { CreateCompilerOptions, Options, PobpackCompiler, WatchCallback } from 'pobpack-types';
+import type { Stats, Watching } from 'webpack';
 export declare const createAppNodeCompiler: (options: Partial<Options>, compilerOptions?: CreateCompilerOptions | undefined) => PobpackCompiler;
-export declare const build: (options?: {}) => Promise<webpack.Stats>;
+export declare const build: (options?: {}) => Promise<Stats | undefined>;
 export declare const watch: (options: Partial<Options>, callback: WatchCallback) => PobpackCompiler;
 export interface RunOptions {
     args?: (string | number)[];

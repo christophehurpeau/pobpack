@@ -1,4 +1,3 @@
-/* eslint-disable spaced-comment */
 /// <reference types="webpack-env" />
 
 // https://github.com/Microsoft/TypeScript/issues/15230

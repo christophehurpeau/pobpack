@@ -1,4 +1,3 @@
-/* eslint-disable */
 /*
  * copied from https://github.com/webpack/webpack/blob/master/hot/signal.js
  * and tweeked to always accept updates

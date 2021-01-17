@@ -1,7 +1,7 @@
+import type { ReactElement } from 'react';
 import React, { useState } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 
-export default function Counter() {
+export default function Counter(): ReactElement {
   const [count, setCount] = useState(0);
   return (
     <div>

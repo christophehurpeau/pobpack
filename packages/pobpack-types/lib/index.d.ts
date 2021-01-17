@@ -1,11 +1,5 @@
 import { TransformOptions } from '@babel/core';
-import {
-  Compiler,
-  Configuration,
-  Stats,
-  Options as WebpackOptions,
-  Plugin,
-} from 'webpack';
+import { Compiler, Configuration, RuleSetUseItem, Stats } from 'webpack';
 
 export interface ConfigPaths {
   build?: string;
@@ -30,18 +24,26 @@ export interface Options {
   whitelistExternalExtensions: string[];
   includeModules: string[];
   includePaths: string[];
-  jsLoaders?: any[];
-  moduleRules?: any[];
+  jsLoaders?: RuleSetUseItem[];
+  moduleRules?: NonNullable<Configuration['module']>['rules'];
   paths: ConfigPaths;
-  plugins: any[];
-  optimization?: WebpackOptions.Optimization;
-  prependPlugins: Plugin[];
+  plugins: (
+    | NonNullable<Configuration['plugins']>[number]
+    | undefined
+    | false
+  )[];
+  optimization?: Configuration['optimization'];
+  prependPlugins?: (
+    | NonNullable<Configuration['plugins']>[number]
+    | undefined
+    | false
+  )[];
   resolveLoaderModules?: string[];
   typescript: boolean;
   webpackPrefixPackageFields: string[];
 }
 
-export type WatchCallback = (stats: any) => void;
+export type WatchCallback = (stats: Stats | undefined) => void;
 
 export type FilledWebpackConfigurationKeys =
   | 'mode'
@@ -62,7 +64,7 @@ export type FilledWebpackConfiguration = Pick<
 export interface PobpackCompiler {
   clean: () => void | Buffer;
   compiler: Compiler;
-  run: () => Promise<Stats>;
+  run: () => Promise<Stats | undefined>;
   watch: (callback: WatchCallback) => Compiler.Watching;
   webpackConfig: Readonly<FilledWebpackConfiguration>;
 }

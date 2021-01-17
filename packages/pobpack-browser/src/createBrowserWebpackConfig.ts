@@ -1,17 +1,17 @@
 /* eslint-disable complexity */
 import path from 'path';
-import WorkboxWebpackPlugin from 'workbox-webpack-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import type {
+  Options,
+  ConfigEntry,
+  FilledWebpackConfiguration,
+} from 'pobpack-types';
 import {
   createModuleConfig,
   createPluginsConfig,
   createResolveConfig,
 } from 'pobpack-utils';
-import {
-  Options,
-  ConfigEntry,
-  FilledWebpackConfiguration,
-} from 'pobpack-types';
+import WorkboxWebpackPlugin from 'workbox-webpack-plugin';
 
 export type BrowserTargetType = 'modern' | 'all';
 

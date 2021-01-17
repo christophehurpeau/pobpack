@@ -1,3 +1,3 @@
-import { Options, FilledWebpackConfiguration } from 'pobpack-types';
+import type { Options, FilledWebpackConfiguration } from 'pobpack-types';
 export default function createNodeWebpackConfig(options: Options): FilledWebpackConfiguration;
 //# sourceMappingURL=createNodeWebpackConfig.d.ts.map

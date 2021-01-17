@@ -1,25 +1,34 @@
-import path from 'path';
 import { existsSync } from 'fs';
-import { Options, FilledWebpackConfiguration } from 'pobpack-types';
+import { resolve } from 'path';
+import type { Options, FilledWebpackConfiguration } from 'pobpack-types';
 import createOptions from './createOptions';
 
 export type CreateWebpackConfig = (
   options: Options,
 ) => FilledWebpackConfiguration;
 
+export type CreateWebpackConfigPartialOptions = (
+  options: Partial<Options>,
+) => FilledWebpackConfiguration;
+
+export type AppWebpackConfigCreator = (
+  createWebpackConfig: CreateWebpackConfigPartialOptions,
+  options: Partial<Options>,
+) => FilledWebpackConfiguration;
+
 export default function createAppWebpackConfig(
   createWebpackConfig: CreateWebpackConfig,
-): (options: Partial<Options>) => FilledWebpackConfiguration {
-  const wrapCreateWebpackConfig = (
-    options: Partial<Options>,
-  ): FilledWebpackConfiguration => createWebpackConfig(createOptions(options));
+): CreateWebpackConfigPartialOptions {
+  const wrapCreateWebpackConfig: CreateWebpackConfigPartialOptions = (
+    options,
+  ) => createWebpackConfig(createOptions(options));
 
   return (options: Partial<Options>): FilledWebpackConfiguration => {
-    const appWebpackConfigPath = path.resolve('createAppWebpackConfig.js');
+    const appWebpackConfigPath = resolve('createAppWebpackConfig.js');
     if (existsSync(appWebpackConfigPath)) {
       console.info('Using app createAppWebpackConfig.js');
-      // eslint-disable-next-line import/no-dynamic-require, global-require, @typescript-eslint/no-var-requires
-      const appWebpackConfigCreator = require(appWebpackConfigPath);
+      // eslint-disable-next-line import/no-dynamic-require, @typescript-eslint/no-var-requires, @typescript-eslint/no-unsafe-assignment
+      const appWebpackConfigCreator: AppWebpackConfigCreator = require(appWebpackConfigPath);
       if (typeof appWebpackConfigCreator !== 'function') {
         console.error(
           'app createAppWebpackConfig.js should export a function\n' +

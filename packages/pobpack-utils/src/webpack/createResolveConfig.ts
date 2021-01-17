@@ -1,13 +1,14 @@
+/* eslint-disable complexity */
 import { resolve } from 'path';
-import webpack from 'webpack';
-import { Options } from 'pobpack-types';
+import type { Options } from 'pobpack-types';
+import type { Configuration } from 'webpack';
 
 const ExcludesFalse = (Boolean as any) as <T>(x: T | false) => x is T;
 
 export default function createResolveConfig(
   modulePrefixPackageFields: string[],
   options: Options,
-): webpack.Resolve {
+): NonNullable<Configuration['resolve']> {
   return {
     // https://github.com/DefinitelyTyped/DefinitelyTyped/pull/25209
     // cacheWithContext: false,

@@ -1,4 +1,6 @@
 {
+  "typescript.tsdk": "node_modules/typescript/lib",
+
   // save config
   "editor.formatOnSave": true,
   "eslint.codeActionsOnSave.mode": "all",

@@ -1,8 +1,5 @@
 import path from 'path';
-import WebpackDevServer, {
-  Configuration as WebpackDevServerConfiguration,
-} from 'webpack-dev-server';
-import {
+import type {
   Options,
   PobpackCompiler,
   WatchCallback,
@@ -11,13 +8,16 @@ import {
 import { createPobpackCompiler, createAppWebpackConfig } from 'pobpack-utils';
 import errorOverlayMiddleware from 'react-dev-utils/errorOverlayMiddleware';
 import evalSourceMapMiddleware from 'react-dev-utils/evalSourceMapMiddleware';
-import noopServiceWorkerMiddleware from 'react-dev-utils/noopServiceWorkerMiddleware';
 import ignoredFiles from 'react-dev-utils/ignoredFiles';
+import noopServiceWorkerMiddleware from 'react-dev-utils/noopServiceWorkerMiddleware';
+import type { Stats } from 'webpack';
+import WebpackDevServer from 'webpack-dev-server';
+import type { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
+import type { BrowserTargetType } from './createBrowserWebpackConfig';
 import createBrowserWebpackConfig, {
   TARGETS,
   ALL,
   MODERN,
-  BrowserTargetType,
 } from './createBrowserWebpackConfig';
 
 export { TARGETS, ALL, MODERN };
@@ -37,7 +37,7 @@ export const createAppBrowserCompiler = (
     compilerOptions,
   );
 
-export const build = (options = {}) => {
+export const build = (options = {}): Promise<Stats | undefined>[] => {
   if (!process.env.NODE_ENV) process.env.NODE_ENV = 'production';
   const compilers = TARGETS.map((t) =>
     createAppBrowserCompiler(t, { ...options, hmr: false }),
@@ -46,7 +46,10 @@ export const build = (options = {}) => {
   return compilers.map((compiler) => compiler.run());
 };
 
-export const watch = (options: Partial<Options>, callback?: WatchCallback) => {
+export const watch = (
+  options: Partial<Options>,
+  callback?: WatchCallback,
+): PobpackCompiler => {
   if (typeof options === 'function') {
     callback = options;
     options = {};
@@ -73,7 +76,7 @@ export const runDevServer = (
   compiler: PobpackCompiler,
   options: RunOptions,
   srcPath = path.resolve('src'),
-) => {
+): WebpackDevServer => {
   const { host, port, https, ...webpackDevServerOptions } = options;
   const browserDevServer = new WebpackDevServer(compiler.compiler, {
     hot: true,

@@ -1,12 +1,12 @@
 {
   "pob": {
-    "pob-config": {
+    "project": {
+      "type": "lib"
+    },
+    "lib": {
       "lerna": true,
       "documentation": false,
       "testing": false
-    },
-    "project": {
-      "type": "lib"
     }
   }
 }

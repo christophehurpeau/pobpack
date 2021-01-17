@@ -1,26 +1,26 @@
 // const fs = require('fs');
-import path from 'path';
 import fs from 'fs';
-import nodeExternals, {
-  Options as NodeExternalsOptions,
-} from 'webpack-node-externals';
+import path from 'path';
+import type {
+  ConfigEntry,
+  Options,
+  FilledWebpackConfiguration,
+} from 'pobpack-types';
 import {
   webpack,
   createModuleConfig,
   createPluginsConfig,
   createResolveConfig,
 } from 'pobpack-utils';
-import {
-  ConfigEntry,
-  Options,
-  FilledWebpackConfiguration,
-} from 'pobpack-types';
+import type { ExternalsFunctionElement } from 'webpack';
+import type { Options as NodeExternalsOptions } from 'webpack-node-externals';
+import nodeExternals from 'webpack-node-externals';
 
 const ExcludesFalsy = (Boolean as any) as <T>(
   x: T | false | null | undefined,
 ) => x is T;
 
-const createExternals = (options: Options) => {
+const createExternals = (options: Options): ExternalsFunctionElement[] => {
   const baseOptions: NodeExternalsOptions = {
     importType: 'commonjs',
     modulesFromFile: false,

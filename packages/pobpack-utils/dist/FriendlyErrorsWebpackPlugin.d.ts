@@ -1,5 +1,5 @@
 import Logger from 'nightingale-logger';
-import { Compiler } from 'webpack';
+import type { Compiler } from 'webpack';
 export interface Options {
     bundleName: string;
     successMessage?: string;

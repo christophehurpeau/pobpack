@@ -1,10 +1,10 @@
 /* eslint-disable no-console */
 
 import { addConfig, levels } from 'nightingale';
-import Logger from 'nightingale-logger';
 import ConsoleHandler from 'nightingale-console';
+import Logger from 'nightingale-logger';
 import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages';
-import { Compiler } from 'webpack';
+import type { Compiler } from 'webpack';
 
 export interface Options {
   bundleName: string;
@@ -29,7 +29,7 @@ export default class FriendlyErrorsWebpackPlugin {
     this.logger = logger.context({ bundleName: options.bundleName });
   }
 
-  apply(compiler: Compiler) {
+  apply(compiler: Compiler): void {
     // webpack is recompiling
     compiler.hooks.invalid.tap(pluginName, () => {
       this.logger.info('Compiling...');
@@ -40,7 +40,7 @@ export default class FriendlyErrorsWebpackPlugin {
       const messages = formatWebpackMessages(stats.toJson({}));
       // const messages = stats.toJson({}, true);
 
-      if (messages.errors.length !== 0) {
+      if (messages.errors.length > 0) {
         this.logger.critical('Failed to compile.');
         console.log();
         messages.errors.forEach((message: string) => {
@@ -52,7 +52,7 @@ export default class FriendlyErrorsWebpackPlugin {
 
       if (process.send) process.send('ready');
 
-      if (messages.warnings.length !== 0) {
+      if (messages.warnings.length > 0) {
         this.logger.critical('Compiled with warnings.');
         console.log();
         messages.warnings.forEach((message: string) => {

@@ -16,7 +16,7 @@
   "scripts": {
     "build": "pobpack-node build && echo",
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "eslint --ext .js,.ts --report-unused-disable-directives --quiet src",
+    "lint:eslint": "yarn --cwd ../.. eslint --ext .js,.ts --report-unused-disable-directives --quiet packages/pobpack-node-example",
     "start": "pobpack-node"
   },
   "prettier": {
@@ -25,21 +25,10 @@
     "arrowParens": "always"
   },
   "devDependencies": {
-    "@babel/core": "7.7.7",
-    "@pob/eslint-config": "41.0.4",
-    "@pob/eslint-config-node": "41.0.4",
-    "@pob/eslint-config-typescript": "41.0.4",
-    "@types/webpack-env": "1.14.1",
-    "@typescript-eslint/eslint-plugin": "4.9.1",
-    "@typescript-eslint/parser": "4.9.1",
-    "eslint": "7.15.0",
-    "eslint-import-resolver-node": "0.3.4",
-    "eslint-plugin-import": "2.22.1",
-    "eslint-plugin-node": "11.1.0",
-    "eslint-plugin-unicorn": "23.0.0",
+    "@babel/core": "7.12.10",
+    "@types/webpack-env": "1.16.0",
     "pobpack-node": "^9.0.0",
-    "prettier": "2.2.1",
-    "webpack": "5.5.0",
+    "webpack": "4.46.0",
     "webpack-module-hot-accept": "1.0.5"
   }
 }

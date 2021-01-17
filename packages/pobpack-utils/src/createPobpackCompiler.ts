@@ -1,16 +1,18 @@
 import { execSync } from 'child_process';
 import { promisify } from 'util';
 import colorette from 'colorette';
-import ProgressBar from 'progress';
-import webpack, { ProgressPlugin, Stats } from 'webpack';
-import {
+import type {
   PobpackCompiler,
   CreateCompilerOptions,
   FilledWebpackConfiguration,
 } from 'pobpack-types';
+import ProgressBar from 'progress';
+import type { Stats } from 'webpack';
+import webpack, { ProgressPlugin } from 'webpack';
 import FriendlyErrorsWebpackPlugin from './FriendlyErrorsWebpackPlugin';
 
-const buildThrowOnError = (stats: Stats): Stats => {
+const buildThrowOnError = (stats?: Stats): Stats | undefined => {
+  if (!stats) return stats;
   if (!stats.hasErrors()) {
     return stats;
   }
@@ -60,22 +62,23 @@ export default function createPobpackCompiler(
     compiler,
   );
 
-  const promisifyRun: () => Promise<Stats> = promisify(
+  const promisifyRun: () => Promise<Stats | undefined> = promisify(
     compiler.run.bind(compiler),
   );
 
   return {
     compiler,
     webpackConfig,
-    clean: (): void | Buffer => {
-      if (webpackConfig.output && webpackConfig.output.path) {
-        return execSync(`rm -Rf ${webpackConfig.output.path}`);
+    clean: (): void => {
+      if (webpackConfig.output?.path) {
+        execSync(`rm -Rf ${webpackConfig.output.path}`);
       }
     },
-    run: (): Promise<Stats> => promisifyRun().then(buildThrowOnError),
-    watch: (callback: (stats: Stats) => any) =>
-      compiler.watch({}, (err: Error, stats: Stats) => {
-        if (err) return;
+    run: (): Promise<Stats | undefined> =>
+      promisifyRun().then(buildThrowOnError),
+    watch: (callback: (stats?: Stats) => unknown) =>
+      compiler.watch({}, (err?: Error, stats?: Stats): void => {
+        if (err || !stats) return;
         if (stats.hasErrors()) return;
         buildThrowOnError(stats);
         callback(stats);

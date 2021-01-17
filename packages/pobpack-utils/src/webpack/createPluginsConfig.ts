@@ -1,16 +1,17 @@
-import webpack, { Plugin } from 'webpack';
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
-import { Options } from 'pobpack-types';
+import type { Options } from 'pobpack-types';
+import type { Configuration } from 'webpack';
+import webpack from 'webpack';
 
-export default function createPluginsConfig(options: Options): Plugin[] {
-  return [
-    ...options.prependPlugins,
+const ExcludesFalsy = (Boolean as unknown) as <T>(
+  x: T | boolean | null | undefined,
+) => x is T;
 
-    // ignore files when watching
-    new webpack.WatchIgnorePlugin([
-      // typescript definitions
-      /\.d\.ts$/,
-    ]),
+export default function createPluginsConfig(
+  options: Options,
+): NonNullable<Configuration['plugins']> {
+  const plugins: unknown[] = [
+    ...(options.prependPlugins || []),
 
     // enforces the entire path of all required modules match the exact case
     // of the actual path on disk. Using this plugin helps alleviate cases
@@ -65,5 +66,7 @@ export default function createPluginsConfig(options: Options): Plugin[] {
     // ),
 
     ...options.plugins,
-  ].filter(Boolean);
+  ];
+
+  return plugins.filter(ExcludesFalsy) as NonNullable<Configuration['plugins']>;
 }

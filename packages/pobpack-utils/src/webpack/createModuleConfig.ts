@@ -1,13 +1,20 @@
 import { realpathSync } from 'fs';
 import { resolve, dirname } from 'path';
-import resolveFrom from 'resolve-from';
 import findUp from 'find-up';
-import { Options } from 'pobpack-types';
+import type { Options } from 'pobpack-types';
+import resolveFrom from 'resolve-from';
+import type { Configuration } from 'webpack';
 // with node 10.12
 // import { createRequireFromPath } from 'module';
 // const requireFromPwd = createRequireFromPath(process.cwd());
 
-export default function createModuleConfig(options: Options) {
+const ExcludesFalsy = (Boolean as unknown) as <T>(
+  x: T | boolean | null | undefined,
+) => x is T;
+
+export default function createModuleConfig(
+  options: Options,
+): NonNullable<Configuration['module']> {
   return {
     strictExportPresence: true,
 
@@ -32,7 +39,7 @@ export default function createModuleConfig(options: Options) {
               if (!packageJson) return;
               return packageJson.slice(0, -'package.json'.length);
             })
-            .filter(Boolean),
+            .filter(ExcludesFalsy),
           ...options.includePaths,
         ],
         loaders: [
