@@ -12,7 +12,6 @@ const ProgressBar = require('progress');
 const nightingale = require('nightingale');
 const ConsoleHandler = require('nightingale-console');
 const Logger = require('nightingale-logger');
-const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
 const findUp = require('find-up');
 const resolveFrom = require('resolve-from');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
@@ -24,7 +23,6 @@ const colorette__default = /*#__PURE__*/_interopDefaultLegacy(colorette);
 const ProgressBar__default = /*#__PURE__*/_interopDefaultLegacy(ProgressBar);
 const ConsoleHandler__default = /*#__PURE__*/_interopDefaultLegacy(ConsoleHandler);
 const Logger__default = /*#__PURE__*/_interopDefaultLegacy(Logger);
-const formatWebpackMessages__default = /*#__PURE__*/_interopDefaultLegacy(formatWebpackMessages);
 const findUp__default = /*#__PURE__*/_interopDefaultLegacy(findUp);
 const resolveFrom__default = /*#__PURE__*/_interopDefaultLegacy(resolveFrom);
 const CaseSensitivePathsPlugin__default = /*#__PURE__*/_interopDefaultLegacy(CaseSensitivePathsPlugin);
@@ -88,6 +86,7 @@ function createAppWebpackConfig(createWebpackConfig) {
 }
 
 /* eslint-disable no-console */
+
 nightingale.addConfig({
   key: 'pobpack-utils',
   handler: new ConsoleHandler__default(nightingale.levels.INFO)
@@ -106,31 +105,31 @@ class FriendlyErrorsWebpackPlugin {
   apply(compiler) {
     // webpack is recompiling
     compiler.hooks.invalid.tap(pluginName, () => {
+      console.log();
       this.logger.info('Compiling...');
     }); // compilation done
 
     compiler.hooks.done.tap(pluginName, stats => {
-      const messages = formatWebpackMessages__default(stats.toJson({})); // const messages = stats.toJson({}, true);
+      console.log();
 
-      if (messages.errors.length > 0) {
+      if (stats.hasErrors()) {
         this.logger.critical('Failed to compile.');
-        console.log();
-        messages.errors.forEach(message => {
-          console.log(message);
-          console.log();
-        });
+        console.log(); // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+
+        stats.toJson({}).errors.map(error => // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+        console.log(error !== null && error !== void 0 && error.message ? error.message : error));
         return;
       }
 
       if (process.send) process.send('ready');
 
-      if (messages.warnings.length > 0) {
+      if (stats.hasWarnings()) {
         this.logger.critical('Compiled with warnings.');
-        console.log();
-        messages.warnings.forEach(message => {
-          console.log(message);
-          console.log();
-        });
+        console.log(); // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+
+        stats.toJson({}).warnings.map(warning => // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+        console.log(warning !== null && warning !== void 0 && warning.message ? warning.message : warning));
+        return;
       }
 
       this.logger.success('Compiled successfully!');
@@ -162,7 +161,7 @@ function createPobpackCompiler(bundleName, webpackConfig, {
   if (progressBar && process.stdout.isTTY) {
     let bar;
     const progressPlugin = new webpack.ProgressPlugin((percentage, msg) => {
-      if (percentage === 0) {
+      if (!bar || percentage === 0) {
         bar = new ProgressBar__default(`${colorette__default.bold(colorette__default.yellow(`Building ${bundleName} bundle...`))} ${colorette__default.bold(':percent')} [:bar] → :msg`, {
           incomplete: ' ',
           complete: '▇',
@@ -176,6 +175,10 @@ function createPobpackCompiler(bundleName, webpackConfig, {
         bar.update(percentage, {
           msg: msg.length > 20 ? `${msg.slice(0, 20)}...` : msg
         });
+
+        if (percentage === 1) {
+          bar = undefined;
+        }
       }
     });
     progressPlugin.apply(compiler);
@@ -187,6 +190,7 @@ function createPobpackCompiler(bundleName, webpackConfig, {
     successMessage
   }).apply(compiler);
   const promisifyRun = util.promisify(compiler.run.bind(compiler));
+  const promisifyClose = util.promisify(compiler.close.bind(compiler));
   return {
     compiler,
     webpackConfig,
@@ -197,6 +201,7 @@ function createPobpackCompiler(bundleName, webpackConfig, {
         child_process.execSync(`rm -Rf ${webpackConfig.output.path}`);
       }
     },
+    close: promisifyClose,
     run: () => promisifyRun().then(buildThrowOnError),
     watch: callback => compiler.watch({}, (err, stats) => {
       if (err || !stats) return;
@@ -230,7 +235,7 @@ function createModuleConfig(options) {
         if (!packageJson) return;
         return packageJson.slice(0, -12);
       }).filter(ExcludesFalsy), ...options.includePaths],
-      loaders: [{
+      use: [{
         loader: require.resolve('babel-loader'),
         options: {
           babelrc: false,
@@ -284,7 +289,14 @@ function createResolveConfig(modulePrefixPackageFields, options) {
     aliasFields: [...[].concat(...modulePrefixPackageFields.map(prefix => [options.env !== 'production' && `module:aliases-${prefix}-dev`, `module:aliases-${prefix}`, // old webpack: syntax
     options.env !== 'production' && `webpack:aliases-${prefix}-dev`, `webpack:aliases-${prefix}`])), options.env !== 'production' && 'module:aliases-dev', 'module:aliases', // old webpack: syntax
     options.env !== 'production' && 'webpack:aliases-dev', 'webpack:aliases', 'webpack', modulePrefixPackageFields.includes('browser') && options.env !== 'production' && 'browser-dev', modulePrefixPackageFields.includes('browser') && 'browser'].filter(ExcludesFalse),
-    alias: options.aliases
+    alias: options.aliases,
+    // Some libraries import Node modules but don't use them in the browser.
+    // Tell Webpack to provide empty mocks for them so importing them works.
+    // fs and module are used by source-map-support
+    fallback: {
+      fs: false,
+      module: false
+    }
   };
 }
 

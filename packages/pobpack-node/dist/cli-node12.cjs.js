@@ -37,7 +37,8 @@ const createExternals = options => {
     p = path__default.dirname(p);
   } while (p !== '/');
 
-  return nodeModulesPaths.map(nodeModulesPath => nodeExternals__default({ ...baseOptions,
+  return nodeModulesPaths.map(nodeModulesPath => // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+  nodeExternals__default({ ...baseOptions,
     modulesDir: nodeModulesPath
   }));
 };
@@ -49,11 +50,12 @@ function createNodeWebpackConfig(options) {
     // Don't attempt to continue if there are any errors.
     bail: options.env === 'production',
     // Target node
-    target: 'node',
+    // TODO pass version in options
+    target: 'node12.10',
     // get right stack traces
     devtool: 'source-map',
     optimization: {
-      noEmitOnErrors: true,
+      emitOnErrors: false,
       minimize: false,
       ...options.optimization
     },
@@ -125,7 +127,8 @@ const watchAndRunCompiler = (compiler, options = {}) => {
     debounceRestart.clear(); // eslint-disable-next-line @typescript-eslint/no-floating-promises
 
     daemon.stop();
-  };
+  }; // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+
 
   const watchingCompiler = compiler.watch(stats => {
     const hasErrors = stats ? stats.hasErrors() : false;

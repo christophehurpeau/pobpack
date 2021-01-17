@@ -12,7 +12,7 @@ import {
   createPluginsConfig,
   createResolveConfig,
 } from 'pobpack-utils';
-import type { ExternalsFunctionElement } from 'webpack';
+import type { Configuration } from 'webpack';
 import type { Options as NodeExternalsOptions } from 'webpack-node-externals';
 import nodeExternals from 'webpack-node-externals';
 
@@ -20,7 +20,9 @@ const ExcludesFalsy = (Boolean as any) as <T>(
   x: T | false | null | undefined,
 ) => x is T;
 
-const createExternals = (options: Options): ExternalsFunctionElement[] => {
+const createExternals = (
+  options: Options,
+): NonNullable<Configuration['externals']> => {
   const baseOptions: NodeExternalsOptions = {
     importType: 'commonjs',
     modulesFromFile: false,
@@ -47,8 +49,12 @@ const createExternals = (options: Options): ExternalsFunctionElement[] => {
   } while (p !== '/');
 
   return nodeModulesPaths.map((nodeModulesPath) =>
-    nodeExternals({ ...baseOptions, modulesDir: nodeModulesPath }),
-  );
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    nodeExternals({
+      ...baseOptions,
+      modulesDir: nodeModulesPath,
+    }),
+  ) as NonNullable<Configuration['externals']>;
 };
 
 export default function createNodeWebpackConfig(
@@ -62,13 +68,14 @@ export default function createNodeWebpackConfig(
     bail: options.env === 'production',
 
     // Target node
-    target: 'node',
+    // TODO pass version in options
+    target: 'node12.10',
 
     // get right stack traces
     devtool: 'source-map',
 
     optimization: {
-      noEmitOnErrors: true,
+      emitOnErrors: false,
       minimize: false,
       ...options.optimization,
     },

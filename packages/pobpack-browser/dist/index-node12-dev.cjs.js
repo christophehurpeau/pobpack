@@ -10,6 +10,7 @@ const ignoredFiles = require('react-dev-utils/ignoredFiles');
 const noopServiceWorkerMiddleware = require('react-dev-utils/noopServiceWorkerMiddleware');
 const WebpackDevServer = require('webpack-dev-server');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const webpack = require('webpack');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
@@ -21,6 +22,7 @@ const ignoredFiles__default = /*#__PURE__*/_interopDefaultLegacy(ignoredFiles);
 const noopServiceWorkerMiddleware__default = /*#__PURE__*/_interopDefaultLegacy(noopServiceWorkerMiddleware);
 const WebpackDevServer__default = /*#__PURE__*/_interopDefaultLegacy(WebpackDevServer);
 const ReactRefreshWebpackPlugin__default = /*#__PURE__*/_interopDefaultLegacy(ReactRefreshWebpackPlugin);
+const webpack__default = /*#__PURE__*/_interopDefaultLegacy(webpack);
 const WorkboxWebpackPlugin__default = /*#__PURE__*/_interopDefaultLegacy(WorkboxWebpackPlugin);
 
 /* eslint-disable complexity */
@@ -38,23 +40,16 @@ function createBrowserWebpackConfig(target) {
     // Don't attempt to continue if there are any errors.
     bail: options.env === 'production',
     // Target web
-    target: 'web',
+    target: target === MODERN ? 'web' : ['web', 'es5'],
     // get right stack traces
     devtool: options.env === 'production' ? 'nosources-source-map' : 'source-map',
     optimization: {
-      noEmitOnErrors: true,
+      emitOnErrors: false,
       minimize: options.env === 'production',
       ...options.optimization
     },
     // use cache
     cache: options.hmr,
-    // Some libraries import Node modules but don't use them in the browser.
-    // Tell Webpack to provide empty mocks for them so importing them works.
-    // fs and module are used by source-map-support
-    node: {
-      fs: 'empty',
-      module: 'empty'
-    },
     resolveLoader: {
       modules: options.resolveLoaderModules || ['node_modules']
     },
@@ -78,11 +73,15 @@ function createBrowserWebpackConfig(target) {
       path: path__default.resolve(options.paths.build),
       // Point sourcemap entries to original disk location
       // devtoolModuleFilenameTemplate: 'file://[absolute-resource-path]',
-      devtoolModuleFilenameTemplate: options.env === 'production' ? info => path__default.relative(options.paths.src, info.absoluteResourcePath).replace(/\\/g, '/') : // eslint-disable-next-line unicorn/no-nested-ternary
-      options.env === 'development' ? info => path__default.resolve(info.absoluteResourcePath).replace(/\\/g, '/') : undefined
+      devtoolModuleFilenameTemplate: options.env === 'production' ? info => path__default.relative(options.paths.src, // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      info.absoluteResourcePath).replace(/\\/g, '/') : // eslint-disable-next-line unicorn/no-nested-ternary
+      options.env === 'development' ? info => // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      path__default.resolve(info.absoluteResourcePath).replace(/\\/g, '/') : undefined
     },
     module: pobpackUtils.createModuleConfig(options),
-    plugins: [...pobpackUtils.createPluginsConfig(options), options.hmr && new ReactRefreshWebpackPlugin__default({
+    plugins: [...pobpackUtils.createPluginsConfig(options), new webpack__default.ProvidePlugin({
+      process: 'process/browser'
+    }), options.hmr && new ReactRefreshWebpackPlugin__default({
       overlay: {
         // Create React App overlay config
         entry: webpackDevClientEntry,

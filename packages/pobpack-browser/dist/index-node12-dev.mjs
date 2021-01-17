@@ -6,6 +6,7 @@ import ignoredFiles from 'react-dev-utils/ignoredFiles';
 import noopServiceWorkerMiddleware from 'react-dev-utils/noopServiceWorkerMiddleware';
 import WebpackDevServer from 'webpack-dev-server';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import webpack from 'webpack';
 import WorkboxWebpackPlugin from 'workbox-webpack-plugin';
 
 /* eslint-disable complexity */
@@ -23,23 +24,16 @@ function createBrowserWebpackConfig(target) {
     // Don't attempt to continue if there are any errors.
     bail: options.env === 'production',
     // Target web
-    target: 'web',
+    target: target === MODERN ? 'web' : ['web', 'es5'],
     // get right stack traces
     devtool: options.env === 'production' ? 'nosources-source-map' : 'source-map',
     optimization: {
-      noEmitOnErrors: true,
+      emitOnErrors: false,
       minimize: options.env === 'production',
       ...options.optimization
     },
     // use cache
     cache: options.hmr,
-    // Some libraries import Node modules but don't use them in the browser.
-    // Tell Webpack to provide empty mocks for them so importing them works.
-    // fs and module are used by source-map-support
-    node: {
-      fs: 'empty',
-      module: 'empty'
-    },
     resolveLoader: {
       modules: options.resolveLoaderModules || ['node_modules']
     },
@@ -63,11 +57,15 @@ function createBrowserWebpackConfig(target) {
       path: path.resolve(options.paths.build),
       // Point sourcemap entries to original disk location
       // devtoolModuleFilenameTemplate: 'file://[absolute-resource-path]',
-      devtoolModuleFilenameTemplate: options.env === 'production' ? info => path.relative(options.paths.src, info.absoluteResourcePath).replace(/\\/g, '/') : // eslint-disable-next-line unicorn/no-nested-ternary
-      options.env === 'development' ? info => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/') : undefined
+      devtoolModuleFilenameTemplate: options.env === 'production' ? info => path.relative(options.paths.src, // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      info.absoluteResourcePath).replace(/\\/g, '/') : // eslint-disable-next-line unicorn/no-nested-ternary
+      options.env === 'development' ? info => // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      path.resolve(info.absoluteResourcePath).replace(/\\/g, '/') : undefined
     },
     module: createModuleConfig(options),
-    plugins: [...createPluginsConfig(options), options.hmr && new ReactRefreshWebpackPlugin({
+    plugins: [...createPluginsConfig(options), new webpack.ProvidePlugin({
+      process: 'process/browser'
+    }), options.hmr && new ReactRefreshWebpackPlugin({
       overlay: {
         // Create React App overlay config
         entry: webpackDevClientEntry,
