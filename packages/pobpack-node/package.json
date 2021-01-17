@@ -75,7 +75,7 @@
     "webpack": "^4.44.2"
   },
   "dependencies": {
-    "babel-preset-latest-node": "^5.4.0",
+    "babel-preset-latest-node": "^5.2.0",
     "debounce": "^1.2.0",
     "pobpack-types": "^4.1.2",
     "pobpack-utils": "^9.0.0",
