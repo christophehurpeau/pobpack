@@ -96,6 +96,7 @@ function createNodeWebpackConfig(options) {
     },
     module: pobpackUtils.createModuleConfig(options),
     plugins: pobpackUtils.createPluginsConfig({ ...options,
+      prependPlugins: [options.hmr && new pobpackUtils.webpack.HotModuleReplacementPlugin(), ...(options.prependPlugins || [])],
       plugins: [options.hmr && new pobpackUtils.webpack.BannerPlugin({
         banner: `require("${require.resolve('../source-map-support')}");`,
         raw: true,

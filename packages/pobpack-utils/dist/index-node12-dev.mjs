@@ -242,7 +242,7 @@ function createPluginsConfig(options) {
   options.env !== 'production' && new CaseSensitivePathsPlugin(), new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify(options.env),
     ...options.defines
-  }), options.hmr && new webpack.HotModuleReplacementPlugin(),
+  }),
   /* replace object-assign ponyfill to use native implementation */
   // Array.isArray
   new webpack.NormalModuleReplacementPlugin(/.*\/node_modules\/isarray\/index.js$/, require.resolve('../replacements/Array.isArray.js')), // Object.assign

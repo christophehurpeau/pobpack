@@ -131,6 +131,11 @@ export default function createNodeWebpackConfig(
 
     plugins: createPluginsConfig({
       ...options,
+      prependPlugins: [
+        options.hmr && new webpack.HotModuleReplacementPlugin(),
+        ...(options.prependPlugins || []),
+      ],
+
       plugins: [
         options.hmr &&
           new webpack.BannerPlugin({

@@ -23,8 +23,6 @@ export default function createPluginsConfig(
       ...options.defines,
     }),
 
-    options.hmr && new webpack.HotModuleReplacementPlugin(),
-
     /* replace object-assign ponyfill to use native implementation */
 
     // Array.isArray

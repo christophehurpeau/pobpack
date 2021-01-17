@@ -86,6 +86,7 @@ function createNodeWebpackConfig(options) {
     },
     module: createModuleConfig(options),
     plugins: createPluginsConfig({ ...options,
+      prependPlugins: [options.hmr && new webpack.HotModuleReplacementPlugin(), ...(options.prependPlugins || [])],
       plugins: [options.hmr && new webpack.BannerPlugin({
         banner: `require("${require.resolve('../source-map-support')}");`,
         raw: true,
