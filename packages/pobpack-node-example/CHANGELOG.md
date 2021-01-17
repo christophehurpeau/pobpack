@@ -3,6 +3,67 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 11.0.0 (2021-01-17)
+
+
+### Bug Fixes
+
+* clean process.exit on watcher close ([dc090f2](https://github.com/christophehurpeau/pobpack/commit/dc090f20eecc416d8cc8581cf4f159f6f082d400))
+* downgrade react-dev-utils and update doc on react-hot-loader ([29585f1](https://github.com/christophehurpeau/pobpack/commit/29585f126acad6323bfaf8c10e3b077674d4dd9b))
+* update dependencies ([3342f3d](https://github.com/christophehurpeau/pobpack/commit/3342f3dcb538eb1dc75ef02dbe1edd9d41cbd1ce))
+* update dependencies ([975a9d1](https://github.com/christophehurpeau/pobpack/commit/975a9d1995c31ffecb1bb9dc7f8bb6e8434b33c3))
+* update minor dependencies ([f18bcf6](https://github.com/christophehurpeau/pobpack/commit/f18bcf6333475755a7186e94dd31be051b0c4d03))
+
+
+### chore
+
+* update config and drop node 8 ([2c98e79](https://github.com/christophehurpeau/pobpack/commit/2c98e796b3ea693ee3d7fdd92e108942572f82a9))
+
+
+### Code Refactoring
+
+* typescript ([48da444](https://github.com/christophehurpeau/pobpack/commit/48da4440545b21063c686d6eb4245983fe49224c))
+* webpack 4, targets, minify when production ([69136a5](https://github.com/christophehurpeau/pobpack/commit/69136a55167f1ad3b4a420cbac0c61df63b1cd1d))
+* webpack 5 ([0b32c76](https://github.com/christophehurpeau/pobpack/commit/0b32c76e255307fba7934a97e03c75a9fdd631ff))
+
+
+### Features
+
+* add service worker support with workbox plugin ([6d3d11d](https://github.com/christophehurpeau/pobpack/commit/6d3d11dc54aac9f0c705ae2741b9e6df189db641))
+* pob update, webpack 4 ([6ce8705](https://github.com/christophehurpeau/pobpack/commit/6ce870585bb1412cc3aae6aeec730b4f8ad6e898))
+* requires node 12 ([a54fcad](https://github.com/christophehurpeau/pobpack/commit/a54fcad72fe153a04fe615f922145444c3611f59))
+* update dependencies ([9f54ca8](https://github.com/christophehurpeau/pobpack/commit/9f54ca89fccfd5cc79fa92997fd15b255c573773))
+* update dependencies ([e255a7b](https://github.com/christophehurpeau/pobpack/commit/e255a7b59e5c2d836208a5a10865c0b284b1188e))
+* update dependencies ([45f1fd1](https://github.com/christophehurpeau/pobpack/commit/45f1fd1cd8bb7a59f5ca2a99cab308526625925c))
+* update dependencies and fix flow ([c598f1c](https://github.com/christophehurpeau/pobpack/commit/c598f1cd77fbba385e69d66ccfd20379642da3d3))
+* update dependencies and node 8.3 ([bc648e2](https://github.com/christophehurpeau/pobpack/commit/bc648e2f2d1327c00fcce800658e8e796c7fca13))
+* update dependencies, replace chalk by colorette and resolve includeModules from pwd ([ccea3a8](https://github.com/christophehurpeau/pobpack/commit/ccea3a8a29baae939ad98e89b52a5d7c5a0f4fa1))
+* update deps ([5e3fa35](https://github.com/christophehurpeau/pobpack/commit/5e3fa3531664be52a319d7045f301bad755161de))
+* update deps ([a472983](https://github.com/christophehurpeau/pobpack/commit/a4729833f6f3f9e37fc089597f52fcbc1a743c90))
+* update minor dependencies ([5415706](https://github.com/christophehurpeau/pobpack/commit/5415706b8de0ede02f70de48bd2d784e9aea3171))
+* use babel-preset-latest-node ([30acd9b](https://github.com/christophehurpeau/pobpack/commit/30acd9bc04c66c716772ba808e4f72ba0571e62b))
+* webpack 3 ([0471d41](https://github.com/christophehurpeau/pobpack/commit/0471d416d17660db408a81b2257d004d2ac32053))
+
+
+### BREAKING CHANGES
+
+* requires webpack 5.
+* drop node 10 support
+* drop node 8
+* node 6 dropped
+* webpack@^4.17.1 @babel/core@^7.0.0
+* - on build, if process.env.NODE_ENV is undefined it is set to production
+- when options.env is production, build is minified with uglify
+- object-assign is replaced by its native implementation
+- babel 7 compatibility and pob-browser/babel uses babel 7 preset
+* webpack 4
+* node 8.3
+* webpack v3
+
+
+
+
+
 # [6.0.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-node-example@5.0.7...pobpack-node-example@6.0.0) (2021-01-17)
 
 
