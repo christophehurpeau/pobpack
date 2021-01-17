@@ -13,7 +13,7 @@ export default function createOptions(options: Partial<Options>): Options {
         : options.serviceWorkerEntry,
     env: options.env || process.env.NODE_ENV,
     hmr: options.hmr,
-    whitelistExternalExtensions: options.whitelistExternalExtensions || [],
+    allowlistExternalExtensions: options.allowlistExternalExtensions || [],
     includeModules: options.includeModules || [],
     includePaths: options.includePaths || [],
     jsLoaders: options.jsLoaders,

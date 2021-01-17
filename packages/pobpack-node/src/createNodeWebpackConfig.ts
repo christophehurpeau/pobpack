@@ -24,14 +24,14 @@ const createExternals = (options: Options): ExternalsFunctionElement[] => {
   const baseOptions: NodeExternalsOptions = {
     importType: 'commonjs',
     modulesFromFile: false,
-    whitelist: [
+    allowlist: [
       require.resolve('../hot'),
       ...options.includeModules.map(
         (module: string) => new RegExp(`^${module}(/|$)`),
       ),
     ].concat(
-      options.whitelistExternalExtensions
-        ? [new RegExp(`(${options.whitelistExternalExtensions.join('|')})$`)]
+      options.allowlistExternalExtensions
+        ? [new RegExp(`(${options.allowlistExternalExtensions.join('|')})$`)]
         : [],
     ),
   };

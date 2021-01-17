@@ -21,7 +21,7 @@ export interface Options {
   serviceWorkerEntry: false | string;
   env?: string;
   hmr?: boolean;
-  whitelistExternalExtensions: string[];
+  allowlistExternalExtensions: string[];
   includeModules: string[];
   includePaths: string[];
   jsLoaders?: RuleSetUseItem[];

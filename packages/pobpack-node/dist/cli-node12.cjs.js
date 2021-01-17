@@ -22,7 +22,7 @@ const createExternals = options => {
   const baseOptions = {
     importType: 'commonjs',
     modulesFromFile: false,
-    whitelist: [require.resolve('../hot'), ...options.includeModules.map(module => new RegExp(`^${module}(/|$)`))].concat(options.whitelistExternalExtensions ? [new RegExp(`(${options.whitelistExternalExtensions.join('|')})$`)] : [])
+    allowlist: [require.resolve('../hot'), ...options.includeModules.map(module => new RegExp(`^${module}(/|$)`))].concat(options.allowlistExternalExtensions ? [new RegExp(`(${options.allowlistExternalExtensions.join('|')})$`)] : [])
   };
   const nodeModulesPaths = [];
   let p = process.cwd();
