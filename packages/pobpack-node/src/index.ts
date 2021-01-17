@@ -44,6 +44,7 @@ export const watch = (
 };
 
 export interface RunOptions {
+  nodeArgs?: (string | number)[];
   args?: (string | number)[];
   cwd?: string;
   displayName?: string;
@@ -79,6 +80,7 @@ export const watchAndRunCompiler = (
         displayName: options.displayName,
         cwd: options.cwd,
         args: [
+          ...(options.nodeArgs || []),
           join(
             // eslint-disable-next-line @typescript-eslint/prefer-optional-chain
             (compiler.webpackConfig.output &&

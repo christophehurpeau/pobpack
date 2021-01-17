@@ -4,6 +4,7 @@ export declare const createAppNodeCompiler: (options: Partial<Options>, compiler
 export declare const build: (options?: {}) => Promise<Stats | undefined>;
 export declare const watch: (options: Partial<Options>, callback: WatchCallback) => PobpackCompiler;
 export interface RunOptions {
+    nodeArgs?: (string | number)[];
     args?: (string | number)[];
     cwd?: string;
     displayName?: string;

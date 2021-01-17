@@ -143,7 +143,7 @@ const watchAndRunCompiler = (compiler, options = {}) => {
         key: options.key || 'pobpack-node',
         displayName: options.displayName,
         cwd: options.cwd,
-        args: [join( // eslint-disable-next-line @typescript-eslint/prefer-optional-chain
+        args: [...(options.nodeArgs || []), join( // eslint-disable-next-line @typescript-eslint/prefer-optional-chain
         compiler.webpackConfig.output && compiler.webpackConfig.output.path || ''), ...(options.args || [])] // autoRestart: true,
 
       }); // eslint-disable-next-line @typescript-eslint/no-floating-promises
