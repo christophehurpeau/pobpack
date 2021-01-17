@@ -36,6 +36,18 @@
         "import": "./dist/cli-node12.mjs",
         "require": "./dist/cli-node12.cjs.js"
       }
+    },
+    "./babel": {
+      "import": "./babel.mjs",
+      "require": "./babel.js"
+    },
+    "./hot": {
+      "import": "./hot.mjs",
+      "require": "./hot.js"
+    },
+    "./source-map-support": {
+      "import": "./source-map-support.mjs",
+      "require": "./source-map-support.js"
     }
   },
   "sideEffects": false,
@@ -69,6 +81,11 @@
     "entries": [
       "index",
       "cli"
+    ],
+    "extraEntries": [
+      "babel",
+      "hot",
+      "source-map-support"
     ]
   },
   "peerDependencies": {
