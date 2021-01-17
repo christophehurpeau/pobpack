@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.0.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser@9.0.0...pobpack-browser@10.0.0) (2021-01-17)
+
+
+### Bug Fixes
+
+* missing extra exports ([08493d2](https://github.com/christophehurpeau/pobpack/commit/08493d2319ff0ec228812f923a409f9ebe90ac5d))
+
+
+### Features
+
+* add service worker support with workbox plugin ([6d3d11d](https://github.com/christophehurpeau/pobpack/commit/6d3d11dc54aac9f0c705ae2741b9e6df189db641))
+* requires node 12 ([a54fcad](https://github.com/christophehurpeau/pobpack/commit/a54fcad72fe153a04fe615f922145444c3611f59))
+
+
+### BREAKING CHANGES
+
+* drop node 10 support
+
+
+
+
+
 # [9.0.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-browser@8.1.1...pobpack-browser@9.0.0) (2020-08-09)
 
 

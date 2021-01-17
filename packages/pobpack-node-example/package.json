@@ -1,7 +1,7 @@
 {
   "name": "pobpack-node-example",
   "private": true,
-  "version": "5.0.7",
+  "version": "6.0.0",
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "ISC",
   "repository": {
@@ -27,7 +27,7 @@
   "devDependencies": {
     "@babel/core": "7.12.10",
     "@types/webpack-env": "1.16.0",
-    "pobpack-node": "^9.0.0",
+    "pobpack-node": "^10.0.0",
     "webpack": "4.46.0",
     "webpack-module-hot-accept": "1.0.5"
   }

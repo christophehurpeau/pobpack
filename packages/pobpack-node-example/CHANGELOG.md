@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/christophehurpeau/pobpack/compare/pobpack-node-example@5.0.7...pobpack-node-example@6.0.0) (2021-01-17)
+
+
+### Features
+
+* add service worker support with workbox plugin ([6d3d11d](https://github.com/christophehurpeau/pobpack/commit/6d3d11dc54aac9f0c705ae2741b9e6df189db641))
+* requires node 12 ([a54fcad](https://github.com/christophehurpeau/pobpack/commit/a54fcad72fe153a04fe615f922145444c3611f59))
+
+
+### BREAKING CHANGES
+
+* drop node 10 support
+
+
+
+
+
 ## [5.0.7](https://github.com/christophehurpeau/pobpack/compare/pobpack-node-example@5.0.6...pobpack-node-example@5.0.7) (2020-08-09)
 
 **Note:** Version bump only for package pobpack-node-example
