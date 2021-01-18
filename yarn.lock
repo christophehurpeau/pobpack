@@ -7583,7 +7583,7 @@ nightingale-types@^11.0.5:
   dependencies:
     nightingale-levels "^11.0.5"
 
-nightingale@^11.0.0, nightingale@^11.0.5:
+nightingale@^11.0.0, nightingale@^11.0.3, nightingale@^11.0.5:
   version "11.0.5"
   resolved "https://registry.yarnpkg.com/nightingale/-/nightingale-11.0.5.tgz#c5e43bd5896f21ecd2585c9b9b48bf149231429c"
   integrity sha512-oAka0yYvgFlWFpVUda+TwO/fBWhswKXIxUeNpP8lnqvs5B/f5viVnQxtju1+vLkGjJbgGxw4zDKUCkDagcALrA==
