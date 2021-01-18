@@ -117,7 +117,7 @@
     "@types/webpack-dev-server": "3.11.1",
     "@types/workbox-webpack-plugin": "5.1.5",
     "babel-preset-latest-node": "5.4.0",
-    "pob-babel": "26.3.0",
+    "pob-babel": "26.4.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "rollup": "2.36.2",

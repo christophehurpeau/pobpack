@@ -68,9 +68,9 @@
     "case-sensitive-paths-webpack-plugin": "^2.3.0",
     "colorette": "^1.1.0",
     "find-up": "^5.0.0",
-    "nightingale": "^11.0.1",
-    "nightingale-console": "^11.0.1",
-    "nightingale-logger": "^11.0.1",
+    "nightingale": "^11.0.5",
+    "nightingale-console": "^11.0.5",
+    "nightingale-logger": "^11.0.5",
     "pobpack-types": "^11.0.0",
     "progress": "^2.0.3",
     "react-dev-utils": "11.0.1",
@@ -83,7 +83,7 @@
     "@types/progress": "2.0.3",
     "@types/react-dev-utils": "9.0.4",
     "babel-preset-latest-node": "5.4.0",
-    "pob-babel": "26.3.0",
+    "pob-babel": "26.4.0",
     "rollup": "2.36.2"
   }
 }
