@@ -1,7 +1,7 @@
 {
   "name": "pobpack-browser-example",
   "private": true,
-  "version": "11.0.1",
+  "version": "12.0.0",
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "ISC",
   "repository": {
@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "nightingale-app-console": "11.0.5",
-    "pobpack-browser": "^11.0.1",
+    "pobpack-browser": "^12.0.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "workbox-core": "^6.0.2",

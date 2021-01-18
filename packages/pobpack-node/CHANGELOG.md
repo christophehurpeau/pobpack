@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0](https://github.com/christophehurpeau/pobpack/compare/v11.0.1...v12.0.0) (2021-01-18)
+
+
+### Bug Fixes
+
+* update pob-babel for better support ([d05947a](https://github.com/christophehurpeau/pobpack/commit/d05947ae82cae64b02eef67157d8b3f86c865701))
+
+
+### Reverts
+
+* Revert "refactor: webpack 5" ([ed413af](https://github.com/christophehurpeau/pobpack/commit/ed413af800751b9a62410e2ede6d833c862f2d74))
+
+
+### BREAKING CHANGES
+
+* reverts webpack 5
+
+
+
+
+
 ## [11.0.1](https://github.com/christophehurpeau/pobpack/compare/v11.0.0...v11.0.1) (2021-01-17)
 
 
