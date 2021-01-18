@@ -3,7 +3,7 @@
 import { addConfig, levels } from 'nightingale';
 import ConsoleHandler from 'nightingale-console';
 import Logger from 'nightingale-logger';
-// import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages';
+import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages';
 import type { Compiler } from 'webpack';
 
 export interface Options {
@@ -32,43 +32,36 @@ export default class FriendlyErrorsWebpackPlugin {
   apply(compiler: Compiler): void {
     // webpack is recompiling
     compiler.hooks.invalid.tap(pluginName, () => {
-      console.log();
       this.logger.info('Compiling...');
     });
 
     // compilation done
     compiler.hooks.done.tap(pluginName, (stats) => {
-      console.log();
+      const messages = formatWebpackMessages(stats.toJson({}));
+      // const messages = stats.toJson({}, true);
 
-      if (stats.hasErrors()) {
+      if (messages.errors.length > 0) {
         this.logger.critical('Failed to compile.');
         console.log();
-
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-        stats.toJson({}).errors.map((error: any) =>
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-          console.log(error?.message ? error.message : error),
-        );
-
+        messages.errors.forEach((message: string) => {
+          console.log(message);
+          console.log();
+        });
         return;
       }
 
       if (process.send) process.send('ready');
 
-      if (stats.hasWarnings()) {
+      if (messages.warnings.length > 0) {
         this.logger.critical('Compiled with warnings.');
         console.log();
-
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-        stats.toJson({}).warnings.map((warning: any) =>
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-          console.log(warning?.message ? warning.message : warning),
-        );
-        return;
+        messages.warnings.forEach((message: string) => {
+          console.log(message);
+          console.log();
+        });
       }
 
       this.logger.success('Compiled successfully!');
-
       if (this.successMessage) {
         console.log(this.successMessage);
       }

@@ -11,7 +11,6 @@ import {
   createPluginsConfig,
   createResolveConfig,
 } from 'pobpack-utils';
-import webpack from 'webpack';
 import WorkboxWebpackPlugin from 'workbox-webpack-plugin';
 
 export type BrowserTargetType = 'modern' | 'all';
@@ -37,20 +36,28 @@ export default function createBrowserWebpackConfig(target: BrowserTargetType) {
     bail: options.env === 'production',
 
     // Target web
-    target: target === MODERN ? 'web' : ['web', 'es5'],
+    target: 'web',
 
     // get right stack traces
     devtool:
       options.env === 'production' ? 'nosources-source-map' : 'source-map',
 
     optimization: {
-      emitOnErrors: false,
+      noEmitOnErrors: true,
       minimize: options.env === 'production',
       ...options.optimization,
     },
 
     // use cache
     cache: options.hmr,
+
+    // Some libraries import Node modules but don't use them in the browser.
+    // Tell Webpack to provide empty mocks for them so importing them works.
+    // fs and module are used by source-map-support
+    node: {
+      fs: 'empty',
+      module: 'empty',
+    },
 
     resolveLoader: {
       modules: options.resolveLoaderModules || ['node_modules'],
@@ -94,18 +101,16 @@ export default function createBrowserWebpackConfig(target: BrowserTargetType) {
       // devtoolModuleFilenameTemplate: 'file://[absolute-resource-path]',
       devtoolModuleFilenameTemplate:
         options.env === 'production'
-          ? (info: any) =>
+          ? (info) =>
               path
                 .relative(
                   options.paths.src as string,
-                  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
                   info.absoluteResourcePath,
                 )
                 .replace(/\\/g, '/')
           : // eslint-disable-next-line unicorn/no-nested-ternary
           options.env === 'development'
-          ? (info: any) =>
-              // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+          ? (info) =>
               path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')
           : undefined,
     },
@@ -114,9 +119,6 @@ export default function createBrowserWebpackConfig(target: BrowserTargetType) {
 
     plugins: [
       ...createPluginsConfig(options),
-      new webpack.ProvidePlugin({
-        process: 'process/browser',
-      }),
       options.hmr &&
         new ReactRefreshWebpackPlugin({
           overlay: {

@@ -65,7 +65,6 @@ export interface PobpackCompiler {
   clean: () => void | Buffer;
   compiler: Compiler;
   run: () => Promise<Stats | undefined>;
-  close: () => Promise<void>;
   watch: (callback: WatchCallback) => Compiler.Watching;
   webpackConfig: Readonly<FilledWebpackConfiguration>;
 }

@@ -28,33 +28,32 @@ export default function createPobpackCompiler(
   const compiler = webpack(webpackConfig);
 
   if (progressBar && process.stdout.isTTY) {
-    let bar: ProgressBar | undefined;
-    const progressPlugin = new ProgressPlugin((percentage, msg) => {
-      if (!bar || percentage === 0) {
-        bar = new ProgressBar(
-          `${colorette.bold(
-            colorette.yellow(`Building ${bundleName} bundle...`),
-          )} ${colorette.bold(':percent')} [:bar] → :msg`,
-          {
-            incomplete: ' ',
-            complete: '▇',
-            total: 50,
-            clear: true,
-            stream: process.stdout,
-          },
-        );
-        // } else if (percentage === 1) {
-        //   // bar.clear();
-        //   bar = null;
-      } else {
-        bar.update(percentage, {
-          msg: msg.length > 20 ? `${msg.slice(0, 20)}...` : msg,
-        });
-        if (percentage === 1) {
-          bar = undefined;
+    let bar: ProgressBar;
+    const progressPlugin = new ProgressPlugin(
+      (percentage: number, msg: string) => {
+        if (percentage === 0) {
+          bar = new ProgressBar(
+            `${colorette.bold(
+              colorette.yellow(`Building ${bundleName} bundle...`),
+            )} ${colorette.bold(':percent')} [:bar] → :msg`,
+            {
+              incomplete: ' ',
+              complete: '▇',
+              total: 50,
+              clear: true,
+              stream: process.stdout,
+            },
+          );
+          // } else if (percentage === 1) {
+          //   // bar.clear();
+          //   bar = null;
+        } else {
+          bar.update(percentage, {
+            msg: msg.length > 20 ? `${msg.slice(0, 20)}...` : msg,
+          });
         }
-      }
-    });
+      },
+    );
     progressPlugin.apply(compiler);
   }
 
@@ -66,9 +65,6 @@ export default function createPobpackCompiler(
   const promisifyRun: () => Promise<Stats | undefined> = promisify(
     compiler.run.bind(compiler),
   );
-  const promisifyClose: () => Promise<void> = promisify(
-    compiler.close.bind(compiler),
-  );
 
   return {
     compiler,
@@ -78,7 +74,6 @@ export default function createPobpackCompiler(
         execSync(`rm -Rf ${webpackConfig.output.path}`);
       }
     },
-    close: promisifyClose,
     run: (): Promise<Stats | undefined> =>
       promisifyRun().then(buildThrowOnError),
     watch: (callback: (stats?: Stats) => unknown) =>

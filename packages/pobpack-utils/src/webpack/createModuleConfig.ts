@@ -42,7 +42,7 @@ export default function createModuleConfig(
             .filter(ExcludesFalsy),
           ...options.includePaths,
         ],
-        use: [
+        loaders: [
           {
             loader: require.resolve('babel-loader'),
             options: {

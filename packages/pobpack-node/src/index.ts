@@ -9,7 +9,7 @@ import type {
 import { createPobpackCompiler, createAppWebpackConfig } from 'pobpack-utils';
 import type { Daemon } from 'springbokjs-daemon';
 import createDaemon from 'springbokjs-daemon';
-import type { Compiler, Stats } from 'webpack';
+import type { Stats, Watching } from 'webpack';
 import createNodeWebpackConfig from './createNodeWebpackConfig';
 
 export const createAppNodeCompiler = (
@@ -51,11 +51,6 @@ export interface RunOptions {
   key?: string;
 }
 
-export interface Watching {
-  invalidate: () => void;
-  close: (callback: () => void) => void;
-}
-
 export const watchAndRunCompiler = (
   compiler: PobpackCompiler,
   options: RunOptions = {},
@@ -71,52 +66,49 @@ export const watchAndRunCompiler = (
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     daemon.stop();
   };
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const watchingCompiler: Compiler['watching'] = compiler.watch(
-    (stats): void => {
-      const hasErrors = stats ? stats.hasErrors() : false;
+  const watchingCompiler = compiler.watch((stats) => {
+    const hasErrors = stats ? stats.hasErrors() : false;
 
-      if (hasErrors) {
-        hadError = true;
-        return;
-      }
+    if (hasErrors) {
+      hadError = true;
+      return;
+    }
 
-      if (!daemon) {
-        daemon = createDaemon({
-          key: options.key || 'pobpack-node',
-          displayName: options.displayName,
-          cwd: options.cwd,
-          args: [
-            ...(options.nodeArgs || []),
-            join(
-              // eslint-disable-next-line @typescript-eslint/prefer-optional-chain
-              (compiler.webpackConfig.output &&
-                compiler.webpackConfig.output.path) ||
-                '',
-            ),
-            ...(options.args || []),
-          ],
-          // autoRestart: true,
-        });
-        // eslint-disable-next-line @typescript-eslint/no-floating-promises
-        daemon.start();
-        process.on('exit', daemonStop);
-      } else if (daemon.hasExited()) {
-        // eslint-disable-next-line @typescript-eslint/no-floating-promises
-        daemon.start();
-      } else if (hadError) {
+    if (!daemon) {
+      daemon = createDaemon({
+        key: options.key || 'pobpack-node',
+        displayName: options.displayName,
+        cwd: options.cwd,
+        args: [
+          ...(options.nodeArgs || []),
+          join(
+            // eslint-disable-next-line @typescript-eslint/prefer-optional-chain
+            (compiler.webpackConfig.output &&
+              compiler.webpackConfig.output.path) ||
+              '',
+          ),
+          ...(options.args || []),
+        ],
+        // autoRestart: true,
+      });
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      daemon.start();
+      process.on('exit', daemonStop);
+    } else if (daemon.hasExited()) {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      daemon.start();
+    } else if (hadError) {
+      debounceRestart();
+    } else {
+      // already started, send a signal to ask hot reload
+      try {
+        daemon.sendSIGUSR2();
+      } catch {
         debounceRestart();
-      } else {
-        // already started, send a signal to ask hot reload
-        try {
-          daemon.sendSIGUSR2();
-        } catch {
-          debounceRestart();
-        }
       }
-      hadError = false;
-    },
-  );
+    }
+    hadError = false;
+  });
 
   return {
     invalidate: () => {
