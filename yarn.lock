@@ -7526,7 +7526,7 @@ nightingale-console-output@^11.0.5:
     nightingale-levels "^11.0.5"
     nightingale-types "^11.0.5"
 
-nightingale-console@^11.0.0, nightingale-console@^11.0.5:
+nightingale-console@^11.0.0, nightingale-console@^11.0.3, nightingale-console@^11.0.5:
   version "11.0.5"
   resolved "https://registry.yarnpkg.com/nightingale-console/-/nightingale-console-11.0.5.tgz#6689d8a4f81f98e2d74f010745ae314316dec100"
   integrity sha512-fQwX9rJCkDx0DzlHscF8Dqm5ztQAokQBT8r8qVt/uFAYQYo+0Op9ujqtsgXwdHGD80VRzemxY72t6yPqIYWktw==
