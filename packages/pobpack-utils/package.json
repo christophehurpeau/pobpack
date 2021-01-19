@@ -84,6 +84,6 @@
     "@types/react-dev-utils": "9.0.4",
     "babel-preset-latest-node": "5.4.0",
     "pob-babel": "26.4.0",
-    "rollup": "2.36.2"
+    "rollup": "2.37.0"
   }
 }
