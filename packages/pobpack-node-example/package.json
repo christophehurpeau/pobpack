@@ -25,7 +25,7 @@
     "arrowParens": "always"
   },
   "devDependencies": {
-    "@babel/core": "7.12.16",
+    "@babel/core": "7.12.17",
     "@types/webpack-env": "1.16.0",
     "pobpack-node": "^12.0.0",
     "webpack": "4.46.0",
