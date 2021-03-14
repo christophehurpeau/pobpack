@@ -82,7 +82,7 @@
     "@types/find-up": "4.0.0",
     "@types/progress": "2.0.3",
     "@types/react-dev-utils": "9.0.4",
-    "babel-preset-latest-node": "5.4.0",
+    "babel-preset-latest-node": "5.5.1",
     "pob-babel": "26.4.0",
     "rollup": "2.41.2"
   }
