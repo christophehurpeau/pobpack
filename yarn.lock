@@ -941,10 +941,10 @@
     resolve-global "1.0.0"
     yargs "^15.1.0"
 
-"@commitlint/config-conventional@^11.0.0":
-  version "11.0.0"
-  resolved "https://registry.yarnpkg.com/@commitlint/config-conventional/-/config-conventional-11.0.0.tgz#3fa300a1b639273946de3c3f15e1cda518333422"
-  integrity sha512-SNDRsb5gLuDd2PL83yCOQX6pE7gevC79UPFx+GLbLfw6jGnnbO9/tlL76MLD8MOViqGbo7ZicjChO9Gn+7tHhA==
+"@commitlint/config-conventional@^12.0.0":
+  version "12.0.1"
+  resolved "https://registry.yarnpkg.com/@commitlint/config-conventional/-/config-conventional-12.0.1.tgz#7bf3bbf68bda967c5165135ebe8f2055decf1a83"
+  integrity sha512-1ZhB135lh47zVmf1orwcjxuKuam11fJIH/bdVxW9XiQv8XPwC6iIp19knfl8FcOT78AVBnes1z6EVxgUeP2/4Q==
   dependencies:
     conventional-changelog-conventionalcommits "^4.3.1"
 
@@ -1766,12 +1766,12 @@
     schema-utils "^2.6.5"
     source-map "^0.7.3"
 
-"@pob/commitlint-config@2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@pob/commitlint-config/-/commitlint-config-2.0.1.tgz#8e7e23a14515b55614a859b630cd946364064c1f"
-  integrity sha512-rURaaTQNh2T4qjgQLGgVf5uU8ynFUBvy5RBxDgY9qArsP8TptASZCtbS4QFLAhTzMCuH7xQ7r7/rfvum6lGVpg==
+"@pob/commitlint-config@2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@pob/commitlint-config/-/commitlint-config-2.1.0.tgz#22b4d34992c841e7d640844f5cde71006da7e70a"
+  integrity sha512-TEt9HYmhwvmFlBekpehtSDEAqm1B3awPI2XetFd2i6hSI9JLTVXnKyuXW40CWD02w+0XE8neB+NWv+xUhYReJQ==
   dependencies:
-    "@commitlint/config-conventional" "^11.0.0"
+    "@commitlint/config-conventional" "^12.0.0"
 
 "@pob/eslint-config-node@43.1.0":
   version "43.1.0"
