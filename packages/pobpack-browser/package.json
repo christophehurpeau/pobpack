@@ -113,7 +113,7 @@
     "@babel/core": "7.13.10",
     "@babel/preset-react": "7.12.13",
     "@babel/preset-typescript": "7.13.0",
-    "@types/react-dev-utils": "9.0.4",
+    "@types/react-dev-utils": "9.0.5",
     "@types/webpack-dev-server": "3.11.2",
     "@types/workbox-webpack-plugin": "5.1.5",
     "babel-preset-latest-node": "5.5.1",
