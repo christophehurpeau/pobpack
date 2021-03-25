@@ -78,7 +78,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.13.10",
-    "@types/case-sensitive-paths-webpack-plugin": "2.1.4",
+    "@types/case-sensitive-paths-webpack-plugin": "2.1.5",
     "@types/find-up": "4.0.0",
     "@types/progress": "2.0.3",
     "@types/react-dev-utils": "9.0.4",
