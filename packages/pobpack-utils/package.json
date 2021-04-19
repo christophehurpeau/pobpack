@@ -68,7 +68,7 @@
     "case-sensitive-paths-webpack-plugin": "^2.3.0",
     "colorette": "^1.1.0",
     "find-up": "^5.0.0",
-    "nightingale": "^11.0.5",
+    "nightingale": "^11.7.0",
     "nightingale-console": "^11.0.5",
     "nightingale-logger": "^11.0.5",
     "pobpack-types": "^12.0.0",
