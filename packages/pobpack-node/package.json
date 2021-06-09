@@ -101,7 +101,7 @@
     "webpack-node-externals": "^2.5.2"
   },
   "devDependencies": {
-    "@babel/core": "7.14.3",
+    "@babel/core": "7.14.5",
     "@types/debounce": "1.2.0",
     "@types/webpack-node-externals": "2.5.1",
     "pob-babel": "26.4.0",
