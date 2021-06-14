@@ -115,7 +115,7 @@
     "@babel/preset-typescript": "7.14.5",
     "@types/react-dev-utils": "9.0.6",
     "@types/webpack-dev-server": "3.11.4",
-    "@types/workbox-webpack-plugin": "5.1.6",
+    "@types/workbox-webpack-plugin": "5.1.7",
     "babel-preset-latest-node": "5.5.1",
     "pob-babel": "26.4.0",
     "react": "17.0.1",
