@@ -103,7 +103,7 @@
     "pobpack-utils": "^12.0.0",
     "react-dev-utils": "11.0.1",
     "react-error-html": "^0.2.2",
-    "react-refresh": "^0.9.0",
+    "react-refresh": "^0.10.0",
     "regenerator-runtime": "^0.13.7",
     "source-map-support": "^0.5.16",
     "webpack-dev-server": "3.11.2",
@@ -118,8 +118,8 @@
     "@types/workbox-webpack-plugin": "5.1.7",
     "babel-preset-latest-node": "5.5.1",
     "pob-babel": "26.4.0",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
     "rollup": "2.52.6",
     "webpack": "4.46.0"
   }
