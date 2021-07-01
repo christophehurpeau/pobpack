@@ -101,7 +101,7 @@
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
     "pobpack-types": "^12.0.0",
     "pobpack-utils": "^12.0.0",
-    "react-dev-utils": "11.0.1",
+    "react-dev-utils": "11.0.4",
     "react-error-html": "^0.2.2",
     "react-refresh": "^0.9.0",
     "regenerator-runtime": "^0.13.7",
