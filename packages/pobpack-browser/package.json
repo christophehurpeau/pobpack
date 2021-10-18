@@ -94,7 +94,7 @@
   "peerDependencies": {
     "react": "^16.13.1 || ^17.0.0",
     "react-dom": "^16.13.1 || ^17.0.0",
-    "webpack": "^4.44.2"
+    "webpack": "^4.44.2 || ^5.0.0"
   },
   "dependencies": {
     "@babel/preset-env": "^7.12.11",
@@ -121,6 +121,6 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "rollup": "2.52.6",
-    "webpack": "4.46.0"
+    "webpack": "5.58.2"
   }
 }

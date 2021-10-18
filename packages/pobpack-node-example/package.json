@@ -28,7 +28,7 @@
     "@babel/core": "7.14.6",
     "@types/webpack-env": "1.16.0",
     "pobpack-node": "12.0.0",
-    "webpack": "4.46.0",
+    "webpack": "5.58.2",
     "webpack-module-hot-accept": "1.0.5"
   }
 }
